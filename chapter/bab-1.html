@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chapter 1 — Judul Novel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <a href="../index.html" class="site-title">
+            CN Novel-Translation
+        </a>
+
+        <button class="theme-btn" onclick="toggleTheme()">
+            ☀️
+        </button>
+
+    </header>
+
+
+    <!-- MENU -->
+
+    <nav id="sideMenu" class="side-menu">
+
+        <a href="../index.html">
+            Beranda
+        </a>
+
+        <div class="menu-parent" onclick="toggleNovelMenu()">
+            <span>Novel</span>
+            <span id="novelArrow">›</span>
+        </div>
+
+        <div id="novelSubmenu" class="submenu">
+
+            <a href="../index.html#ongoing">
+                On-going
+            </a>
+
+            <a href="../index.html#completed">
+                Completed
+            </a>
+
+            <a href="../index.html#hiatus">
+                Hiatus
+            </a>
+
+            <a href="../index.html#drop">
+                Drop
+            </a>
+
+        </div>
+
+        <a href="../index.html#bookmark">
+            Bookmark
+        </a>
+
+        <a href="../index.html#donasi">
+            Donasi
+        </a>
+
+        <a href="../index.html#login">
+            Login
+        </a>
+
+    </nav>
+
+
+    <!-- READER -->
+
+    <main class="reader-container">
+
+        <!-- READER SETTINGS -->
+
+        <div class="reader-settings-wrapper">
+
+            <button
+                class="reader-settings-btn"
+                onclick="toggleReaderSettings()"
+                aria-label="Pengaturan pembaca">
+                ⚙️
+            </button>
+
+            <div id="readerSettings" class="reader-settings">
+
+                <button onclick="changeFontSize(-1)">
+                    A−
+                </button>
+
+                <span id="fontSizeDisplay">
+                    18
+                </span>
+
+                <button onclick="changeFontSize(1)">
+                    A+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHAPTER TITLE -->
+
+        <div class="chapter-heading">
+
+            <div class="chapter-number">
+                Chapter 1
+            </div>
+
+            <h1>
+                Awal Perjalanan
+            </h1>
+
+        </div>
+
+
+        <!-- NOVEL CONTENT -->
+
+        <article class="reader">
+
+            <p>
+                Ini adalah contoh isi novel untuk Chapter 1.
+                Nantinya bagian ini dapat diganti dengan hasil terjemahan
+                novel yang sebenarnya.
+            </p>
+
+            <p>
+                Kesadaran Yun Qingyao perlahan muncul dari dalam
+                kekacauan. Pandangannya masih terasa kabur, sementara
+                tubuhnya belum sepenuhnya dapat bergerak.
+            </p>
+
+            <p>
+                Ia mencoba mengingat apa yang telah terjadi sebelumnya.
+                Namun, semakin keras ia mencoba mengingatnya, semakin
+                kacau pikirannya.
+            </p>
+
+            <p>
+                Di tempat yang sunyi itu, sebuah suara tiba-tiba
+                terdengar dari hadapannya.
+            </p>
+
+            <p>
+                "Siapa kamu?"
+            </p>
+
+            <p>
+                Yun Qingyao mengangkat kepalanya perlahan.
+                Tatapannya kemudian tertuju pada sosok yang berdiri
+                tidak jauh darinya.
+            </p>
+
+            <p>
+                Untuk sementara waktu, tidak ada seorang pun yang
+                berbicara lagi.
+            </p>
+
+        </article>
+
+
+        <!-- CHAPTER NAVIGATION -->
+
+        <nav class="chapter-navigation">
+
+            <a href="#" class="chapter-nav-btn disabled">
+                ← Sebelumnya
+            </a>
+
+            <a href="../novel/judul-novel.html" class="chapter-nav-btn">
+                Daftar Isi
+            </a>
+
+            <a href="bab-2.html" class="chapter-nav-btn">
+                Selanjutnya →
+            </a>
+
+        </nav>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="copyright">
+
+        © Copyright 2026-CN Novel-Translation
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* =========================
+           THEME
+        ========================= */
+
+        function loadTheme() {
+
+            const theme = localStorage.getItem("theme");
+
+            const body = document.body;
+            const themeButton = document.querySelector(".theme-btn");
+
+            if (theme === "dark") {
+
+                body.classList.add("dark");
+
+                themeButton.textContent = "🌙";
+
+            } else {
+
+                body.classList.remove("dark");
+
+                themeButton.textContent = "☀️";
+
+            }
+
+        }
+
+
+        function toggleTheme() {
+
+            const body = document.body;
+            const themeButton = document.querySelector(".theme-btn");
+
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+
+                localStorage.setItem("theme", "dark");
+
+                themeButton.textContent = "🌙";
+
+            } else {
+
+                localStorage.setItem("theme", "light");
+
+                themeButton.textContent = "☀️";
+
+            }
+
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("sideMenu");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        function toggleNovelMenu() {
+
+            const submenu = document.getElementById("novelSubmenu");
+            const arrow = document.getElementById("novelArrow");
+
+            submenu.classList.toggle("active");
+
+            if (submenu.classList.contains("active")) {
+
+                arrow.textContent = "‹";
+
+            } else {
+
+                arrow.textContent = "›";
+
+            }
+
+        }
+
+
+        /* =========================
+           READER SETTINGS
+        ========================= */
+
+        function toggleReaderSettings() {
+
+            const settings =
+                document.getElementById("readerSettings");
+
+            settings.classList.toggle("active");
+
+        }
+
+
+        /* =========================
+           FONT SIZE
+        ========================= */
+
+        let fontSize =
+            Number(localStorage.getItem("fontSize")) || 18;
+
+
+        function updateFontSize() {
+
+            const paragraphs =
+                document.querySelectorAll(".reader p");
+
+            paragraphs.forEach(function(paragraph) {
+
+                paragraph.style.fontSize = fontSize + "px";
+
+            });
+
+
+            document.getElementById("fontSizeDisplay").textContent =
+                fontSize;
+
+
+            localStorage.setItem("fontSize", fontSize);
+
+        }
+
+
+        function changeFontSize(amount) {
+
+            fontSize += amount;
+
+
+            if (fontSize < 14) {
+                fontSize = 14;
+            }
+
+
+            if (fontSize > 28) {
+                fontSize = 28;
+            }
+
+
+            updateFontSize();
+
+        }
+
+
+        /* =========================
+           INITIALIZE
+        ========================= */
+
+        loadTheme();
+
+        updateFontSize();
+
+
+        /* =========================
+           PHONE BACK / BROWSER CACHE
+        ========================= */
+
+        window.addEventListener("pageshow", function() {
+
+            loadTheme();
+
+            fontSize =
+                Number(localStorage.getItem("fontSize")) || 18;
+
+            updateFontSize();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
