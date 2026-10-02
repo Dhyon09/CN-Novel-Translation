@@ -7,33 +7,726 @@
 
     <title>CN Novel-Translation</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>CN Novel-Translation</h1>
-        <p>Membaca kisah dari dunia novel Tiongkok</p>
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header class="site-header">
+
+        <button class="menu-button" id="menuButton" aria-label="Buka menu">
+            ☰
+        </button>
+
+        <a href="index.html" class="site-title">
+            CN Novel-Translation
+        </a>
+
+        <button class="theme-button" id="themeButton" aria-label="Ganti tema">
+            ☀️
+        </button>
+
     </header>
 
-    <main>
 
-        <section>
-            <h2>Latest Update</h2>
+    <!-- =========================
+         MENU
+         ========================= -->
 
-            <div>
-                <h3>Contoh Novel</h3>
-                <p>Bab 1 — Awal Perjalanan</p>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <nav class="side-menu" id="sideMenu">
+
+        <div class="menu-header">
+            <span>Menu</span>
+
+            <button class="menu-close" id="menuClose" aria-label="Tutup menu">
+                ×
+            </button>
+        </div>
+
+
+        <div class="menu-item menu-novel" id="menuNovel">
+
+            <span>Novel</span>
+            <span class="menu-arrow">›</span>
+
+        </div>
+
+
+        <div class="novel-submenu" id="novelSubmenu">
+
+            <div class="submenu-header" id="submenuBack">
+
+                <span>Novel</span>
+                <span>‹</span>
+
+            </div>
+
+            <a href="#">
+                On-going
+            </a>
+
+            <a href="#">
+                Completed
+            </a>
+
+            <a href="#">
+                Hiatus
+            </a>
+
+            <a href="#">
+                Drop
+            </a>
+
+        </div>
+
+
+        <a href="#" class="menu-item">
+            Bookmark
+        </a>
+
+        <a href="#" class="menu-item">
+            Donasi
+        </a>
+
+        <a href="#" class="menu-item">
+            Login
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN
+         ========================= -->
+
+    <main class="home-container">
+
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Cari judul novel..."
+                    autocomplete="off"
+                >
+
             </div>
 
         </section>
 
+
+        <!-- =========================
+             RANDOM NOVEL
+             ========================= -->
+
+        <section class="home-section">
+
+            <div class="section-heading">
+
+                <h2>Novel Random</h2>
+
+            </div>
+
+
+            <div class="random-novels" id="randomNovels">
+
+                <!-- Novel random akan dimasukkan melalui JavaScript -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LATEST UPDATE
+             ========================= -->
+
+        <section class="home-section">
+
+            <div class="section-heading">
+
+                <h2>Latest Update</h2>
+
+            </div>
+
+
+            <div class="latest-updates" id="latestUpdates">
+
+                <!-- Latest update akan dimasukkan melalui JavaScript -->
+
+            </div>
+
+
+            <!-- PAGINATION -->
+
+            <div class="pagination" id="pagination">
+
+                <!-- Pagination akan dibuat melalui JavaScript -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HASIL PENCARIAN
+             ========================= -->
+
+        <section
+            class="home-section search-results-section"
+            id="searchResultsSection"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <h2>Hasil Pencarian</h2>
+
+            </div>
+
+
+            <div id="searchResults">
+
+                <!-- Hasil pencarian akan dimasukkan melalui JavaScript -->
+
+            </div>
+
+        </section>
+
+
     </main>
 
-    <footer>
-        <p>© 2026 CN Novel-Translation</p>
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-title">
+            CN Novel-Translation
+        </div>
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>•</span>
+
+            <a href="#">
+                Donasi
+            </a>
+
+        </div>
+
+        <div class="copyright">
+
+            © Copyright 2026-CN Novel-Translation
+
+        </div>
+
     </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        /* =========================
+           MENU
+           ========================= */
+
+        const menuButton = document.getElementById("menuButton");
+        const menuClose = document.getElementById("menuClose");
+        const menuOverlay = document.getElementById("menuOverlay");
+
+        const sideMenu = document.getElementById("sideMenu");
+
+        const menuNovel = document.getElementById("menuNovel");
+        const novelSubmenu = document.getElementById("novelSubmenu");
+        const submenuBack = document.getElementById("submenuBack");
+
+
+        function openMenu() {
+
+            sideMenu.classList.add("active");
+            menuOverlay.classList.add("active");
+
+        }
+
+
+        function closeMenu() {
+
+            sideMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
+
+            novelSubmenu.classList.remove("active");
+
+        }
+
+
+        menuButton.addEventListener("click", openMenu);
+
+        menuClose.addEventListener("click", closeMenu);
+
+        menuOverlay.addEventListener("click", closeMenu);
+
+
+        /* =========================
+           SUBMENU NOVEL
+           ========================= */
+
+        menuNovel.addEventListener("click", function () {
+
+            novelSubmenu.classList.add("active");
+
+        });
+
+
+        submenuBack.addEventListener("click", function () {
+
+            novelSubmenu.classList.remove("active");
+
+        });
+
+
+        /* =========================
+           DARK / LIGHT MODE
+           ========================= */
+
+        const themeButton = document.getElementById("themeButton");
+
+
+        function loadTheme() {
+
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme === "dark") {
+
+                document.body.classList.add("dark");
+
+                themeButton.textContent = "🌙";
+
+            } else {
+
+                document.body.classList.remove("dark");
+
+                themeButton.textContent = "☀️";
+
+            }
+
+        }
+
+
+        themeButton.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+
+            if (document.body.classList.contains("dark")) {
+
+                localStorage.setItem("theme", "dark");
+
+                themeButton.textContent = "🌙";
+
+            } else {
+
+                localStorage.setItem("theme", "light");
+
+                themeButton.textContent = "☀️";
+
+            }
+
+        });
+
+
+        loadTheme();
+
+
+        /* =========================
+           DATA NOVEL SEMENTARA
+           ========================= */
+
+        const novels = [
+
+            {
+                title: "Contoh Novel A",
+                genre: "Fantasy • Romance",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 25,
+                chapterTitle: "Chapter 25",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel B",
+                genre: "Xianxia • Romance",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 103,
+                chapterTitle: "Chapter 103",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel C",
+                genre: "Fantasy • Wuxia",
+                status: "Completed",
+                cover: "images/cover.jpg",
+                chapter: 17,
+                chapterTitle: "Chapter 17",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel D",
+                genre: "Xuanhuan • Romance",
+                status: "Hiatus",
+                cover: "images/cover.jpg",
+                chapter: 42,
+                chapterTitle: "Chapter 42",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel E",
+                genre: "Fantasy • Adventure",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 68,
+                chapterTitle: "Chapter 68",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel F",
+                genre: "Xianxia • Fantasy",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 91,
+                chapterTitle: "Chapter 91",
+                link: "#"
+            }
+
+        ];
+
+
+        /* =========================
+           RANDOM NOVEL
+           ========================= */
+
+        function showRandomNovels() {
+
+            const container =
+                document.getElementById("randomNovels");
+
+            container.innerHTML = "";
+
+
+            const shuffled = [...novels]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3);
+
+
+            shuffled.forEach(novel => {
+
+                const item = document.createElement("a");
+
+                item.className = "random-novel-card";
+
+                item.href = novel.link;
+
+
+                item.innerHTML = `
+
+                    <img
+                        src="${novel.cover}"
+                        alt="Cover ${novel.title}"
+                    >
+
+                    <div class="random-novel-info">
+
+                        <h3>
+                            ${novel.title}
+                        </h3>
+
+                        <p>
+                            ${novel.genre}
+                        </p>
+
+                        <span>
+                            ${novel.status}
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            });
+
+        }
+
+
+        /* =========================
+           LATEST UPDATE
+           ========================= */
+
+        const updatesPerPage = 5;
+
+        let currentPage = 1;
+
+
+        function showLatestUpdates(page) {
+
+            const container =
+                document.getElementById("latestUpdates");
+
+            container.innerHTML = "";
+
+
+            const start =
+                (page - 1) * updatesPerPage;
+
+            const end =
+                start + updatesPerPage;
+
+
+            const pageItems =
+                novels.slice(start, end);
+
+
+            pageItems.forEach(novel => {
+
+                const item = document.createElement("a");
+
+                item.className = "latest-item";
+
+                item.href = novel.link;
+
+
+                item.innerHTML = `
+
+                    <div class="latest-info">
+
+                        <h3>
+                            ${novel.title}
+                        </h3>
+
+                        <p>
+                            ${novel.chapterTitle}
+                        </p>
+
+                    </div>
+
+                    <span class="latest-arrow">
+                        ›
+                    </span>
+
+                `;
+
+
+                container.appendChild(item);
+
+            });
+
+
+            showPagination();
+
+        }
+
+
+        /* =========================
+           PAGINATION
+           ========================= */
+
+        function showPagination() {
+
+            const pagination =
+                document.getElementById("pagination");
+
+            pagination.innerHTML = "";
+
+
+            const totalPages =
+                Math.ceil(novels.length / updatesPerPage);
+
+
+            if (totalPages <= 1) {
+
+                return;
+
+            }
+
+
+            for (
+                let i = 1;
+                i <= totalPages;
+                i++
+            ) {
+
+                const button =
+                    document.createElement("button");
+
+
+                button.textContent = i;
+
+
+                if (i === currentPage) {
+
+                    button.classList.add("active");
+
+                }
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        currentPage = i;
+
+                        showLatestUpdates(currentPage);
+
+                    }
+                );
+
+
+                pagination.appendChild(button);
+
+            }
+
+        }
+
+
+        /* =========================
+           SEARCH
+           ========================= */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const searchResultsSection =
+            document.getElementById(
+                "searchResultsSection"
+            );
+
+        const searchResults =
+            document.getElementById(
+                "searchResults"
+            );
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const keyword =
+                    searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+                if (!keyword) {
+
+                    searchResultsSection.hidden = true;
+
+                    return;
+
+                }
+
+
+                const results =
+                    novels.filter(novel =>
+                        novel.title
+                        .toLowerCase()
+                        .includes(keyword)
+                    );
+
+
+                searchResults.innerHTML = "";
+
+
+                if (results.length === 0) {
+
+                    searchResults.innerHTML = `
+
+                        <p class="no-results">
+                            Novel tidak ditemukan.
+                        </p>
+
+                    `;
+
+                } else {
+
+                    results.forEach(novel => {
+
+                        const item =
+                            document.createElement("a");
+
+                        item.className =
+                            "search-result-item";
+
+                        item.href =
+                            novel.link;
+
+
+                        item.innerHTML = `
+
+                            <strong>
+                                ${novel.title}
+                            </strong>
+
+                            <span>
+                                ${novel.genre}
+                            </span>
+
+                        `;
+
+
+                        searchResults.appendChild(item);
+
+                    });
+
+                }
+
+
+                searchResultsSection.hidden = false;
+
+            }
+        );
+
+
+        /* =========================
+           START
+           ========================= */
+
+        showRandomNovels();
+
+        showLatestUpdates(currentPage);
+
+    </script>
 
 </body>
 
