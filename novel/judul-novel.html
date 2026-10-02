@@ -5,23 +5,17 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Judul Novel - CN Novel-Translation</title>
 
-
-    <!-- FONT NAMA WEBSITE -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
-
-
-    <!-- CSS -->
-
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
 
 </head>
 
@@ -47,9 +41,7 @@
 
 
         <div class="site-title">
-
             CN Novel-Translation
-
         </div>
 
 
@@ -60,9 +52,7 @@
                 onclick="toggleTheme()"
                 aria-label="Ganti tema"
             >
-
                 <span id="themeIcon">☀️</span>
-
             </button>
 
         </div>
@@ -70,46 +60,49 @@
     </header>
 
 
-
     <!-- MENU -->
 
-    <nav id="sideMenu" class="side-menu">
-
+    <nav
+        id="sideMenu"
+        class="side-menu"
+    >
 
         <div
             class="menu-item menu-novel"
             onclick="toggleNovelMenu()"
         >
 
-            <span>Novel</span>
+            <span>
+                Novel
+            </span>
 
-            <span id="novelArrow">›</span>
+            <span id="novelArrow">
+                ›
+            </span>
 
         </div>
 
 
-        <div id="novelSubmenu" class="novel-submenu">
-
+        <div
+            id="novelSubmenu"
+            class="novel-submenu"
+        >
 
             <a href="../index.html#ongoing">
                 On-going
             </a>
 
-
             <a href="../index.html#completed">
                 Completed
             </a>
-
 
             <a href="../index.html#hiatus">
                 Hiatus
             </a>
 
-
             <a href="../index.html#drop">
                 Drop
             </a>
-
 
         </div>
 
@@ -137,22 +130,44 @@
             Login
         </a>
 
-
     </nav>
 
 
+    <!-- SEARCH -->
 
-    <!-- KONTEN NOVEL -->
+    <div class="global-search-bar">
 
-    <main class="page-container">
+        <div class="global-search-inner">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="search"
+                    id="globalSearch"
+                    placeholder="Cari judul novel..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HALAMAN DETAIL NOVEL -->
+
+    <main class="novel-container">
 
 
         <!-- INFORMASI NOVEL -->
 
         <section class="novel-detail">
 
-
-            <!-- COVER -->
 
             <div class="novel-cover">
 
@@ -164,11 +179,7 @@
             </div>
 
 
-
-            <!-- INFORMASI -->
-
             <div class="novel-info">
-
 
                 <h1>
                     Judul Novel
@@ -198,46 +209,42 @@
                     class="bookmark-button"
                     onclick="toggleBookmark()"
                 >
-
-                    🔖 Bookmark
-
+                    ☆ Bookmark
                 </button>
-
 
             </div>
 
-
         </section>
-
 
 
         <!-- DESKRIPSI -->
 
         <section class="novel-description">
 
-
             <h2>
-                Deskripsi Novel
+                Deskripsi
             </h2>
 
 
             <p>
-
-                Deskripsi novel akan ditampilkan di sini.
-                Kamu dapat mengganti bagian ini dengan sinopsis
-                atau deskripsi lengkap novel.
-
+                Ini adalah deskripsi contoh untuk novel ini.
+                Nantinya bagian ini dapat diganti dengan
+                sinopsis atau deskripsi novel yang sebenarnya.
             </p>
 
 
-        </section>
+            <p>
+                Cerita mengikuti perjalanan seorang tokoh
+                utama dalam menghadapi berbagai kejadian
+                dan rahasia yang perlahan mulai terungkap.
+            </p>
 
+        </section>
 
 
         <!-- DAFTAR CHAPTER -->
 
         <section class="chapter-list-section">
-
 
             <h2>
                 Daftar Chapter
@@ -246,15 +253,14 @@
 
             <div class="chapter-list">
 
-
                 <a href="../chapter/bab-1.html">
 
                     <span>
-                        Chapter 1
+                        Chapter 1 — Awal Perjalanan
                     </span>
 
                     <span>
-                        ›
+                        →
                     </span>
 
                 </a>
@@ -267,7 +273,7 @@
                     </span>
 
                     <span>
-                        ›
+                        →
                     </span>
 
                 </a>
@@ -280,23 +286,19 @@
                     </span>
 
                     <span>
-                        ›
+                        →
                     </span>
 
                 </a>
 
-
             </div>
 
-
         </section>
-
 
 
         <!-- KOMENTAR -->
 
         <section class="comments-section">
-
 
             <h2>
                 Komentar
@@ -320,120 +322,54 @@
                 async>
             </script>
 
-
         </section>
 
-
     </main>
-
 
 
     <!-- FOOTER -->
 
     <footer class="site-footer">
 
-
         <div class="footer-title">
-
             CN Novel-Translation
-
         </div>
 
 
         <div class="footer-links">
 
-
             <a href="../index.html">
                 Home
             </a>
-
 
             <span>
                 •
             </span>
 
-
             <a href="../index.html#donasi">
                 Donasi
             </a>
-
 
         </div>
 
 
         <div class="copyright">
-
             © Copyright 2026-CN Novel-Translation
-
         </div>
 
-
     </footer>
-
 
 
     <!-- JAVASCRIPT -->
 
     <script>
 
-
-        /* =========================================
-           THEME
-        ========================================= */
-
-
-        function getGiscusTheme() {
-
-            if (document.body.classList.contains("dark")) {
-
-                return "dark";
-
-            }
-
-            return "light";
-
-        }
-
-
-
-        function updateGiscusTheme() {
-
-            const giscusFrame =
-                document.querySelector(
-                    "iframe.giscus-frame"
-                );
-
-
-            if (!giscusFrame) {
-
-                return;
-
-            }
-
-
-            giscusFrame.contentWindow.postMessage(
-
-                {
-                    giscus: {
-                        setConfig: {
-                            theme: getGiscusTheme()
-                        }
-                    }
-                },
-
-                "https://giscus.app"
-
-            );
-
-        }
-
-
+        /* THEME */
 
         function loadTheme() {
 
             const savedTheme =
                 localStorage.getItem("theme");
-
 
             const icon =
                 document.getElementById("themeIcon");
@@ -462,7 +398,6 @@
         }
 
 
-
         function toggleTheme() {
 
             document.body.classList.toggle("dark");
@@ -478,11 +413,7 @@
             );
 
 
-            const icon =
-                document.getElementById("themeIcon");
-
-
-            icon.textContent =
+            document.getElementById("themeIcon").textContent =
                 isDark ? "🌙" : "☀️";
 
 
@@ -491,34 +422,60 @@
         }
 
 
+        /* GISCUS THEME */
 
-        /* =========================================
-           MENU
-        ========================================= */
+        function getGiscusTheme() {
 
+            return document.body.classList.contains("dark")
+                ? "dark"
+                : "light";
+
+        }
+
+
+        function updateGiscusTheme() {
+
+            const iframe =
+                document.querySelector(
+                    "iframe.giscus-frame"
+                );
+
+
+            if (!iframe) {
+                return;
+            }
+
+
+            iframe.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: getGiscusTheme()
+                        }
+                    }
+                },
+                "https://giscus.app"
+            );
+
+        }
+
+
+        /* MENU */
 
         function toggleMenu() {
 
             const menu =
                 document.getElementById("sideMenu");
 
-
             menu.classList.toggle("active");
 
         }
-
-
-
-        /* =========================================
-           NOVEL SUBMENU
-        ========================================= */
 
 
         function toggleNovelMenu() {
 
             const submenu =
                 document.getElementById("novelSubmenu");
-
 
             const arrow =
                 document.getElementById("novelArrow");
@@ -542,15 +499,10 @@
         }
 
 
-
-        /* =========================================
-           BOOKMARK
-        ========================================= */
-
+        /* BOOKMARK */
 
         const bookmarkKey =
             "bookmark_judul_novel";
-
 
 
         function loadBookmark() {
@@ -561,117 +513,127 @@
                 );
 
 
-            const saved =
+            const bookmarked =
                 localStorage.getItem(
                     bookmarkKey
                 );
 
 
-            if (saved === "true") {
+            if (bookmarked === "true") {
+
+                button.textContent =
+                    "★ Tersimpan";
 
                 button.classList.add(
                     "bookmarked"
                 );
 
+            } else {
 
-                button.innerHTML =
-                    "🔖 Sudah di Bookmark";
-
-            }
-
-        }
-
-
-
-        function toggleBookmark() {
-
-            const button =
-                document.getElementById(
-                    "bookmarkButton"
-                );
-
-
-            const isBookmarked =
-                button.classList.contains(
-                    "bookmarked"
-                );
-
-
-            if (isBookmarked) {
-
-                localStorage.removeItem(
-                    bookmarkKey
-                );
-
+                button.textContent =
+                    "☆ Bookmark";
 
                 button.classList.remove(
                     "bookmarked"
                 );
 
-
-                button.innerHTML =
-                    "🔖 Bookmark";
-
-            } else {
-
-                localStorage.setItem(
-                    bookmarkKey,
-                    "true"
-                );
-
-
-                button.classList.add(
-                    "bookmarked"
-                );
-
-
-                button.innerHTML =
-                    "🔖 Sudah di Bookmark";
-
             }
 
         }
 
 
+        function toggleBookmark() {
 
-        /* =========================================
-           GISCUS
-        ========================================= */
+            const bookmarked =
+                localStorage.getItem(
+                    bookmarkKey
+                ) === "true";
 
 
-        window.addEventListener(
-            "message",
+            localStorage.setItem(
+                bookmarkKey,
+                bookmarked ? "false" : "true"
+            );
+
+
+            loadBookmark();
+
+        }
+
+
+        /* SEARCH */
+
+        const searchInput =
+            document.getElementById(
+                "globalSearch"
+            );
+
+
+        searchInput.addEventListener(
+            "keydown",
             function(event) {
 
                 if (
-                    event.origin !==
-                    "https://giscus.app"
+                    event.key === "Enter"
+                    &&
+                    searchInput.value.trim() !== ""
                 ) {
 
-                    return;
+                    const query =
+                        encodeURIComponent(
+                            searchInput.value.trim()
+                        );
+
+
+                    window.location.href =
+                        "../index.html?search=" + query;
 
                 }
-
-
-                updateGiscusTheme();
 
             }
         );
 
 
-
-        /* =========================================
-           LOAD
-        ========================================= */
-
+        /* INITIAL */
 
         loadTheme();
 
         loadBookmark();
 
 
-    </script>
+        /* PHONE BACK */
 
+        window.addEventListener(
+            "pageshow",
+            function() {
+
+                loadTheme();
+
+                loadBookmark();
+
+            }
+        );
+
+
+        /* GISCUS READY */
+
+        window.addEventListener(
+            "message",
+            function(event) {
+
+                if (
+                    event.origin ===
+                    "https://giscus.app"
+                ) {
+
+                    updateGiscusTheme();
+
+                }
+
+            }
+        );
+
+    </script>
 
 </body>
 
