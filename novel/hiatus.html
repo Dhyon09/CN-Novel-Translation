@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hiatus - CN Novel-Translation</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        /* =====================================================
+           GRID NOVEL
+        ===================================================== */
+
+        .status-novel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+
+        .status-novel-card {
+            display: block;
+            overflow: hidden;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background-color 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+
+        .status-novel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 16px var(--shadow);
+        }
+
+
+        .status-novel-card img {
+            display: block;
+
+            width: 100%;
+            height: 210px;
+
+            object-fit: cover;
+        }
+
+
+        .status-novel-info {
+            padding: 11px;
+        }
+
+
+        .status-novel-info h3 {
+            margin: 0 0 6px;
+
+            font-size: 16px;
+            line-height: 1.35;
+
+            word-break: break-word;
+        }
+
+
+        .status-novel-info p {
+            margin: 0 0 6px;
+
+            color: var(--secondary);
+
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+
+        .status-novel-info span {
+            color: var(--primary);
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           JUDUL STATUS STICKY
+        ===================================================== */
+
+        .status-heading {
+            position: sticky;
+            top: 112px;
+
+            z-index: 800;
+
+            margin: -18px -16px 18px;
+            padding: 14px 16px;
+
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .status-heading h2 {
+            margin: 0;
+
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           PAGINATION
+        ===================================================== */
+
+        .status-pagination {
+            display: flex;
+            justify-content: center;
+
+            gap: 6px;
+
+            margin-top: 20px;
+        }
+
+
+        .status-pagination button {
+            min-width: 34px;
+            height: 34px;
+
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: var(--card);
+            color: var(--text);
+
+            cursor: pointer;
+        }
+
+
+        .status-pagination button.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+
+        /* =====================================================
+           SEARCH RESULT
+        ===================================================== */
+
+        .status-search-results {
+            display: none;
+        }
+
+
+        .status-search-results h2 {
+            margin: 0 0 14px;
+
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+
+        .no-results {
+            color: var(--secondary);
+        }
+
+
+        /* =====================================================
+           TABLET / DESKTOP
+        ===================================================== */
+
+        @media (min-width: 600px) {
+
+            .status-heading {
+                top: 124px;
+            }
+
+
+            .status-novel-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+
+            .status-novel-card img {
+                height: 230px;
+            }
+
+        }
+
+
+        @media (min-width: 900px) {
+
+            .status-novel-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+
+            .status-novel-card img {
+                height: 260px;
+            }
+
+        }
+
+
+        /* =====================================================
+           HP KECIL
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .status-novel-grid {
+                gap: 9px;
+            }
+
+
+            .status-novel-info {
+                padding: 9px;
+            }
+
+
+            .status-novel-info h3 {
+                font-size: 15px;
+            }
+
+
+            .status-novel-card img {
+                height: 185px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+    <div class="header-left">
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Buka menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+    </div>
+
+
+    <div class="site-title">
+        CN Novel-Translation
+    </div>
+
+
+    <div class="header-right">
+
+        <button
+            class="theme-button"
+            id="themeButton"
+            aria-label="Ganti tema"
+        >
+            ☀️
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<nav class="side-menu" id="sideMenu">
+
+    <div class="menu-header">
+
+        <span>Menu</span>
+
+        <button
+            class="menu-close"
+            id="menuClose"
+            aria-label="Tutup menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="menu-parent"
+        id="menuNovel"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+    >
+
+        <span>Novel</span>
+
+        <span class="menu-arrow">›</span>
+
+    </div>
+
+
+    <div class="novel-submenu" id="novelSubmenu">
+
+        <a href="on-going.html">
+            On-going
+        </a>
+
+        <a href="completed.html">
+            Completed
+        </a>
+
+        <a href="hiatus.html">
+            Hiatus
+        </a>
+
+        <a href="drop.html">
+            Drop
+        </a>
+
+    </div>
+
+
+    <a class="menu-item" href="../index.html">
+        <span>Bookmark</span>
+    </a>
+
+
+    <a class="menu-item" href="#donasi">
+        <span>Donasi</span>
+    </a>
+
+
+    <a class="menu-item" href="#login">
+        <span>Login</span>
+    </a>
+
+</nav>
+
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div class="global-search-bar">
+
+    <div class="global-search-inner">
+
+        <div class="search-box">
+
+            <span class="search-icon">🔍</span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Cari novel..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<main class="home-container">
+
+
+    <div class="status-heading" id="statusHeading">
+
+        <h2>
+            Hiatus
+        </h2>
+
+    </div>
+
+
+
+    <div
+        class="status-novel-grid"
+        id="hiatusNovels"
+    ></div>
+
+
+    <div
+        class="status-pagination"
+        id="pagination"
+    ></div>
+
+
+
+    <!-- =================================================
+         HASIL PENCARIAN
+    ================================================= -->
+
+    <section
+        class="status-search-results"
+        id="searchResultsSection"
+    >
+
+        <h2>
+            Hasil Pencarian
+        </h2>
+
+
+        <div
+            class="status-novel-grid"
+            id="searchResults"
+        ></div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-title">
+        CN Novel-Translation
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <span>•</span>
+
+        <a href="#donasi">
+            Donasi
+        </a>
+
+    </div>
+
+
+    <p class="copyright">
+        © Copyright 2026-CN Novel-Translation
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const menuClose =
+    document.getElementById("menuClose");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const menuNovel =
+    document.getElementById("menuNovel");
+
+const novelSubmenu =
+    document.getElementById("novelSubmenu");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
+
+
+function closeNovelSubmenu() {
+
+    novelSubmenu.classList.remove("active");
+
+    menuNovel.classList.remove("active");
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+function closeMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    closeNovelSubmenu();
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+
+function toggleNovelSubmenu() {
+
+    const isActive =
+        novelSubmenu.classList.toggle("active");
+
+
+    menuNovel.classList.toggle(
+        "active",
+        isActive
+    );
+
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        isActive
+    );
+
+}
+
+
+menuNovel.addEventListener(
+    "click",
+    toggleNovelSubmenu
+);
+
+
+menuNovel.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            toggleNovelSubmenu();
+
+        }
+
+    }
+);
+
+
+const menuLinks =
+    sideMenu.querySelectorAll("a");
+
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function () {
+
+            closeMenu();
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function loadTheme() {
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "🌙";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            themeButton.textContent = "🌙";
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            themeButton.textContent = "☀️";
+
+        }
+
+    }
+);
+
+
+loadTheme();
+
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        loadTheme();
+
+    }
+);
+
+
+
+/* =====================================================
+   DATA NOVEL HIATUS
+===================================================== */
+
+const novels = [
+
+    {
+        title: "Contoh Novel D",
+        genre: "Xuanhuan • Romance",
+        status: "Hiatus",
+        cover: "../images/cover.jpg",
+        chapter: 42,
+        chapterTitle: "Chapter 42",
+        link: "#"
+    }
+
+];
+
+
+
+/* =====================================================
+   CARD NOVEL
+===================================================== */
+
+function createNovelCard(novel) {
+
+    return `
+
+        <article class="status-novel-card">
+
+            <a href="${novel.link}">
+
+                <img
+                    src="${novel.cover}"
+                    alt="${novel.title}"
+                >
+
+
+                <div class="status-novel-info">
+
+                    <h3>
+                        ${novel.title}
+                    </h3>
+
+
+                    <p>
+                        ${novel.genre}
+                    </p>
+
+
+                    <span>
+                        ${novel.chapterTitle}
+                    </span>
+
+                </div>
+
+            </a>
+
+        </article>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   TAMPILKAN NOVEL
+===================================================== */
+
+const novelsPerPage = 10;
+
+let currentPage = 1;
+
+
+function showNovels(page = 1) {
+
+    const container =
+        document.getElementById(
+            "hiatusNovels"
+        );
+
+
+    const start =
+        (page - 1) * novelsPerPage;
+
+
+    const end =
+        start + novelsPerPage;
+
+
+    const pageNovels =
+        novels.slice(start, end);
+
+
+    container.innerHTML =
+        pageNovels
+            .map(createNovelCard)
+            .join("");
+
+
+    showPagination(page);
+
+}
+
+
+
+/* =====================================================
+   PAGINATION
+===================================================== */
+
+function showPagination(page) {
+
+    const pagination =
+        document.getElementById(
+            "pagination"
+        );
+
+
+    const totalPages =
+        Math.ceil(
+            novels.length / novelsPerPage
+        );
+
+
+    pagination.innerHTML = "";
+
+
+    for (
+        let i = 1;
+        i <= totalPages;
+        i++
+    ) {
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.textContent = i;
+
+
+        if (i === page) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                currentPage = i;
+
+                showNovels(i);
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+        pagination.appendChild(
+            button
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const searchResultsSection =
+    document.getElementById(
+        "searchResultsSection"
+    );
+
+
+const searchResults =
+    document.getElementById(
+        "searchResults"
+    );
+
+
+const statusHeading =
+    document.getElementById(
+        "statusHeading"
+    );
+
+
+const hiatusNovels =
+    document.getElementById(
+        "hiatusNovels"
+    );
+
+
+const pagination =
+    document.getElementById(
+        "pagination"
+    );
+
+
+function performSearch(keyword) {
+
+    keyword =
+        keyword
+            .trim()
+            .toLowerCase();
+
+
+    if (!keyword) {
+
+        statusHeading.style.display =
+            "";
+
+
+        hiatusNovels.style.display =
+            "";
+
+
+        pagination.style.display =
+            "";
+
+
+        searchResultsSection.style.display =
+            "none";
+
+
+        return;
+
+    }
+
+
+    const results =
+        novels.filter(function (novel) {
+
+            return novel.title
+                .toLowerCase()
+                .includes(keyword);
+
+        });
+
+
+    statusHeading.style.display =
+        "none";
+
+
+    hiatusNovels.style.display =
+        "none";
+
+
+    pagination.style.display =
+        "none";
+
+
+    searchResultsSection.style.display =
+        "block";
+
+
+    if (results.length === 0) {
+
+        searchResults.innerHTML =
+            '<p class="no-results">Tidak ada novel yang ditemukan.</p>';
+
+        return;
+
+    }
+
+
+    searchResults.innerHTML =
+        results
+            .map(createNovelCard)
+            .join("");
+
+}
+
+
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        performSearch(
+            searchInput.value
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   LOAD
+===================================================== */
+
+showNovels(1);
+
+</script>
+
+
+</body>
+
+</html>
