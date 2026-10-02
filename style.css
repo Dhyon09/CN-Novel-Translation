@@ -1,0 +1,137 @@
+/* ================================
+   CN NOVEL-TRANSLATION
+   STYLE DASAR
+   ================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f5f0e6;
+    color: #29251f;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+
+header {
+    background: #302820;
+    color: #fffdf8;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    margin: 8px 0 0;
+    color: #d8cdbb;
+    font-size: 15px;
+}
+
+/* ================================
+   KONTEN UTAMA
+   ================================ */
+
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 16px;
+}
+
+section {
+    background: #fffdf8;
+    border: 1px solid #d8cdbb;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+section h2 {
+    margin-top: 0;
+    color: #7b2d2d;
+    font-size: 23px;
+}
+
+/* ================================
+   NOVEL
+   ================================ */
+
+section div {
+    border-bottom: 1px solid #d8cdbb;
+    padding: 14px 0;
+}
+
+section div:last-child {
+    border-bottom: none;
+}
+
+section h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+}
+
+section p {
+    margin: 0;
+    color: #756b5d;
+    font-size: 15px;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: #756b5d;
+    font-size: 14px;
+}
+
+/* ================================
+   TAMPILAN HP
+   ================================ */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 24px 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    main {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    section {
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    section h2 {
+        font-size: 21px;
+    }
+
+    section h3 {
+        font-size: 17px;
+    }
+}
