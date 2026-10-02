@@ -22,11 +22,14 @@
     .chapter-list {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 6px;
+
         max-height: 360px;
+
         overflow-y: auto;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: var(--card);
+
+        padding: 2px;
     }
 
 
@@ -34,52 +37,61 @@
         display: flex;
         align-items: center;
 
-        min-height: 44px;
-        padding: 10px 12px;
+        min-height: 42px;
 
-        border-right: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
+        padding: 8px 10px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 6px;
+
+        background: var(--card);
 
         color: var(--text);
+
         text-decoration: none;
 
         font-size: 15px;
+
         line-height: 1.3;
 
         transition:
+            border-color 0.25s ease,
             background-color 0.25s ease,
             color 0.25s ease;
     }
 
 
-    .chapter-list a:nth-child(2n) {
-        border-right: none;
-    }
-
-
     .chapter-list a:hover {
+        border-color: var(--primary);
+
         background: var(--bg);
+
         color: var(--primary);
     }
 
 
     .chapter-list a:active {
+        border-color: var(--primary);
+
         background: var(--bg);
+
         color: var(--primary);
     }
 
 
     /* =========================
-       SCROLLBAR CHAPTER
+       SCROLLBAR
     ========================= */
 
     .chapter-list::-webkit-scrollbar {
-        width: 6px;
+        width: 5px;
     }
 
 
     .chapter-list::-webkit-scrollbar-thumb {
         background: var(--border);
+
         border-radius: 10px;
     }
 
@@ -96,14 +108,22 @@
     @media (max-width: 480px) {
 
         .chapter-list {
+
             max-height: 330px;
+
+            gap: 6px;
+
         }
 
 
         .chapter-list a {
-            min-height: 42px;
-            padding: 9px 10px;
+
+            min-height: 40px;
+
+            padding: 8px 9px;
+
             font-size: 14px;
+
         }
 
     }
@@ -320,9 +340,7 @@
             </p>
 
 
-            <!-- =========================
-                 MULAI BACA
-            ========================= -->
+            <!-- MULAI BACA -->
 
             <a
                 href="../chapter/bab-1.html"
@@ -332,9 +350,7 @@
             </a>
 
 
-            <!-- =========================
-                 BOOKMARK
-            ========================= -->
+            <!-- BOOKMARK -->
 
             <button
                 id="bookmarkButton"
@@ -349,17 +365,13 @@
 
 
 
-    <!-- =========================
-         PEMBATAS
-    ========================= -->
+    <!-- PEMBATAS -->
 
     <div class="novel-divider"></div>
 
 
 
-    <!-- =========================
-         SINOPSIS
-    ========================= -->
+    <!-- SINOPSIS -->
 
     <section class="novel-description">
 
@@ -505,9 +517,7 @@
 
 
 
-    <!-- =========================
-         KOMENTAR
-    ========================= -->
+    <!-- KOMENTAR -->
 
     <section class="comments-section">
 
@@ -559,38 +569,28 @@
      JAVASCRIPT
 ========================= --><script>
 
-
-    /* =========================
-       MENU
-    ========================= */
+    /* MENU */
 
     const menuButton =
         document.getElementById("menuButton");
 
-
     const menuClose =
         document.getElementById("menuClose");
-
 
     const menuOverlay =
         document.getElementById("menuOverlay");
 
-
     const sideMenu =
         document.getElementById("sideMenu");
-
 
     const menuNovel =
         document.getElementById("menuNovel");
 
-
     const novelSubmenu =
         document.getElementById("novelSubmenu");
 
-
     const submenuBack =
         document.getElementById("submenuBack");
-
 
 
     function openMenu() {
@@ -602,7 +602,6 @@
     }
 
 
-
     function closeMenu() {
 
         sideMenu.classList.remove("active");
@@ -612,7 +611,6 @@
         novelSubmenu.classList.remove("active");
 
     }
-
 
 
     menuButton.addEventListener(
@@ -633,10 +631,7 @@
     );
 
 
-
-    /* =========================
-       SUBMENU NOVEL
-    ========================= */
+    /* SUBMENU NOVEL */
 
     menuNovel.addEventListener(
         "click",
@@ -658,14 +653,10 @@
     );
 
 
-
-    /* =========================
-       DARK / LIGHT MODE
-    ========================= */
+    /* DARK / LIGHT MODE */
 
     const themeButton =
         document.getElementById("themeButton");
-
 
 
     function loadTheme() {
@@ -689,7 +680,6 @@
         }
 
     }
-
 
 
     themeButton.addEventListener(
@@ -731,10 +721,7 @@
     loadTheme();
 
 
-
-    /* =========================
-       BACK / FORWARD HP
-    ========================= */
+    /* BACK / FORWARD HP */
 
     window.addEventListener(
         "pageshow",
@@ -748,10 +735,7 @@
     );
 
 
-
-    /* =========================
-       BOOKMARK
-    ========================= */
+    /* BOOKMARK */
 
     const bookmarkButton =
         document.getElementById("bookmarkButton");
@@ -759,7 +743,6 @@
 
     const bookmarkKey =
         "bookmark_judul_novel";
-
 
 
     function loadBookmark() {
@@ -789,7 +772,6 @@
         }
 
     }
-
 
 
     bookmarkButton.addEventListener(
@@ -825,16 +807,12 @@
     loadBookmark();
 
 
-
-    /* =========================
-       SEARCH
-    ========================= */
+    /* SEARCH */
 
     const searchInput =
         document.getElementById(
             "searchInput"
         );
-
 
 
     searchInput.addEventListener(
@@ -857,10 +835,7 @@
     );
 
 
-
-    /* =========================
-       GISCUS
-    ========================= */
+    /* GISCUS */
 
     function loadGiscus() {
 
@@ -980,7 +955,6 @@
     }
 
 
-
     function updateGiscusTheme() {
 
         const iframe =
@@ -1021,9 +995,7 @@
     }
 
 
-
     loadGiscus();
-
 
 </script>
 
