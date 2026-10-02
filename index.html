@@ -5,34 +5,36 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CN Novel-Translation</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <!-- FONT NAMA WEBSITE -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
 
         /* =========================
-           MENU NAVIGASI
+           MENU
         ========================= */
 
         .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-
-            transition:
-                opacity 0.28s ease,
-                visibility 0.28s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 998;
         }
-
 
         .menu-overlay.active {
             opacity: 1;
@@ -40,218 +42,139 @@
             pointer-events: auto;
         }
 
-
         .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: min(82vw, 320px);
-
+            height: 100vh;
+            background: var(--card);
+            color: var(--text);
             transform: translateX(-100%);
-
-            transition:
-                transform 0.32s cubic-bezier(
-                    0.22,
-                    1,
-                    0.36,
-                    1
-                );
-
-            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 999;
+            overflow-y: auto;
+            box-shadow: 4px 0 18px rgba(0, 0, 0, 0.12);
         }
-
 
         .side-menu.active {
             transform: translateX(0);
         }
 
-
-        /* =========================
-           HEADER MENU
-        ========================= */
-
         .menu-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             min-height: 58px;
-
-            padding: 0 16px;
-
+            padding: 0 14px 0 18px;
             border-bottom: 1px solid var(--border);
         }
 
-
         .menu-header span {
-            color: var(--text);
-
             font-size: 18px;
             font-weight: 600;
         }
 
-
         .menu-close {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             width: 36px;
             height: 36px;
-
-            margin: 0;
-            padding: 0;
-
-            border: 0;
+            border: none;
             border-radius: 50%;
-
             background: transparent;
             color: var(--text);
-
-            font-family: inherit;
-            font-size: 27px;
-            font-weight: 300;
-
+            font-size: 25px;
             line-height: 1;
-
             cursor: pointer;
-
-            transition:
-                background-color 0.2s ease,
-                color 0.2s ease;
+            transition: background-color 0.2s ease;
         }
 
-
-        .menu-close:hover,
-        .menu-close:active {
+        .menu-close:hover {
             background: var(--bg);
-            color: var(--primary);
         }
 
-
-        /* =========================
-           MENU ITEM
-        ========================= */
-
-        .menu-item,
-        .novel-submenu > a {
+        .menu-item {
             display: flex;
             align-items: center;
-
+            width: 100%;
             min-height: 48px;
-
-            padding: 0 16px;
-
+            padding: 0 18px;
             border-bottom: 1px solid var(--border);
-
+            background: transparent;
             color: var(--text);
-
             text-decoration: none;
-
             font-size: 16px;
-
+            box-sizing: border-box;
             cursor: pointer;
-
             transition:
                 background-color 0.2s ease,
                 color 0.2s ease,
                 padding-left 0.2s ease;
         }
 
-
-        .menu-item:hover,
-        .menu-item:active,
-        .novel-submenu > a:hover,
-        .novel-submenu > a:active {
+        .menu-item:hover {
             background: var(--bg);
             color: var(--primary);
+            padding-left: 22px;
         }
-
-
-        .menu-item:not(.menu-novel):hover,
-        .menu-item:not(.menu-novel):active {
-            padding-left: 20px;
-        }
-
-
-        /* =========================
-           MENU NOVEL
-        ========================= */
 
         .menu-novel {
             justify-content: space-between;
         }
 
-
         .menu-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 24px;
-            height: 24px;
-
-            font-size: 24px;
-            font-weight: 300;
-
+            font-size: 22px;
             line-height: 1;
-
-            transition:
-                transform 0.28s ease,
-                color 0.2s ease;
+            transition: transform 0.25s ease;
         }
-
 
         .menu-novel.active .menu-arrow {
             transform: rotate(90deg);
-            color: var(--primary);
         }
 
-
-        /* =========================
-           SUBMENU NOVEL
-        ========================= */
+        /* SUBMENU NOVEL */
 
         .novel-submenu {
-            position: absolute;
-
-            inset: 58px 0 0 0;
-
-            background: var(--card);
-
-            transform: translateX(100%);
-
+            max-height: 0;
+            overflow: hidden;
+            background: var(--bg);
             transition:
-                transform 0.3s cubic-bezier(
-                    0.22,
-                    1,
-                    0.36,
-                    1
-                );
-
-            overflow-y: auto;
+                max-height 0.3s ease,
+                opacity 0.25s ease;
+            opacity: 0;
         }
-
 
         .novel-submenu.active {
-            transform: translateX(0);
+            max-height: 240px;
+            opacity: 1;
         }
 
-
-        .novel-submenu > a {
-            min-height: 48px;
+        .novel-submenu a {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0 18px 0 34px;
+            border-bottom: 1px solid var(--border);
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease,
+                padding-left 0.2s ease;
         }
 
-
-        /* =========================
-           BODY SAAT MENU TERBUKA
-        ========================= */
+        .novel-submenu a:hover {
+            background: var(--card);
+            color: var(--primary);
+            padding-left: 38px;
+        }
 
         body.menu-open {
             overflow: hidden;
         }
 
-
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 480px) {
 
@@ -259,31 +182,16 @@
                 width: min(84vw, 310px);
             }
 
-
             .menu-header {
                 min-height: 56px;
-                padding: 0 14px;
             }
 
-
-            .menu-header span {
-                font-size: 17px;
-            }
-
-
-            .menu-item,
-            .novel-submenu > a {
+            .menu-item {
                 min-height: 47px;
-
-                padding-left: 14px;
-                padding-right: 14px;
-
-                font-size: 15px;
             }
 
-
-            .novel-submenu {
-                inset: 56px 0 0 0;
+            .novel-submenu a {
+                min-height: 43px;
             }
 
         }
@@ -295,508 +203,434 @@
 
 <body>
 
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="site-header">
-
-    <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Buka menu"
-        aria-expanded="false"
-    >
-        ☰
-    </button>
-
-
-    <a
-        href="index.html"
-        class="site-title"
-    >
-        CN Novel-Translation
-    </a>
-
-
-    <button
-        class="theme-button"
-        id="themeButton"
-        aria-label="Ganti tema"
-    >
-        ☀️
-    </button>
-
-</header>
-
-
-
-<!-- =========================
-     MENU
-========================= -->
-
-<div
-    class="menu-overlay"
-    id="menuOverlay"
-></div>
-
-
-<nav
-    class="side-menu"
-    id="sideMenu"
->
-
-    <div class="menu-header">
-
-        <span>
-            Menu
-        </span>
-
+    <header class="site-header">
 
         <button
-            class="menu-close"
-            id="menuClose"
-            aria-label="Tutup menu"
-        >
-            ×
+            class="menu-button"
+            id="menuButton"
+            aria-label="Buka menu"
+            aria-expanded="false">
+            ☰
         </button>
 
-    </div>
-
-
-
-    <!-- NOVEL -->
-
-    <div
-        class="menu-item menu-novel"
-        id="menuNovel"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-    >
-
-        <span>
-            Novel
-        </span>
-
-
-        <span class="menu-arrow">
-            ›
-        </span>
-
-    </div>
-
-
-    <div
-        class="novel-submenu"
-        id="novelSubmenu"
-    >
-
-        <a href="#ongoing">
-            On-going
+        <a href="index.html" class="site-title">
+            CN Novel-Translation
         </a>
 
+        <button
+            class="theme-button"
+            id="themeButton"
+            aria-label="Ganti tema">
+            ☀️
+        </button>
 
-        <a href="#completed">
-            Completed
-        </a>
-
-
-        <a href="#hiatus">
-            Hiatus
-        </a>
-
-
-        <a href="#drop">
-            Drop
-        </a>
-
-    </div>
-
-
-
-    <!-- MENU LAINNYA -->
-
-    <a
-        href="#bookmark"
-        class="menu-item"
-    >
-        Bookmark
-    </a>
-
-
-    <a
-        href="#donasi"
-        class="menu-item"
-    >
-        Donasi
-    </a>
-
-
-    <a
-        href="#login"
-        class="menu-item"
-    >
-        Login
-    </a>
-
-</nav>
-
-
-
-<!-- =========================
-     GLOBAL SEARCH
-========================= -->
-
-<div class="global-search-bar">
-
-    <div class="global-search-inner">
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Cari judul novel..."
-                autocomplete="off"
-            >
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main class="home-container">
+    </header>
 
 
     <!-- =========================
-         RANDOM NOVEL
+         MENU OVERLAY
     ========================= -->
 
-    <section
-        class="home-section"
-        id="ongoing"
-    >
-
-        <div class="section-heading">
-
-            <h2>
-                Novel Random
-            </h2>
-
-        </div>
-
-
-        <div
-            class="random-novels"
-            id="randomNovels"
-        >
-
-        </div>
-
-    </section>
-
+    <div class="menu-overlay" id="menuOverlay"></div>
 
 
     <!-- =========================
-         LATEST UPDATE
+         SIDE MENU
     ========================= -->
 
-    <section class="home-section">
+    <nav class="side-menu" id="sideMenu">
 
-        <div class="section-heading">
+        <div class="menu-header">
 
-            <h2>
-                Latest Update
-            </h2>
+            <span>Menu</span>
+
+            <button
+                class="menu-close"
+                id="menuClose"
+                aria-label="Tutup menu">
+                ×
+            </button>
 
         </div>
 
+
+        <!-- NOVEL -->
 
         <div
-            class="latest-updates"
-            id="latestUpdates"
-        >
+            class="menu-item menu-novel"
+            id="menuNovel"
+            role="button"
+            tabindex="0"
+            aria-expanded="false">
+
+            <span>Novel</span>
+
+            <span class="menu-arrow">›</span>
 
         </div>
 
+
+        <!-- SUBMENU NOVEL -->
 
         <div
-            class="pagination"
-            id="pagination"
-        >
+            class="novel-submenu"
+            id="novelSubmenu">
 
-        </div>
+            <a href="#ongoing">
+                On-going
+            </a>
 
-    </section>
+            <a href="#completed">
+                Completed
+            </a>
 
+            <a href="#hiatus">
+                Hiatus
+            </a>
 
-
-    <!-- =========================
-         HASIL PENCARIAN
-    ========================= -->
-
-    <section
-        class="home-section search-results-section"
-        id="searchResultsSection"
-        hidden
-    >
-
-        <div class="section-heading">
-
-            <h2>
-                Hasil Pencarian
-            </h2>
+            <a href="#drop">
+                Drop
+            </a>
 
         </div>
 
 
-        <div id="searchResults">
+        <!-- MENU LAIN -->
 
-        </div>
-
-    </section>
-
-
-</main>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="site-footer">
-
-    <div class="footer-title">
-        CN Novel-Translation
-    </div>
-
-
-    <div class="footer-links">
-
-        <a href="index.html">
-            Home
+        <a href="#bookmark" class="menu-item">
+            Bookmark
         </a>
 
-
-        <span>
-            •
-        </span>
-
-
-        <a href="#donasi">
+        <a href="#donasi" class="menu-item">
             Donasi
         </a>
 
+        <a href="#login" class="menu-item">
+            Login
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <div class="search-container">
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari novel..."
+            autocomplete="off">
+
     </div>
 
 
-    <div class="copyright">
-        © Copyright 2026-CN Novel-Translation
-    </div>
+    <!-- =========================
+         MAIN
+    ========================= -->
 
-</footer>
+    <main>
 
 
+        <!-- NOVEL RANDOM -->
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+        <section class="novel-section" id="ongoing">
 
-<script>
+            <div class="section-title">
 
+                <h2>Novel Random</h2>
 
-    /* =========================
-       MENU
-    ========================= */
+            </div>
 
-    const menuButton =
-        document.getElementById("menuButton");
+            <div
+                class="novel-grid"
+                id="randomNovels">
+            </div>
 
+        </section>
 
-    const menuClose =
-        document.getElementById("menuClose");
 
+        <!-- LATEST UPDATE -->
 
-    const menuOverlay =
-        document.getElementById("menuOverlay");
+        <section class="novel-section">
 
+            <div class="section-title">
 
-    const sideMenu =
-        document.getElementById("sideMenu");
+                <h2>Latest Update</h2>
 
+            </div>
 
-    const menuNovel =
-        document.getElementById("menuNovel");
+            <div
+                class="novel-grid"
+                id="latestUpdates">
+            </div>
 
 
-    const novelSubmenu =
-        document.getElementById("novelSubmenu");
+            <div
+                class="pagination"
+                id="pagination">
+            </div>
 
+        </section>
 
 
-    function openMenu() {
+        <!-- SEARCH RESULTS -->
 
-        sideMenu.classList.add("active");
+        <section
+            class="novel-section"
+            id="searchResultsSection"
+            style="display: none;">
 
-        menuOverlay.classList.add("active");
+            <div class="section-title">
 
-        document.body.classList.add(
-            "menu-open"
-        );
+                <h2>Hasil Pencarian</h2>
 
-        menuButton.setAttribute(
-            "aria-expanded",
-            "true"
-        );
+            </div>
 
-    }
+            <div
+                class="novel-grid"
+                id="searchResults">
+            </div>
 
+        </section>
 
 
-    function closeNovelSubmenu() {
+    </main>
 
-        novelSubmenu.classList.remove(
-            "active"
-        );
 
-        menuNovel.classList.remove(
-            "active"
-        );
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-        menuNovel.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+    <footer class="site-footer">
 
-    }
+        <div>CN Novel-Translation</div>
 
+        <div>Home • Donasi</div>
 
+        <div>© Copyright 2026-CN Novel-Translation</div>
 
-    function closeMenu() {
+    </footer>
 
-        sideMenu.classList.remove(
-            "active"
-        );
 
-        menuOverlay.classList.remove(
-            "active"
-        );
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-        document.body.classList.remove(
-            "menu-open"
-        );
+    <script>
 
-        closeNovelSubmenu();
+        /* =========================
+           THEME
+        ========================= */
 
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+        const themeButton =
+            document.getElementById("themeButton");
 
-    }
 
+        function loadTheme() {
 
+            const savedTheme =
+                localStorage.getItem("theme");
 
-    menuButton.addEventListener(
-        "click",
-        openMenu
-    );
+            if (savedTheme === "dark") {
 
+                document.body.classList.add("dark");
 
-    menuClose.addEventListener(
-        "click",
-        closeMenu
-    );
+                themeButton.textContent = "🌙";
 
+            } else {
 
-    menuOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
+                document.body.classList.remove("dark");
 
-
-
-    /* =========================
-       SUBMENU NOVEL
-    ========================= */
-
-    function toggleNovelSubmenu() {
-
-        const isActive =
-            novelSubmenu.classList.toggle(
-                "active"
-            );
-
-
-        menuNovel.classList.toggle(
-            "active",
-            isActive
-        );
-
-
-        menuNovel.setAttribute(
-            "aria-expanded",
-            isActive
-        );
-
-    }
-
-
-
-    menuNovel.addEventListener(
-        "click",
-        toggleNovelSubmenu
-    );
-
-
-    menuNovel.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter"
-                ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                toggleNovelSubmenu();
+                themeButton.textContent = "☀️";
 
             }
 
         }
-    );
 
 
+        themeButton.addEventListener("click", function () {
 
-    /* =========================
-       TUTUP MENU SAAT LINK DIPILIH
-    ========================= */
+            document.body.classList.toggle("dark");
 
-    const menuLinks =
-        sideMenu.querySelectorAll(
-            "a"
+            if (document.body.classList.contains("dark")) {
+
+                localStorage.setItem("theme", "dark");
+
+                themeButton.textContent = "🌙";
+
+            } else {
+
+                localStorage.setItem("theme", "light");
+
+                themeButton.textContent = "☀️";
+
+            }
+
+        });
+
+
+        loadTheme();
+
+
+        window.addEventListener("pageshow", function () {
+
+            loadTheme();
+
+        });
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const menuClose =
+            document.getElementById("menuClose");
+
+        const menuOverlay =
+            document.getElementById("menuOverlay");
+
+        const sideMenu =
+            document.getElementById("sideMenu");
+
+        const menuNovel =
+            document.getElementById("menuNovel");
+
+        const novelSubmenu =
+            document.getElementById("novelSubmenu");
+
+
+        function openMenu() {
+
+            sideMenu.classList.add("active");
+
+            menuOverlay.classList.add("active");
+
+            document.body.classList.add("menu-open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+
+        function closeNovelSubmenu() {
+
+            novelSubmenu.classList.remove("active");
+
+            menuNovel.classList.remove("active");
+
+            menuNovel.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+
+        function closeMenu() {
+
+            sideMenu.classList.remove("active");
+
+            menuOverlay.classList.remove("active");
+
+            document.body.classList.remove("menu-open");
+
+            closeNovelSubmenu();
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+
+        menuButton.addEventListener(
+            "click",
+            openMenu
         );
 
 
-    menuLinks.forEach(
-        function (link) {
+        menuClose.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        menuOverlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        /* =========================
+           TOGGLE SUBMENU NOVEL
+        ========================= */
+
+        function toggleNovelSubmenu() {
+
+            const isActive =
+                novelSubmenu.classList.toggle("active");
+
+            menuNovel.classList.toggle(
+                "active",
+                isActive
+            );
+
+            menuNovel.setAttribute(
+                "aria-expanded",
+                isActive
+            );
+
+        }
+
+
+        menuNovel.addEventListener(
+            "click",
+            toggleNovelSubmenu
+        );
+
+
+        menuNovel.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    toggleNovelSubmenu();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           LINK MENU
+        ========================= */
+
+        const menuLinks =
+            sideMenu.querySelectorAll("a");
+
+
+        menuLinks.forEach(function (link) {
 
             link.addEventListener(
                 "click",
@@ -807,654 +641,387 @@
                 }
             );
 
-        }
-    );
+        });
 
 
+        /* =========================
+           ESCAPE
+        ========================= */
 
-    /* =========================
-       ESC UNTUK MENUTUP MENU
-    ========================= */
+        document.addEventListener(
+            "keydown",
+            function (event) {
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
+                if (event.key === "Escape") {
 
-            if (
-                event.key === "Escape"
-            ) {
-
-                closeMenu();
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================
-       DARK / LIGHT MODE
-    ========================= */
-
-    const themeButton =
-        document.getElementById("themeButton");
-
-
-
-    function loadTheme() {
-
-        const savedTheme =
-            localStorage.getItem("theme");
-
-
-        if (savedTheme === "dark") {
-
-            document.body.classList.add("dark");
-
-            themeButton.textContent = "🌙";
-
-        } else {
-
-            document.body.classList.remove("dark");
-
-            themeButton.textContent = "☀️";
-
-        }
-
-    }
-
-
-
-    themeButton.addEventListener(
-        "click",
-        function () {
-
-            document.body.classList.toggle(
-                "dark"
-            );
-
-
-            if (
-                document.body.classList.contains(
-                    "dark"
-                )
-            ) {
-
-                localStorage.setItem(
-                    "theme",
-                    "dark"
-                );
-
-                themeButton.textContent = "🌙";
-
-            } else {
-
-                localStorage.setItem(
-                    "theme",
-                    "light"
-                );
-
-                themeButton.textContent = "☀️";
-
-            }
-
-        }
-    );
-
-
-
-    loadTheme();
-
-
-
-    /* =========================
-       PHONE BACK
-    ========================= */
-
-    window.addEventListener(
-        "pageshow",
-        function () {
-
-            loadTheme();
-
-        }
-    );
-
-
-
-    /* =========================
-       DATA NOVEL
-    ========================= */
-
-    const novels = [
-
-        {
-            title: "Contoh Novel A",
-
-            genre: "Fantasy • Romance",
-
-            status: "On-going",
-
-            cover: "images/cover.jpg",
-
-            chapter: 25,
-
-            chapterTitle: "Chapter 25",
-
-            link: "novel/judul-novel.html"
-        },
-
-
-        {
-            title: "Contoh Novel B",
-
-            genre: "Xianxia • Romance",
-
-            status: "On-going",
-
-            cover: "images/cover.jpg",
-
-            chapter: 103,
-
-            chapterTitle: "Chapter 103",
-
-            link: "#"
-        },
-
-
-        {
-            title: "Contoh Novel C",
-
-            genre: "Fantasy • Wuxia",
-
-            status: "Completed",
-
-            cover: "images/cover.jpg",
-
-            chapter: 17,
-
-            chapterTitle: "Chapter 17",
-
-            link: "#"
-        },
-
-
-        {
-            title: "Contoh Novel D",
-
-            genre: "Xuanhuan • Romance",
-
-            status: "Hiatus",
-
-            cover: "images/cover.jpg",
-
-            chapter: 42,
-
-            chapterTitle: "Chapter 42",
-
-            link: "#"
-        },
-
-
-        {
-            title: "Contoh Novel E",
-
-            genre: "Fantasy • Adventure",
-
-            status: "On-going",
-
-            cover: "images/cover.jpg",
-
-            chapter: 68,
-
-            chapterTitle: "Chapter 68",
-
-            link: "#"
-        },
-
-
-        {
-            title: "Contoh Novel F",
-
-            genre: "Xianxia • Fantasy",
-
-            status: "On-going",
-
-            cover: "images/cover.jpg",
-
-            chapter: 91,
-
-            chapterTitle: "Chapter 91",
-
-            link: "#"
-        }
-
-    ];
-
-
-
-    /* =========================
-       RANDOM NOVEL
-    ========================= */
-
-    function showRandomNovels() {
-
-        const container =
-            document.getElementById(
-                "randomNovels"
-            );
-
-
-        container.innerHTML = "";
-
-
-        const shuffled =
-            [...novels]
-            .sort(
-                () =>
-                    Math.random() - 0.5
-            )
-            .slice(0, 3);
-
-
-        shuffled.forEach(
-            novel => {
-
-                const item =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                item.className =
-                    "random-novel-card";
-
-
-                item.href =
-                    novel.link;
-
-
-                item.innerHTML = `
-
-                    <img
-                        src="${novel.cover}"
-                        alt="Cover ${novel.title}"
-                    >
-
-                    <div class="random-novel-info">
-
-                        <h3>
-                            ${novel.title}
-                        </h3>
-
-                        <p>
-                            ${novel.genre}
-                        </p>
-
-                        <span>
-                            ${novel.status}
-                        </span>
-
-                    </div>
-
-                `;
-
-
-                container.appendChild(
-                    item
-                );
-
-            }
-        );
-
-    }
-
-
-
-    /* =========================
-       LATEST UPDATE
-    ========================= */
-
-    const updatesPerPage = 5;
-
-    let currentPage = 1;
-
-
-
-    function showLatestUpdates(page) {
-
-        const container =
-            document.getElementById(
-                "latestUpdates"
-            );
-
-
-        container.innerHTML = "";
-
-
-        const start =
-            (page - 1) *
-            updatesPerPage;
-
-
-        const end =
-            start +
-            updatesPerPage;
-
-
-        const pageItems =
-            novels.slice(
-                start,
-                end
-            );
-
-
-        pageItems.forEach(
-            novel => {
-
-                const item =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                item.className =
-                    "latest-item";
-
-
-                item.href =
-                    novel.link;
-
-
-                item.innerHTML = `
-
-                    <div class="latest-info">
-
-                        <h3>
-                            ${novel.title}
-                        </h3>
-
-                        <p>
-                            ${novel.chapterTitle}
-                        </p>
-
-                    </div>
-
-                    <span class="latest-arrow">
-                        ›
-                    </span>
-
-                `;
-
-
-                container.appendChild(
-                    item
-                );
-
-            }
-        );
-
-
-        showPagination();
-
-    }
-
-
-
-    /* =========================
-       PAGINATION
-    ========================= */
-
-    function showPagination() {
-
-        const pagination =
-            document.getElementById(
-                "pagination"
-            );
-
-
-        pagination.innerHTML = "";
-
-
-        const totalPages =
-            Math.ceil(
-                novels.length /
-                updatesPerPage
-            );
-
-
-        if (
-            totalPages <= 1
-        ) {
-
-            return;
-
-        }
-
-
-        for (
-            let i = 1;
-            i <= totalPages;
-            i++
-        ) {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.textContent = i;
-
-
-            if (
-                i === currentPage
-            ) {
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    currentPage = i;
-
-                    showLatestUpdates(
-                        currentPage
-                    );
+                    closeMenu();
 
                 }
-            );
+
+            }
+        );
 
 
-            pagination.appendChild(
-                button
-            );
+        /* =========================
+           DATA NOVEL
+        ========================= */
+
+        const novels = [
+
+            {
+                title: "Contoh Novel A",
+                genre: "Fantasy • Romance",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 25,
+                chapterTitle: "Chapter 25",
+                link: "novel/judul-novel.html"
+            },
+
+            {
+                title: "Contoh Novel B",
+                genre: "Xianxia • Romance",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 103,
+                chapterTitle: "Chapter 103",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel C",
+                genre: "Fantasy • Wuxia",
+                status: "Completed",
+                cover: "images/cover.jpg",
+                chapter: 17,
+                chapterTitle: "Chapter 17",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel D",
+                genre: "Xuanhuan • Romance",
+                status: "Hiatus",
+                cover: "images/cover.jpg",
+                chapter: 42,
+                chapterTitle: "Chapter 42",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel E",
+                genre: "Fantasy • Adventure",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 68,
+                chapterTitle: "Chapter 68",
+                link: "#"
+            },
+
+            {
+                title: "Contoh Novel F",
+                genre: "Xianxia • Fantasy",
+                status: "On-going",
+                cover: "images/cover.jpg",
+                chapter: 91,
+                chapterTitle: "Chapter 91",
+                link: "#"
+            }
+
+        ];
+
+
+        /* =========================
+           RANDOM NOVELS
+        ========================= */
+
+        function showRandomNovels() {
+
+            const container =
+                document.getElementById(
+                    "randomNovels"
+                );
+
+            const shuffled =
+                [...novels].sort(
+                    () => Math.random() - 0.5
+                );
+
+            const selected =
+                shuffled.slice(0, 3);
+
+            container.innerHTML =
+                selected.map(createNovelCard).join("");
 
         }
 
-    }
 
+        /* =========================
+           NOVEL CARD
+        ========================= */
 
+        function createNovelCard(novel) {
 
-    /* =========================
-       SEARCH
-    ========================= */
+            return `
 
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
+                <article class="novel-card">
 
+                    <a href="${novel.link}">
 
-    const searchResultsSection =
-        document.getElementById(
-            "searchResultsSection"
-        );
+                        <img
+                            src="${novel.cover}"
+                            alt="${novel.title}">
 
+                        <div class="novel-card-content">
 
-    const searchResults =
-        document.getElementById(
-            "searchResults"
-        );
+                            <h3>
+                                ${novel.title}
+                            </h3>
 
+                            <p>
+                                ${novel.genre}
+                            </p>
 
+                            <span>
+                                ${novel.chapterTitle}
+                            </span>
 
-    function performSearch(keyword) {
+                        </div>
 
-        keyword =
-            keyword
-            .trim()
-            .toLowerCase();
+                    </a>
 
-
-        if (!keyword) {
-
-            searchResultsSection.hidden =
-                true;
-
-            return;
-
-        }
-
-
-        const results =
-            novels.filter(
-                novel =>
-                    novel.title
-                    .toLowerCase()
-                    .includes(
-                        keyword
-                    )
-            );
-
-
-        searchResults.innerHTML =
-            "";
-
-
-        if (
-            results.length === 0
-        ) {
-
-            searchResults.innerHTML = `
-
-                <p class="no-results">
-                    Novel tidak ditemukan.
-                </p>
+                </article>
 
             `;
 
-        } else {
-
-            results.forEach(
-                novel => {
-
-                    const item =
-                        document
-                        .createElement(
-                            "a"
-                        );
+        }
 
 
-                    item.className =
-                        "search-result-item";
+        /* =========================
+           LATEST UPDATE
+        ========================= */
+
+        const latestPerPage = 5;
+
+        let currentPage = 1;
 
 
-                    item.href =
-                        novel.link;
+        function showLatestUpdates(page = 1) {
+
+            const container =
+                document.getElementById(
+                    "latestUpdates"
+                );
+
+            const start =
+                (page - 1) * latestPerPage;
+
+            const end =
+                start + latestPerPage;
+
+            const pageNovels =
+                novels.slice(start, end);
+
+            container.innerHTML =
+                pageNovels
+                    .map(createNovelCard)
+                    .join("");
+
+            showPagination(page);
+
+        }
 
 
-                    item.innerHTML = `
+        /* =========================
+           PAGINATION
+        ========================= */
 
-                        <strong>
-                            ${novel.title}
-                        </strong>
+        function showPagination(page) {
 
-                        <span>
-                            ${novel.genre}
-                        </span>
+            const pagination =
+                document.getElementById(
+                    "pagination"
+                );
 
-                    `;
+            const totalPages =
+                Math.ceil(
+                    novels.length /
+                    latestPerPage
+                );
+
+            pagination.innerHTML = "";
 
 
-                    searchResults
-                        .appendChild(
-                            item
-                        );
+            for (
+                let i = 1;
+                i <= totalPages;
+                i++
+            ) {
+
+                const button =
+                    document.createElement("button");
+
+                button.textContent = i;
+
+                if (i === page) {
+
+                    button.classList.add("active");
 
                 }
-            );
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        currentPage = i;
+
+                        showLatestUpdates(i);
+
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth"
+                        });
+
+                    }
+                );
+
+                pagination.appendChild(button);
+
+            }
 
         }
 
 
-        searchResultsSection.hidden =
-            false;
+        /* =========================
+           SEARCH
+        ========================= */
 
-    }
-
-
-
-    searchInput.addEventListener(
-        "input",
-        function () {
-
-            performSearch(
-                searchInput.value
+        const searchInput =
+            document.getElementById(
+                "searchInput"
             );
 
+        const searchResultsSection =
+            document.getElementById(
+                "searchResultsSection"
+            );
+
+        const searchResults =
+            document.getElementById(
+                "searchResults"
+            );
+
+
+        function performSearch(keyword) {
+
+            keyword =
+                keyword.trim().toLowerCase();
+
+
+            if (!keyword) {
+
+                searchResultsSection.style.display =
+                    "none";
+
+                document.querySelectorAll(
+                    ".novel-section"
+                )[0].style.display = "";
+
+                document.querySelectorAll(
+                    ".novel-section"
+                )[1].style.display = "";
+
+                return;
+
+            }
+
+
+            const results =
+                novels.filter(function (novel) {
+
+                    return novel.title
+                        .toLowerCase()
+                        .includes(keyword);
+
+                });
+
+
+            document.querySelectorAll(
+                ".novel-section"
+            )[0].style.display =
+                "none";
+
+            document.querySelectorAll(
+                ".novel-section"
+            )[1].style.display =
+                "none";
+
+
+            searchResultsSection.style.display =
+                "";
+
+
+            if (results.length === 0) {
+
+                searchResults.innerHTML =
+                    "<p>Tidak ada novel yang ditemukan.</p>";
+
+                return;
+
+            }
+
+
+            searchResults.innerHTML =
+                results
+                    .map(createNovelCard)
+                    .join("");
+
         }
-    );
 
 
+        searchInput.addEventListener(
+            "input",
+            function () {
 
-    /* =========================
-       SEARCH DARI HALAMAN LAIN
-    ========================= */
+                performSearch(
+                    searchInput.value
+                );
 
-    const urlParams =
-        new URLSearchParams(
-            window.location.search
+            }
         );
 
 
-    const searchFromUrl =
-        urlParams.get("search");
+        /* =========================
+           URL SEARCH
+        ========================= */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const urlSearch =
+            urlParams.get("search");
 
 
-    if (searchFromUrl) {
+        if (urlSearch) {
 
-        searchInput.value =
-            searchFromUrl;
+            searchInput.value = urlSearch;
 
-        performSearch(
-            searchFromUrl
-        );
+            performSearch(urlSearch);
 
-    }
+        }
 
 
+        /* =========================
+           INITIALIZE
+        ========================= */
 
-    /* =========================
-       START
-    ========================= */
+        showRandomNovels();
 
-    showRandomNovels();
+        showLatestUpdates(1);
 
-    showLatestUpdates(
-        currentPage
-    );
-
-
-</script>
-
+    </script>
 
 </body>
 
