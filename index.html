@@ -25,7 +25,7 @@
 
     <!-- =========================
          HEADER
-         ========================= -->
+    ========================= -->
 
     <header class="site-header">
 
@@ -60,7 +60,7 @@
 
     <!-- =========================
          MENU
-         ========================= -->
+    ========================= -->
 
     <div
         class="menu-overlay"
@@ -131,22 +131,22 @@
             </div>
 
 
-            <a href="#">
+            <a href="#ongoing">
                 On-going
             </a>
 
 
-            <a href="#">
+            <a href="#completed">
                 Completed
             </a>
 
 
-            <a href="#">
+            <a href="#hiatus">
                 Hiatus
             </a>
 
 
-            <a href="#">
+            <a href="#drop">
                 Drop
             </a>
 
@@ -157,7 +157,7 @@
         <!-- MENU LAINNYA -->
 
         <a
-            href="#"
+            href="#bookmark"
             class="menu-item"
         >
             Bookmark
@@ -165,7 +165,7 @@
 
 
         <a
-            href="#"
+            href="#donasi"
             class="menu-item"
         >
             Donasi
@@ -173,7 +173,7 @@
 
 
         <a
-            href="#"
+            href="#login"
             class="menu-item"
         >
             Login
@@ -184,17 +184,12 @@
 
 
     <!-- =========================
-         MAIN
-         ========================= -->
+         GLOBAL SEARCH
+    ========================= -->
 
-    <main class="home-container">
+    <div class="global-search-bar">
 
-
-        <!-- =========================
-             SEARCH
-             ========================= -->
-
-        <section class="search-section">
+        <div class="global-search-inner">
 
             <div class="search-box">
 
@@ -212,15 +207,27 @@
 
             </div>
 
-        </section>
+        </div>
 
+    </div>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="home-container">
 
 
         <!-- =========================
              RANDOM NOVEL
-             ========================= -->
+        ========================= -->
 
-        <section class="home-section">
+        <section
+            class="home-section"
+            id="ongoing"
+        >
 
             <div class="section-heading">
 
@@ -246,7 +253,7 @@
 
         <!-- =========================
              LATEST UPDATE
-             ========================= -->
+        ========================= -->
 
         <section class="home-section">
 
@@ -284,7 +291,7 @@
 
         <!-- =========================
              HASIL PENCARIAN
-             ========================= -->
+        ========================= -->
 
         <section
             class="home-section search-results-section"
@@ -316,7 +323,7 @@
 
     <!-- =========================
          FOOTER
-         ========================= -->
+    ========================= -->
 
     <footer class="site-footer">
 
@@ -335,7 +342,7 @@
                 •
             </span>
 
-            <a href="#">
+            <a href="#donasi">
                 Donasi
             </a>
 
@@ -352,14 +359,14 @@
 
     <!-- =========================
          JAVASCRIPT
-         ========================= -->
+    ========================= -->
 
     <script>
 
 
         /* =========================
            MENU
-           ========================= */
+        ========================= */
 
         const menuButton =
             document.getElementById("menuButton");
@@ -433,7 +440,7 @@
 
         /* =========================
            SUBMENU NOVEL
-           ========================= */
+        ========================= */
 
         menuNovel.addEventListener(
             "click",
@@ -458,7 +465,7 @@
 
         /* =========================
            DARK / LIGHT MODE
-           ========================= */
+        ========================= */
 
         const themeButton =
             document.getElementById("themeButton");
@@ -528,7 +535,7 @@
 
         /* =========================
            DATA NOVEL
-           ========================= */
+        ========================= */
 
         const novels = [
 
@@ -639,7 +646,7 @@
 
         /* =========================
            RANDOM NOVEL
-           ========================= */
+        ========================= */
 
         function showRandomNovels() {
 
@@ -710,7 +717,7 @@
 
         /* =========================
            LATEST UPDATE
-           ========================= */
+        ========================= */
 
         const updatesPerPage = 5;
 
@@ -791,7 +798,7 @@
 
         /* =========================
            PAGINATION
-           ========================= */
+        ========================= */
 
         function showPagination() {
 
@@ -870,7 +877,7 @@
 
         /* =========================
            SEARCH
-           ========================= */
+        ========================= */
 
         const searchInput =
             document.getElementById(
@@ -891,99 +898,109 @@
 
 
 
+        function performSearch(keyword) {
+
+            keyword =
+                keyword
+                .trim()
+                .toLowerCase();
+
+
+            if (!keyword) {
+
+                searchResultsSection.hidden =
+                    true;
+
+                return;
+
+            }
+
+
+            const results =
+                novels.filter(
+                    novel =>
+                        novel.title
+                        .toLowerCase()
+                        .includes(
+                            keyword
+                        )
+                );
+
+
+            searchResults.innerHTML =
+                "";
+
+
+            if (
+                results.length === 0
+            ) {
+
+                searchResults.innerHTML = `
+
+                    <p class="no-results">
+                        Novel tidak ditemukan.
+                    </p>
+
+                `;
+
+            } else {
+
+                results.forEach(
+                    novel => {
+
+                        const item =
+                            document
+                            .createElement(
+                                "a"
+                            );
+
+
+                        item.className =
+                            "search-result-item";
+
+
+                        item.href =
+                            novel.link;
+
+
+                        item.innerHTML = `
+
+                            <strong>
+                                ${novel.title}
+                            </strong>
+
+                            <span>
+                                ${novel.genre}
+                            </span>
+
+                        `;
+
+
+                        searchResults
+                            .appendChild(
+                                item
+                            );
+
+                    }
+                );
+
+            }
+
+
+            searchResultsSection.hidden =
+                false;
+
+        }
+
+
+
         searchInput.addEventListener(
             "input",
             function () {
 
-                const keyword =
+                performSearch(
                     searchInput.value
-                    .trim()
-                    .toLowerCase();
-
-
-                if (!keyword) {
-
-                    searchResultsSection.hidden =
-                        true;
-
-                    return;
-
-                }
-
-
-                const results =
-                    novels.filter(
-                        novel =>
-                            novel.title
-                            .toLowerCase()
-                            .includes(
-                                keyword
-                            )
-                    );
-
-
-                searchResults.innerHTML =
-                    "";
-
-
-                if (
-                    results.length === 0
-                ) {
-
-                    searchResults.innerHTML = `
-
-                        <p class="no-results">
-                            Novel tidak ditemukan.
-                        </p>
-
-                    `;
-
-                } else {
-
-                    results.forEach(
-                        novel => {
-
-                            const item =
-                                document
-                                .createElement(
-                                    "a"
-                                );
-
-
-                            item.className =
-                                "search-result-item";
-
-
-                            item.href =
-                                novel.link;
-
-
-                            item.innerHTML = `
-
-                                <strong>
-                                    ${novel.title}
-                                </strong>
-
-                                <span>
-                                    ${novel.genre}
-                                </span>
-
-                            `;
-
-
-                            searchResults
-                                .appendChild(
-                                    item
-                                );
-
-                        }
-                    );
-
-                }
-
-
-                searchResultsSection.hidden =
-                    false;
+                );
 
             }
         );
@@ -991,8 +1008,35 @@
 
 
         /* =========================
+           SEARCH DARI HALAMAN LAIN
+        ========================= */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const searchFromUrl =
+            urlParams.get("search");
+
+
+        if (searchFromUrl) {
+
+            searchInput.value =
+                searchFromUrl;
+
+            performSearch(
+                searchFromUrl
+            );
+
+        }
+
+
+
+        /* =========================
            START
-           ========================= */
+        ========================= */
 
         showRandomNovels();
 
