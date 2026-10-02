@@ -5,49 +5,92 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Chapter 1 — Judul Novel</title>
+    <title>Chapter 1 - Judul Novel</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+
+    <!-- =========================
+         HEADER
+    ========================= -->
 
     <header class="site-header">
 
-        <button class="menu-btn" onclick="toggleMenu()">
-            ☰
-        </button>
+        <div class="header-left">
 
-        <a href="../index.html" class="site-title">
+            <button
+                class="menu-button"
+                onclick="toggleMenu()"
+                aria-label="Buka menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+
+        <div class="site-title">
             CN Novel-Translation
-        </a>
+        </div>
 
-        <button class="theme-btn" onclick="toggleTheme()">
-            ☀️
-        </button>
+
+        <div class="header-right">
+
+            <button
+                class="theme-button"
+                onclick="toggleTheme()"
+                aria-label="Ganti tema"
+            >
+                <span id="themeIcon">☀️</span>
+            </button>
+
+        </div>
 
     </header>
 
 
-    <!-- MENU -->
+    <!-- =========================
+         MENU
+    ========================= -->
 
-    <nav id="sideMenu" class="side-menu">
+    <nav
+        id="sideMenu"
+        class="side-menu"
+    >
 
-        <a href="../index.html">
-            Beranda
-        </a>
+        <div
+            class="menu-item menu-novel"
+            onclick="toggleNovelMenu()"
+        >
 
-        <div class="menu-parent" onclick="toggleNovelMenu()">
-            <span>Novel</span>
-            <span id="novelArrow">›</span>
+            <span>
+                Novel
+            </span>
+
+            <span id="novelArrow">
+                ›
+            </span>
+
         </div>
 
-        <div id="novelSubmenu" class="submenu">
+
+        <div
+            id="novelSubmenu"
+            class="novel-submenu"
+        >
 
             <a href="../index.html#ongoing">
                 On-going
@@ -67,37 +110,57 @@
 
         </div>
 
-        <a href="../index.html#bookmark">
+
+        <a
+            href="../index.html#bookmark"
+            class="menu-item"
+        >
             Bookmark
         </a>
 
-        <a href="../index.html#donasi">
+
+        <a
+            href="../index.html#donasi"
+            class="menu-item"
+        >
             Donasi
         </a>
 
-        <a href="../index.html#login">
+
+        <a
+            href="../index.html#login"
+            class="menu-item"
+        >
             Login
         </a>
 
     </nav>
 
 
-    <!-- READER -->
+    <!-- =========================
+         READER
+    ========================= -->
 
     <main class="reader-container">
 
-        <!-- READER SETTINGS -->
+
+        <!-- PENGATURAN -->
 
         <div class="reader-settings-wrapper">
 
             <button
                 class="reader-settings-btn"
                 onclick="toggleReaderSettings()"
-                aria-label="Pengaturan pembaca">
+                aria-label="Pengaturan pembaca"
+            >
                 ⚙️
             </button>
 
-            <div id="readerSettings" class="reader-settings">
+
+            <div
+                id="readerSettings"
+                class="reader-settings"
+            >
 
                 <button onclick="changeFontSize(-1)">
                     A−
@@ -116,7 +179,7 @@
         </div>
 
 
-        <!-- CHAPTER TITLE -->
+        <!-- JUDUL CHAPTER -->
 
         <div class="chapter-heading">
 
@@ -131,64 +194,81 @@
         </div>
 
 
-        <!-- NOVEL CONTENT -->
+        <!-- ISI NOVEL -->
 
         <article class="reader">
 
             <p>
                 Ini adalah contoh isi novel untuk Chapter 1.
-                Nantinya bagian ini dapat diganti dengan hasil terjemahan
-                novel yang sebenarnya.
+                Nantinya bagian ini dapat diganti dengan hasil
+                terjemahan novel yang sebenarnya.
             </p>
+
 
             <p>
                 Kesadaran Yun Qingyao perlahan muncul dari dalam
-                kekacauan. Pandangannya masih terasa kabur, sementara
-                tubuhnya belum sepenuhnya dapat bergerak.
+                kekacauan. Pandangannya masih terasa kabur,
+                sementara tubuhnya belum sepenuhnya dapat bergerak.
             </p>
 
+
             <p>
-                Ia mencoba mengingat apa yang telah terjadi sebelumnya.
-                Namun, semakin keras ia mencoba mengingatnya, semakin
-                kacau pikirannya.
+                Ia mencoba mengingat apa yang telah terjadi
+                sebelumnya. Namun, semakin keras ia mencoba
+                mengingatnya, semakin kacau pikirannya.
             </p>
+
 
             <p>
                 Di tempat yang sunyi itu, sebuah suara tiba-tiba
                 terdengar dari hadapannya.
             </p>
 
+
             <p>
                 "Siapa kamu?"
             </p>
 
-            <p>
-                Yun Qingyao mengangkat kepalanya perlahan.
-                Tatapannya kemudian tertuju pada sosok yang berdiri
-                tidak jauh darinya.
-            </p>
 
             <p>
-                Untuk sementara waktu, tidak ada seorang pun yang
-                berbicara lagi.
+                Yun Qingyao mengangkat kepalanya perlahan.
+                Tatapannya kemudian tertuju pada sosok yang
+                berdiri tidak jauh darinya.
+            </p>
+
+
+            <p>
+                Untuk sementara waktu, tidak ada seorang pun
+                yang berbicara lagi.
             </p>
 
         </article>
 
 
-        <!-- CHAPTER NAVIGATION -->
+        <!-- NAVIGASI CHAPTER -->
 
         <nav class="chapter-navigation">
 
-            <a href="#" class="chapter-nav-btn disabled">
+            <a
+                href="#"
+                class="chapter-nav-btn disabled"
+            >
                 ← Sebelumnya
             </a>
 
-            <a href="../novel/judul-novel.html" class="chapter-nav-btn">
+
+            <a
+                href="../novel/judul-novel.html"
+                class="chapter-nav-btn"
+            >
                 Daftar Isi
             </a>
 
-            <a href="bab-2.html" class="chapter-nav-btn">
+
+            <a
+                href="bab-2.html"
+                class="chapter-nav-btn"
+            >
                 Selanjutnya →
             </a>
 
@@ -197,16 +277,44 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-    <footer class="copyright">
+    <footer class="site-footer">
 
-        © Copyright 2026-CN Novel-Translation
+        <div class="footer-title">
+            CN Novel-Translation
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <span>
+                •
+            </span>
+
+            <a href="../index.html#donasi">
+                Donasi
+            </a>
+
+        </div>
+
+
+        <div class="copyright">
+            © Copyright 2026-CN Novel-Translation
+        </div>
 
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
 
@@ -216,22 +324,24 @@
 
         function loadTheme() {
 
-            const theme = localStorage.getItem("theme");
+            const savedTheme =
+                localStorage.getItem("theme");
 
-            const body = document.body;
-            const themeButton = document.querySelector(".theme-btn");
+            const icon =
+                document.getElementById("themeIcon");
 
-            if (theme === "dark") {
 
-                body.classList.add("dark");
+            if (savedTheme === "dark") {
 
-                themeButton.textContent = "🌙";
+                document.body.classList.add("dark");
+
+                icon.textContent = "🌙";
 
             } else {
 
-                body.classList.remove("dark");
+                document.body.classList.remove("dark");
 
-                themeButton.textContent = "☀️";
+                icon.textContent = "☀️";
 
             }
 
@@ -240,24 +350,21 @@
 
         function toggleTheme() {
 
-            const body = document.body;
-            const themeButton = document.querySelector(".theme-btn");
+            document.body.classList.toggle("dark");
 
-            body.classList.toggle("dark");
 
-            if (body.classList.contains("dark")) {
+            const isDark =
+                document.body.classList.contains("dark");
 
-                localStorage.setItem("theme", "dark");
 
-                themeButton.textContent = "🌙";
+            localStorage.setItem(
+                "theme",
+                isDark ? "dark" : "light"
+            );
 
-            } else {
 
-                localStorage.setItem("theme", "light");
-
-                themeButton.textContent = "☀️";
-
-            }
+            document.getElementById("themeIcon").textContent =
+                isDark ? "🌙" : "☀️";
 
         }
 
@@ -268,7 +375,8 @@
 
         function toggleMenu() {
 
-            const menu = document.getElementById("sideMenu");
+            const menu =
+                document.getElementById("sideMenu");
 
             menu.classList.toggle("active");
 
@@ -277,12 +385,19 @@
 
         function toggleNovelMenu() {
 
-            const submenu = document.getElementById("novelSubmenu");
-            const arrow = document.getElementById("novelArrow");
+            const submenu =
+                document.getElementById("novelSubmenu");
+
+            const arrow =
+                document.getElementById("novelArrow");
+
 
             submenu.classList.toggle("active");
 
-            if (submenu.classList.contains("active")) {
+
+            if (
+                submenu.classList.contains("active")
+            ) {
 
                 arrow.textContent = "‹";
 
@@ -302,7 +417,9 @@
         function toggleReaderSettings() {
 
             const settings =
-                document.getElementById("readerSettings");
+                document.getElementById(
+                    "readerSettings"
+                );
 
             settings.classList.toggle("active");
 
@@ -314,26 +431,38 @@
         ========================= */
 
         let fontSize =
-            Number(localStorage.getItem("fontSize")) || 18;
+            Number(
+                localStorage.getItem("fontSize")
+            ) || 18;
 
 
         function updateFontSize() {
 
             const paragraphs =
-                document.querySelectorAll(".reader p");
-
-            paragraphs.forEach(function(paragraph) {
-
-                paragraph.style.fontSize = fontSize + "px";
-
-            });
+                document.querySelectorAll(
+                    ".reader p"
+                );
 
 
-            document.getElementById("fontSizeDisplay").textContent =
-                fontSize;
+            paragraphs.forEach(
+                function(paragraph) {
+
+                    paragraph.style.fontSize =
+                        fontSize + "px";
+
+                }
+            );
 
 
-            localStorage.setItem("fontSize", fontSize);
+            document.getElementById(
+                "fontSizeDisplay"
+            ).textContent = fontSize;
+
+
+            localStorage.setItem(
+                "fontSize",
+                fontSize
+            );
 
         }
 
@@ -359,7 +488,7 @@
 
 
         /* =========================
-           INITIALIZE
+           INITIAL
         ========================= */
 
         loadTheme();
@@ -368,19 +497,28 @@
 
 
         /* =========================
-           PHONE BACK / BROWSER CACHE
+           PHONE BACK
         ========================= */
 
-        window.addEventListener("pageshow", function() {
+        window.addEventListener(
+            "pageshow",
+            function() {
 
-            loadTheme();
+                loadTheme();
 
-            fontSize =
-                Number(localStorage.getItem("fontSize")) || 18;
 
-            updateFontSize();
+                fontSize =
+                    Number(
+                        localStorage.getItem(
+                            "fontSize"
+                        )
+                    ) || 18;
 
-        });
+
+                updateFontSize();
+
+            }
+        );
 
     </script>
 
