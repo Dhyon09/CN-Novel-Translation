@@ -9,6 +9,7 @@
 
     <title>Judul Novel - CN Novel-Translation</title>
 
+
     <!-- FONT NAMA WEBSITE -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
 
     <!-- CSS -->
 
@@ -33,7 +35,11 @@
 
         <div class="header-left">
 
-            <button class="menu-button" onclick="toggleMenu()" aria-label="Buka menu">
+            <button
+                class="menu-button"
+                onclick="toggleMenu()"
+                aria-label="Buka menu"
+            >
                 ☰
             </button>
 
@@ -49,7 +55,11 @@
 
         <div class="header-right">
 
-            <button class="theme-button" onclick="toggleTheme()" aria-label="Ganti tema">
+            <button
+                class="theme-button"
+                onclick="toggleTheme()"
+                aria-label="Ganti tema"
+            >
 
                 <span id="themeIcon">☀️</span>
 
@@ -65,7 +75,11 @@
 
     <nav id="sideMenu" class="side-menu">
 
-        <div class="menu-item menu-novel" onclick="toggleNovelMenu()">
+
+        <div
+            class="menu-item menu-novel"
+            onclick="toggleNovelMenu()"
+        >
 
             <span>Novel</span>
 
@@ -76,44 +90,53 @@
 
         <div id="novelSubmenu" class="novel-submenu">
 
+
             <a href="../index.html#ongoing">
                 On-going
             </a>
+
 
             <a href="../index.html#completed">
                 Completed
             </a>
 
+
             <a href="../index.html#hiatus">
                 Hiatus
             </a>
+
 
             <a href="../index.html#drop">
                 Drop
             </a>
 
+
         </div>
 
 
-        <a href="../index.html#bookmark" class="menu-item">
-
+        <a
+            href="../index.html#bookmark"
+            class="menu-item"
+        >
             Bookmark
-
         </a>
 
 
-        <a href="../index.html#donasi" class="menu-item">
-
+        <a
+            href="../index.html#donasi"
+            class="menu-item"
+        >
             Donasi
-
         </a>
 
 
-        <a href="../index.html#login" class="menu-item">
-
+        <a
+            href="../index.html#login"
+            class="menu-item"
+        >
             Login
-
         </a>
+
 
     </nav>
 
@@ -123,6 +146,8 @@
 
     <main class="page-container">
 
+
+        <!-- INFORMASI NOVEL -->
 
         <section class="novel-detail">
 
@@ -140,9 +165,10 @@
 
 
 
-            <!-- INFORMASI NOVEL -->
+            <!-- INFORMASI -->
 
             <div class="novel-info">
+
 
                 <h1>
                     Judul Novel
@@ -177,7 +203,9 @@
 
                 </button>
 
+
             </div>
+
 
         </section>
 
@@ -186,6 +214,7 @@
         <!-- DESKRIPSI -->
 
         <section class="novel-description">
+
 
             <h2>
                 Deskripsi Novel
@@ -200,32 +229,65 @@
 
             </p>
 
+
         </section>
 
 
 
         <!-- DAFTAR CHAPTER -->
 
-        <section class="chapter-list">
+        <section class="chapter-list-section">
+
 
             <h2>
                 Daftar Chapter
             </h2>
 
 
-            <a href="../chapter/bab-1.html">
-                Chapter 1
-            </a>
+            <div class="chapter-list">
 
 
-            <a href="../chapter/bab-2.html">
-                Chapter 2
-            </a>
+                <a href="../chapter/bab-1.html">
+
+                    <span>
+                        Chapter 1
+                    </span>
+
+                    <span>
+                        ›
+                    </span>
+
+                </a>
 
 
-            <a href="../chapter/bab-3.html">
-                Chapter 3
-            </a>
+                <a href="../chapter/bab-2.html">
+
+                    <span>
+                        Chapter 2
+                    </span>
+
+                    <span>
+                        ›
+                    </span>
+
+                </a>
+
+
+                <a href="../chapter/bab-3.html">
+
+                    <span>
+                        Chapter 3
+                    </span>
+
+                    <span>
+                        ›
+                    </span>
+
+                </a>
+
+
+            </div>
+
 
         </section>
 
@@ -234,6 +296,7 @@
         <!-- KOMENTAR -->
 
         <section class="comments-section">
+
 
             <h2>
                 Komentar
@@ -251,11 +314,12 @@
                 data-reactions-enabled="1"
                 data-emit-metadata="0"
                 data-input-position="top"
-                data-theme="preferred_color_scheme"
+                data-theme="light"
                 data-lang="id"
                 crossorigin="anonymous"
                 async>
             </script>
+
 
         </section>
 
@@ -268,31 +332,41 @@
 
     <footer class="site-footer">
 
+
         <div class="footer-title">
+
             CN Novel-Translation
+
         </div>
 
 
         <div class="footer-links">
 
+
             <a href="../index.html">
                 Home
             </a>
 
-            <span>•</span>
+
+            <span>
+                •
+            </span>
+
 
             <a href="../index.html#donasi">
                 Donasi
             </a>
 
+
         </div>
 
 
-        <div class="footer-copy">
+        <div class="copyright">
 
             © Copyright 2026-CN Novel-Translation
 
         </div>
+
 
     </footer>
 
@@ -303,15 +377,66 @@
     <script>
 
 
-        /* ================================
+        /* =========================================
            THEME
-        ================================= */
+        ========================================= */
+
+
+        function getGiscusTheme() {
+
+            if (document.body.classList.contains("dark")) {
+
+                return "dark";
+
+            }
+
+            return "light";
+
+        }
+
+
+
+        function updateGiscusTheme() {
+
+            const giscusFrame =
+                document.querySelector(
+                    "iframe.giscus-frame"
+                );
+
+
+            if (!giscusFrame) {
+
+                return;
+
+            }
+
+
+            giscusFrame.contentWindow.postMessage(
+
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: getGiscusTheme()
+                        }
+                    }
+                },
+
+                "https://giscus.app"
+
+            );
+
+        }
+
+
 
         function loadTheme() {
 
-            const savedTheme = localStorage.getItem("theme");
+            const savedTheme =
+                localStorage.getItem("theme");
 
-            const icon = document.getElementById("themeIcon");
+
+            const icon =
+                document.getElementById("themeIcon");
 
 
             if (savedTheme === "dark") {
@@ -327,6 +452,12 @@
                 icon.textContent = "☀️";
 
             }
+
+
+            setTimeout(
+                updateGiscusTheme,
+                500
+            );
 
         }
 
@@ -354,13 +485,17 @@
             icon.textContent =
                 isDark ? "🌙" : "☀️";
 
+
+            updateGiscusTheme();
+
         }
 
 
 
-        /* ================================
+        /* =========================================
            MENU
-        ================================= */
+        ========================================= */
+
 
         function toggleMenu() {
 
@@ -368,29 +503,33 @@
                 document.getElementById("sideMenu");
 
 
-            menu.classList.toggle("show");
+            menu.classList.toggle("active");
 
         }
 
 
 
-        /* ================================
+        /* =========================================
            NOVEL SUBMENU
-        ================================= */
+        ========================================= */
+
 
         function toggleNovelMenu() {
 
             const submenu =
                 document.getElementById("novelSubmenu");
 
+
             const arrow =
                 document.getElementById("novelArrow");
 
 
-            submenu.classList.toggle("show");
+            submenu.classList.toggle("active");
 
 
-            if (submenu.classList.contains("show")) {
+            if (
+                submenu.classList.contains("active")
+            ) {
 
                 arrow.textContent = "‹";
 
@@ -404,27 +543,36 @@
 
 
 
-        /* ================================
+        /* =========================================
            BOOKMARK
-        ================================= */
+        ========================================= */
+
 
         const bookmarkKey =
             "bookmark_judul_novel";
 
 
+
         function loadBookmark() {
 
             const button =
-                document.getElementById("bookmarkButton");
+                document.getElementById(
+                    "bookmarkButton"
+                );
 
 
             const saved =
-                localStorage.getItem(bookmarkKey);
+                localStorage.getItem(
+                    bookmarkKey
+                );
 
 
             if (saved === "true") {
 
-                button.classList.add("bookmarked");
+                button.classList.add(
+                    "bookmarked"
+                );
+
 
                 button.innerHTML =
                     "🔖 Sudah di Bookmark";
@@ -438,18 +586,28 @@
         function toggleBookmark() {
 
             const button =
-                document.getElementById("bookmarkButton");
+                document.getElementById(
+                    "bookmarkButton"
+                );
 
 
             const isBookmarked =
-                button.classList.contains("bookmarked");
+                button.classList.contains(
+                    "bookmarked"
+                );
 
 
             if (isBookmarked) {
 
-                localStorage.removeItem(bookmarkKey);
+                localStorage.removeItem(
+                    bookmarkKey
+                );
 
-                button.classList.remove("bookmarked");
+
+                button.classList.remove(
+                    "bookmarked"
+                );
+
 
                 button.innerHTML =
                     "🔖 Bookmark";
@@ -461,7 +619,11 @@
                     "true"
                 );
 
-                button.classList.add("bookmarked");
+
+                button.classList.add(
+                    "bookmarked"
+                );
+
 
                 button.innerHTML =
                     "🔖 Sudah di Bookmark";
@@ -472,9 +634,36 @@
 
 
 
-        /* ================================
+        /* =========================================
+           GISCUS
+        ========================================= */
+
+
+        window.addEventListener(
+            "message",
+            function(event) {
+
+                if (
+                    event.origin !==
+                    "https://giscus.app"
+                ) {
+
+                    return;
+
+                }
+
+
+                updateGiscusTheme();
+
+            }
+        );
+
+
+
+        /* =========================================
            LOAD
-        ================================= */
+        ========================================= */
+
 
         loadTheme();
 
