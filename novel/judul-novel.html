@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8">
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+«»
 
-<title>Contoh Novel A - CN Novel-Translation</title>
-
-<link
+<title>Contoh Novel A - CN Novel-Translation</title><link
     rel="stylesheet"
     href="../css/style.css"
->
-
-<style>
+><style>
 
     /* =========================
        DAFTAR CHAPTER
@@ -128,17 +122,20 @@
 
     }
 
-</style>
-
-</head><body><!-- =========================
+</style></head><body><!-- =========================
      HEADER
-========================= --><header class="site-header"><button
-    class="menu-button"
-    id="menuButton"
-    aria-label="Buka menu"
->
-    ☰
-</button>
+========================= --><header class="site-header"><div class="header-left">
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+</div>
 
 
 <a
@@ -149,13 +146,17 @@
 </a>
 
 
-<button
-    class="theme-button"
-    id="themeButton"
-    aria-label="Ganti tema"
->
-    ☀️
-</button>
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
 
 </header><!-- =========================
      MENU
@@ -187,13 +188,17 @@
 <!-- NOVEL -->
 
 <div
-    class="menu-item menu-novel"
+    class="menu-parent"
     id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
 >
 
     <span>
         Novel
     </span>
+
 
     <span class="menu-arrow">
         ›
@@ -207,38 +212,22 @@
     id="novelSubmenu"
 >
 
-    <div
-        class="submenu-header"
-        id="submenuBack"
-    >
-
-        <span>
-            Novel
-        </span>
-
-        <span>
-            ‹
-        </span>
-
-    </div>
-
-
-    <a href="../index.html#ongoing">
+    <a href="on-going.html">
         On-going
     </a>
 
 
-    <a href="../index.html#completed">
+    <a href="completed.html">
         Completed
     </a>
 
 
-    <a href="../index.html#hiatus">
+    <a href="hiatus.html">
         Hiatus
     </a>
 
 
-    <a href="../index.html#drop">
+    <a href="drop.html">
         Drop
     </a>
 
@@ -249,7 +238,7 @@
 <!-- MENU LAINNYA -->
 
 <a
-    href="../index.html#bookmark"
+    href="../bookmark.html"
     class="menu-item"
 >
     Bookmark
@@ -257,7 +246,7 @@
 
 
 <a
-    href="../index.html#donasi"
+    href="#donasi"
     class="menu-item"
 >
     Donasi
@@ -265,7 +254,7 @@
 
 
 <a
-    href="../index.html#login"
+    href="#login"
     class="menu-item"
 >
     Login
@@ -295,249 +284,243 @@
 
 </div><!-- =========================
      MAIN
-========================= --><main><section class="novel-container">
+========================= --><main><section class="novel-container"><!-- =========================
+     INFORMASI NOVEL
+========================= -->
+
+<div class="novel-header">
 
 
-    <!-- =========================
-         INFORMASI NOVEL
-    ========================= -->
+    <div class="novel-cover">
 
-    <div class="novel-header">
-
-
-        <div class="novel-cover">
-
-            <img
-                src="../images/cover.jpg"
-                alt="Cover Contoh Novel A"
-            >
-
-        </div>
-
-
-        <div class="novel-info">
-
-            <h1>
-                Contoh Novel A
-            </h1>
-
-
-            <p class="novel-meta">
-                Fantasy • Romance
-            </p>
-
-
-            <p class="novel-status">
-                Status:
-                <strong>
-                    On-going
-                </strong>
-            </p>
-
-
-            <p class="novel-meta">
-                Chapter Terbaru: Chapter 25
-            </p>
-
-
-            <!-- MULAI BACA -->
-
-            <a
-                href="../chapter/bab-1.html"
-                class="start-reading-button"
-            >
-                Mulai Baca
-            </a>
-
-
-            <!-- BOOKMARK -->
-
-            <button
-                id="bookmarkButton"
-                class="bookmark-button"
-            >
-                ☆ Bookmark
-            </button>
-
-        </div>
+        <img
+            src="../images/cover.jpg"
+            alt="Cover Contoh Novel A"
+        >
 
     </div>
 
 
+    <div class="novel-info">
 
-    <!-- PEMBATAS -->
-
-    <div class="novel-divider"></div>
-
-
-
-    <!-- SINOPSIS -->
-
-    <section class="novel-description">
-
-        <h2>
-            Sinopsis
-        </h2>
+        <h1>
+            Contoh Novel A
+        </h1>
 
 
-        <p>
-            Ini adalah contoh sinopsis novel.
-            Bagian ini nantinya dapat kamu ganti
-            dengan sinopsis asli dari novel yang
-            kamu terjemahkan.
+        <p class="novel-meta">
+            Fantasy • Romance
         </p>
 
 
-        <p>
-            Kamu dapat menjelaskan dunia cerita,
-            karakter utama, konflik, serta gambaran
-            perjalanan cerita di bagian ini.
+        <p class="novel-status">
+            Status:
+            <strong>
+                On-going
+            </strong>
         </p>
 
-    </section>
+
+        <p class="novel-meta">
+            Chapter Terbaru: Chapter 25
+        </p>
 
 
+        <!-- MULAI BACA -->
 
-    <!-- =========================
-         DAFTAR CHAPTER
-    ========================= -->
-
-    <section class="chapter-list-section">
-
-        <h2>
-            Daftar Chapter
-        </h2>
-
-
-        <div class="chapter-list">
-
-            <a href="../chapter/bab-25.html">
-                Chapter 25
-            </a>
-
-            <a href="../chapter/bab-24.html">
-                Chapter 24
-            </a>
-
-            <a href="../chapter/bab-23.html">
-                Chapter 23
-            </a>
-
-            <a href="../chapter/bab-22.html">
-                Chapter 22
-            </a>
-
-            <a href="../chapter/bab-21.html">
-                Chapter 21
-            </a>
-
-            <a href="../chapter/bab-20.html">
-                Chapter 20
-            </a>
-
-            <a href="../chapter/bab-19.html">
-                Chapter 19
-            </a>
-
-            <a href="../chapter/bab-18.html">
-                Chapter 18
-            </a>
-
-            <a href="../chapter/bab-17.html">
-                Chapter 17
-            </a>
-
-            <a href="../chapter/bab-16.html">
-                Chapter 16
-            </a>
-
-            <a href="../chapter/bab-15.html">
-                Chapter 15
-            </a>
-
-            <a href="../chapter/bab-14.html">
-                Chapter 14
-            </a>
-
-            <a href="../chapter/bab-13.html">
-                Chapter 13
-            </a>
-
-            <a href="../chapter/bab-12.html">
-                Chapter 12
-            </a>
-
-            <a href="../chapter/bab-11.html">
-                Chapter 11
-            </a>
-
-            <a href="../chapter/bab-10.html">
-                Chapter 10
-            </a>
-
-            <a href="../chapter/bab-9.html">
-                Chapter 9
-            </a>
-
-            <a href="../chapter/bab-8.html">
-                Chapter 8
-            </a>
-
-            <a href="../chapter/bab-7.html">
-                Chapter 7
-            </a>
-
-            <a href="../chapter/bab-6.html">
-                Chapter 6
-            </a>
-
-            <a href="../chapter/bab-5.html">
-                Chapter 5
-            </a>
-
-            <a href="../chapter/bab-4.html">
-                Chapter 4
-            </a>
-
-            <a href="../chapter/bab-3.html">
-                Chapter 3
-            </a>
-
-            <a href="../chapter/bab-2.html">
-                Chapter 2
-            </a>
-
-            <a href="../chapter/bab-1.html">
-                Chapter 1 — Awal Perjalanan
-            </a>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- KOMENTAR -->
-
-    <section class="comments-section">
-
-        <h2>
-            Komentar
-        </h2>
-
-
-        <div
-            class="giscus"
-            id="giscus-container"
+        <a
+            href="../chapter/bab-1.html"
+            class="start-reading-button"
         >
-        </div>
+            Mulai Baca
+        </a>
 
-    </section>
 
+        <!-- BOOKMARK -->
+
+        <button
+            id="bookmarkButton"
+            class="bookmark-button"
+        >
+            ☆ Bookmark
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PEMBATAS -->
+
+<div class="novel-divider"></div>
+
+
+
+<!-- SINOPSIS -->
+
+<section class="novel-description">
+
+    <h2>
+        Sinopsis
+    </h2>
+
+
+    <p>
+        Ini adalah contoh sinopsis novel.
+        Bagian ini nantinya dapat kamu ganti
+        dengan sinopsis asli dari novel yang
+        kamu terjemahkan.
+    </p>
+
+
+    <p>
+        Kamu dapat menjelaskan dunia cerita,
+        karakter utama, konflik, serta gambaran
+        perjalanan cerita di bagian ini.
+    </p>
 
 </section>
 
-</main><!-- =========================
+
+
+<!-- =========================
+     DAFTAR CHAPTER
+========================= -->
+
+<section class="chapter-list-section">
+
+    <h2>
+        Daftar Chapter
+    </h2>
+
+
+    <div class="chapter-list">
+
+        <a href="../chapter/bab-25.html">
+            Chapter 25
+        </a>
+
+        <a href="../chapter/bab-24.html">
+            Chapter 24
+        </a>
+
+        <a href="../chapter/bab-23.html">
+            Chapter 23
+        </a>
+
+        <a href="../chapter/bab-22.html">
+            Chapter 22
+        </a>
+
+        <a href="../chapter/bab-21.html">
+            Chapter 21
+        </a>
+
+        <a href="../chapter/bab-20.html">
+            Chapter 20
+        </a>
+
+        <a href="../chapter/bab-19.html">
+            Chapter 19
+        </a>
+
+        <a href="../chapter/bab-18.html">
+            Chapter 18
+        </a>
+
+        <a href="../chapter/bab-17.html">
+            Chapter 17
+        </a>
+
+        <a href="../chapter/bab-16.html">
+            Chapter 16
+        </a>
+
+        <a href="../chapter/bab-15.html">
+            Chapter 15
+        </a>
+
+        <a href="../chapter/bab-14.html">
+            Chapter 14
+        </a>
+
+        <a href="../chapter/bab-13.html">
+            Chapter 13
+        </a>
+
+        <a href="../chapter/bab-12.html">
+            Chapter 12
+        </a>
+
+        <a href="../chapter/bab-11.html">
+            Chapter 11
+        </a>
+
+        <a href="../chapter/bab-10.html">
+            Chapter 10
+        </a>
+
+        <a href="../chapter/bab-9.html">
+            Chapter 9
+        </a>
+
+        <a href="../chapter/bab-8.html">
+            Chapter 8
+        </a>
+
+        <a href="../chapter/bab-7.html">
+            Chapter 7
+        </a>
+
+        <a href="../chapter/bab-6.html">
+            Chapter 6
+        </a>
+
+        <a href="../chapter/bab-5.html">
+            Chapter 5
+        </a>
+
+        <a href="../chapter/bab-4.html">
+            Chapter 4
+        </a>
+
+        <a href="../chapter/bab-3.html">
+            Chapter 3
+        </a>
+
+        <a href="../chapter/bab-2.html">
+            Chapter 2
+        </a>
+
+        <a href="../chapter/bab-1.html">
+            Chapter 1 — Awal Perjalanan
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- KOMENTAR -->
+
+<section class="comments-section">
+
+    <h2>
+        Komentar
+    </h2>
+
+
+    <div
+        class="giscus"
+        id="giscus-container"
+    >
+    </div>
+
+</section>
+
+</section></main><!-- =========================
      FOOTER
 ========================= --><footer class="site-footer"><div class="footer-title">
     CN Novel-Translation
@@ -550,11 +533,13 @@
         Home
     </a>
 
+
     <span>
         •
     </span>
 
-    <a href="../index.html#donasi">
+
+    <a href="#donasi">
         Donasi
     </a>
 
@@ -569,437 +554,597 @@
      JAVASCRIPT
 ========================= --><script>
 
-    /* MENU */
 
-    const menuButton =
-        document.getElementById("menuButton");
+/* =====================================================
+   MENU
+===================================================== */
 
-    const menuClose =
-        document.getElementById("menuClose");
-
-    const menuOverlay =
-        document.getElementById("menuOverlay");
-
-    const sideMenu =
-        document.getElementById("sideMenu");
-
-    const menuNovel =
-        document.getElementById("menuNovel");
-
-    const novelSubmenu =
-        document.getElementById("novelSubmenu");
-
-    const submenuBack =
-        document.getElementById("submenuBack");
+const menuButton =
+    document.getElementById("menuButton");
 
 
-    function openMenu() {
+const menuClose =
+    document.getElementById("menuClose");
 
-        sideMenu.classList.add("active");
 
-        menuOverlay.classList.add("active");
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+
+const menuNovel =
+    document.getElementById("menuNovel");
+
+
+const novelSubmenu =
+    document.getElementById("novelSubmenu");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
+
+
+function closeNovelSubmenu() {
+
+    novelSubmenu.classList.remove("active");
+
+    menuNovel.classList.remove("active");
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+function closeMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    closeNovelSubmenu();
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+function toggleNovelSubmenu() {
+
+    const isActive =
+        novelSubmenu.classList.toggle("active");
+
+
+    menuNovel.classList.toggle(
+        "active",
+        isActive
+    );
+
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        isActive
+    );
+
+}
+
+
+menuNovel.addEventListener(
+    "click",
+    toggleNovelSubmenu
+);
+
+
+menuNovel.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            toggleNovelSubmenu();
+
+        }
 
     }
+);
 
 
-    function closeMenu() {
-
-        sideMenu.classList.remove("active");
-
-        menuOverlay.classList.remove("active");
-
-        novelSubmenu.classList.remove("active");
-
-    }
+const menuLinks =
+    sideMenu.querySelectorAll("a");
 
 
-    menuButton.addEventListener(
-        "click",
-        openMenu
-    );
+menuLinks.forEach(function (link) {
 
-
-    menuClose.addEventListener(
-        "click",
-        closeMenu
-    );
-
-
-    menuOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
-
-
-    /* SUBMENU NOVEL */
-
-    menuNovel.addEventListener(
+    link.addEventListener(
         "click",
         function () {
 
-            novelSubmenu.classList.add("active");
+            closeMenu();
 
         }
     );
 
+});
 
-    submenuBack.addEventListener(
-        "click",
-        function () {
 
-            novelSubmenu.classList.remove("active");
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
 
         }
-    );
+
+    }
+);
 
 
-    /* DARK / LIGHT MODE */
 
-    const themeButton =
-        document.getElementById("themeButton");
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
 
-
-    function loadTheme() {
-
-        const savedTheme =
-            localStorage.getItem("theme");
+const themeButton =
+    document.getElementById("themeButton");
 
 
-        if (savedTheme === "dark") {
+function loadTheme() {
 
-            document.body.classList.add("dark");
+    const savedTheme =
+        localStorage.getItem("theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "🌙";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
 
             themeButton.textContent = "🌙";
 
         } else {
 
-            document.body.classList.remove("dark");
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
 
             themeButton.textContent = "☀️";
 
         }
 
+
+        updateGiscusTheme();
+
+    }
+);
+
+
+loadTheme();
+
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        loadTheme();
+
+        updateGiscusTheme();
+
+        loadBookmark();
+
+    }
+);
+
+
+
+/* =====================================================
+   BOOKMARK
+===================================================== */
+
+const bookmarkButton =
+    document.getElementById(
+        "bookmarkButton"
+    );
+
+
+const bookmarkData = {
+
+    title: "Contoh Novel A",
+
+    genre: "Fantasy • Romance",
+
+    status: "On-going",
+
+    cover: "../images/cover.jpg",
+
+    chapter: 25,
+
+    chapterTitle: "Chapter 25",
+
+    link: "judul-novel.html"
+
+};
+
+
+const bookmarkStorageKey =
+    "bookmarks";
+
+
+function getBookmarks() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            bookmarkStorageKey
+        )
+    ) || [];
+
+}
+
+
+function saveBookmarks(bookmarks) {
+
+    localStorage.setItem(
+        bookmarkStorageKey,
+        JSON.stringify(bookmarks)
+    );
+
+}
+
+
+function isBookmarked() {
+
+    const bookmarks =
+        getBookmarks();
+
+
+    return bookmarks.some(
+        function (novel) {
+
+            return novel.link ===
+                bookmarkData.link;
+
+        }
+    );
+
+}
+
+
+function loadBookmark() {
+
+    if (isBookmarked()) {
+
+        bookmarkButton.textContent =
+            "★ Sudah di Bookmark";
+
+        bookmarkButton.classList.add(
+            "bookmarked"
+        );
+
+    } else {
+
+        bookmarkButton.textContent =
+            "☆ Bookmark";
+
+        bookmarkButton.classList.remove(
+            "bookmarked"
+        );
+
     }
 
-
-    themeButton.addEventListener(
-        "click",
-        function () {
-
-            document.body.classList.toggle("dark");
+}
 
 
-            if (
-                document.body.classList.contains("dark")
-            ) {
+bookmarkButton.addEventListener(
+    "click",
+    function () {
 
-                localStorage.setItem(
-                    "theme",
-                    "dark"
+        let bookmarks =
+            getBookmarks();
+
+
+        if (isBookmarked()) {
+
+            bookmarks =
+                bookmarks.filter(
+                    function (novel) {
+
+                        return novel.link !==
+                            bookmarkData.link;
+
+                    }
                 );
-
-                themeButton.textContent = "🌙";
-
-            } else {
-
-                localStorage.setItem(
-                    "theme",
-                    "light"
-                );
-
-                themeButton.textContent = "☀️";
-
-            }
-
-
-            updateGiscusTheme();
-
-        }
-    );
-
-
-    loadTheme();
-
-
-    /* BACK / FORWARD HP */
-
-    window.addEventListener(
-        "pageshow",
-        function () {
-
-            loadTheme();
-
-            updateGiscusTheme();
-
-        }
-    );
-
-
-    /* BOOKMARK */
-
-    const bookmarkButton =
-        document.getElementById("bookmarkButton");
-
-
-    const bookmarkKey =
-        "bookmark_judul_novel";
-
-
-    function loadBookmark() {
-
-        const bookmarked =
-            localStorage.getItem(bookmarkKey);
-
-
-        if (bookmarked === "true") {
-
-            bookmarkButton.textContent =
-                "★ Sudah di Bookmark";
-
-            bookmarkButton.classList.add(
-                "bookmarked"
-            );
 
         } else {
 
-            bookmarkButton.textContent =
-                "☆ Bookmark";
-
-            bookmarkButton.classList.remove(
-                "bookmarked"
+            bookmarks.unshift(
+                bookmarkData
             );
 
         }
 
+
+        saveBookmarks(bookmarks);
+
+        loadBookmark();
+
     }
+);
 
 
-    bookmarkButton.addEventListener(
-        "click",
-        function () {
-
-            const bookmarked =
-                localStorage.getItem(bookmarkKey);
+loadBookmark();
 
 
-            if (bookmarked === "true") {
 
-                localStorage.removeItem(
-                    bookmarkKey
-                );
+/* =====================================================
+   SEARCH
+===================================================== */
 
-            } else {
-
-                localStorage.setItem(
-                    bookmarkKey,
-                    "true"
-                );
-
-            }
-
-
-            loadBookmark();
-
-        }
+const searchInput =
+    document.getElementById(
+        "searchInput"
     );
 
 
-    loadBookmark();
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        const keyword =
+            searchInput.value.trim();
 
 
-    /* SEARCH */
+        if (keyword !== "") {
 
-    const searchInput =
+            window.location.href =
+                "../index.html?search=" +
+                encodeURIComponent(
+                    keyword
+                );
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   GISCUS
+===================================================== */
+
+function loadGiscus() {
+
+    const container =
         document.getElementById(
-            "searchInput"
+            "giscus-container"
         );
 
 
-    searchInput.addEventListener(
-        "input",
-        function () {
+    if (!container) {
 
-            const keyword =
-                searchInput.value.trim();
-
-
-            if (keyword !== "") {
-
-                window.location.href =
-                    "../index.html?search=" +
-                    encodeURIComponent(keyword);
-
-            }
-
-        }
-    );
-
-
-    /* GISCUS */
-
-    function loadGiscus() {
-
-        const container =
-            document.getElementById(
-                "giscus-container"
-            );
-
-
-        if (!container) {
-
-            return;
-
-        }
-
-
-        if (
-            container.querySelector("script")
-        ) {
-
-            return;
-
-        }
-
-
-        const script =
-            document.createElement("script");
-
-
-        script.src =
-            "https://giscus.app/client.js";
-
-
-        script.setAttribute(
-            "data-repo",
-            "Dhyon09/cn-novel-translation"
-        );
-
-
-        script.setAttribute(
-            "data-repo-id",
-            "R_kgDOU4Dcig"
-        );
-
-
-        script.setAttribute(
-            "data-category",
-            "General"
-        );
-
-
-        script.setAttribute(
-            "data-category-id",
-            "DIC_kwDOU4Dcis4DG3Ff"
-        );
-
-
-        script.setAttribute(
-            "data-mapping",
-            "pathname"
-        );
-
-
-        script.setAttribute(
-            "data-strict",
-            "0"
-        );
-
-
-        script.setAttribute(
-            "data-reactions-enabled",
-            "1"
-        );
-
-
-        script.setAttribute(
-            "data-emit-metadata",
-            "0"
-        );
-
-
-        script.setAttribute(
-            "data-input-position",
-            "bottom"
-        );
-
-
-        script.setAttribute(
-            "data-theme",
-            document.body.classList.contains("dark")
-                ? "dark"
-                : "light"
-        );
-
-
-        script.setAttribute(
-            "data-lang",
-            "id"
-        );
-
-
-        script.setAttribute(
-            "data-loading",
-            "lazy"
-        );
-
-
-        script.crossOrigin =
-            "anonymous";
-
-
-        script.async = true;
-
-
-        container.appendChild(script);
+        return;
 
     }
 
 
-    function updateGiscusTheme() {
+    if (
+        container.querySelector("script")
+    ) {
 
-        const iframe =
-            document.querySelector(
-                "iframe.giscus-frame"
-            );
+        return;
 
-
-        if (!iframe) {
-
-            return;
-
-        }
+    }
 
 
-        const theme =
-            document.body.classList.contains("dark")
-                ? "dark"
-                : "light";
+    const script =
+        document.createElement("script");
 
 
-        iframe.contentWindow.postMessage(
-            {
-                giscus: {
+    script.src =
+        "https://giscus.app/client.js";
 
-                    setConfig: {
 
-                        theme: theme
+    script.setAttribute(
+        "data-repo",
+        "Dhyon09/cn-novel-translation"
+    );
 
-                    }
+
+    script.setAttribute(
+        "data-repo-id",
+        "R_kgDOU4Dcig"
+    );
+
+
+    script.setAttribute(
+        "data-category",
+        "General"
+    );
+
+
+    script.setAttribute(
+        "data-category-id",
+        "DIC_kwDOU4Dcis4DG3Ff"
+    );
+
+
+    script.setAttribute(
+        "data-mapping",
+        "pathname"
+    );
+
+
+    script.setAttribute(
+        "data-strict",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-reactions-enabled",
+        "1"
+    );
+
+
+    script.setAttribute(
+        "data-emit-metadata",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-input-position",
+        "bottom"
+    );
+
+
+    script.setAttribute(
+        "data-theme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+
+
+    script.setAttribute(
+        "data-lang",
+        "id"
+    );
+
+
+    script.setAttribute(
+        "data-loading",
+        "lazy"
+    );
+
+
+    script.crossOrigin =
+        "anonymous";
+
+
+    script.async = true;
+
+
+    container.appendChild(script);
+
+}
+
+
+function updateGiscusTheme() {
+
+    const iframe =
+        document.querySelector(
+            "iframe.giscus-frame"
+        );
+
+
+    if (!iframe) {
+
+        return;
+
+    }
+
+
+    const theme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+
+    iframe.contentWindow.postMessage(
+        {
+            giscus: {
+
+                setConfig: {
+
+                    theme: theme
 
                 }
 
-            },
-            "https://giscus.app"
-        );
+            }
 
-    }
+        },
+        "https://giscus.app"
+    );
 
-
-    loadGiscus();
-
-</script>
+}
 
 
-</body>
+loadGiscus();
 
-</html>
+</script></body></html>
