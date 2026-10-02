@@ -1,385 +1,809 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="id">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<head>
 
-<title>Chapter 1 - Contoh Novel A</title>
+    <meta charset="UTF-8">
 
-<link
-    rel="stylesheet"
-    href="../css/style.css"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-</head><body><!-- =========================
+    <title>Chapter 1 - Contoh Novel A</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        /* =========================
+           NAVIGASI CHAPTER
+        ========================= */
+
+        .chapter-navigation {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            margin: 0 0 16px;
+        }
+
+
+        .chapter-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+            padding: 7px 6px;
+
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: var(--card);
+            color: var(--text);
+
+            text-decoration: none;
+            text-align: center;
+
+            font-size: 14px;
+            line-height: 1.2;
+
+            transition:
+                border-color 0.25s ease,
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+
+        .chapter-nav-btn:hover,
+        .chapter-nav-btn:active {
+            border-color: var(--primary);
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+
+        .chapter-nav-btn.disabled {
+            opacity: 0.45;
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           RODA GIGI
+        ========================= */
+
+        .reader-settings-area {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            width: 100%;
+
+            margin: 2px 0 12px;
+        }
+
+
+        .reader-settings-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 36px;
+            height: 36px;
+
+            padding: 0;
+
+            border: 1px solid var(--border);
+            border-radius: 50%;
+
+            background: var(--card);
+            color: var(--text);
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition:
+                border-color 0.25s ease,
+                background-color 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        .reader-settings-btn:hover,
+        .reader-settings-btn:active {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        .reader-settings-btn.active {
+            transform: rotate(30deg);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           PENGATURAN FONT
+        ========================= */
+
+        .reader-settings {
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 8px;
+
+            padding: 5px 8px;
+
+            border: 1px solid var(--border);
+            border-radius: 7px;
+
+            background: var(--card);
+        }
+
+
+        .reader-settings.active {
+            display: flex;
+        }
+
+
+        .reader-settings button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 34px;
+            height: 30px;
+
+            padding: 0 7px;
+
+            border: 1px solid var(--border);
+            border-radius: 5px;
+
+            background: var(--card);
+            color: var(--text);
+
+            font-family: inherit;
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+
+        .reader-settings button:hover,
+        .reader-settings button:active {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        #fontSizeDisplay {
+            min-width: 22px;
+
+            color: var(--text);
+
+            font-size: 14px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           JUDUL CHAPTER
+        ========================= */
+
+        .chapter-heading {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+
+        .chapter-number {
+            margin-bottom: 5px;
+
+            color: var(--secondary);
+
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+
+        .chapter-heading h1 {
+            margin: 0;
+
+            color: var(--text);
+
+            font-size: 24px;
+            line-height: 1.3;
+        }
+
+
+        /* =========================
+           TOMBOL KEMBALI KE ATAS
+        ========================= */
+
+        .back-to-top {
+            position: fixed;
+
+            right: 16px;
+            bottom: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 40px;
+            height: 40px;
+
+            border: 1px solid var(--border);
+            border-radius: 50%;
+
+            background: var(--card);
+            color: var(--text);
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease;
+            
+            z-index: 1000;
+        }
+
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+
+        .back-to-top:hover,
+        .back-to-top:active {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .chapter-navigation {
+                gap: 5px;
+                margin-bottom: 14px;
+            }
+
+
+            .chapter-nav-btn {
+                min-height: 36px;
+                padding: 6px 4px;
+
+                font-size: 13px;
+            }
+
+
+            .reader-settings-area {
+                margin-top: 1px;
+                margin-bottom: 11px;
+            }
+
+
+            .reader-settings-btn {
+                width: 35px;
+                height: 35px;
+
+                font-size: 17px;
+            }
+
+
+            .chapter-heading {
+                margin-bottom: 22px;
+            }
+
+
+            .chapter-number {
+                font-size: 14px;
+            }
+
+
+            .chapter-heading h1 {
+                font-size: 22px;
+            }
+
+
+            .back-to-top {
+                right: 14px;
+                bottom: 15px;
+
+                width: 38px;
+                height: 38px;
+
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
      HEADER
-========================= --><header class="site-header"><button
-    class="menu-button"
-    id="menuButton"
-    aria-label="Buka menu"
->
-    ☰
-</button>
+========================= -->
+
+<header class="site-header">
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+    >
+        ☰
+    </button>
 
 
-<a
-    href="../index.html"
-    class="site-title"
->
-    CN Novel-Translation
-</a>
-
-
-<button
-    class="theme-button"
-    id="themeButton"
-    aria-label="Ganti tema"
->
-    ☀️
-</button>
-
-</header><!-- =========================
-     MENU
-========================= --><div
-    class="menu-overlay"
-    id="menuOverlay"
-></div><nav
-    class="side-menu"
-    id="sideMenu"
-><div class="menu-header">
-
-    <span>
-        Menu
-    </span>
+    <a
+        href="../index.html"
+        class="site-title"
+    >
+        CN Novel-Translation
+    </a>
 
 
     <button
-        class="menu-close"
-        id="menuClose"
-        aria-label="Tutup menu"
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
     >
-        ×
+        ☀️
     </button>
 
-</div>
+</header>
 
 
-
-<!-- NOVEL -->
-
-<div
-    class="menu-item menu-novel"
-    id="menuNovel"
->
-
-    <span>
-        Novel
-    </span>
-
-    <span class="menu-arrow">
-        ›
-    </span>
-
-</div>
-
+<!-- =========================
+     MENU
+========================= -->
 
 <div
-    class="novel-submenu"
-    id="novelSubmenu"
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
+
+
+<nav
+    class="side-menu"
+    id="sideMenu"
 >
+
+    <div class="menu-header">
+
+        <span>
+            Menu
+        </span>
+
+
+        <button
+            class="menu-close"
+            id="menuClose"
+            aria-label="Tutup menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- NOVEL -->
 
     <div
-        class="submenu-header"
-        id="submenuBack"
+        class="menu-item menu-novel"
+        id="menuNovel"
     >
 
         <span>
             Novel
         </span>
 
-        <span>
-            ‹
+        <span class="menu-arrow">
+            ›
         </span>
 
     </div>
-
-
-    <a href="../index.html#ongoing">
-        On-going
-    </a>
-
-
-    <a href="../index.html#completed">
-        Completed
-    </a>
-
-
-    <a href="../index.html#hiatus">
-        Hiatus
-    </a>
-
-
-    <a href="../index.html#drop">
-        Drop
-    </a>
-
-</div>
-
-
-
-<!-- MENU LAINNYA -->
-
-<a
-    href="../index.html#bookmark"
-    class="menu-item"
->
-    Bookmark
-</a>
-
-
-<a
-    href="../index.html#donasi"
-    class="menu-item"
->
-    Donasi
-</a>
-
-
-<a
-    href="../index.html#login"
-    class="menu-item"
->
-    Login
-</a>
-
-</nav><!-- =========================
-     GLOBAL SEARCH
-========================= --><div class="global-search-bar"><div class="global-search-inner">
-
-    <div class="search-box">
-
-        <span class="search-icon">
-            🔍
-        </span>
-
-
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="Cari judul novel..."
-            autocomplete="off"
-        >
-
-    </div>
-
-</div>
-
-</div><!-- =========================
-     READER
-========================= --><main class="reader-container"><!-- =========================
-     PENGATURAN PEMBACA
-========================= -->
-
-<div class="reader-settings-wrapper">
-
-    <button
-        class="reader-settings-btn"
-        id="readerSettingsButton"
-        aria-label="Pengaturan pembaca"
-    >
-        ⚙️
-    </button>
 
 
     <div
-        id="readerSettings"
-        class="reader-settings"
+        class="novel-submenu"
+        id="novelSubmenu"
     >
 
-        <button
-            id="fontDecrease"
-            aria-label="Perkecil ukuran teks"
+        <div
+            class="submenu-header"
+            id="submenuBack"
         >
-            A−
-        </button>
+
+            <span>
+                Novel
+            </span>
+
+            <span>
+                ‹
+            </span>
+
+        </div>
 
 
-        <span id="fontSizeDisplay">
-            18
-        </span>
+        <a href="../index.html#ongoing">
+            On-going
+        </a>
 
 
-        <button
-            id="fontIncrease"
-            aria-label="Perbesar ukuran teks"
-        >
-            A+
-        </button>
+        <a href="../index.html#completed">
+            Completed
+        </a>
+
+
+        <a href="../index.html#hiatus">
+            Hiatus
+        </a>
+
+
+        <a href="../index.html#drop">
+            Drop
+        </a>
 
     </div>
 
-</div>
 
-
-
-<!-- =========================
-     JUDUL CHAPTER
-========================= -->
-
-<div class="chapter-heading">
-
-    <div class="chapter-number">
-        Chapter 1
-    </div>
-
-
-    <h1>
-        Awal Perjalanan
-    </h1>
-
-</div>
-
-
-
-<!-- =========================
-     ISI NOVEL
-========================= -->
-
-<article class="reader">
-
-    <p>
-        Ini adalah contoh isi novel untuk Chapter 1.
-        Nantinya bagian ini dapat diganti dengan hasil
-        terjemahan novel yang sebenarnya.
-    </p>
-
-
-    <p>
-        Kesadaran Yun Qingyao perlahan muncul dari dalam
-        kekacauan. Pandangannya masih terasa kabur,
-        sementara tubuhnya belum sepenuhnya dapat bergerak.
-    </p>
-
-
-    <p>
-        Ia mencoba mengingat apa yang telah terjadi
-        sebelumnya. Namun, semakin keras ia mencoba
-        mengingatnya, semakin kacau pikirannya.
-    </p>
-
-
-    <p>
-        Di tempat yang sunyi itu, sebuah suara tiba-tiba
-        terdengar dari hadapannya.
-    </p>
-
-
-    <p>
-        "Siapa kamu?"
-    </p>
-
-
-    <p>
-        Yun Qingyao mengangkat kepalanya perlahan.
-        Tatapannya kemudian tertuju pada sosok yang
-        berdiri tidak jauh darinya.
-    </p>
-
-
-    <p>
-        Untuk sementara waktu, tidak ada seorang pun
-        yang berbicara lagi.
-    </p>
-
-</article>
-
-
-
-<!-- =========================
-     NAVIGASI CHAPTER
-========================= -->
-
-<nav class="chapter-navigation">
+    <!-- MENU LAINNYA -->
 
     <a
-        href="#"
-        class="chapter-nav-btn disabled"
+        href="../index.html#bookmark"
+        class="menu-item"
     >
-        ← Sebelumnya
+        Bookmark
     </a>
 
 
     <a
-        href="../novel/judul-novel.html"
-        class="chapter-nav-btn"
+        href="../index.html#donasi"
+        class="menu-item"
     >
-        Daftar Isi
+        Donasi
     </a>
 
 
     <a
-        href="bab-2.html"
-        class="chapter-nav-btn"
+        href="../index.html#login"
+        class="menu-item"
     >
-        Selanjutnya →
+        Login
     </a>
 
 </nav>
 
 
-
 <!-- =========================
-     KOMENTAR
+     GLOBAL SEARCH
 ========================= -->
 
-<section class="comments-section">
+<div class="global-search-bar">
 
-    <h2>
-        Komentar
-    </h2>
+    <div class="global-search-inner">
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                🔍
+            </span>
 
 
-    <div
-        class="giscus"
-        id="giscus-container"
-    ></div>
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Cari judul novel..."
+                autocomplete="off"
+            >
 
-</section>
+        </div>
 
-</main><!-- =========================
+    </div>
+
+</div>
+
+
+<!-- =========================
+     READER
+========================= -->
+
+<main class="reader-container">
+
+
+    <!-- =========================
+         NAVIGASI ATAS
+    ========================= -->
+
+    <nav class="chapter-navigation">
+
+        <a
+            href="#"
+            class="chapter-nav-btn disabled"
+        >
+            ← Sebelumnya
+        </a>
+
+
+        <a
+            href="../novel/judul-novel.html"
+            class="chapter-nav-btn"
+        >
+            Daftar Isi
+        </a>
+
+
+        <a
+            href="bab-2.html"
+            class="chapter-nav-btn"
+        >
+            Selanjutnya →
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         PENGATURAN PEMBACA
+    ========================= -->
+
+    <div class="reader-settings-area">
+
+        <button
+            class="reader-settings-btn"
+            id="readerSettingsButton"
+            aria-label="Pengaturan pembaca"
+            aria-expanded="false"
+        >
+            ⚙️
+        </button>
+
+
+        <div
+            id="readerSettings"
+            class="reader-settings"
+        >
+
+            <button
+                id="fontDecrease"
+                aria-label="Perkecil ukuran teks"
+            >
+                A−
+            </button>
+
+
+            <span id="fontSizeDisplay">
+                18
+            </span>
+
+
+            <button
+                id="fontIncrease"
+                aria-label="Perbesar ukuran teks"
+            >
+                A+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JUDUL CHAPTER
+    ========================= -->
+
+    <div class="chapter-heading">
+
+        <div class="chapter-number">
+            Chapter 1
+        </div>
+
+
+        <h1>
+            Awal Perjalanan
+        </h1>
+
+    </div>
+
+
+    <!-- =========================
+         ISI NOVEL
+    ========================= -->
+
+    <article class="reader">
+
+        <p>
+            Ini adalah contoh isi novel untuk Chapter 1.
+            Nantinya bagian ini dapat diganti dengan hasil
+            terjemahan novel yang sebenarnya.
+        </p>
+
+
+        <p>
+            Kesadaran Yun Qingyao perlahan muncul dari dalam
+            kekacauan. Pandangannya masih terasa kabur,
+            sementara tubuhnya belum sepenuhnya dapat bergerak.
+        </p>
+
+
+        <p>
+            Ia mencoba mengingat apa yang telah terjadi
+            sebelumnya. Namun, semakin keras ia mencoba
+            mengingatnya, semakin kacau pikirannya.
+        </p>
+
+
+        <p>
+            Di tempat yang sunyi itu, sebuah suara tiba-tiba
+            terdengar dari hadapannya.
+        </p>
+
+
+        <p>
+            "Siapa kamu?"
+        </p>
+
+
+        <p>
+            Yun Qingyao mengangkat kepalanya perlahan.
+            Tatapannya kemudian tertuju pada sosok yang
+            berdiri tidak jauh darinya.
+        </p>
+
+
+        <p>
+            Untuk sementara waktu, tidak ada seorang pun
+            yang berbicara lagi.
+        </p>
+
+    </article>
+
+
+    <!-- =========================
+         NAVIGASI BAWAH
+    ========================= -->
+
+    <nav class="chapter-navigation">
+
+        <a
+            href="#"
+            class="chapter-nav-btn disabled"
+        >
+            ← Sebelumnya
+        </a>
+
+
+        <a
+            href="../novel/judul-novel.html"
+            class="chapter-nav-btn"
+        >
+            Daftar Isi
+        </a>
+
+
+        <a
+            href="bab-2.html"
+            class="chapter-nav-btn"
+        >
+            Selanjutnya →
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         KOMENTAR
+    ========================= -->
+
+    <section class="comments-section">
+
+        <h2>
+            Komentar
+        </h2>
+
+
+        <div
+            class="giscus"
+            id="giscus-container"
+        ></div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Kembali ke atas"
+>
+    ↑
+</button>
+
+
+<!-- =========================
      FOOTER
-========================= --><footer class="site-footer"><div class="footer-title">
-    CN Novel-Translation
-</div>
+========================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-title">
+        CN Novel-Translation
+    </div>
 
 
-<div class="footer-links">
+    <div class="footer-links">
 
-    <a href="../index.html">
-        Home
-    </a>
-
-
-    <span>
-        •
-    </span>
+        <a href="../index.html">
+            Home
+        </a>
 
 
-    <a href="../index.html#donasi">
-        Donasi
-    </a>
-
-</div>
+        <span>
+            •
+        </span>
 
 
-<div class="copyright">
-    © Copyright 2026-CN Novel-Translation
-</div>
+        <a href="../index.html#donasi">
+            Donasi
+        </a>
 
-</footer><!-- =========================
+    </div>
+
+
+    <div class="copyright">
+        © Copyright 2026-CN Novel-Translation
+    </div>
+
+</footer>
+
+
+<!-- =========================
      JAVASCRIPT
-========================= --><script>
+========================= -->
+
+<script>
 
 
     /* =========================
@@ -602,8 +1026,21 @@
         "click",
         function () {
 
-            readerSettings.classList.toggle(
-                "active"
+            const isActive =
+                readerSettings.classList.toggle(
+                    "active"
+                );
+
+
+            readerSettingsButton.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            readerSettingsButton.setAttribute(
+                "aria-expanded",
+                isActive
             );
 
         }
@@ -735,6 +1172,54 @@
                     query;
 
             }
+
+        }
+    );
+
+
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    const backToTop =
+        document.getElementById(
+            "backToTop"
+        );
+
+
+
+    window.addEventListener(
+        "scroll",
+        function () {
+
+            if (window.scrollY > 500) {
+
+                backToTop.classList.add(
+                    "show"
+                );
+
+            } else {
+
+                backToTop.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    backToTop.addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
         }
     );
@@ -931,4 +1416,9 @@
     loadGiscus();
 
 
-</script></body></html>
+</script>
+
+
+</body>
+
+</html>
