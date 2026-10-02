@@ -9,15 +9,23 @@
 
     <title>CN Novel-Translation</title>
 
+
     <!-- FONT NAMA WEBSITE -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS UTAMA -->
 
     <link rel="stylesheet" href="css/style.css">
+
 
     <style>
 
@@ -28,33 +36,38 @@
         .menu-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.45);
             opacity: 0;
             visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 998;
+            transition: opacity 0.25s ease;
+            z-index: 999;
         }
 
         .menu-overlay.active {
             opacity: 1;
             visibility: visible;
-            pointer-events: auto;
         }
 
         .side-menu {
             position: fixed;
             top: 0;
             left: 0;
-            width: min(82vw, 320px);
+
+            width: 260px;
+            max-width: 82vw;
             height: 100vh;
+
             background: var(--card);
             color: var(--text);
+
             transform: translateX(-100%);
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 999;
-            overflow-y: auto;
+            transition: transform 0.25s ease;
+
+            z-index: 1000;
+
             box-shadow: 4px 0 18px rgba(0, 0, 0, 0.12);
+
+            overflow-y: auto;
         }
 
         .side-menu.active {
@@ -62,59 +75,56 @@
         }
 
         .menu-header {
+            height: 52px;
+
+            padding: 0 16px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 58px;
-            padding: 0 14px 0 18px;
-            border-bottom: 1px solid var(--border);
-        }
 
-        .menu-header span {
-            font-size: 18px;
+            border-bottom: 1px solid var(--border);
+
+            font-size: 16px;
             font-weight: 600;
         }
 
         .menu-close {
-            width: 36px;
-            height: 36px;
             border: none;
-            border-radius: 50%;
-            background: transparent;
+            background: none;
+
             color: var(--text);
+
             font-size: 25px;
             line-height: 1;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
 
-        .menu-close:hover {
-            background: var(--bg);
+            cursor: pointer;
+
+            padding: 3px 5px;
         }
 
         .menu-item {
+            min-height: 43px;
+
+            padding: 0 16px;
+
             display: flex;
             align-items: center;
-            width: 100%;
-            min-height: 48px;
-            padding: 0 18px;
-            border-bottom: 1px solid var(--border);
-            background: transparent;
+
+            box-sizing: border-box;
+
             color: var(--text);
             text-decoration: none;
-            font-size: 16px;
-            box-sizing: border-box;
+
+            font-size: 15px;
+
+            border-bottom: 1px solid var(--border);
+
             cursor: pointer;
-            transition:
-                background-color 0.2s ease,
-                color 0.2s ease,
-                padding-left 0.2s ease;
         }
 
         .menu-item:hover {
             background: var(--bg);
-            color: var(--primary);
-            padding-left: 22px;
         }
 
         .menu-novel {
@@ -122,78 +132,398 @@
         }
 
         .menu-arrow {
-            font-size: 22px;
+            font-size: 20px;
             line-height: 1;
-            transition: transform 0.25s ease;
+
+            transition: transform 0.2s ease;
         }
 
         .menu-novel.active .menu-arrow {
             transform: rotate(90deg);
         }
 
+
         /* SUBMENU NOVEL */
 
         .novel-submenu {
             max-height: 0;
+
             overflow: hidden;
+
             background: var(--bg);
-            transition:
-                max-height 0.3s ease,
-                opacity 0.25s ease;
+
             opacity: 0;
+
+            transition:
+                max-height 0.25s ease,
+                opacity 0.2s ease;
         }
 
         .novel-submenu.active {
-            max-height: 240px;
+            max-height: 190px;
             opacity: 1;
         }
 
         .novel-submenu a {
+            min-height: 38px;
+
+            padding: 0 16px 0 31px;
+
             display: flex;
             align-items: center;
-            min-height: 44px;
-            padding: 0 18px 0 34px;
-            border-bottom: 1px solid var(--border);
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 15px;
+
             box-sizing: border-box;
-            transition:
-                background-color 0.2s ease,
-                color 0.2s ease,
-                padding-left 0.2s ease;
+
+            color: var(--text);
+            text-decoration: none;
+
+            font-size: 14px;
+
+            border-bottom: 1px solid var(--border);
         }
 
         .novel-submenu a:hover {
             background: var(--card);
-            color: var(--primary);
-            padding-left: 38px;
         }
 
         body.menu-open {
             overflow: hidden;
         }
 
-        /* MOBILE */
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-container {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 900;
+
+            width: 100%;
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            padding: 10px 14px;
+
+            box-sizing: border-box;
+
+            background: var(--bg);
+        }
+
+        .search-container input {
+
+            display: block;
+
+            width: 100%;
+            height: 42px;
+
+            padding: 0 14px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            font-family: inherit;
+            font-size: 15px;
+
+            outline: none;
+
+            box-sizing: border-box;
+
+            transition:
+                border-color 0.2s ease,
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-container input::placeholder {
+            color: var(--secondary);
+        }
+
+
+        /* =========================
+           BERANDA
+        ========================= */
+
+        main {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 18px 14px 30px;
+
+            box-sizing: border-box;
+        }
+
+        .novel-section {
+            margin: 0 0 28px;
+        }
+
+        .section-title {
+
+            margin: 0 0 12px;
+
+            padding-bottom: 7px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title h2 {
+
+            margin: 0;
+
+            font-size: 19px;
+
+            line-height: 1.3;
+
+            color: var(--text);
+        }
+
+
+        /* GRID NOVEL */
+
+        .novel-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 10px;
+
+            width: 100%;
+        }
+
+
+        /* CARD NOVEL */
+
+        .novel-card {
+
+            min-width: 0;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            background: var(--card);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.2s ease,
+                background-color 0.25s ease;
+        }
+
+        .novel-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .novel-card a {
+
+            display: block;
+
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+        .novel-card img {
+
+            width: 100%;
+
+            aspect-ratio: 2 / 3;
+
+            display: block;
+
+            object-fit: cover;
+
+            background: var(--bg);
+        }
+
+        .novel-card-content {
+
+            padding: 9px 10px 10px;
+        }
+
+        .novel-card-content h3 {
+
+            margin: 0 0 5px;
+
+            font-size: 15px;
+
+            line-height: 1.35;
+
+            color: var(--text);
+
+            display: -webkit-box;
+
+            -webkit-line-clamp: 2;
+
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+        }
+
+        .novel-card-content p {
+
+            margin: 0 0 6px;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+            color: var(--secondary);
+
+        }
+
+        .novel-card-content span {
+
+            font-size: 12px;
+
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           PAGINATION
+        ========================= */
+
+        .pagination {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            margin-top: 16px;
+        }
+
+        .pagination button {
+
+            min-width: 32px;
+            height: 32px;
+
+            padding: 0 8px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 6px;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            font-family: inherit;
+        }
+
+        .pagination button.active {
+
+            background: var(--primary);
+
+            color: #fff;
+
+            border-color: var(--primary);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 480px) {
 
             .side-menu {
-                width: min(84vw, 310px);
+                width: 250px;
             }
 
             .menu-header {
-                min-height: 56px;
+                height: 50px;
             }
 
             .menu-item {
-                min-height: 47px;
+                min-height: 42px;
             }
 
             .novel-submenu a {
-                min-height: 43px;
+                min-height: 37px;
             }
 
+            .search-container {
+
+                max-width: none;
+
+                padding: 9px 12px;
+            }
+
+            .search-container input {
+
+                height: 41px;
+
+                font-size: 14px;
+            }
+
+            main {
+
+                padding:
+                    14px 12px 28px;
+            }
+
+            .novel-grid {
+
+                gap: 9px;
+            }
+
+            .section-title h2 {
+
+                font-size: 18px;
+            }
+        }
+
+
+        /* =========================
+           DESKTOP
+        ========================= */
+
+        @media (min-width: 700px) {
+
+            .novel-grid {
+
+                grid-template-columns:
+                    repeat(4, minmax(0, 1fr));
+
+                gap: 12px;
+            }
+
+            main {
+
+                padding:
+                    24px 20px 40px;
+            }
+
+            .search-container {
+
+                padding-left: 20px;
+                padding-right: 20px;
+            }
         }
 
     </style>
@@ -202,6 +532,7 @@
 
 
 <body>
+
 
     <!-- =========================
          HEADER
@@ -213,18 +544,25 @@
             class="menu-button"
             id="menuButton"
             aria-label="Buka menu"
-            aria-expanded="false">
+            aria-expanded="false"
+        >
             ☰
         </button>
 
-        <a href="index.html" class="site-title">
+
+        <a
+            href="index.html"
+            class="site-title"
+        >
             CN Novel-Translation
         </a>
+
 
         <button
             class="theme-button"
             id="themeButton"
-            aria-label="Ganti tema">
+            aria-label="Ganti tema"
+        >
             ☀️
         </button>
 
@@ -235,14 +573,20 @@
          MENU OVERLAY
     ========================= -->
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
 
 
     <!-- =========================
          SIDE MENU
     ========================= -->
 
-    <nav class="side-menu" id="sideMenu">
+    <nav
+        class="side-menu"
+        id="sideMenu"
+    >
 
         <div class="menu-header">
 
@@ -251,34 +595,35 @@
             <button
                 class="menu-close"
                 id="menuClose"
-                aria-label="Tutup menu">
+                aria-label="Tutup menu"
+            >
                 ×
             </button>
 
         </div>
 
 
-        <!-- NOVEL -->
-
         <div
             class="menu-item menu-novel"
             id="menuNovel"
             role="button"
             tabindex="0"
-            aria-expanded="false">
+            aria-expanded="false"
+        >
 
             <span>Novel</span>
 
-            <span class="menu-arrow">›</span>
+            <span class="menu-arrow">
+                ›
+            </span>
 
         </div>
 
 
-        <!-- SUBMENU NOVEL -->
-
         <div
             class="novel-submenu"
-            id="novelSubmenu">
+            id="novelSubmenu"
+        >
 
             <a href="#ongoing">
                 On-going
@@ -299,17 +644,26 @@
         </div>
 
 
-        <!-- MENU LAIN -->
-
-        <a href="#bookmark" class="menu-item">
+        <a
+            href="#bookmark"
+            class="menu-item"
+        >
             Bookmark
         </a>
 
-        <a href="#donasi" class="menu-item">
+
+        <a
+            href="#donasi"
+            class="menu-item"
+        >
             Donasi
         </a>
 
-        <a href="#login" class="menu-item">
+
+        <a
+            href="#login"
+            class="menu-item"
+        >
             Login
         </a>
 
@@ -326,7 +680,8 @@
             type="search"
             id="searchInput"
             placeholder="Cari novel..."
-            autocomplete="off">
+            autocomplete="off"
+        >
 
     </div>
 
@@ -338,20 +693,26 @@
     <main>
 
 
-        <!-- NOVEL RANDOM -->
+        <!-- RANDOM NOVEL -->
 
-        <section class="novel-section" id="ongoing">
+        <section
+            class="novel-section"
+            id="ongoing"
+        >
 
             <div class="section-title">
 
-                <h2>Novel Random</h2>
+                <h2>
+                    Novel Random
+                </h2>
 
             </div>
+
 
             <div
                 class="novel-grid"
-                id="randomNovels">
-            </div>
+                id="randomNovels"
+            ></div>
 
         </section>
 
@@ -362,20 +723,23 @@
 
             <div class="section-title">
 
-                <h2>Latest Update</h2>
+                <h2>
+                    Latest Update
+                </h2>
 
             </div>
+
 
             <div
                 class="novel-grid"
-                id="latestUpdates">
-            </div>
+                id="latestUpdates"
+            ></div>
 
 
             <div
                 class="pagination"
-                id="pagination">
-            </div>
+                id="pagination"
+            ></div>
 
         </section>
 
@@ -385,18 +749,22 @@
         <section
             class="novel-section"
             id="searchResultsSection"
-            style="display: none;">
+            style="display:none;"
+        >
 
             <div class="section-title">
 
-                <h2>Hasil Pencarian</h2>
+                <h2>
+                    Hasil Pencarian
+                </h2>
 
             </div>
+
 
             <div
                 class="novel-grid"
-                id="searchResults">
-            </div>
+                id="searchResults"
+            ></div>
 
         </section>
 
@@ -410,11 +778,17 @@
 
     <footer class="site-footer">
 
-        <div>CN Novel-Translation</div>
+        <div>
+            CN Novel-Translation
+        </div>
 
-        <div>Home • Donasi</div>
+        <div>
+            Home • Donasi
+        </div>
 
-        <div>© Copyright 2026-CN Novel-Translation</div>
+        <div>
+            © Copyright 2026-CN Novel-Translation
+        </div>
 
     </footer>
 
@@ -424,6 +798,7 @@
     ========================= -->
 
     <script>
+
 
         /* =========================
            THEME
@@ -437,6 +812,7 @@
 
             const savedTheme =
                 localStorage.getItem("theme");
+
 
             if (savedTheme === "dark") {
 
@@ -455,35 +831,50 @@
         }
 
 
-        themeButton.addEventListener("click", function () {
+        themeButton.addEventListener(
+            "click",
+            function () {
 
-            document.body.classList.toggle("dark");
+                document.body.classList.toggle("dark");
 
-            if (document.body.classList.contains("dark")) {
 
-                localStorage.setItem("theme", "dark");
+                if (
+                    document.body.classList.contains("dark")
+                ) {
 
-                themeButton.textContent = "🌙";
+                    localStorage.setItem(
+                        "theme",
+                        "dark"
+                    );
 
-            } else {
+                    themeButton.textContent = "🌙";
 
-                localStorage.setItem("theme", "light");
+                } else {
 
-                themeButton.textContent = "☀️";
+                    localStorage.setItem(
+                        "theme",
+                        "light"
+                    );
+
+                    themeButton.textContent = "☀️";
+
+                }
 
             }
-
-        });
+        );
 
 
         loadTheme();
 
 
-        window.addEventListener("pageshow", function () {
+        window.addEventListener(
+            "pageshow",
+            function () {
 
-            loadTheme();
+                loadTheme();
 
-        });
+            }
+        );
 
 
         /* =========================
@@ -575,19 +966,17 @@
         );
 
 
-        /* =========================
-           TOGGLE SUBMENU NOVEL
-        ========================= */
-
         function toggleNovelSubmenu() {
 
             const isActive =
                 novelSubmenu.classList.toggle("active");
 
+
             menuNovel.classList.toggle(
                 "active",
                 isActive
             );
+
 
             menuNovel.setAttribute(
                 "aria-expanded",
@@ -622,31 +1011,25 @@
         );
 
 
-        /* =========================
-           LINK MENU
-        ========================= */
-
         const menuLinks =
             sideMenu.querySelectorAll("a");
 
 
-        menuLinks.forEach(function (link) {
+        menuLinks.forEach(
+            function (link) {
 
-            link.addEventListener(
-                "click",
-                function () {
+                link.addEventListener(
+                    "click",
+                    function () {
 
-                    closeMenu();
+                        closeMenu();
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
-
-        /* =========================
-           ESCAPE
-        ========================= */
 
         document.addEventListener(
             "keydown",
@@ -732,31 +1115,6 @@
 
 
         /* =========================
-           RANDOM NOVELS
-        ========================= */
-
-        function showRandomNovels() {
-
-            const container =
-                document.getElementById(
-                    "randomNovels"
-                );
-
-            const shuffled =
-                [...novels].sort(
-                    () => Math.random() - 0.5
-                );
-
-            const selected =
-                shuffled.slice(0, 3);
-
-            container.innerHTML =
-                selected.map(createNovelCard).join("");
-
-        }
-
-
-        /* =========================
            NOVEL CARD
         ========================= */
 
@@ -770,7 +1128,8 @@
 
                         <img
                             src="${novel.cover}"
-                            alt="${novel.title}">
+                            alt="${novel.title}"
+                        >
 
                         <div class="novel-card-content">
 
@@ -798,6 +1157,36 @@
 
 
         /* =========================
+           RANDOM NOVEL
+        ========================= */
+
+        function showRandomNovels() {
+
+            const container =
+                document.getElementById(
+                    "randomNovels"
+                );
+
+
+            const shuffled =
+                [...novels].sort(
+                    () => Math.random() - 0.5
+                );
+
+
+            const selected =
+                shuffled.slice(0, 3);
+
+
+            container.innerHTML =
+                selected.map(
+                    createNovelCard
+                ).join("");
+
+        }
+
+
+        /* =========================
            LATEST UPDATE
         ========================= */
 
@@ -813,19 +1202,24 @@
                     "latestUpdates"
                 );
 
+
             const start =
                 (page - 1) * latestPerPage;
+
 
             const end =
                 start + latestPerPage;
 
+
             const pageNovels =
                 novels.slice(start, end);
 
+
             container.innerHTML =
-                pageNovels
-                    .map(createNovelCard)
-                    .join("");
+                pageNovels.map(
+                    createNovelCard
+                ).join("");
+
 
             showPagination(page);
 
@@ -843,11 +1237,13 @@
                     "pagination"
                 );
 
+
             const totalPages =
                 Math.ceil(
                     novels.length /
                     latestPerPage
                 );
+
 
             pagination.innerHTML = "";
 
@@ -859,15 +1255,22 @@
             ) {
 
                 const button =
-                    document.createElement("button");
+                    document.createElement(
+                        "button"
+                    );
+
 
                 button.textContent = i;
 
+
                 if (i === page) {
 
-                    button.classList.add("active");
+                    button.classList.add(
+                        "active"
+                    );
 
                 }
+
 
                 button.addEventListener(
                     "click",
@@ -885,6 +1288,7 @@
                     }
                 );
 
+
                 pagination.appendChild(button);
 
             }
@@ -901,10 +1305,12 @@
                 "searchInput"
             );
 
+
         const searchResultsSection =
             document.getElementById(
                 "searchResultsSection"
             );
+
 
         const searchResults =
             document.getElementById(
@@ -915,7 +1321,15 @@
         function performSearch(keyword) {
 
             keyword =
-                keyword.trim().toLowerCase();
+                keyword
+                    .trim()
+                    .toLowerCase();
+
+
+            const sections =
+                document.querySelectorAll(
+                    ".novel-section"
+                );
 
 
             if (!keyword) {
@@ -923,13 +1337,11 @@
                 searchResultsSection.style.display =
                     "none";
 
-                document.querySelectorAll(
-                    ".novel-section"
-                )[0].style.display = "";
+                sections[0].style.display =
+                    "";
 
-                document.querySelectorAll(
-                    ".novel-section"
-                )[1].style.display = "";
+                sections[1].style.display =
+                    "";
 
                 return;
 
@@ -937,25 +1349,22 @@
 
 
             const results =
-                novels.filter(function (novel) {
+                novels.filter(
+                    function (novel) {
 
-                    return novel.title
-                        .toLowerCase()
-                        .includes(keyword);
+                        return novel.title
+                            .toLowerCase()
+                            .includes(keyword);
 
-                });
+                    }
+                );
 
 
-            document.querySelectorAll(
-                ".novel-section"
-            )[0].style.display =
+            sections[0].style.display =
                 "none";
 
-            document.querySelectorAll(
-                ".novel-section"
-            )[1].style.display =
+            sections[1].style.display =
                 "none";
-
 
             searchResultsSection.style.display =
                 "";
@@ -992,7 +1401,7 @@
 
 
         /* =========================
-           URL SEARCH
+           SEARCH DARI URL
         ========================= */
 
         const urlParams =
@@ -1000,21 +1409,25 @@
                 window.location.search
             );
 
+
         const urlSearch =
             urlParams.get("search");
 
 
         if (urlSearch) {
 
-            searchInput.value = urlSearch;
+            searchInput.value =
+                urlSearch;
 
-            performSearch(urlSearch);
+            performSearch(
+                urlSearch
+            );
 
         }
 
 
         /* =========================
-           INITIALIZE
+           LOAD NOVEL
         ========================= */
 
         showRandomNovels();
@@ -1023,6 +1436,7 @@
 
     </script>
 
-</body>
 
+</body>
+    
 </html>
