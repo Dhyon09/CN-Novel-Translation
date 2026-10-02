@@ -13,25 +13,39 @@
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+
+    <!-- =========================
+         HEADER
+    ========================== -->
 
     <header class="site-header">
 
         <div class="header-inner">
 
-            <a href="../index.html" class="site-logo">
+            <a href="../index.html" class="site-title">
                 CN Novel-Translation
             </a>
 
+
             <div class="header-actions">
 
-                <button id="themeButton" class="theme-button">
+                <button
+                    id="themeButton"
+                    class="theme-button"
+                    aria-label="Ganti tema"
+                >
                     ☀️
                 </button>
 
-                <button id="menuButton" class="menu-button">
+
+                <button
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="Buka menu"
+                >
                     ☰
                 </button>
 
@@ -39,48 +53,86 @@
 
         </div>
 
-        <!-- MENU -->
 
-        <nav id="mainMenu" class="main-menu">
+        <!-- NAVIGATION -->
 
-            <a href="../index.html">
+        <nav id="mainMenu" class="navigation-menu">
+
+
+            <a
+                href="../index.html"
+                class="menu-link"
+            >
                 Beranda
             </a>
 
-            <a href="../index.html#ongoing">
-                Ongoing
-            </a>
 
-            <a href="../index.html#completed">
-                Completed
-            </a>
+            <div class="menu-item menu-novel">
 
-            <a href="../index.html#hiatus">
-                Hiatus
-            </a>
+                <a
+                    href="../index.html#ongoing"
+                    class="menu-link"
+                >
+                    Novel
+                </a>
 
-            <a href="../index.html#drop">
-                Drop
-            </a>
 
-            <a href="../index.html#bookmark">
+                <div class="submenu">
+
+                    <a href="../index.html#ongoing">
+                        Ongoing
+                    </a>
+
+                    <a href="../index.html#completed">
+                        Completed
+                    </a>
+
+                    <a href="../index.html#hiatus">
+                        Hiatus
+                    </a>
+
+                    <a href="../index.html#drop">
+                        Drop
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="../index.html#bookmark"
+                class="menu-link"
+            >
                 Bookmark
             </a>
 
-            <a href="../index.html#donasi">
+
+            <a
+                href="../index.html#donasi"
+                class="menu-link"
+            >
                 Donasi
             </a>
 
-            <a href="../index.html#login">
+
+            <a
+                href="../index.html#login"
+                class="menu-link"
+            >
                 Login
             </a>
+
 
         </nav>
 
     </header>
 
 
-    <!-- SEARCH -->
+
+    <!-- =========================
+         SEARCH
+    ========================== -->
 
     <div class="global-search-bar">
 
@@ -91,6 +143,7 @@
                 <span class="search-icon">
                     🔍
                 </span>
+
 
                 <input
                     type="search"
@@ -106,9 +159,13 @@
     </div>
 
 
-    <!-- MAIN -->
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main>
+
 
         <section class="novel-container">
 
@@ -117,8 +174,6 @@
 
             <div class="novel-header">
 
-
-                <!-- COVER -->
 
                 <div class="novel-cover">
 
@@ -130,7 +185,6 @@
                 </div>
 
 
-                <!-- INFO -->
 
                 <div class="novel-info">
 
@@ -138,9 +192,11 @@
                         Contoh Novel A
                     </h1>
 
+
                     <p class="novel-meta">
                         Fantasy • Romance
                     </p>
+
 
                     <p class="novel-status">
                         Status:
@@ -149,12 +205,11 @@
                         </strong>
                     </p>
 
+
                     <p class="novel-meta">
                         Chapter Terbaru: Chapter 25
                     </p>
 
-
-                    <!-- BOOKMARK -->
 
                     <button
                         id="bookmarkButton"
@@ -165,10 +220,22 @@
 
                 </div>
 
+
             </div>
 
 
-            <!-- DESKRIPSI -->
+
+            <!-- =========================
+                 PEMBATAS
+            ========================== -->
+
+            <div class="novel-divider"></div>
+
+
+
+            <!-- =========================
+                 SINOPSIS
+            ========================== -->
 
             <section class="novel-description">
 
@@ -176,12 +243,14 @@
                     Sinopsis
                 </h2>
 
+
                 <p>
                     Ini adalah contoh sinopsis novel.
                     Bagian ini nantinya dapat kamu ganti
                     dengan sinopsis asli dari novel yang
                     kamu terjemahkan.
                 </p>
+
 
                 <p>
                     Kamu dapat menjelaskan dunia cerita,
@@ -192,13 +261,17 @@
             </section>
 
 
-            <!-- DAFTAR CHAPTER -->
+
+            <!-- =========================
+                 DAFTAR CHAPTER
+            ========================== -->
 
             <section class="chapter-list-section">
 
                 <h2>
                     Daftar Chapter
                 </h2>
+
 
                 <div class="chapter-list">
 
@@ -211,13 +284,17 @@
             </section>
 
 
-            <!-- KOMENTAR -->
+
+            <!-- =========================
+                 KOMENTAR
+            ========================== -->
 
             <section class="comments-section">
 
                 <h2>
                     Komentar
                 </h2>
+
 
                 <div
                     class="giscus"
@@ -230,10 +307,14 @@
 
         </section>
 
+
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer class="site-footer">
 
@@ -241,13 +322,18 @@
             CN Novel-Translation
         </div>
 
+
         <div class="footer-links">
 
             <a href="../index.html">
                 Home
             </a>
 
-            <span>•</span>
+
+            <span>
+                •
+            </span>
+
 
             <a href="../index.html#donasi">
                 Donasi
@@ -255,21 +341,25 @@
 
         </div>
 
-        <div class="footer-copy">
+
+        <div class="copyright">
             © Copyright 2026-CN Novel-Translation
         </div>
 
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script>
 
 
         /* =========================
            THEME
-        ========================= */
+        ========================== */
 
         const themeButton =
             document.getElementById("themeButton");
@@ -337,11 +427,6 @@
         loadTheme();
 
 
-        /*
-         * Memastikan tema mengikuti kondisi terbaru
-         * ketika kembali menggunakan tombol Back HP.
-         */
-
         window.addEventListener(
             "pageshow",
             function () {
@@ -354,12 +439,14 @@
         );
 
 
+
         /* =========================
            MENU
-        ========================= */
+        ========================== */
 
         const menuButton =
             document.getElementById("menuButton");
+
 
         const mainMenu =
             document.getElementById("mainMenu");
@@ -375,9 +462,10 @@
         );
 
 
+
         /* =========================
            BOOKMARK
-        ========================= */
+        ========================== */
 
         const bookmarkButton =
             document.getElementById("bookmarkButton");
@@ -449,9 +537,10 @@
         loadBookmark();
 
 
+
         /* =========================
            SEARCH
-        ========================= */
+        ========================== */
 
         const searchInput =
             document.getElementById("searchInput");
@@ -481,9 +570,10 @@
         );
 
 
+
         /* =========================
            GISCUS
-        ========================= */
+        ========================== */
 
         function loadGiscus() {
 
@@ -597,6 +687,7 @@
         }
 
 
+
         function updateGiscusTheme() {
 
             const iframe =
@@ -634,6 +725,7 @@
 
 
     </script>
+
 
 </body>
 
