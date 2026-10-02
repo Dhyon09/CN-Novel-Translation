@@ -25,11 +25,6 @@ body.dark {
     --shadow: rgba(0, 0, 0, 0.25);
 }
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
 * {
     box-sizing: border-box;
 }
@@ -42,12 +37,10 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-
     font-family:
         Georgia,
         "Times New Roman",
         serif;
-
     transition:
         background-color 0.3s ease,
         color 0.3s ease;
@@ -62,33 +55,23 @@ button {
     font-family: inherit;
 }
 
-
 /* =========================================================
    HEADER
-   SAMA UNTUK SEMUA HALAMAN
 ========================================================= */
 
 .site-header {
     height: 58px;
-
     display: grid;
     grid-template-columns: 48px 1fr 48px;
     align-items: center;
-
     background: var(--header);
     color: #ffffff;
-
     position: sticky;
     top: 0;
-
     z-index: 1000;
-
     box-shadow:
         0 2px 8px rgba(0, 0, 0, 0.15);
 }
-
-
-/* SUPPORT SEMUA NAMA CLASS HEADER */
 
 .menu-button,
 .menu-btn,
@@ -96,15 +79,11 @@ button {
 .theme-btn {
     width: 48px;
     height: 58px;
-
     border: none;
     background: transparent;
     color: #ffffff;
-
     font-size: 20px;
-
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,9 +96,6 @@ button {
     background: rgba(255, 255, 255, 0.08);
 }
 
-
-/* HEADER KIRI / KANAN */
-
 .header-left,
 .header-right {
     display: flex;
@@ -127,18 +103,12 @@ button {
     justify-content: center;
 }
 
-
-/* NAMA WEBSITE */
-
 .site-title {
     text-align: center;
-
     font-size: 19px;
     font-weight: 600;
-
     white-space: nowrap;
 }
-
 
 /* =========================================================
    SIDE MENU
@@ -146,29 +116,16 @@ button {
 
 .side-menu {
     position: fixed;
-
     top: 58px;
     left: 0;
-
     width: 250px;
     max-height: calc(100vh - 58px);
-
     overflow-y: auto;
-
     background: var(--card);
-
-    border-right:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        4px 0 15px var(--shadow);
-
+    border-right: 1px solid var(--border);
+    box-shadow: 4px 0 15px var(--shadow);
     transform: translateX(-105%);
-
-    transition:
-        transform 0.25s ease;
-
+    transition: transform 0.25s ease;
     z-index: 999;
 }
 
@@ -176,28 +133,15 @@ button {
     transform: translateX(0);
 }
 
-
-/* MENU ITEM */
-
 .menu-item,
 .menu-parent {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     min-height: 48px;
-
-    padding:
-        12px
-        18px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
     color: var(--text);
-
     cursor: pointer;
 }
 
@@ -206,54 +150,31 @@ button {
     background: var(--bg);
 }
 
-
-/* MENU HEADER */
-
 .menu-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     min-height: 50px;
-
-    padding:
-        10px
-        18px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
     font-weight: 600;
 }
 
 .menu-close {
     border: none;
-
     background: transparent;
-
     color: var(--text);
-
     font-size: 25px;
-
     cursor: pointer;
 }
-
-
-/* PANAH */
 
 .menu-arrow {
     font-size: 20px;
 }
 
-
-/* SUBMENU */
-
 .novel-submenu,
 .submenu {
     display: none;
-
     background: var(--bg);
 }
 
@@ -265,17 +186,8 @@ button {
 .novel-submenu a,
 .submenu a {
     display: block;
-
-    padding:
-        11px
-        18px
-        11px
-        34px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
+    padding: 11px 18px 11px 34px;
+    border-bottom: 1px solid var(--border);
     color: var(--secondary);
 }
 
@@ -284,28 +196,15 @@ button {
     color: var(--primary);
 }
 
-
-/* SUBMENU HEADER */
-
 .submenu-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
-    padding:
-        12px
-        18px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
     color: var(--text);
-
     cursor: pointer;
 }
-
 
 /* =========================================================
    MENU OVERLAY
@@ -313,18 +212,11 @@ button {
 
 .menu-overlay {
     position: fixed;
-
     inset: 0;
-
-    background:
-        rgba(0, 0, 0, 0.35);
-
+    background: rgba(0, 0, 0, 0.35);
     opacity: 0;
     visibility: hidden;
-
-    transition:
-        opacity 0.25s ease;
-
+    transition: opacity 0.25s ease;
     z-index: 998;
 }
 
@@ -333,28 +225,24 @@ button {
     visibility: visible;
 }
 
-
 /* =========================================================
-   HOMEPAGE
+   GLOBAL SEARCH
 ========================================================= */
 
-.home-container {
+.global-search-bar {
+    position: sticky;
+    top: 58px;
+    z-index: 900;
     width: 100%;
-    max-width: 900px;
-
-    margin: 0 auto;
-
-    padding:
-        18px
-        16px
-        40px;
+    padding: 10px 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
 }
 
-
-/* SEARCH */
-
-.search-section {
-    margin-bottom: 28px;
+.global-search-inner {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .search-box {
@@ -364,25 +252,13 @@ button {
 
 .search-box input {
     width: 100%;
-
-    padding:
-        13px
-        15px
-        13px
-        42px;
-
-    border:
-        1px solid
-        var(--border);
-
+    padding: 11px 15px 11px 42px;
+    border: 1px solid var(--border);
     border-radius: 8px;
-
     background: var(--card);
     color: var(--text);
-
     font-family: inherit;
     font-size: 15px;
-
     outline: none;
 }
 
@@ -392,20 +268,22 @@ button {
 
 .search-icon {
     position: absolute;
-
     left: 14px;
     top: 50%;
-
-    transform:
-        translateY(-50%);
-
+    transform: translateY(-50%);
     pointer-events: none;
 }
 
-
 /* =========================================================
-   HOME SECTION
+   HOMEPAGE
 ========================================================= */
+
+.home-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 18px 16px 40px;
+}
 
 .home-section {
     margin-bottom: 34px;
@@ -417,13 +295,10 @@ button {
 
 .section-heading h2 {
     margin: 0;
-
     font-size: 22px;
     font-weight: 600;
-
     color: var(--text);
 }
-
 
 /* =========================================================
    RANDOM NOVEL
@@ -431,27 +306,17 @@ button {
 
 .random-novels {
     display: flex;
-
     flex-direction: column;
-
     gap: 12px;
 }
 
 .random-novel-card {
     display: flex;
-
     gap: 14px;
-
     padding: 12px;
-
     background: var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 9px;
-
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
@@ -459,20 +324,14 @@ button {
 
 .random-novel-card:hover {
     transform: translateY(-2px);
-
-    box-shadow:
-        0 5px 16px
-        var(--shadow);
+    box-shadow: 0 5px 16px var(--shadow);
 }
 
 .random-novel-card img {
     width: 75px;
     height: 110px;
-
     object-fit: cover;
-
     border-radius: 5px;
-
     flex-shrink: 0;
 }
 
@@ -481,61 +340,38 @@ button {
 }
 
 .random-novel-info h3 {
-    margin:
-        2px
-        0
-        7px;
-
+    margin: 2px 0 7px;
     font-size: 18px;
-
     word-break: break-word;
 }
 
 .random-novel-info p {
-    margin:
-        0
-        0
-        7px;
-
+    margin: 0 0 7px;
     color: var(--secondary);
-
     font-size: 14px;
-
     line-height: 1.4;
 }
 
 .random-novel-info span {
     font-size: 13px;
-
     color: var(--primary);
 }
-
 
 /* =========================================================
    LATEST UPDATE
 ========================================================= */
 
 .latest-updates {
-    border-top:
-        1px solid
-        var(--border);
+    border-top: 1px solid var(--border);
 }
 
 .latest-item {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 12px;
-
-    padding:
-        14px
-        4px;
-
-    border-bottom:
-        1px solid
-        var(--border);
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--border);
 }
 
 .latest-info {
@@ -543,32 +379,22 @@ button {
 }
 
 .latest-info h3 {
-    margin:
-        0
-        0
-        4px;
-
+    margin: 0 0 4px;
     font-size: 17px;
-
     word-break: break-word;
 }
 
 .latest-info p {
     margin: 0;
-
     color: var(--secondary);
-
     font-size: 14px;
 }
 
 .latest-arrow {
     flex-shrink: 0;
-
     font-size: 24px;
-
     color: var(--secondary);
 }
-
 
 /* =========================================================
    PAGINATION
@@ -576,38 +402,26 @@ button {
 
 .pagination {
     display: flex;
-
     justify-content: center;
-
     gap: 6px;
-
     margin-top: 18px;
 }
 
 .pagination button {
     min-width: 34px;
     height: 34px;
-
-    border:
-        1px solid
-        var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 6px;
-
     background: var(--card);
     color: var(--text);
-
     cursor: pointer;
 }
 
 .pagination button.active {
     background: var(--primary);
     color: #ffffff;
-
-    border-color:
-        var(--primary);
+    border-color: var(--primary);
 }
-
 
 /* =========================================================
    SEARCH RESULTS
@@ -615,23 +429,14 @@ button {
 
 .search-result-item {
     display: flex;
-
     flex-direction: column;
-
     gap: 5px;
-
-    padding:
-        13px
-        4px;
-
-    border-bottom:
-        1px solid
-        var(--border);
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--border);
 }
 
 .search-result-item span {
     color: var(--secondary);
-
     font-size: 14px;
 }
 
@@ -639,57 +444,37 @@ button {
     color: var(--secondary);
 }
 
-
 /* =========================================================
-   NOVEL DETAIL PAGE
+   NOVEL DETAIL
 ========================================================= */
 
 .page-container,
 .novel-container {
     width: 100%;
-
     max-width: 900px;
-
     margin: 0 auto;
-
-    padding:
-        24px
-        16px
-        45px;
+    padding: 24px 16px 45px;
 }
-
-
-/* INFORMASI NOVEL */
 
 .novel-detail {
     display: flex;
-
     align-items: flex-start;
-
     gap: 16px;
 }
 
 .novel-cover {
     width: 110px;
     height: 165px;
-
     flex-shrink: 0;
-
     border-radius: 7px;
-
     overflow: hidden;
-
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 }
 
 .novel-cover img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: block;
 }
 
@@ -699,45 +484,24 @@ button {
 }
 
 .novel-info h1 {
-    margin:
-        0
-        0
-        10px;
-
+    margin: 0 0 10px;
     font-size: 21px;
-
     line-height: 1.3;
-
     word-break: break-word;
 }
 
 .novel-info p {
-    margin:
-        5px
-        0;
-
+    margin: 5px 0;
     line-height: 1.5;
 }
 
-
-/* BOOKMARK */
-
 .bookmark-button {
     margin-top: 10px;
-
-    padding:
-        9px
-        12px;
-
-    border:
-        1px solid
-        var(--border);
-
+    padding: 9px 12px;
+    border: 1px solid var(--border);
     border-radius: 7px;
-
     background: var(--card);
     color: var(--text);
-
     cursor: pointer;
 }
 
@@ -751,58 +515,37 @@ button {
     border-color: var(--primary);
 }
 
-
-/* DESKRIPSI */
-
 .novel-description {
     margin-top: 28px;
-
     line-height: 1.7;
 }
 
 .novel-description h2,
 .chapter-list-section h2,
 .comments-section h2 {
-    margin:
-        0
-        0
-        12px;
-
+    margin: 0 0 12px;
     font-size: 21px;
 }
-
-
-/* DAFTAR CHAPTER */
 
 .chapter-list-section {
     margin-top: 30px;
 }
 
 .chapter-list {
-    border-top:
-        1px solid
-        var(--border);
+    border-top: 1px solid var(--border);
 }
 
 .chapter-list a {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
-    padding:
-        13px
-        4px;
-
-    border-bottom:
-        1px solid
-        var(--border);
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--border);
 }
 
 .chapter-list a:hover {
     color: var(--primary);
 }
-
 
 /* =========================================================
    COMMENTS
@@ -810,14 +553,9 @@ button {
 
 .comments-section {
     margin-top: 34px;
-
     padding-top: 28px;
-
-    border-top:
-        1px solid
-        var(--border);
+    border-top: 1px solid var(--border);
 }
-
 
 /* =========================================================
    READER
@@ -825,17 +563,10 @@ button {
 
 .reader-container {
     width: 100%;
-
     max-width: 780px;
-
     margin: 0 auto;
-
-    padding:
-        18px
-        16px
-        45px;
+    padding: 18px 16px 45px;
 }
-
 
 /* =========================================================
    READER SETTINGS
@@ -843,33 +574,22 @@ button {
 
 .reader-settings-wrapper {
     position: relative;
-
     display: flex;
-
     justify-content: flex-end;
-
     margin-bottom: 12px;
 }
 
 .reader-settings-btn {
     width: 38px;
     height: 38px;
-
-    border:
-        1px solid
-        var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 50%;
-
     background: var(--card);
     color: var(--text);
-
     font-size: 17px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
 }
 
@@ -877,36 +597,19 @@ button {
     border-color: var(--primary);
 }
 
-
-/* PANEL PENGATURAN */
-
 .reader-settings {
     position: absolute;
-
     top: 45px;
     right: 0;
-
     z-index: 50;
-
     display: none;
-
     align-items: center;
-
     gap: 8px;
-
     padding: 8px;
-
     background: var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 8px;
-
-    box-shadow:
-        0 5px 18px
-        var(--shadow);
+    box-shadow: 0 5px 18px var(--shadow);
 }
 
 .reader-settings.active {
@@ -916,38 +619,25 @@ button {
 .reader-settings button {
     min-width: 38px;
     height: 34px;
-
-    border:
-        1px solid
-        var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 6px;
-
     background: var(--bg);
     color: var(--text);
-
     cursor: pointer;
-
     font-size: 15px;
 }
 
 .reader-settings button:hover {
     color: var(--primary);
-
-    border-color:
-        var(--primary);
+    border-color: var(--primary);
 }
 
 .reader-settings span {
     min-width: 30px;
-
     text-align: center;
-
     font-size: 14px;
-
     color: var(--secondary);
 }
-
 
 /* =========================================================
    CHAPTER TITLE
@@ -955,54 +645,27 @@ button {
 
 .chapter-heading {
     text-align: center;
-
-    margin:
-        8px
-        0
-        28px;
-
+    margin: 8px 0 28px;
     padding-bottom: 22px;
-
-    border-bottom:
-        1px solid
-        var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
-
-/*
-   CHAPTER 1 DAN JUDUL CHAPTER
-   SENGAJA SAMA-SAMA 25px
-*/
-
 .chapter-number {
-    margin:
-        0
-        0
-        8px;
-
+    margin: 0 0 8px;
     color: var(--text);
-
     font-size: 25px;
-
     line-height: 1.35;
-
     font-weight: 600;
-
     letter-spacing: 0;
 }
 
 .chapter-heading h1 {
     margin: 0;
-
     color: var(--text);
-
     font-size: 25px;
-
     line-height: 1.35;
-
     font-weight: 600;
 }
-
 
 /* =========================================================
    ISI NOVEL
@@ -1013,23 +676,13 @@ button {
 }
 
 .reader p {
-    margin:
-        0
-        0
-        1.2em;
-
+    margin: 0 0 1.2em;
     color: var(--text);
-
     font-size: 18px;
-
     line-height: 1.85;
-
     text-align: left;
-
-    transition:
-        font-size 0.15s ease;
+    transition: font-size 0.15s ease;
 }
-
 
 /* =========================================================
    CHAPTER NAVIGATION
@@ -1037,52 +690,28 @@ button {
 
 .chapter-navigation {
     display: grid;
-
-    grid-template-columns:
-        1fr
-        auto
-        1fr;
-
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-
     gap: 8px;
-
     margin-top: 42px;
-
     padding-top: 24px;
-
-    border-top:
-        1px solid
-        var(--border);
+    border-top: 1px solid var(--border);
 }
 
 .chapter-nav-btn {
     min-width: 0;
-
-    padding:
-        10px
-        12px;
-
-    border:
-        1px solid
-        var(--border);
-
+    padding: 10px 12px;
+    border: 1px solid var(--border);
     border-radius: 7px;
-
     background: var(--card);
-
     color: var(--text);
-
     text-align: center;
-
     font-size: 14px;
-
     white-space: nowrap;
 }
 
 .chapter-nav-btn:hover {
     border-color: var(--primary);
-
     color: var(--primary);
 }
 
@@ -1096,55 +725,33 @@ button {
 
 .chapter-nav-btn.disabled {
     opacity: 0.45;
-
     pointer-events: none;
 }
 
-
 /* =========================================================
    FOOTER
-   SAMA UNTUK SEMUA HALAMAN
 ========================================================= */
 
 .site-footer {
     width: 100%;
-
-    padding:
-        28px
-        16px
-        22px;
-
+    padding: 28px 16px 22px;
     background: var(--header);
-
     color: #ffffff;
-
     text-align: center;
 }
 
-
-/* NAMA WEBSITE */
-
 .footer-title {
     margin-bottom: 8px;
-
     font-size: 17px;
-
     font-weight: 600;
 }
 
-
-/* HOME • DONASI */
-
 .footer-links {
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     gap: 7px;
-
     margin-bottom: 12px;
-
     font-size: 14px;
 }
 
@@ -1152,20 +759,12 @@ button {
     text-decoration: underline;
 }
 
-
-/* COPYRIGHT */
-
 .site-footer .copyright {
     margin: 0;
-
     font-size: 12px;
-
     line-height: 1.5;
-
-    color:
-        rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.75);
 }
-
 
 /* =========================================================
    TABLET
@@ -1175,11 +774,7 @@ button {
 
     .site-header {
         height: 62px;
-
-        grid-template-columns:
-            56px
-            1fr
-            56px;
+        grid-template-columns: 56px 1fr 56px;
     }
 
     .menu-button,
@@ -1196,9 +791,11 @@ button {
 
     .side-menu {
         top: 62px;
+        max-height: calc(100vh - 62px);
+    }
 
-        max-height:
-            calc(100vh - 62px);
+    .global-search-bar {
+        top: 62px;
     }
 
     .novel-cover {
@@ -1216,12 +813,16 @@ button {
     }
 }
 
-
 /* =========================================================
    DESKTOP
 ========================================================= */
 
 @media (min-width: 900px) {
+
+    .global-search-bar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 
     .home-container {
         padding-top: 28px;
@@ -1229,26 +830,15 @@ button {
 
     .page-container,
     .novel-container {
-        padding:
-            32px
-            20px
-            55px;
+        padding: 32px 20px 55px;
     }
 
     .novel-detail {
         padding: 24px;
-
         background: var(--card);
-
-        border:
-            1px solid
-            var(--border);
-
+        border: 1px solid var(--border);
         border-radius: 12px;
-
-        box-shadow:
-            0 5px 18px
-            var(--shadow);
+        box-shadow: 0 5px 18px var(--shadow);
     }
 
     .novel-cover {
@@ -1258,7 +848,6 @@ button {
 
     .reader-container {
         max-width: 780px;
-
         padding-top: 25px;
     }
 
@@ -1274,7 +863,6 @@ button {
         margin-top: 50px;
     }
 }
-
 
 /* =========================================================
    HP KECIL
@@ -1292,25 +880,17 @@ button {
     }
 
     .chapter-navigation {
-        grid-template-columns:
-            1fr
-            1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .chapter-nav-btn {
         font-size: 13px;
-
-        padding:
-            10px
-            7px;
+        padding: 10px 7px;
     }
 
     .chapter-nav-btn:nth-child(2) {
-        grid-column:
-            1 / -1;
-
+        grid-column: 1 / -1;
         grid-row: 1;
-
         order: -1;
     }
 
