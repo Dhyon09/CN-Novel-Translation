@@ -138,6 +138,30 @@
 
 
     <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <div class="home-container">
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+            <input
+                type="search"
+                id="globalSearch"
+                placeholder="Cari judul novel..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
          READER
     ========================= -->
 
@@ -245,7 +269,9 @@
         </article>
 
 
-        <!-- NAVIGASI CHAPTER -->
+        <!-- =========================
+             NAVIGASI CHAPTER
+        ========================= -->
 
         <nav class="chapter-navigation">
 
@@ -273,6 +299,41 @@
             </a>
 
         </nav>
+
+
+        <!-- =========================
+             KOMENTAR
+        ========================= -->
+
+        <section class="comments-section">
+
+            <h2>
+                Komentar
+            </h2>
+
+
+            <div id="giscus-container">
+
+                <script
+                    src="https://giscus.app/client.js"
+                    data-repo="Dhyon09/cn-novel-translation"
+                    data-repo-id="R_kgDOU4Dcig"
+                    data-category="General"
+                    data-category-id="DIC_kwDOU4Dcis4DG3Ff"
+                    data-mapping="pathname"
+                    data-strict="0"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="light"
+                    data-lang="id"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+
+            </div>
+
+        </section>
 
     </main>
 
@@ -345,6 +406,12 @@
 
             }
 
+
+            setTimeout(
+                updateGiscusTheme,
+                500
+            );
+
         }
 
 
@@ -365,6 +432,49 @@
 
             document.getElementById("themeIcon").textContent =
                 isDark ? "🌙" : "☀️";
+
+
+            updateGiscusTheme();
+
+        }
+
+
+        /* =========================
+           GISCUS THEME
+        ========================= */
+
+        function getGiscusTheme() {
+
+            return document.body.classList.contains("dark")
+                ? "dark"
+                : "light";
+
+        }
+
+
+        function updateGiscusTheme() {
+
+            const iframe =
+                document.querySelector(
+                    "iframe.giscus-frame"
+                );
+
+
+            if (!iframe) {
+                return;
+            }
+
+
+            iframe.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: getGiscusTheme()
+                        }
+                    }
+                },
+                "https://giscus.app"
+            );
 
         }
 
@@ -488,6 +598,41 @@
 
 
         /* =========================
+           SEARCH
+        ========================= */
+
+        const searchInput =
+            document.getElementById(
+                "globalSearch"
+            );
+
+
+        searchInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                    &&
+                    searchInput.value.trim() !== ""
+                ) {
+
+                    const query =
+                        encodeURIComponent(
+                            searchInput.value.trim()
+                        );
+
+
+                    window.location.href =
+                        "../index.html?search=" + query;
+
+                }
+
+            }
+        );
+
+
+        /* =========================
            INITIAL
         ========================= */
 
@@ -516,6 +661,27 @@
 
 
                 updateFontSize();
+
+            }
+        );
+
+
+        /* =========================
+           GISCUS READY
+        ========================= */
+
+        window.addEventListener(
+            "message",
+            function(event) {
+
+                if (
+                    event.origin ===
+                    "https://giscus.app"
+                ) {
+
+                    updateGiscusTheme();
+
+                }
 
             }
         );
