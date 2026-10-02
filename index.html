@@ -1,18 +1,302 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="id">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<head>
 
-<title>CN Novel-Translation</title>
+    <meta charset="UTF-8">
 
-<link
-    rel="stylesheet"
-    href="css/style.css"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-</head><body><!-- =========================
+    <title>CN Novel-Translation</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =========================
+           MENU NAVIGASI
+        ========================= */
+
+        .menu-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity 0.28s ease,
+                visibility 0.28s ease;
+        }
+
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+
+        .side-menu {
+            width: min(82vw, 320px);
+
+            transform: translateX(-100%);
+
+            transition:
+                transform 0.32s cubic-bezier(
+                    0.22,
+                    1,
+                    0.36,
+                    1
+                );
+
+            overflow: hidden;
+        }
+
+
+        .side-menu.active {
+            transform: translateX(0);
+        }
+
+
+        /* =========================
+           HEADER MENU
+        ========================= */
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            min-height: 58px;
+
+            padding: 0 16px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .menu-header span {
+            color: var(--text);
+
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+
+        .menu-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 36px;
+            height: 36px;
+
+            margin: 0;
+            padding: 0;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: transparent;
+            color: var(--text);
+
+            font-family: inherit;
+            font-size: 27px;
+            font-weight: 300;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease;
+        }
+
+
+        .menu-close:hover,
+        .menu-close:active {
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           MENU ITEM
+        ========================= */
+
+        .menu-item,
+        .novel-submenu > a {
+            display: flex;
+            align-items: center;
+
+            min-height: 48px;
+
+            padding: 0 16px;
+
+            border-bottom: 1px solid var(--border);
+
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease,
+                padding-left 0.2s ease;
+        }
+
+
+        .menu-item:hover,
+        .menu-item:active,
+        .novel-submenu > a:hover,
+        .novel-submenu > a:active {
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+
+        .menu-item:not(.menu-novel):hover,
+        .menu-item:not(.menu-novel):active {
+            padding-left: 20px;
+        }
+
+
+        /* =========================
+           MENU NOVEL
+        ========================= */
+
+        .menu-novel {
+            justify-content: space-between;
+        }
+
+
+        .menu-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 24px;
+            height: 24px;
+
+            font-size: 24px;
+            font-weight: 300;
+
+            line-height: 1;
+
+            transition:
+                transform 0.28s ease,
+                color 0.2s ease;
+        }
+
+
+        .menu-novel.active .menu-arrow {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           SUBMENU NOVEL
+        ========================= */
+
+        .novel-submenu {
+            position: absolute;
+
+            inset: 58px 0 0 0;
+
+            background: var(--card);
+
+            transform: translateX(100%);
+
+            transition:
+                transform 0.3s cubic-bezier(
+                    0.22,
+                    1,
+                    0.36,
+                    1
+                );
+
+            overflow-y: auto;
+        }
+
+
+        .novel-submenu.active {
+            transform: translateX(0);
+        }
+
+
+        .novel-submenu > a {
+            min-height: 48px;
+        }
+
+
+        /* =========================
+           BODY SAAT MENU TERBUKA
+        ========================= */
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .side-menu {
+                width: min(84vw, 310px);
+            }
+
+
+            .menu-header {
+                min-height: 56px;
+                padding: 0 14px;
+            }
+
+
+            .menu-header span {
+                font-size: 17px;
+            }
+
+
+            .menu-item,
+            .novel-submenu > a {
+                min-height: 47px;
+
+                padding-left: 14px;
+                padding-right: 14px;
+
+                font-size: 15px;
+            }
+
+
+            .novel-submenu {
+                inset: 56px 0 0 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
      HEADER
 ========================= -->
 
@@ -22,6 +306,7 @@
         class="menu-button"
         id="menuButton"
         aria-label="Buka menu"
+        aria-expanded="false"
     >
         ☰
     </button>
@@ -86,11 +371,15 @@
     <div
         class="menu-item menu-novel"
         id="menuNovel"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
     >
 
         <span>
             Novel
         </span>
+
 
         <span class="menu-arrow">
             ›
@@ -103,22 +392,6 @@
         class="novel-submenu"
         id="novelSubmenu"
     >
-
-        <div
-            class="submenu-header"
-            id="submenuBack"
-        >
-
-            <span>
-                Novel
-            </span>
-
-            <span>
-                ‹
-            </span>
-
-        </div>
-
 
         <a href="#ongoing">
             On-going
@@ -232,8 +505,6 @@
             id="randomNovels"
         >
 
-            <!-- Diisi JavaScript -->
-
         </div>
 
     </section>
@@ -260,8 +531,6 @@
             id="latestUpdates"
         >
 
-            <!-- Diisi JavaScript -->
-
         </div>
 
 
@@ -269,8 +538,6 @@
             class="pagination"
             id="pagination"
         >
-
-            <!-- Diisi JavaScript -->
 
         </div>
 
@@ -299,8 +566,6 @@
 
         <div id="searchResults">
 
-            <!-- Diisi JavaScript -->
-
         </div>
 
     </section>
@@ -327,9 +592,11 @@
             Home
         </a>
 
+
         <span>
             •
         </span>
+
 
         <a href="#donasi">
             Donasi
@@ -381,10 +648,6 @@
         document.getElementById("novelSubmenu");
 
 
-    const submenuBack =
-        document.getElementById("submenuBack");
-
-
 
     function openMenu() {
 
@@ -392,17 +655,58 @@
 
         menuOverlay.classList.add("active");
 
+        document.body.classList.add(
+            "menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+
+
+    function closeNovelSubmenu() {
+
+        novelSubmenu.classList.remove(
+            "active"
+        );
+
+        menuNovel.classList.remove(
+            "active"
+        );
+
+        menuNovel.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
     }
 
 
 
     function closeMenu() {
 
-        sideMenu.classList.remove("active");
+        sideMenu.classList.remove(
+            "active"
+        );
 
-        menuOverlay.classList.remove("active");
+        menuOverlay.classList.remove(
+            "active"
+        );
 
-        novelSubmenu.classList.remove("active");
+        document.body.classList.remove(
+            "menu-open"
+        );
+
+        closeNovelSubmenu();
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
     }
 
@@ -431,21 +735,98 @@
        SUBMENU NOVEL
     ========================= */
 
+    function toggleNovelSubmenu() {
+
+        const isActive =
+            novelSubmenu.classList.toggle(
+                "active"
+            );
+
+
+        menuNovel.classList.toggle(
+            "active",
+            isActive
+        );
+
+
+        menuNovel.setAttribute(
+            "aria-expanded",
+            isActive
+        );
+
+    }
+
+
+
     menuNovel.addEventListener(
         "click",
-        function () {
+        toggleNovelSubmenu
+    );
 
-            novelSubmenu.classList.add("active");
+
+    menuNovel.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Enter"
+                ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                toggleNovelSubmenu();
+
+            }
 
         }
     );
 
 
-    submenuBack.addEventListener(
-        "click",
-        function () {
 
-            novelSubmenu.classList.remove("active");
+    /* =========================
+       TUTUP MENU SAAT LINK DIPILIH
+    ========================= */
+
+    const menuLinks =
+        sideMenu.querySelectorAll(
+            "a"
+        );
+
+
+    menuLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    closeMenu();
+
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =========================
+       ESC UNTUK MENUTUP MENU
+    ========================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMenu();
+
+            }
 
         }
     );
@@ -489,11 +870,15 @@
         "click",
         function () {
 
-            document.body.classList.toggle("dark");
+            document.body.classList.toggle(
+                "dark"
+            );
 
 
             if (
-                document.body.classList.contains("dark")
+                document.body.classList.contains(
+                    "dark"
+                )
             ) {
 
                 localStorage.setItem(
@@ -518,21 +903,14 @@
     );
 
 
-    /*
-     * Muat tema saat pertama kali halaman dibuka.
-     */
 
     loadTheme();
 
 
 
-    /*
-     * Muat ulang tema ketika halaman muncul kembali.
-     *
-     * Ini penting untuk tombol Back/Forward HP.
-     * Browser dapat menyimpan halaman di bfcache,
-     * sehingga script biasa tidak selalu dijalankan ulang.
-     */
+    /* =========================
+       PHONE BACK
+    ========================= */
 
     window.addEventListener(
         "pageshow",
@@ -673,7 +1051,10 @@
 
         const shuffled =
             [...novels]
-            .sort(() => Math.random() - 0.5)
+            .sort(
+                () =>
+                    Math.random() - 0.5
+            )
             .slice(0, 3);
 
 
@@ -681,7 +1062,9 @@
             novel => {
 
                 const item =
-                    document.createElement("a");
+                    document.createElement(
+                        "a"
+                    );
 
 
                 item.className =
@@ -718,7 +1101,9 @@
                 `;
 
 
-                container.appendChild(item);
+                container.appendChild(
+                    item
+                );
 
             }
         );
@@ -749,22 +1134,29 @@
 
 
         const start =
-            (page - 1) * updatesPerPage;
+            (page - 1) *
+            updatesPerPage;
 
 
         const end =
-            start + updatesPerPage;
+            start +
+            updatesPerPage;
 
 
         const pageItems =
-            novels.slice(start, end);
+            novels.slice(
+                start,
+                end
+            );
 
 
         pageItems.forEach(
             novel => {
 
                 const item =
-                    document.createElement("a");
+                    document.createElement(
+                        "a"
+                    );
 
 
                 item.className =
@@ -796,7 +1188,9 @@
                 `;
 
 
-                container.appendChild(item);
+                container.appendChild(
+                    item
+                );
 
             }
         );
@@ -830,7 +1224,9 @@
             );
 
 
-        if (totalPages <= 1) {
+        if (
+            totalPages <= 1
+        ) {
 
             return;
 
@@ -1059,4 +1455,7 @@
 
 </script>
 
-</body></html>
+
+</body>
+
+</html>
