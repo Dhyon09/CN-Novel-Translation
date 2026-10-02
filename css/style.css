@@ -551,9 +551,10 @@ body.dark {
 
 
 /* ==================================================
-   NOVEL DETAIL PAGE
+   NOVEL PAGE CONTAINER
    ================================================== */
 
+.page-container,
 .novel-container {
     width: min(900px, 100%);
 
@@ -568,12 +569,6 @@ body.dark {
    ================================================== */
 
 .novel-detail {
-
-    /*
-       Cover dan informasi dibuat sejajar
-       sejak tampilan HP.
-    */
-
     display: flex;
 
     flex-direction: row;
@@ -702,7 +697,8 @@ body.dark {
 }
 
 .novel-description h2,
-.chapter-list-section h2 {
+.chapter-list-section h2,
+.comments-section h2 {
     margin-bottom: 12px;
 
     font-size: 20px;
@@ -744,6 +740,23 @@ body.dark {
     color: var(--secondary);
 
     font-size: 22px;
+}
+
+
+/* ==================================================
+   COMMENTS
+   ================================================== */
+
+.comments-section {
+    margin-top: 34px;
+
+    padding-top: 28px;
+
+    border-top: 1px solid var(--border);
+}
+
+.comments-section h2 {
+    color: var(--text);
 }
 
 
@@ -805,6 +818,7 @@ body.dark {
 @media (min-width: 600px) {
 
     .home-container,
+    .page-container,
     .novel-container {
         padding-left: 24px;
         padding-right: 24px;
@@ -900,6 +914,7 @@ body.dark {
     }
 
 
+    .page-container,
     .novel-container {
         padding-top: 35px;
     }
@@ -926,7 +941,8 @@ body.dark {
 
 
     .novel-description,
-    .chapter-list-section {
+    .chapter-list-section,
+    .comments-section {
         padding-left: 4px;
         padding-right: 4px;
     }
