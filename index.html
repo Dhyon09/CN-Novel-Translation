@@ -29,305 +29,81 @@
 
     <style>
 
-        /* =========================
-           MENU
-        ========================= */
-
-        .menu-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease;
-            z-index: 999;
-        }
-
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        /* =====================================================
+           MENU MINIMALIS
+        ===================================================== */
 
         .side-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            width: 260px;
-            max-width: 82vw;
-            height: 100vh;
-
-            background: var(--card);
-            color: var(--text);
-
-            transform: translateX(-100%);
-            transition: transform 0.25s ease;
-
-            z-index: 1000;
-
-            box-shadow: 4px 0 18px rgba(0, 0, 0, 0.12);
-
-            overflow-y: auto;
-        }
-
-        .side-menu.active {
-            transform: translateX(0);
+            width: 250px;
         }
 
         .menu-header {
-            height: 52px;
-
-            padding: 0 16px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            border-bottom: 1px solid var(--border);
-
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .menu-close {
-            border: none;
-            background: none;
-
-            color: var(--text);
-
-            font-size: 25px;
-            line-height: 1;
-
-            cursor: pointer;
-
-            padding: 3px 5px;
+            min-height: 50px;
+            padding: 10px 16px;
         }
 
         .menu-item {
             min-height: 43px;
-
-            padding: 0 16px;
-
-            display: flex;
-            align-items: center;
-
-            box-sizing: border-box;
-
-            color: var(--text);
-            text-decoration: none;
-
+            padding: 10px 16px;
             font-size: 15px;
-
-            border-bottom: 1px solid var(--border);
-
-            cursor: pointer;
-        }
-
-        .menu-item:hover {
-            background: var(--bg);
         }
 
         .menu-novel {
             justify-content: space-between;
         }
 
-        .menu-arrow {
-            font-size: 20px;
-            line-height: 1;
-
-            transition: transform 0.2s ease;
-        }
-
-        .menu-novel.active .menu-arrow {
-            transform: rotate(90deg);
-        }
-
-
-        /* SUBMENU NOVEL */
-
-        .novel-submenu {
-            max-height: 0;
-
-            overflow: hidden;
-
-            background: var(--bg);
-
-            opacity: 0;
-
-            transition:
-                max-height 0.25s ease,
-                opacity 0.2s ease;
-        }
-
-        .novel-submenu.active {
-            max-height: 190px;
-            opacity: 1;
-        }
-
         .novel-submenu a {
-            min-height: 38px;
-
-            padding: 0 16px 0 31px;
-
-            display: flex;
-            align-items: center;
-
-            box-sizing: border-box;
-
-            color: var(--text);
-            text-decoration: none;
-
+            padding: 10px 16px 10px 30px;
             font-size: 14px;
-
-            border-bottom: 1px solid var(--border);
-        }
-
-        .novel-submenu a:hover {
-            background: var(--card);
-        }
-
-        body.menu-open {
-            overflow: hidden;
         }
 
 
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search-container {
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 900;
-
-            width: 100%;
-            max-width: 700px;
-
-            margin: 0 auto;
-
-            padding: 10px 14px;
-
-            box-sizing: border-box;
-
-            background: var(--bg);
-        }
-
-        .search-container input {
-
-            display: block;
-
-            width: 100%;
-            height: 42px;
-
-            padding: 0 14px;
-
-            border: 1px solid var(--border);
-
-            border-radius: 7px;
-
-            background: var(--card);
-
-            color: var(--text);
-
-            font-family: inherit;
-            font-size: 15px;
-
-            outline: none;
-
-            box-sizing: border-box;
-
-            transition:
-                border-color 0.2s ease,
-                background-color 0.25s ease,
-                color 0.25s ease;
-        }
-
-        .search-container input:focus {
-            border-color: var(--primary);
-        }
-
-        .search-container input::placeholder {
-            color: var(--secondary);
-        }
-
-
-        /* =========================
+        /* =====================================================
            BERANDA
-        ========================= */
+        ===================================================== */
 
-        main {
-
-            width: 100%;
-
+        .home-container {
             max-width: 1100px;
-
-            margin: 0 auto;
-
-            padding: 18px 14px 30px;
-
-            box-sizing: border-box;
         }
 
-        .novel-section {
-            margin: 0 0 28px;
+        .home-section {
+            margin-bottom: 28px;
         }
 
-        .section-title {
-
-            margin: 0 0 12px;
-
+        .section-heading {
+            margin-bottom: 12px;
             padding-bottom: 7px;
-
             border-bottom: 1px solid var(--border);
         }
 
-        .section-title h2 {
-
+        .section-heading h2 {
             margin: 0;
-
             font-size: 19px;
-
             line-height: 1.3;
-
-            color: var(--text);
         }
 
 
-        /* GRID NOVEL */
+        /* =====================================================
+           KARTU NOVEL
+        ===================================================== */
 
         .novel-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
-
-            width: 100%;
         }
 
-
-        /* CARD NOVEL */
-
         .novel-card {
-
             min-width: 0;
-
-            border: 1px solid var(--border);
-
-            border-radius: 7px;
-
             background: var(--card);
-
+            border: 1px solid var(--border);
+            border-radius: 7px;
             overflow: hidden;
 
             transition:
                 transform 0.2s ease,
-                background-color 0.25s ease;
+                background-color 0.4s ease,
+                border-color 0.4s ease;
         }
 
         .novel-card:hover {
@@ -335,195 +111,92 @@
         }
 
         .novel-card a {
-
             display: block;
-
             color: inherit;
-
             text-decoration: none;
         }
 
         .novel-card img {
-
-            width: 100%;
-
-            aspect-ratio: 2 / 3;
-
             display: block;
-
+            width: 100%;
+            aspect-ratio: 2 / 3;
             object-fit: cover;
-
             background: var(--bg);
         }
 
         .novel-card-content {
-
             padding: 9px 10px 10px;
         }
 
         .novel-card-content h3 {
-
             margin: 0 0 5px;
-
             font-size: 15px;
-
             line-height: 1.35;
 
-            color: var(--text);
-
             display: -webkit-box;
-
             -webkit-line-clamp: 2;
-
             -webkit-box-orient: vertical;
 
             overflow: hidden;
         }
 
         .novel-card-content p {
-
             margin: 0 0 6px;
-
-            font-size: 12px;
-
-            line-height: 1.4;
-
             color: var(--secondary);
-
+            font-size: 12px;
+            line-height: 1.4;
         }
 
         .novel-card-content span {
-
-            font-size: 12px;
-
             color: var(--primary);
+            font-size: 12px;
         }
 
 
-        /* =========================
+        /* =====================================================
            PAGINATION
-        ========================= */
+        ===================================================== */
 
         .pagination {
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 6px;
-
             margin-top: 16px;
         }
 
-        .pagination button {
 
-            min-width: 32px;
-            height: 32px;
-
-            padding: 0 8px;
-
-            border: 1px solid var(--border);
-
-            border-radius: 6px;
-
-            background: var(--card);
-
-            color: var(--text);
-
-            cursor: pointer;
-
-            font-family: inherit;
-        }
-
-        .pagination button.active {
-
-            background: var(--primary);
-
-            color: #fff;
-
-            border-color: var(--primary);
-        }
-
-
-        /* =========================
+        /* =====================================================
            MOBILE
-        ========================= */
+        ===================================================== */
 
         @media (max-width: 480px) {
 
-            .side-menu {
-                width: 250px;
-            }
-
-            .menu-header {
-                height: 50px;
-            }
-
-            .menu-item {
-                min-height: 42px;
-            }
-
-            .novel-submenu a {
-                min-height: 37px;
-            }
-
-            .search-container {
-
-                max-width: none;
-
-                padding: 9px 12px;
-            }
-
-            .search-container input {
-
-                height: 41px;
-
-                font-size: 14px;
-            }
-
-            main {
-
+            .home-container {
                 padding:
                     14px 12px 28px;
             }
 
             .novel-grid {
-
                 gap: 9px;
             }
 
-            .section-title h2 {
-
+            .section-heading h2 {
                 font-size: 18px;
             }
+
         }
 
 
-        /* =========================
+        /* =====================================================
            DESKTOP
-        ========================= */
+        ===================================================== */
 
         @media (min-width: 700px) {
 
             .novel-grid {
-
                 grid-template-columns:
                     repeat(4, minmax(0, 1fr));
 
                 gap: 12px;
             }
 
-            main {
-
-                padding:
-                    24px 20px 40px;
-            }
-
-            .search-container {
-
-                padding-left: 20px;
-                padding-right: 20px;
-            }
         }
 
     </style>
@@ -534,9 +207,9 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =====================================================
          HEADER
-    ========================= -->
+    ===================================================== -->
 
     <header class="site-header">
 
@@ -569,9 +242,9 @@
     </header>
 
 
-    <!-- =========================
+    <!-- =====================================================
          MENU OVERLAY
-    ========================= -->
+    ===================================================== -->
 
     <div
         class="menu-overlay"
@@ -579,9 +252,9 @@
     ></div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          SIDE MENU
-    ========================= -->
+    ===================================================== -->
 
     <nav
         class="side-menu"
@@ -590,7 +263,9 @@
 
         <div class="menu-header">
 
-            <span>Menu</span>
+            <span>
+                Menu
+            </span>
 
             <button
                 class="menu-close"
@@ -603,6 +278,8 @@
         </div>
 
 
+        <!-- NOVEL -->
+
         <div
             class="menu-item menu-novel"
             id="menuNovel"
@@ -611,7 +288,9 @@
             aria-expanded="false"
         >
 
-            <span>Novel</span>
+            <span>
+                Novel
+            </span>
 
             <span class="menu-arrow">
                 ›
@@ -619,6 +298,8 @@
 
         </div>
 
+
+        <!-- SUBMENU NOVEL -->
 
         <div
             class="novel-submenu"
@@ -644,6 +325,8 @@
         </div>
 
 
+        <!-- BOOKMARK -->
+
         <a
             href="#bookmark"
             class="menu-item"
@@ -652,6 +335,8 @@
         </a>
 
 
+        <!-- DONASI -->
+
         <a
             href="#donasi"
             class="menu-item"
@@ -659,6 +344,8 @@
             Donasi
         </a>
 
+
+        <!-- LOGIN -->
 
         <a
             href="#login"
@@ -670,37 +357,51 @@
     </nav>
 
 
-    <!-- =========================
-         SEARCH
-    ========================= -->
+    <!-- =====================================================
+         SEARCH GLOBAL
+    ===================================================== -->
 
-    <div class="search-container">
+    <div class="global-search-bar">
 
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="Cari novel..."
-            autocomplete="off"
-        >
+        <div class="global-search-inner">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Cari novel..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- =========================
-         MAIN
-    ========================= -->
+    <!-- =====================================================
+         MAIN / BERANDA
+    ===================================================== -->
 
-    <main>
+    <main class="home-container">
 
 
-        <!-- RANDOM NOVEL -->
+        <!-- =================================================
+             NOVEL RANDOM
+        ================================================= -->
 
         <section
-            class="novel-section"
+            class="home-section"
             id="ongoing"
         >
 
-            <div class="section-title">
+            <div class="section-heading">
 
                 <h2>
                     Novel Random
@@ -717,11 +418,16 @@
         </section>
 
 
-        <!-- LATEST UPDATE -->
+        <!-- =================================================
+             LATEST UPDATE
+        ================================================= -->
 
-        <section class="novel-section">
+        <section
+            class="home-section"
+            id="latest"
+        >
 
-            <div class="section-title">
+            <div class="section-heading">
 
                 <h2>
                     Latest Update
@@ -744,15 +450,17 @@
         </section>
 
 
-        <!-- SEARCH RESULTS -->
+        <!-- =================================================
+             HASIL PENCARIAN
+        ================================================= -->
 
         <section
-            class="novel-section"
+            class="home-section"
             id="searchResultsSection"
-            style="display:none;"
+            style="display: none;"
         >
 
-            <div class="section-title">
+            <div class="section-heading">
 
                 <h2>
                     Hasil Pencarian
@@ -772,37 +480,51 @@
     </main>
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================= -->
+    ===================================================== -->
 
     <footer class="site-footer">
 
-        <div>
+        <div class="footer-title">
             CN Novel-Translation
         </div>
 
-        <div>
-            Home • Donasi
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>
+                •
+            </span>
+
+            <a href="#donasi">
+                Donasi
+            </a>
+
         </div>
 
-        <div>
+
+        <p class="copyright">
             © Copyright 2026-CN Novel-Translation
-        </div>
+        </p>
 
     </footer>
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================= -->
+    ===================================================== -->
 
     <script>
 
 
-        /* =========================
+        /* =====================================================
            THEME
-        ========================= */
+        ===================================================== */
 
         const themeButton =
             document.getElementById("themeButton");
@@ -877,24 +599,29 @@
         );
 
 
-        /* =========================
+        /* =====================================================
            MENU
-        ========================= */
+        ===================================================== */
 
         const menuButton =
             document.getElementById("menuButton");
 
+
         const menuClose =
             document.getElementById("menuClose");
+
 
         const menuOverlay =
             document.getElementById("menuOverlay");
 
+
         const sideMenu =
             document.getElementById("sideMenu");
 
+
         const menuNovel =
             document.getElementById("menuNovel");
+
 
         const novelSubmenu =
             document.getElementById("novelSubmenu");
@@ -966,6 +693,10 @@
         );
 
 
+        /* =====================================================
+           SUBMENU NOVEL
+        ===================================================== */
+
         function toggleNovelSubmenu() {
 
             const isActive =
@@ -1011,6 +742,10 @@
         );
 
 
+        /* =====================================================
+           MENU LINKS
+        ===================================================== */
+
         const menuLinks =
             sideMenu.querySelectorAll("a");
 
@@ -1045,9 +780,9 @@
         );
 
 
-        /* =========================
+        /* =====================================================
            DATA NOVEL
-        ========================= */
+        ===================================================== */
 
         const novels = [
 
@@ -1114,9 +849,9 @@
         ];
 
 
-        /* =========================
+        /* =====================================================
            NOVEL CARD
-        ========================= */
+        ===================================================== */
 
         function createNovelCard(novel) {
 
@@ -1156,9 +891,9 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            RANDOM NOVEL
-        ========================= */
+        ===================================================== */
 
         function showRandomNovels() {
 
@@ -1179,16 +914,16 @@
 
 
             container.innerHTML =
-                selected.map(
-                    createNovelCard
-                ).join("");
+                selected
+                    .map(createNovelCard)
+                    .join("");
 
         }
 
 
-        /* =========================
+        /* =====================================================
            LATEST UPDATE
-        ========================= */
+        ===================================================== */
 
         const latestPerPage = 5;
 
@@ -1216,9 +951,9 @@
 
 
             container.innerHTML =
-                pageNovels.map(
-                    createNovelCard
-                ).join("");
+                pageNovels
+                    .map(createNovelCard)
+                    .join("");
 
 
             showPagination(page);
@@ -1226,9 +961,9 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            PAGINATION
-        ========================= */
+        ===================================================== */
 
         function showPagination(page) {
 
@@ -1289,16 +1024,18 @@
                 );
 
 
-                pagination.appendChild(button);
+                pagination.appendChild(
+                    button
+                );
 
             }
 
         }
 
 
-        /* =========================
+        /* =====================================================
            SEARCH
-        ========================= */
+        ===================================================== */
 
         const searchInput =
             document.getElementById(
@@ -1328,7 +1065,7 @@
 
             const sections =
                 document.querySelectorAll(
-                    ".novel-section"
+                    ".home-section"
                 );
 
 
@@ -1337,11 +1074,14 @@
                 searchResultsSection.style.display =
                     "none";
 
+
                 sections[0].style.display =
                     "";
 
+
                 sections[1].style.display =
                     "";
+
 
                 return;
 
@@ -1363,8 +1103,10 @@
             sections[0].style.display =
                 "none";
 
+
             sections[1].style.display =
                 "none";
+
 
             searchResultsSection.style.display =
                 "";
@@ -1373,7 +1115,7 @@
             if (results.length === 0) {
 
                 searchResults.innerHTML =
-                    "<p>Tidak ada novel yang ditemukan.</p>";
+                    '<p class="no-results">Tidak ada novel yang ditemukan.</p>';
 
                 return;
 
@@ -1400,9 +1142,9 @@
         );
 
 
-        /* =========================
+        /* =====================================================
            SEARCH DARI URL
-        ========================= */
+        ===================================================== */
 
         const urlParams =
             new URLSearchParams(
@@ -1426,9 +1168,9 @@
         }
 
 
-        /* =========================
-           LOAD NOVEL
-        ========================= */
+        /* =====================================================
+           LOAD BERANDA
+        ===================================================== */
 
         showRandomNovels();
 
@@ -1438,5 +1180,5 @@
 
 
 </body>
-    
+
 </html>
