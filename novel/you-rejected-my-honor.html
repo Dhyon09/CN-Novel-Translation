@@ -1,198 +1,219 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
+<title>
+    You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu
+</title>
 
-    <!-- FONT NAMA WEBSITE -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap"
-        rel="stylesheet"
-    >
+<!-- FONT NAMA WEBSITE -->
 
-    <!-- CSS GLOBAL -->
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- CSS GLOBAL -->
+
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
 
 </head>
-
-
+    
 <body>
+    
+    
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <!-- ================= HEADER ================= -->
+<header class="site-header">
 
-    <header class="site-header">
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+
+    <a
+        href="../index.html"
+        class="site-title"
+    >
+        CN Novel-Translation
+    </a>
+
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     MENU OVERLAY
+===================================================== -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<nav
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <div class="menu-header">
+
+        <span>
+            Menu
+        </span>
 
         <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Buka menu"
-            aria-expanded="false"
+            class="menu-close"
+            id="menuClose"
+            aria-label="Tutup menu"
         >
-            ☰
+            ×
         </button>
 
-
-        <a
-            href="../index.html"
-            class="site-title"
-        >
-            CN Novel-Translation
-        </a>
+    </div>
 
 
-        <button
-            class="theme-button"
-            id="themeButton"
-            aria-label="Ganti tema"
-        >
-            ☀️
-        </button>
-
-    </header>
-
-
-    <!-- ================= OVERLAY ================= -->
+    <!-- NOVEL -->
 
     <div
-        class="menu-overlay"
-        id="menuOverlay"
-    ></div>
-
-
-    <!-- ================= SIDE MENU ================= -->
-
-    <aside
-        class="side-menu"
-        id="sideMenu"
+        class="menu-item menu-novel"
+        id="menuNovel"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
     >
 
-        <div class="menu-header">
+        <span>
+            Novel
+        </span>
 
-            <span>Menu</span>
+        <span class="menu-arrow">
+            ›
+        </span>
 
-            <button
-                class="menu-close"
-                id="menuClose"
-                aria-label="Tutup menu"
-            >
-                ×
-            </button>
-
-        </div>
+    </div>
 
 
-        <!-- NOVEL -->
+    <!-- SUBMENU NOVEL -->
 
-        <div
-            class="menu-novel"
-            id="menuNovel"
-            tabindex="0"
-            role="button"
-            aria-expanded="false"
-        >
+    <div
+        class="novel-submenu"
+        id="novelSubmenu"
+    >
 
-            <span>Novel</span>
-
-            <span class="submenu-arrow">
-                ▾
-            </span>
-
-        </div>
-
-
-        <div
-            class="novel-submenu"
-            id="novelSubmenu"
-        >
-
-            <a
-                href="on-going.html"
-                class="submenu-item"
-            >
-                On-going
-            </a>
-
-            <a
-                href="completed.html"
-                class="submenu-item"
-            >
-                Completed
-            </a>
-
-            <a
-                href="hiatus.html"
-                class="submenu-item"
-            >
-                Hiatus
-            </a>
-
-            <a
-                href="drop.html"
-                class="submenu-item"
-            >
-                Drop
-            </a>
-
-        </div>
-
-
-        <!-- BOOKMARK -->
-
-        <a
-            href="../bookmark.html"
-            class="menu-item"
-        >
-            Bookmark
+        <a href="on-going.html">
+            On-going
         </a>
 
-
-        <!-- DONASI -->
-
-        <a
-            class="menu-item"
-            href="https://trakteer.id/DhyonPratama"
-            target="_blank"
-            rel="noopener"
-        >
-            Donasi
+        <a href="completed.html">
+            Completed
         </a>
 
-
-        <!-- LOGIN -->
-
-        <a
-            href="#login"
-            class="menu-item"
-        >
-            Login
+        <a href="hiatus.html">
+            Hiatus
         </a>
 
-    </aside>
+        <a href="drop.html">
+            Drop
+        </a>
+
+    </div>
 
 
-    <!-- ================= SEARCH ================= -->
+    <!-- BOOKMARK -->
 
-    <div class="search-wrapper">
+    <a
+        href="../bookmark.html"
+        class="menu-item"
+    >
+        Bookmark
+    </a>
+
+
+    <!-- DONASI -->
+
+    <a
+        class="menu-item"
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        Donasi
+    </a>
+
+
+    <!-- LOGIN -->
+
+    <a
+        href="#login"
+        class="menu-item"
+    >
+        Login
+    </a>
+
+</nav>
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div class="global-search-bar">
+
+    <div class="global-search-inner">
 
         <form
             class="search-box"
             id="searchForm"
         >
+
+            <span class="search-icon">
+                🔍
+            </span>
+
 
             <input
                 type="search"
@@ -201,394 +222,487 @@
                 autocomplete="off"
             >
 
-            <button
-                type="submit"
-                aria-label="Cari"
-            >
-                🔍
-            </button>
-
         </form>
 
     </div>
 
-
-    <!-- ================= NOVEL DETAIL ================= -->
-
-    <main class="novel-detail">
-
-        <section class="novel-detail-card">
+</div>
 
 
-            <!-- COVER -->
+<!-- =====================================================
+     NOVEL DETAIL
+===================================================== -->
 
-            <div class="novel-cover">
-
-                <img
-                    src="https://www.kanshuw.com/images/134/134920/134920s.jpg"
-                    alt="Cover You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu"
-                >
-
-            </div>
+<main class="novel-container">
 
 
-            <!-- INFO NOVEL -->
-
-            <div class="novel-info">
-
-                <h1>
-                    You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu
-                </h1>
+    <section class="novel-detail">
 
 
-                <p>
-                    <strong>Mandarin:</strong>
-                    给你尊荣你不要，来世我去娶郡主
-                </p>
+        <!-- COVER -->
+
+        <div class="novel-cover">
+
+            <img
+                src="https://www.kanshuw.com/images/134/134920/134920s.jpg"
+                alt="Cover You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu"
+            >
+
+        </div>
 
 
-                <p>
-                    <strong>Genre:</strong>
-                    Historical • Romance • Rebirth
-                </p>
+        <!-- INFO NOVEL -->
+
+        <div class="novel-info">
+
+            <h1>
+                You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu
+            </h1>
 
 
-                <p>
-                    <strong>Author:</strong>
-                    洪承畴射中大玉儿
-                </p>
+            <p>
+                <strong>Mandarin:</strong>
+                给你尊荣你不要，来世我去娶郡主
+            </p>
 
 
-                <p>
-                    <strong>Status:</strong>
-                    Completed
-                </p>
+            <p>
+                <strong>Genre:</strong>
+                Historical • Romance • Rebirth
+            </p>
 
 
-                <!-- BOOKMARK -->
-
-                <button
-                    class="bookmark-button"
-                    id="bookmarkButton"
-                >
-                    ☆ Tambahkan ke Bookmark
-                </button>
+            <p>
+                <strong>Author:</strong>
+                洪承畴射中大玉儿
+            </p>
 
 
-                <!-- BACaan terakhir -->
-
-                <div
-                    class="last-read"
-                    id="lastRead"
-                >
-
-                    <a
-                        href="#"
-                        id="lastReadLink"
-                    >
-                        Bacaan terakhir: Chapter 1
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
+            <p>
+                <strong>Status:</strong>
+                Completed
+            </p>
 
 
-        <!-- ================= DAFTAR CHAPTER ================= -->
+            <!-- BOOKMARK -->
 
-        <section class="chapter-section">
+            <button
+                class="bookmark-button"
+                id="bookmarkButton"
+            >
+                ☆ Tambahkan ke Bookmark
+            </button>
 
-            <h2>
-                Daftar Chapter
-            </h2>
 
+            <!-- BACaan TERAKHIR -->
 
             <div
-                class="chapter-list"
-                id="chapterList"
+                class="last-read"
+                id="lastRead"
             >
 
                 <a
-                    href="../chapter/bab-1.html"
-                    class="chapter-card"
+                    href="#"
+                    id="lastReadLink"
                 >
-
-                    <span>
-                        Chapter 1
-                    </span>
-
-                    <span>
-                        Dahulu Aku Pergi, Kini Jiwaku Kembali
-                    </span>
-
+                    Bacaan terakhir: Chapter 1
                 </a>
 
             </div>
 
-        </section>
-
-
-        <!-- ================= KOMENTAR ================= -->
-
-        <section class="comments-section">
-
-            <h2>
-                Komentar
-            </h2>
-
-
-            <script
-                src="https://giscus.app/client.js"
-                data-repo="Dhyon09/cn-novel-translation"
-                data-repo-id="R_kgDOU4Dcig"
-                data-category="General"
-                data-category-id="DIC_kwDOU4Dcis4DG3Ff"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="light"
-                data-lang="id"
-                crossorigin="anonymous"
-                async
-            ></script>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="site-footer">
-
-        <div class="footer-title">
-            CN Novel-Translation
         </div>
 
+    </section>
 
-        <div class="footer-links">
 
-            <a href="../index.html">
-                Home
-            </a>
+    <!-- =================================================
+         SINOPSIS
+    ================================================= -->
 
-            <span>
-                •
-            </span>
+    <section class="novel-description">
+
+        <h2>
+            Sinopsis
+        </h2>
+
+
+        <p>
+            Dahulu, Gu Chen meninggalkan segalanya demi melindungi
+            orang yang dicintainya. Namun, setelah melewati berbagai
+            kejadian dan menyadari kebenaran yang tersembunyi di balik
+            semuanya, ia memperoleh kesempatan untuk kembali memulai
+            kehidupannya.
+        </p>
+
+
+        <p>
+            Kali ini, ia tidak akan mengulangi pilihan yang sama.
+            Kehormatan yang dahulu ia tolak tidak akan lagi ia kejar,
+            dan takdir yang pernah ia sesali akan ia ubah dengan
+            tangannya sendiri.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         DAFTAR CHAPTER
+    ================================================= -->
+
+    <section class="chapter-list-section">
+
+        <h2>
+            Daftar Chapter
+        </h2>
+
+
+        <div
+            class="chapter-list"
+            id="chapterList"
+        >
 
             <a
-                href="https://trakteer.id/DhyonPratama"
-                target="_blank"
-                rel="noopener"
+                href="../chapter/bab-1.html"
+                class="chapter-card"
             >
-                Donasi
+
+                <span>
+                    Chapter 1
+                </span>
+
+                <span>
+                    Dahulu Aku Pergi, Kini Jiwaku Kembali
+                </span>
+
             </a>
 
         </div>
 
-
-        <div class="footer-copyright">
-            © Copyright 2026-CN Novel-Translation
-        </div>
-
-    </footer>
+    </section>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- =================================================
+         KOMENTAR
+    ================================================= -->
 
-    <script>
+    <section class="comments-section">
 
-        /* ================= MENU ================= */
-
-        const menuButton =
-            document.getElementById("menuButton");
-
-        const menuClose =
-            document.getElementById("menuClose");
-
-        const menuOverlay =
-            document.getElementById("menuOverlay");
-
-        const sideMenu =
-            document.getElementById("sideMenu");
-
-        const menuNovel =
-            document.getElementById("menuNovel");
-
-        const novelSubmenu =
-            document.getElementById("novelSubmenu");
+        <h2>
+            Komentar
+        </h2>
 
 
-        function openMenu() {
+        <script
+            src="https://giscus.app/client.js"
+            data-repo="Dhyon09/cn-novel-translation"
+            data-repo-id="R_kgDOU4Dcig"
+            data-category="General"
+            data-category-id="DIC_kwDOU4Dcis4DG3Ff"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="id"
+            crossorigin="anonymous"
+            async
+        ></script>
 
-            sideMenu.classList.add("active");
+    </section>
 
-            menuOverlay.classList.add("active");
+</main>
 
-            document.body.classList.add("menu-open");
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                "true"
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-title">
+        CN Novel-Translation
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <span>
+            •
+        </span>
+
+        <a
+            href="https://trakteer.id/DhyonPratama"
+            target="_blank"
+            rel="noopener"
+        >
+            Donasi
+        </a>
+
+    </div>
+
+
+    <p class="copyright">
+        © Copyright 2026-CN Novel-Translation
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+    /* =====================================================
+       MENU
+    ===================================================== */
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+
+    const menuClose =
+        document.getElementById("menuClose");
+
+
+    const menuOverlay =
+        document.getElementById("menuOverlay");
+
+
+    const sideMenu =
+        document.getElementById("sideMenu");
+
+
+    const menuNovel =
+        document.getElementById("menuNovel");
+
+
+    const novelSubmenu =
+        document.getElementById("novelSubmenu");
+
+
+    function openMenu() {
+
+        sideMenu.classList.add("active");
+
+        menuOverlay.classList.add("active");
+
+        document.body.classList.add("menu-open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+
+    function closeNovelSubmenu() {
+
+        novelSubmenu.classList.remove("active");
+
+        menuNovel.classList.remove("active");
+
+        menuNovel.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    function closeMenu() {
+
+        sideMenu.classList.remove("active");
+
+        menuOverlay.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+
+        closeNovelSubmenu();
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        openMenu
+    );
+
+
+    menuClose.addEventListener(
+        "click",
+        closeMenu
+    );
+
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+
+    /* =====================================================
+       SUBMENU NOVEL
+    ===================================================== */
+
+    function toggleNovelSubmenu() {
+
+        const isActive =
+            novelSubmenu.classList.toggle(
+                "active"
             );
 
-        }
 
-
-        function closeNovelSubmenu() {
-
-            novelSubmenu.classList.remove("active");
-
-            menuNovel.classList.remove("active");
-
-            menuNovel.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-
-        function closeMenu() {
-
-            sideMenu.classList.remove("active");
-
-            menuOverlay.classList.remove("active");
-
-            document.body.classList.remove("menu-open");
-
-            closeNovelSubmenu();
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-
-        menuButton.addEventListener(
-            "click",
-            openMenu
+        menuNovel.classList.toggle(
+            "active",
+            isActive
         );
 
 
-        menuClose.addEventListener(
-            "click",
-            closeMenu
+        menuNovel.setAttribute(
+            "aria-expanded",
+            isActive
         );
 
-
-        menuOverlay.addEventListener(
-            "click",
-            closeMenu
-        );
+    }
 
 
-        function toggleNovelSubmenu() {
-
-            const isActive =
-                novelSubmenu.classList.toggle(
-                    "active"
-                );
-
-            menuNovel.classList.toggle(
-                "active",
-                isActive
-            );
-
-            menuNovel.setAttribute(
-                "aria-expanded",
-                isActive
-            );
-
-        }
+    menuNovel.addEventListener(
+        "click",
+        toggleNovelSubmenu
+    );
 
 
-        menuNovel.addEventListener(
-            "click",
-            toggleNovelSubmenu
-        );
+    menuNovel.addEventListener(
+        "keydown",
+        function (event) {
 
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
 
-        menuNovel.addEventListener(
-            "keydown",
-            function (event) {
+                event.preventDefault();
 
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
-
-                    event.preventDefault();
-
-                    toggleNovelSubmenu();
-
-                }
+                toggleNovelSubmenu();
 
             }
-        );
+
+        }
+    );
 
 
-        const menuLinks =
-            sideMenu.querySelectorAll("a");
+    /* =====================================================
+       MENU LINKS
+    ===================================================== */
+
+    const menuLinks =
+        sideMenu.querySelectorAll("a");
 
 
-        menuLinks.forEach(
-            function (link) {
+    menuLinks.forEach(
+        function (link) {
 
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        closeMenu();
-
-                    }
-                );
-
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Escape") {
+            link.addEventListener(
+                "click",
+                function () {
 
                     closeMenu();
 
                 }
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMenu();
 
             }
-        );
+
+        }
+    );
 
 
-        /* ================= THEME ================= */
+    /* =====================================================
+       THEME
+    ===================================================== */
 
-        const themeButton =
-            document.getElementById("themeButton");
-
-
-        function loadTheme() {
-
-            const savedTheme =
-                localStorage.getItem("theme");
+    const themeButton =
+        document.getElementById("themeButton");
 
 
-            if (savedTheme === "dark") {
+    function loadTheme() {
 
-                document.body.classList.add("dark");
+        const savedTheme =
+            localStorage.getItem("theme");
+
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark");
+
+            themeButton.textContent = "🌙";
+
+        } else {
+
+            document.body.classList.remove("dark");
+
+            themeButton.textContent = "☀️";
+
+        }
+
+
+        syncGiscusTheme();
+
+    }
+
+
+    themeButton.addEventListener(
+        "click",
+        function () {
+
+            document.body.classList.toggle(
+                "dark"
+            );
+
+
+            if (
+                document.body.classList.contains("dark")
+            ) {
+
+                localStorage.setItem(
+                    "theme",
+                    "dark"
+                );
 
                 themeButton.textContent = "🌙";
 
             } else {
 
-                document.body.classList.remove("dark");
+                localStorage.setItem(
+                    "theme",
+                    "light"
+                );
 
                 themeButton.textContent = "☀️";
 
@@ -598,191 +712,211 @@
             syncGiscusTheme();
 
         }
+    );
 
 
-        themeButton.addEventListener(
-            "click",
-            function () {
+    /* =====================================================
+       GISCUS
+    ===================================================== */
 
-                document.body.classList.toggle("dark");
+    function syncGiscusTheme() {
+
+        const iframe =
+            document.querySelector(
+                "iframe.giscus-frame"
+            );
 
 
-                if (
-                    document.body.classList.contains("dark")
-                ) {
+        if (!iframe) {
+            return;
+        }
 
-                    localStorage.setItem(
-                        "theme",
-                        "dark"
-                    );
 
-                    themeButton.textContent = "🌙";
+        const theme =
+            document.body.classList.contains("dark")
+                ? "dark"
+                : "light";
 
-                } else {
 
-                    localStorage.setItem(
-                        "theme",
-                        "light"
-                    );
-
-                    themeButton.textContent = "☀️";
-
+        iframe.contentWindow.postMessage(
+            {
+                giscus: {
+                    setConfig: {
+                        theme: theme
+                    }
                 }
+            },
+            "https://giscus.app"
+        );
+
+    }
 
 
-                syncGiscusTheme();
+    window.addEventListener(
+        "message",
+        function () {
 
-            }
+            syncGiscusTheme();
+
+        }
+    );
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    const searchForm =
+        document.getElementById(
+            "searchForm"
         );
 
 
-        /* ================= GISCUS ================= */
-
-        function syncGiscusTheme() {
-
-            const iframe =
-                document.querySelector(
-                    "iframe.giscus-frame"
-                );
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
 
 
-            if (!iframe) {
+    searchForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const keyword =
+                searchInput.value.trim();
+
+
+            if (!keyword) {
                 return;
             }
 
 
-            const theme =
-                document.body.classList.contains("dark")
-                    ? "dark"
-                    : "light";
-
-
-            iframe.contentWindow.postMessage(
-                {
-                    giscus: {
-                        setConfig: {
-                            theme: theme
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
+            window.location.href =
+                "../index.html?search=" +
+                encodeURIComponent(keyword);
 
         }
+    );
 
 
-        window.addEventListener(
-            "message",
-            function () {
+    /* =====================================================
+       BOOKMARK
+    ===================================================== */
 
-                syncGiscusTheme();
-
-            }
+    const bookmarkButton =
+        document.getElementById(
+            "bookmarkButton"
         );
 
 
-        /* ================= SEARCH ================= */
+    const bookmarkData = {
 
-        const searchForm =
-            document.getElementById("searchForm");
+        title:
+            "You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu",
 
-        const searchInput =
-            document.getElementById("searchInput");
+        mandarin:
+            "给你尊荣你不要，来世我去娶郡主",
+
+        genre:
+            "Historical • Romance • Rebirth",
+
+        author:
+            "洪承畴射中大玉儿",
+
+        status:
+            "Completed",
+
+        cover:
+            "https://www.kanshuw.com/images/134/134920/134920s.jpg",
+
+        chapter:
+            1,
+
+        chapterTitle:
+            "Chapter 1",
+
+        link:
+            "you-rejected-my-honor.html"
+
+    };
 
 
-        searchForm.addEventListener(
-            "submit",
-            function (event) {
+    function getBookmarks() {
 
-                event.preventDefault();
+        return JSON.parse(
+            localStorage.getItem(
+                "bookmarks"
+            ) || "[]"
+        );
+
+    }
 
 
-                const keyword =
-                    searchInput.value.trim();
+    function saveBookmarks(bookmarks) {
+
+        localStorage.setItem(
+            "bookmarks",
+            JSON.stringify(bookmarks)
+        );
+
+    }
 
 
-                if (!keyword) {
-                    return;
+    function updateBookmarkButton() {
+
+        const bookmarks =
+            getBookmarks();
+
+
+        const exists =
+            bookmarks.some(
+                function (item) {
+
+                    return (
+                        item.link ===
+                        bookmarkData.link
+                    );
+
                 }
-
-
-                window.location.href =
-                    "../index.html?search=" +
-                    encodeURIComponent(keyword);
-
-            }
-        );
-
-
-        /* ================= BOOKMARK ================= */
-
-        const bookmarkButton =
-            document.getElementById(
-                "bookmarkButton"
             );
 
 
-        const bookmarkData = {
+        if (exists) {
 
-            title:
-                "You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu",
+            bookmarkButton.textContent =
+                "★ Sudah di Bookmark";
 
-            mandarin:
-                "给你尊荣你不要，来世我去娶郡主",
+            bookmarkButton.classList.add(
+                "bookmarked"
+            );
 
-            genre:
-                "Historical • Romance • Rebirth",
+        } else {
 
-            author:
-                "洪承畴射中大玉儿",
+            bookmarkButton.textContent =
+                "☆ Tambahkan ke Bookmark";
 
-            status:
-                "Completed",
-
-            cover:
-                "https://www.kanshuw.com/images/134/134920/134920s.jpg",
-
-            chapter:
-                1,
-
-            chapterTitle:
-                "Chapter 1",
-
-            link:
-                "you-rejected-my-honor.html"
-
-        };
-
-
-        function getBookmarks() {
-
-            return JSON.parse(
-                localStorage.getItem(
-                    "bookmarks"
-                ) || "[]"
+            bookmarkButton.classList.remove(
+                "bookmarked"
             );
 
         }
 
-
-        function saveBookmarks(bookmarks) {
-
-            localStorage.setItem(
-                "bookmarks",
-                JSON.stringify(bookmarks)
-            );
-
-        }
+    }
 
 
-        function updateBookmarkButton() {
+    bookmarkButton.addEventListener(
+        "click",
+        function () {
 
-            const bookmarks =
+            let bookmarks =
                 getBookmarks();
 
 
-            const exists =
-                bookmarks.some(
+            const index =
+                bookmarks.findIndex(
                     function (item) {
 
                         return (
@@ -794,164 +928,124 @@
                 );
 
 
-            if (exists) {
+            if (index === -1) {
 
-                bookmarkButton.textContent =
-                    "★ Sudah di Bookmark";
-
-                bookmarkButton.classList.add(
-                    "bookmarked"
+                bookmarks.push(
+                    bookmarkData
                 );
 
             } else {
 
-                bookmarkButton.textContent =
-                    "☆ Tambahkan ke Bookmark";
-
-                bookmarkButton.classList.remove(
-                    "bookmarked"
+                bookmarks.splice(
+                    index,
+                    1
                 );
 
             }
 
+
+            saveBookmarks(bookmarks);
+
+            updateBookmarkButton();
+
         }
+    );
 
 
-        bookmarkButton.addEventListener(
-            "click",
-            function () {
-
-                let bookmarks =
-                    getBookmarks();
+    updateBookmarkButton();
 
 
-                const index =
-                    bookmarks.findIndex(
-                        function (item) {
+    /* =====================================================
+       BACaan TERAKHIR
+    ===================================================== */
 
-                            return (
-                                item.link ===
-                                bookmarkData.link
-                            );
-
-                        }
-                    );
-
-
-                if (index === -1) {
-
-                    bookmarks.push(
-                        bookmarkData
-                    );
-
-                } else {
-
-                    bookmarks.splice(
-                        index,
-                        1
-                    );
-
-                }
-
-
-                saveBookmarks(bookmarks);
-
-                updateBookmarkButton();
-
-            }
+    const lastRead =
+        document.getElementById(
+            "lastRead"
         );
 
 
-        updateBookmarkButton();
+    const lastReadLink =
+        document.getElementById(
+            "lastReadLink"
+        );
 
 
-        /* ================= BACaan TERAKHIR ================= */
+    const lastReadStorageKey =
+        "lastRead_YouRejectedMyHonor";
 
-        const lastRead =
-            document.getElementById(
-                "lastRead"
+
+    const chapterPaths = {
+
+        1:
+            "../chapter/bab-1.html"
+
+    };
+
+
+    function loadLastRead() {
+
+        const savedChapter =
+            Number(
+                localStorage.getItem(
+                    lastReadStorageKey
+                )
             );
 
 
-        const lastReadLink =
-            document.getElementById(
-                "lastReadLink"
-            );
+        if (
+            !savedChapter ||
+            !chapterPaths[savedChapter]
+        ) {
 
-
-        const lastReadStorageKey =
-            "lastRead_YouRejectedMyHonor";
-
-
-        const chapterPaths = {
-
-            1:
-                "../chapter/bab-1.html"
-
-        };
-
-
-        function loadLastRead() {
-
-            const savedChapter =
-                Number(
-                    localStorage.getItem(
-                        lastReadStorageKey
-                    )
-                );
-
-
-            if (
-                !savedChapter ||
-                !chapterPaths[savedChapter]
-            ) {
-
-                lastRead.classList.remove(
-                    "active"
-                );
-
-                return;
-
-            }
-
-
-            lastReadLink.textContent =
-                "Bacaan terakhir: Chapter " +
-                savedChapter;
-
-
-            lastReadLink.href =
-                chapterPaths[savedChapter];
-
-
-            lastRead.classList.add(
+            lastRead.classList.remove(
                 "active"
             );
 
+            return;
+
         }
 
 
-        loadLastRead();
+        lastReadLink.textContent =
+            "Bacaan terakhir: Chapter " +
+            savedChapter;
 
 
-        /* ================= PAGE SHOW ================= */
+        lastReadLink.href =
+            chapterPaths[savedChapter];
 
-        window.addEventListener(
-            "pageshow",
-            function () {
 
-                loadTheme();
-
-                updateBookmarkButton();
-
-                loadLastRead();
-
-            }
+        lastRead.classList.add(
+            "active"
         );
 
-    </script>
+    }
 
 
+    loadLastRead();
+
+
+    /* =====================================================
+       PAGE SHOW
+    ===================================================== */
+
+    window.addEventListener(
+        "pageshow",
+        function () {
+
+            loadTheme();
+
+            updateBookmarkButton();
+
+            loadLastRead();
+
+        }
+    );
+
+</script>
+
+    
 </body>
 
 </html>
