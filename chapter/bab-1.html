@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Chapter 1 - Contoh Novel A</title>
+    <title>Chapter 1 - Heavenly Sword Against the Sky</title>
 
     <link
         rel="stylesheet"
@@ -37,7 +37,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             min-height: 38px;
+
             padding: 7px 6px;
 
             border: 1px solid var(--border);
@@ -267,7 +269,7 @@
                 transform 0.25s ease,
                 border-color 0.25s ease,
                 color 0.25s ease;
-            
+
             z-index: 1000;
         }
 
@@ -361,13 +363,18 @@
 
 <header class="site-header">
 
-    <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Buka menu"
-    >
-        ☰
-    </button>
+    <div class="header-left">
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Buka menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+    </div>
 
 
     <a
@@ -378,13 +385,17 @@
     </a>
 
 
-    <button
-        class="theme-button"
-        id="themeButton"
-        aria-label="Ganti tema"
-    >
-        ☀️
-    </button>
+    <div class="header-right">
+
+        <button
+            class="theme-button"
+            id="themeButton"
+            aria-label="Ganti tema"
+        >
+            ☀️
+        </button>
+
+    </div>
 
 </header>
 
@@ -425,13 +436,17 @@
     <!-- NOVEL -->
 
     <div
-        class="menu-item menu-novel"
+        class="menu-parent"
         id="menuNovel"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
     >
 
         <span>
             Novel
         </span>
+
 
         <span class="menu-arrow">
             ›
@@ -445,64 +460,54 @@
         id="novelSubmenu"
     >
 
-        <div
-            class="submenu-header"
-            id="submenuBack"
-        >
-
-            <span>
-                Novel
-            </span>
-
-            <span>
-                ‹
-            </span>
-
-        </div>
-
-
-        <a href="../index.html#ongoing">
+        <a href="../novel/on-going.html">
             On-going
         </a>
 
 
-        <a href="../index.html#completed">
+        <a href="../novel/completed.html">
             Completed
         </a>
 
 
-        <a href="../index.html#hiatus">
+        <a href="../novel/hiatus.html">
             Hiatus
         </a>
 
 
-        <a href="../index.html#drop">
+        <a href="../novel/drop.html">
             Drop
         </a>
 
     </div>
 
 
-    <!-- MENU LAINNYA -->
+    <!-- BOOKMARK -->
 
     <a
-        href="../index.html#bookmark"
+        href="../bookmark.html"
         class="menu-item"
     >
         Bookmark
     </a>
 
 
+    <!-- DONASI -->
+
     <a
-        href="../index.html#donasi"
+        href="https://trakteer.id/DhyonPratama"
         class="menu-item"
+        target="_blank"
+        rel="noopener"
     >
         Donasi
     </a>
 
 
+    <!-- LOGIN -->
+
     <a
-        href="../index.html#login"
+        href="#login"
         class="menu-item"
     >
         Login
@@ -785,7 +790,11 @@
         </span>
 
 
-        <a href="../index.html#donasi">
+        <a
+            href="https://trakteer.id/DhyonPratama"
+            target="_blank"
+            rel="noopener"
+        >
             Donasi
         </a>
 
@@ -806,129 +815,227 @@
 <script>
 
 
-    /* =========================
-       MENU
-    ========================= */
+/* =====================================================
+   MENU
+===================================================== */
 
-    const menuButton =
-        document.getElementById("menuButton");
+const menuButton =
+    document.getElementById("menuButton");
 
+const menuClose =
+    document.getElementById("menuClose");
 
-    const menuClose =
-        document.getElementById("menuClose");
+const menuOverlay =
+    document.getElementById("menuOverlay");
 
+const sideMenu =
+    document.getElementById("sideMenu");
 
-    const menuOverlay =
-        document.getElementById("menuOverlay");
+const menuNovel =
+    document.getElementById("menuNovel");
 
-
-    const sideMenu =
-        document.getElementById("sideMenu");
-
-
-    const menuNovel =
-        document.getElementById("menuNovel");
-
-
-    const novelSubmenu =
-        document.getElementById("novelSubmenu");
+const novelSubmenu =
+    document.getElementById("novelSubmenu");
 
 
-    const submenuBack =
-        document.getElementById("submenuBack");
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
 
 
+function closeNovelSubmenu() {
 
-    function openMenu() {
+    novelSubmenu.classList.remove("active");
 
-        sideMenu.classList.add("active");
+    menuNovel.classList.remove("active");
 
-        menuOverlay.classList.add("active");
+    menuNovel.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+function closeMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    closeNovelSubmenu();
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+function toggleNovelSubmenu() {
+
+    const isActive =
+        novelSubmenu.classList.toggle("active");
+
+
+    menuNovel.classList.toggle(
+        "active",
+        isActive
+    );
+
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        isActive
+    );
+
+}
+
+
+menuNovel.addEventListener(
+    "click",
+    toggleNovelSubmenu
+);
+
+
+menuNovel.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            toggleNovelSubmenu();
+
+        }
 
     }
+);
 
 
-
-    function closeMenu() {
-
-        sideMenu.classList.remove("active");
-
-        menuOverlay.classList.remove("active");
-
-        novelSubmenu.classList.remove("active");
-
-    }
+const menuLinks =
+    sideMenu.querySelectorAll("a");
 
 
+menuLinks.forEach(function (link) {
 
-    menuButton.addEventListener(
-        "click",
-        openMenu
-    );
-
-
-    menuClose.addEventListener(
-        "click",
-        closeMenu
-    );
-
-
-    menuOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
-
-
-
-    /* =========================
-       SUBMENU NOVEL
-    ========================= */
-
-    menuNovel.addEventListener(
+    link.addEventListener(
         "click",
         function () {
 
-            novelSubmenu.classList.add("active");
+            closeMenu();
 
         }
     );
 
+});
 
-    submenuBack.addEventListener(
-        "click",
-        function () {
 
-            novelSubmenu.classList.remove("active");
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
 
         }
-    );
+
+    }
+);
 
 
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
 
-    /* =========================
-       DARK / LIGHT MODE
-    ========================= */
-
-    const themeButton =
-        document.getElementById("themeButton");
-
+const themeButton =
+    document.getElementById("themeButton");
 
 
-    function loadTheme() {
+function loadTheme() {
 
-        const savedTheme =
-            localStorage.getItem("theme");
+    const savedTheme =
+        localStorage.getItem("theme");
 
 
-        if (savedTheme === "dark") {
+    if (savedTheme === "dark") {
 
-            document.body.classList.add("dark");
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "🌙";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
 
             themeButton.textContent = "🌙";
 
         } else {
 
-            document.body.classList.remove("dark");
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
 
             themeButton.textContent = "☀️";
 
@@ -938,483 +1045,400 @@
         updateGiscusTheme();
 
     }
+);
 
 
+loadTheme();
 
-    themeButton.addEventListener(
-        "click",
-        function () {
 
-            document.body.classList.toggle("dark");
+window.addEventListener(
+    "pageshow",
+    function () {
 
+        loadTheme();
 
-            if (
-                document.body.classList.contains("dark")
-            ) {
-
-                localStorage.setItem(
-                    "theme",
-                    "dark"
-                );
-
-                themeButton.textContent = "🌙";
-
-            } else {
-
-                localStorage.setItem(
-                    "theme",
-                    "light"
-                );
-
-                themeButton.textContent = "☀️";
-
-            }
-
-
-            updateGiscusTheme();
-
-        }
-    );
-
-
-    loadTheme();
-
-
-
-    /* =========================
-       PHONE BACK
-    ========================= */
-
-    window.addEventListener(
-        "pageshow",
-        function () {
-
-            loadTheme();
-
-
-            fontSize =
-                Number(
-                    localStorage.getItem("fontSize")
-                ) || 18;
-
-
-            updateFontSize();
-
-        }
-    );
-
-
-
-    /* =========================
-       READER SETTINGS
-    ========================= */
-
-    const readerSettingsButton =
-        document.getElementById(
-            "readerSettingsButton"
-        );
-
-
-    const readerSettings =
-        document.getElementById(
-            "readerSettings"
-        );
-
-
-
-    readerSettingsButton.addEventListener(
-        "click",
-        function () {
-
-            const isActive =
-                readerSettings.classList.toggle(
-                    "active"
-                );
-
-
-            readerSettingsButton.classList.toggle(
-                "active",
-                isActive
-            );
-
-
-            readerSettingsButton.setAttribute(
-                "aria-expanded",
-                isActive
-            );
-
-        }
-    );
-
-
-
-    /* =========================
-       FONT SIZE
-    ========================= */
-
-    let fontSize =
-        Number(
-            localStorage.getItem("fontSize")
-        ) || 18;
-
-
-
-    function updateFontSize() {
-
-        const paragraphs =
-            document.querySelectorAll(
-                ".reader p"
-            );
-
-
-        paragraphs.forEach(
-            function (paragraph) {
-
-                paragraph.style.fontSize =
-                    fontSize + "px";
-
-            }
-        );
-
-
-        document.getElementById(
-            "fontSizeDisplay"
-        ).textContent = fontSize;
-
-
-        localStorage.setItem(
-            "fontSize",
-            fontSize
-        );
-
-    }
-
-
-
-    function changeFontSize(amount) {
-
-        fontSize += amount;
-
-
-        if (fontSize < 14) {
-
-            fontSize = 14;
-
-        }
-
-
-        if (fontSize > 28) {
-
-            fontSize = 28;
-
-        }
-
+        updateGiscusTheme();
 
         updateFontSize();
 
     }
+);
 
 
+/* =====================================================
+   READER SETTINGS
+===================================================== */
 
+const readerSettingsButton =
     document.getElementById(
-        "fontDecrease"
-    ).addEventListener(
-        "click",
-        function () {
-
-            changeFontSize(-1);
-
-        }
+        "readerSettingsButton"
     );
 
 
+const readerSettings =
     document.getElementById(
-        "fontIncrease"
-    ).addEventListener(
-        "click",
-        function () {
-
-            changeFontSize(1);
-
-        }
+        "readerSettings"
     );
 
 
+readerSettingsButton.addEventListener(
+    "click",
+    function () {
 
-    /* =========================
-       SEARCH
-    ========================= */
-
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    searchInput.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter"
-                &&
-                searchInput.value.trim() !== ""
-            ) {
-
-                const query =
-                    encodeURIComponent(
-                        searchInput.value.trim()
-                    );
-
-
-                window.location.href =
-                    "../index.html?search=" +
-                    query;
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================
-       BACK TO TOP
-    ========================= */
-
-    const backToTop =
-        document.getElementById(
-            "backToTop"
-        );
-
-
-
-    window.addEventListener(
-        "scroll",
-        function () {
-
-            if (window.scrollY > 500) {
-
-                backToTop.classList.add(
-                    "show"
-                );
-
-            } else {
-
-                backToTop.classList.remove(
-                    "show"
-                );
-
-            }
-
-        }
-    );
-
-
-
-    backToTop.addEventListener(
-        "click",
-        function () {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-
-
-    /* =========================
-       GISCUS
-    ========================= */
-
-    function loadGiscus() {
-
-        const container =
-            document.getElementById(
-                "giscus-container"
+        const isActive =
+            readerSettings.classList.toggle(
+                "active"
             );
 
 
-        if (!container) {
+        readerSettingsButton.classList.toggle(
+            "active",
+            isActive
+        );
 
-            return;
+
+        readerSettingsButton.setAttribute(
+            "aria-expanded",
+            isActive
+        );
+
+    }
+);
+
+
+/* =====================================================
+   FONT SIZE
+===================================================== */
+
+let fontSize =
+    Number(
+        localStorage.getItem("fontSize")
+    ) || 18;
+
+
+function updateFontSize() {
+
+    const paragraphs =
+        document.querySelectorAll(
+            ".reader p"
+        );
+
+
+    paragraphs.forEach(
+        function (paragraph) {
+
+            paragraph.style.fontSize =
+                fontSize + "px";
 
         }
+    );
 
 
-        if (
-            container.querySelector("script")
-        ) {
-
-            return;
-
-        }
+    document.getElementById(
+        "fontSizeDisplay"
+    ).textContent = fontSize;
 
 
-        const script =
-            document.createElement("script");
+    localStorage.setItem(
+        "fontSize",
+        fontSize
+    );
+
+}
 
 
-        script.src =
-            "https://giscus.app/client.js";
+function changeFontSize(amount) {
+
+    fontSize += amount;
 
 
-        script.setAttribute(
-            "data-repo",
-            "Dhyon09/cn-novel-translation"
-        );
+    if (fontSize < 14) {
 
-
-        script.setAttribute(
-            "data-repo-id",
-            "R_kgDOU4Dcig"
-        );
-
-
-        script.setAttribute(
-            "data-category",
-            "General"
-        );
-
-
-        script.setAttribute(
-            "data-category-id",
-            "DIC_kwDOU4Dcis4DG3Ff"
-        );
-
-
-        script.setAttribute(
-            "data-mapping",
-            "pathname"
-        );
-
-
-        script.setAttribute(
-            "data-strict",
-            "0"
-        );
-
-
-        script.setAttribute(
-            "data-reactions-enabled",
-            "1"
-        );
-
-
-        script.setAttribute(
-            "data-emit-metadata",
-            "0"
-        );
-
-
-        script.setAttribute(
-            "data-input-position",
-            "bottom"
-        );
-
-
-        script.setAttribute(
-            "data-theme",
-            document.body.classList.contains("dark")
-                ? "dark"
-                : "light"
-        );
-
-
-        script.setAttribute(
-            "data-lang",
-            "id"
-        );
-
-
-        script.setAttribute(
-            "data-loading",
-            "lazy"
-        );
-
-
-        script.crossOrigin =
-            "anonymous";
-
-
-        script.async = true;
-
-
-        container.appendChild(script);
+        fontSize = 14;
 
     }
 
 
+    if (fontSize > 28) {
 
-    function updateGiscusTheme() {
-
-        const iframe =
-            document.querySelector(
-                "iframe.giscus-frame"
-            );
-
-
-        if (!iframe) {
-
-            return;
-
-        }
-
-
-        const theme =
-            document.body.classList.contains("dark")
-                ? "dark"
-                : "light";
-
-
-        iframe.contentWindow.postMessage(
-            {
-                giscus: {
-                    setConfig: {
-                        theme: theme
-                    }
-                }
-            },
-            "https://giscus.app"
-        );
+        fontSize = 28;
 
     }
 
-
-
-    /* =========================
-       GISCUS READY
-    ========================= */
-
-    window.addEventListener(
-        "message",
-        function (event) {
-
-            if (
-                event.origin ===
-                "https://giscus.app"
-            ) {
-
-                updateGiscusTheme();
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================
-       START
-    ========================= */
 
     updateFontSize();
 
-    loadGiscus();
+}
 
+
+document.getElementById(
+    "fontDecrease"
+).addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(-1);
+
+    }
+);
+
+
+document.getElementById(
+    "fontIncrease"
+).addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(1);
+
+    }
+);
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+searchInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+            &&
+            searchInput.value.trim() !== ""
+        ) {
+
+            const query =
+                encodeURIComponent(
+                    searchInput.value.trim()
+                );
+
+
+            window.location.href =
+                "../index.html?search=" +
+                query;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backToTop =
+    document.getElementById(
+        "backToTop"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add(
+                "show"
+            );
+
+        } else {
+
+            backToTop.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+backToTop.addEventListener(
+    "click",
+    function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+/* =====================================================
+   GISCUS
+===================================================== */
+
+function loadGiscus() {
+
+    const container =
+        document.getElementById(
+            "giscus-container"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    if (
+        container.querySelector("script")
+    ) {
+
+        return;
+
+    }
+
+
+    const script =
+        document.createElement("script");
+
+
+    script.src =
+        "https://giscus.app/client.js";
+
+
+    script.setAttribute(
+        "data-repo",
+        "Dhyon09/cn-novel-translation"
+    );
+
+
+    script.setAttribute(
+        "data-repo-id",
+        "R_kgDOU4Dcig"
+    );
+
+
+    script.setAttribute(
+        "data-category",
+        "General"
+    );
+
+
+    script.setAttribute(
+        "data-category-id",
+        "DIC_kwDOU4Dcis4DG3Ff"
+    );
+
+
+    script.setAttribute(
+        "data-mapping",
+        "pathname"
+    );
+
+
+    script.setAttribute(
+        "data-strict",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-reactions-enabled",
+        "1"
+    );
+
+
+    script.setAttribute(
+        "data-emit-metadata",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-input-position",
+        "bottom"
+    );
+
+
+    script.setAttribute(
+        "data-theme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+
+
+    script.setAttribute(
+        "data-lang",
+        "id"
+    );
+
+
+    script.setAttribute(
+        "data-loading",
+        "lazy"
+    );
+
+
+    script.crossOrigin =
+        "anonymous";
+
+
+    script.async = true;
+
+
+    container.appendChild(script);
+
+}
+
+
+function updateGiscusTheme() {
+
+    const iframe =
+        document.querySelector(
+            "iframe.giscus-frame"
+        );
+
+
+    if (!iframe) {
+
+        return;
+
+    }
+
+
+    const theme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+
+    iframe.contentWindow.postMessage(
+        {
+            giscus: {
+
+                setConfig: {
+
+                    theme: theme
+
+                }
+
+            }
+
+        },
+        "https://giscus.app"
+    );
+
+}
+
+
+loadGiscus();
 
 </script>
 
