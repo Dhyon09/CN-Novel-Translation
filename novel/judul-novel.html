@@ -74,6 +74,45 @@
 
 
         /* =========================
+           BACAAN TERAKHIR
+        ========================= */
+
+        .last-read {
+            display: none;
+
+            margin-top: 12px;
+        }
+
+
+        .last-read.active {
+            display: block;
+        }
+
+
+        .last-read a {
+            display: inline-block;
+
+            color: var(--primary);
+
+            font-size: 14px;
+            line-height: 1.4;
+
+            text-decoration: none;
+
+            transition:
+                color 0.25s ease,
+                opacity 0.25s ease;
+        }
+
+
+        .last-read a:hover,
+        .last-read a:active {
+            opacity: 0.75;
+            text-decoration: underline;
+        }
+
+
+        /* =========================
            SCROLLBAR
         ========================= */
 
@@ -109,6 +148,11 @@
                 min-height: 40px;
                 padding: 8px 9px;
                 font-size: 14px;
+            }
+
+
+            .last-read a {
+                font-size: 13px;
             }
 
         }
@@ -389,6 +433,23 @@
                 >
                     ☆ Bookmark
                 </button>
+
+
+                <!-- BACAAN TERAKHIR -->
+
+                <div
+                    class="last-read"
+                    id="lastRead"
+                >
+
+                    <a
+                        href="#"
+                        id="lastReadLink"
+                    >
+                        Bacaan terakhir: Chapter 1
+                    </a>
+
+                </div>
 
             </div>
 
@@ -865,6 +926,8 @@ window.addEventListener(
 
         loadBookmark();
 
+        loadLastRead();
+
     }
 );
 
@@ -1008,6 +1071,119 @@ bookmarkButton.addEventListener(
 
 
 loadBookmark();
+
+
+/* =====================================================
+   BACAAN TERAKHIR
+===================================================== */
+
+const lastRead =
+    document.getElementById("lastRead");
+
+const lastReadLink =
+    document.getElementById("lastReadLink");
+
+
+const lastReadStorageKey =
+    "lastRead_HeavenlySwordAgainstTheSky";
+
+
+const chapterPaths = {
+
+    1: "../chapter/bab-1.html",
+
+    2: "../chapter/bab-2.html",
+
+    3: "../chapter/bab-3.html",
+
+    4: "../chapter/bab-4.html",
+
+    5: "../chapter/bab-5.html",
+
+    6: "../chapter/bab-6.html",
+
+    7: "../chapter/bab-7.html",
+
+    8: "../chapter/bab-8.html",
+
+    9: "../chapter/bab-9.html",
+
+    10: "../chapter/bab-10.html",
+
+    11: "../chapter/bab-11.html",
+
+    12: "../chapter/bab-12.html",
+
+    13: "../chapter/bab-13.html",
+
+    14: "../chapter/bab-14.html",
+
+    15: "../chapter/bab-15.html",
+
+    16: "../chapter/bab-16.html",
+
+    17: "../chapter/bab-17.html",
+
+    18: "../chapter/bab-18.html",
+
+    19: "../chapter/bab-19.html",
+
+    20: "../chapter/bab-20.html",
+
+    21: "../chapter/bab-21.html",
+
+    22: "../chapter/bab-22.html",
+
+    23: "../chapter/bab-23.html",
+
+    24: "../chapter/bab-24.html",
+
+    25: "../chapter/bab-25.html"
+
+};
+
+
+function loadLastRead() {
+
+    const savedChapter =
+        Number(
+            localStorage.getItem(
+                lastReadStorageKey
+            )
+        );
+
+
+    if (
+        !savedChapter ||
+        !chapterPaths[savedChapter]
+    ) {
+
+        lastRead.classList.remove(
+            "active"
+        );
+
+        return;
+
+    }
+
+
+    lastReadLink.textContent =
+        "Bacaan terakhir: Chapter " +
+        savedChapter;
+
+
+    lastReadLink.href =
+        chapterPaths[savedChapter];
+
+
+    lastRead.classList.add(
+        "active"
+    );
+
+}
+
+
+loadLastRead();
 
 
 /* =====================================================
