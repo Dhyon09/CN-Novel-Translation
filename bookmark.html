@@ -104,6 +104,41 @@
 
 
         /* =====================================================
+           HAPUS BOOKMARK
+        ===================================================== */
+
+        .remove-bookmark {
+            width: calc(100% - 22px);
+
+            margin: 0 11px 11px;
+
+            padding: 8px 10px;
+
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: transparent;
+            color: var(--secondary);
+
+            font-family: inherit;
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        .remove-bookmark:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        /* =====================================================
            BOOKMARK KOSONG
         ===================================================== */
 
@@ -182,6 +217,12 @@
 
             .bookmark-card img {
                 height: 185px;
+            }
+
+
+            .remove-bookmark {
+                width: calc(100% - 18px);
+                margin: 0 9px 9px;
             }
 
         }
@@ -704,7 +745,7 @@ function loadBookmarks() {
         "none";
 
 
-    bookmarks.forEach(function (novel) {
+    bookmarks.forEach(function (novel, index) {
 
         const card =
             document.createElement("article");
@@ -744,6 +785,15 @@ function loadBookmarks() {
 
             </a>
 
+
+            <button
+                class="remove-bookmark"
+                type="button"
+                data-index="${index}"
+            >
+                Hapus Bookmark
+            </button>
+
         `;
 
 
@@ -751,10 +801,63 @@ function loadBookmarks() {
 
     });
 
+
+    const removeButtons =
+        bookmarkGrid.querySelectorAll(
+            ".remove-bookmark"
+        );
+
+
+    removeButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const index =
+                    Number(
+                        button.dataset.index
+                    );
+
+
+                removeBookmark(index);
+
+            }
+        );
+
+    });
+
 }
 
 
-loadBookmarks();
+
+/* =====================================================
+   HAPUS BOOKMARK
+===================================================== */
+
+function removeBookmark(index) {
+
+    const bookmarks =
+        JSON.parse(
+            localStorage.getItem("bookmarks")
+        ) || [];
+
+
+    bookmarks.splice(index, 1);
+
+
+    localStorage.setItem(
+        "bookmarks",
+        JSON.stringify(bookmarks)
+    );
+
+
+    loadBookmarks();
+
+
+    searchInput.value = "";
+
+}
 
 
 
@@ -812,6 +915,13 @@ searchInput.addEventListener(
     }
 );
 
+
+
+/* =====================================================
+   LOAD
+===================================================== */
+
+loadBookmarks();
 
 </script>
 
