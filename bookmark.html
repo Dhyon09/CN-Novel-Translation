@@ -818,9 +818,44 @@ function loadBookmarks() {
             "bookmark-card";
 
 
+        /*
+         * =================================================
+         * PERBAIKAN LINK BOOKMARK
+         * =================================================
+         *
+         * Data bookmark pada halaman novel menyimpan:
+         *
+         *     link: "you-rejected-my-honor.html"
+         *
+         * Karena bookmark.html berada di root, maka
+         * halaman novel harus dipanggil melalui folder:
+         *
+         *     novel/you-rejected-my-honor.html
+         *
+         * Jika suatu saat data sudah menyimpan path lengkap
+         * seperti "novel/nama-novel.html", kode ini juga
+         * tetap aman.
+         */
+
+        let novelLink = novel.link || "#";
+
+
+        if (
+            !novelLink.startsWith("http://") &&
+            !novelLink.startsWith("https://") &&
+            !novelLink.startsWith("/") &&
+            !novelLink.startsWith("novel/")
+        ) {
+
+            novelLink =
+                "novel/" + novelLink;
+
+        }
+
+
         card.innerHTML = `
 
-            <a href="${novel.link}">
+            <a href="${novelLink}">
 
                 <img
                     src="${novel.cover}"
