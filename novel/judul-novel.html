@@ -1,602 +1,598 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0"
 
-«»
+    <meta charset="UTF-8">
 
-<title>Contoh Novel A - CN Novel-Translation</title>
-<link
-    rel="stylesheet"
-    href="../css/style.css"
->
-<style>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    /* =========================
-       DAFTAR CHAPTER
-    ========================= */
+    <title>Contoh Novel A - CN Novel-Translation</title>
 
-    .chapter-list {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
 
-        gap: 6px;
+    <style>
 
-        max-height: 360px;
-
-        overflow-y: auto;
-
-        padding: 2px;
-    }
-
-
-    .chapter-list a {
-        display: flex;
-        align-items: center;
-
-        min-height: 42px;
-
-        padding: 8px 10px;
-
-        border: 1px solid var(--border);
-
-        border-radius: 6px;
-
-        background: var(--card);
-
-        color: var(--text);
-
-        text-decoration: none;
-
-        font-size: 15px;
-
-        line-height: 1.3;
-
-        transition:
-            border-color 0.25s ease,
-            background-color 0.25s ease,
-            color 0.25s ease;
-    }
-
-
-    .chapter-list a:hover {
-        border-color: var(--primary);
-
-        background: var(--bg);
-
-        color: var(--primary);
-    }
-
-
-    .chapter-list a:active {
-        border-color: var(--primary);
-
-        background: var(--bg);
-
-        color: var(--primary);
-    }
-
-
-    /* =========================
-       SCROLLBAR
-    ========================= */
-
-    .chapter-list::-webkit-scrollbar {
-        width: 5px;
-    }
-
-
-    .chapter-list::-webkit-scrollbar-thumb {
-        background: var(--border);
-
-        border-radius: 10px;
-    }
-
-
-    .chapter-list::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 480px) {
+        /* =========================
+           DAFTAR CHAPTER
+        ========================= */
 
         .chapter-list {
-
-            max-height: 330px;
-
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 6px;
-
+            max-height: 360px;
+            overflow-y: auto;
+            padding: 2px;
         }
 
 
         .chapter-list a {
+            display: flex;
+            align-items: center;
 
-            min-height: 40px;
+            min-height: 42px;
 
-            padding: 8px 9px;
+            padding: 8px 10px;
 
-            font-size: 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: var(--card);
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 15px;
+            line-height: 1.3;
+
+            transition:
+                border-color 0.25s ease,
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+
+        .chapter-list a:hover {
+            border-color: var(--primary);
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+
+        .chapter-list a:active {
+            border-color: var(--primary);
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           SCROLLBAR
+        ========================= */
+
+        .chapter-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+
+        .chapter-list::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+
+
+        .chapter-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .chapter-list {
+                max-height: 330px;
+                gap: 6px;
+            }
+
+
+            .chapter-list a {
+                min-height: 40px;
+                padding: 8px 9px;
+                font-size: 14px;
+            }
 
         }
 
-    }
-
-</style>
-
+    </style>
 
 </head>
-    
+
+
 <body>
-    
+
+
 <!-- =========================
      HEADER
 ========================= -->
-    <header class="site-header">
-    
-        <div class="header-left">
 
-    <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Buka menu"
-        aria-expanded="false"
-    >
-        ☰
-    </button>
+<header class="site-header">
 
-</div>
-
-
-<a
-    href="../index.html"
-    class="site-title"
->
-    CN Novel-Translation
-</a>
-
-
-<div class="header-right">
-
-    <button
-        class="theme-button"
-        id="themeButton"
-        aria-label="Ganti tema"
-    >
-        ☀️
-    </button>
-
-</div>
-
-</header>
-    
-<!-- =========================
-     MENU
-========================= -->
-    
-    <div
-    class="menu-overlay"
-    id="menuOverlay"
->
-        
-</div>
-    <nav
-    class="side-menu"
-    id="sideMenu"
->
-        <div class="menu-header">
-
-    <span>
-        Menu
-    </span>
-
-
-    <button
-        class="menu-close"
-        id="menuClose"
-        aria-label="Tutup menu"
-    >
-        ×
-    </button>
-
-</div>
-
-
-
-<!-- NOVEL -->
-
-<div
-    class="menu-parent"
-    id="menuNovel"
-    role="button"
-    tabindex="0"
-    aria-expanded="false"
->
-
-    <span>
-        Novel
-    </span>
-
-
-    <span class="menu-arrow">
-        ›
-    </span>
-
-</div>
-
-
-<div
-    class="novel-submenu"
-    id="novelSubmenu"
->
-
-    <a href="on-going.html">
-        On-going
-    </a>
-
-
-    <a href="completed.html">
-        Completed
-    </a>
-
-
-    <a href="hiatus.html">
-        Hiatus
-    </a>
-
-
-    <a href="drop.html">
-        Drop
-    </a>
-
-</div>
-
-
-
-<!-- MENU LAINNYA -->
-
-<a
-    href="../bookmark.html"
-    class="menu-item"
->
-    Bookmark
-</a>
-
-
-<a
-    href="#donasi"
-    class="menu-item"
->
-    Donasi
-</a>
-
-
-<a
-    href="#login"
-    class="menu-item"
->
-    Login
-</a>
-
-</nav>
-    
-<!-- =========================
-     GLOBAL SEARCH
-========================= -->
-    
-    <div class="global-search-bar">
-    
-    <div class="global-search-inner">
-
-    <div class="search-box">
-
-        <span class="search-icon">
-            🔍
-        </span>
-
-
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="Cari judul novel..."
-            autocomplete="off"
-        >
-
-    </div>
-
-</div>
-
-</div>
-    
-<!-- =========================
-     MAIN
-========================= -->
-    
-    <main>
-        
-    <section class="novel-container">
-    
-<!-- =========================
-     INFORMASI NOVEL
-========================= -->
-
-<div class="novel-header">
-
-
-    <div class="novel-cover">
-
-        <img
-            src="../images/cover.jpg"
-            alt="Cover Contoh Novel A"
-        >
-
-    </div>
-
-
-    <div class="novel-info">
-
-        <h1>
-            Contoh Novel A
-        </h1>
-
-
-        <p class="novel-meta">
-            Fantasy • Romance
-        </p>
-
-
-        <p class="novel-status">
-            Status:
-            <strong>
-                On-going
-            </strong>
-        </p>
-
-
-        <p class="novel-meta">
-            Chapter Terbaru: Chapter 25
-        </p>
-
-
-        <!-- MULAI BACA -->
-
-        <a
-            href="../chapter/bab-1.html"
-            class="start-reading-button"
-        >
-            Mulai Baca
-        </a>
-
-
-        <!-- BOOKMARK -->
+    <div class="header-left">
 
         <button
-            id="bookmarkButton"
-            class="bookmark-button"
+            class="menu-button"
+            id="menuButton"
+            aria-label="Buka menu"
+            aria-expanded="false"
         >
-            ☆ Bookmark
+            ☰
         </button>
 
     </div>
 
-</div>
+
+    <a
+        href="../index.html"
+        class="site-title"
+    >
+        CN Novel-Translation
+    </a>
 
 
+    <div class="header-right">
 
-<!-- PEMBATAS -->
+        <button
+            class="theme-button"
+            id="themeButton"
+            aria-label="Ganti tema"
+        >
+            ☀️
+        </button>
 
-<div class="novel-divider"></div>
+    </div>
 
-
-
-<!-- SINOPSIS -->
-
-<section class="novel-description">
-
-    <h2>
-        Sinopsis
-    </h2>
-
-
-    <p>
-        Ini adalah contoh sinopsis novel.
-        Bagian ini nantinya dapat kamu ganti
-        dengan sinopsis asli dari novel yang
-        kamu terjemahkan.
-    </p>
-
-
-    <p>
-        Kamu dapat menjelaskan dunia cerita,
-        karakter utama, konflik, serta gambaran
-        perjalanan cerita di bagian ini.
-    </p>
-
-</section>
-
+</header>
 
 
 <!-- =========================
-     DAFTAR CHAPTER
+     MENU
 ========================= -->
 
-<section class="chapter-list-section">
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
 
-    <h2>
-        Daftar Chapter
-    </h2>
+
+<nav
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <div class="menu-header">
+
+        <span>
+            Menu
+        </span>
 
 
-    <div class="chapter-list">
-
-        <a href="../chapter/bab-25.html">
-            Chapter 25
-        </a>
-
-        <a href="../chapter/bab-24.html">
-            Chapter 24
-        </a>
-
-        <a href="../chapter/bab-23.html">
-            Chapter 23
-        </a>
-
-        <a href="../chapter/bab-22.html">
-            Chapter 22
-        </a>
-
-        <a href="../chapter/bab-21.html">
-            Chapter 21
-        </a>
-
-        <a href="../chapter/bab-20.html">
-            Chapter 20
-        </a>
-
-        <a href="../chapter/bab-19.html">
-            Chapter 19
-        </a>
-
-        <a href="../chapter/bab-18.html">
-            Chapter 18
-        </a>
-
-        <a href="../chapter/bab-17.html">
-            Chapter 17
-        </a>
-
-        <a href="../chapter/bab-16.html">
-            Chapter 16
-        </a>
-
-        <a href="../chapter/bab-15.html">
-            Chapter 15
-        </a>
-
-        <a href="../chapter/bab-14.html">
-            Chapter 14
-        </a>
-
-        <a href="../chapter/bab-13.html">
-            Chapter 13
-        </a>
-
-        <a href="../chapter/bab-12.html">
-            Chapter 12
-        </a>
-
-        <a href="../chapter/bab-11.html">
-            Chapter 11
-        </a>
-
-        <a href="../chapter/bab-10.html">
-            Chapter 10
-        </a>
-
-        <a href="../chapter/bab-9.html">
-            Chapter 9
-        </a>
-
-        <a href="../chapter/bab-8.html">
-            Chapter 8
-        </a>
-
-        <a href="../chapter/bab-7.html">
-            Chapter 7
-        </a>
-
-        <a href="../chapter/bab-6.html">
-            Chapter 6
-        </a>
-
-        <a href="../chapter/bab-5.html">
-            Chapter 5
-        </a>
-
-        <a href="../chapter/bab-4.html">
-            Chapter 4
-        </a>
-
-        <a href="../chapter/bab-3.html">
-            Chapter 3
-        </a>
-
-        <a href="../chapter/bab-2.html">
-            Chapter 2
-        </a>
-
-        <a href="../chapter/bab-1.html">
-            Chapter 1 — Awal Perjalanan
-        </a>
+        <button
+            class="menu-close"
+            id="menuClose"
+            aria-label="Tutup menu"
+        >
+            ×
+        </button>
 
     </div>
 
-</section>
+
+    <!-- NOVEL -->
+
+    <div
+        class="menu-parent"
+        id="menuNovel"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+    >
+
+        <span>
+            Novel
+        </span>
 
 
+        <span class="menu-arrow">
+            ›
+        </span>
 
-<!-- KOMENTAR -->
-
-<section class="comments-section">
-
-    <h2>
-        Komentar
-    </h2>
+    </div>
 
 
     <div
-        class="giscus"
-        id="giscus-container"
+        class="novel-submenu"
+        id="novelSubmenu"
     >
+
+        <a href="on-going.html">
+            On-going
+        </a>
+
+
+        <a href="completed.html">
+            Completed
+        </a>
+
+
+        <a href="hiatus.html">
+            Hiatus
+        </a>
+
+
+        <a href="drop.html">
+            Drop
+        </a>
+
     </div>
 
-</section>
 
-</section>
-</main>
-    
-    <!-- =========================
-     FOOTER
-========================= -->
-    <footer class="site-footer">
-        <div class="footer-title">
-    CN Novel-Translation
-</div>
+    <!-- MENU LAINNYA -->
 
-
-<div class="footer-links">
-
-    <a href="../index.html">
-        Home
+    <a
+        href="../bookmark.html"
+        class="menu-item"
+    >
+        Bookmark
     </a>
 
 
-    <span>
-        •
-    </span>
-
-
-    <a href="#donasi">
+    <a
+        href="#donasi"
+        class="menu-item"
+    >
         Donasi
     </a>
 
+
+    <a
+        href="#login"
+        class="menu-item"
+    >
+        Login
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     GLOBAL SEARCH
+========================= -->
+
+<div class="global-search-bar">
+
+    <div class="global-search-inner">
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Cari judul novel..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </div>
+
 </div>
 
 
-<div class="copyright">
-    © Copyright 2026-CN Novel-Translation
-</div>
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <section class="novel-container">
+
+
+        <!-- =========================
+             INFORMASI NOVEL
+        ========================= -->
+
+        <div class="novel-detail">
+
+            <div class="novel-cover">
+
+                <img
+                    src="../images/cover.jpg"
+                    alt="Cover Contoh Novel A"
+                >
+
+            </div>
+
+
+            <div class="novel-info">
+
+                <h1>
+                    Contoh Novel A
+                </h1>
+
+
+                <p>
+                    Fantasy • Romance
+                </p>
+
+
+                <p>
+                    Status:
+                    <strong>
+                        On-going
+                    </strong>
+                </p>
+
+
+                <p>
+                    Chapter Terbaru: Chapter 25
+                </p>
+
+
+                <!-- MULAI BACA -->
+
+                <a
+                    href="../chapter/bab-1.html"
+                    class="start-reading-button"
+                >
+                    Mulai Baca
+                </a>
+
+
+                <!-- BOOKMARK -->
+
+                <button
+                    id="bookmarkButton"
+                    class="bookmark-button"
+                >
+                    ☆ Bookmark
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PEMBATAS -->
+
+        <div class="novel-divider"></div>
+
+
+        <!-- =========================
+             SINOPSIS
+        ========================= -->
+
+        <section class="novel-description">
+
+            <h2>
+                Sinopsis
+            </h2>
+
+
+            <p>
+                Ini adalah contoh sinopsis novel.
+                Bagian ini nantinya dapat kamu ganti
+                dengan sinopsis asli dari novel yang
+                kamu terjemahkan.
+            </p>
+
+
+            <p>
+                Kamu dapat menjelaskan dunia cerita,
+                karakter utama, konflik, serta gambaran
+                perjalanan cerita di bagian ini.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             DAFTAR CHAPTER
+        ========================= -->
+
+        <section class="chapter-list-section">
+
+            <h2>
+                Daftar Chapter
+            </h2>
+
+
+            <div class="chapter-list">
+
+                <a href="../chapter/bab-25.html">
+                    Chapter 25
+                </a>
+
+                <a href="../chapter/bab-24.html">
+                    Chapter 24
+                </a>
+
+                <a href="../chapter/bab-23.html">
+                    Chapter 23
+                </a>
+
+                <a href="../chapter/bab-22.html">
+                    Chapter 22
+                </a>
+
+                <a href="../chapter/bab-21.html">
+                    Chapter 21
+                </a>
+
+                <a href="../chapter/bab-20.html">
+                    Chapter 20
+                </a>
+
+                <a href="../chapter/bab-19.html">
+                    Chapter 19
+                </a>
+
+                <a href="../chapter/bab-18.html">
+                    Chapter 18
+                </a>
+
+                <a href="../chapter/bab-17.html">
+                    Chapter 17
+                </a>
+
+                <a href="../chapter/bab-16.html">
+                    Chapter 16
+                </a>
+
+                <a href="../chapter/bab-15.html">
+                    Chapter 15
+                </a>
+
+                <a href="../chapter/bab-14.html">
+                    Chapter 14
+                </a>
+
+                <a href="../chapter/bab-13.html">
+                    Chapter 13
+                </a>
+
+                <a href="../chapter/bab-12.html">
+                    Chapter 12
+                </a>
+
+                <a href="../chapter/bab-11.html">
+                    Chapter 11
+                </a>
+
+                <a href="../chapter/bab-10.html">
+                    Chapter 10
+                </a>
+
+                <a href="../chapter/bab-9.html">
+                    Chapter 9
+                </a>
+
+                <a href="../chapter/bab-8.html">
+                    Chapter 8
+                </a>
+
+                <a href="../chapter/bab-7.html">
+                    Chapter 7
+                </a>
+
+                <a href="../chapter/bab-6.html">
+                    Chapter 6
+                </a>
+
+                <a href="../chapter/bab-5.html">
+                    Chapter 5
+                </a>
+
+                <a href="../chapter/bab-4.html">
+                    Chapter 4
+                </a>
+
+                <a href="../chapter/bab-3.html">
+                    Chapter 3
+                </a>
+
+                <a href="../chapter/bab-2.html">
+                    Chapter 2
+                </a>
+
+                <a href="../chapter/bab-1.html">
+                    Chapter 1 — Awal Perjalanan
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             KOMENTAR
+        ========================= -->
+
+        <section class="comments-section">
+
+            <h2>
+                Komentar
+            </h2>
+
+
+            <div
+                class="giscus"
+                id="giscus-container"
+            ></div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-title">
+        CN Novel-Translation
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+
+        <span>
+            •
+        </span>
+
+
+        <a href="#donasi">
+            Donasi
+        </a>
+
+    </div>
+
+
+    <div class="copyright">
+        © Copyright 2026-CN Novel-Translation
+    </div>
 
 </footer>
-    
-    <!-- =========================
+
+
+<!-- =========================
      JAVASCRIPT
-========================= --><script>
+========================= -->
+
+<script>
 
 
 /* =====================================================
@@ -606,22 +602,17 @@ content="width=device-width, initial-scale=1.0"
 const menuButton =
     document.getElementById("menuButton");
 
-
 const menuClose =
     document.getElementById("menuClose");
-
 
 const menuOverlay =
     document.getElementById("menuOverlay");
 
-
 const sideMenu =
     document.getElementById("sideMenu");
 
-
 const menuNovel =
     document.getElementById("menuNovel");
-
 
 const novelSubmenu =
     document.getElementById("novelSubmenu");
@@ -770,7 +761,6 @@ document.addEventListener(
 );
 
 
-
 /* =====================================================
    DARK / LIGHT MODE
 ===================================================== */
@@ -853,7 +843,6 @@ window.addEventListener(
 
     }
 );
-
 
 
 /* =====================================================
@@ -993,7 +982,6 @@ bookmarkButton.addEventListener(
 loadBookmark();
 
 
-
 /* =====================================================
    SEARCH
 ===================================================== */
@@ -1024,7 +1012,6 @@ searchInput.addEventListener(
 
     }
 );
-
 
 
 /* =====================================================
@@ -1196,4 +1183,4 @@ loadGiscus();
 
 </body>
 
-</html>
+    </html>
