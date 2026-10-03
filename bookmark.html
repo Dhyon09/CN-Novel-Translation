@@ -277,14 +277,30 @@
 
 
 <!-- =====================================================
+     MENU OVERLAY
+===================================================== -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
+
+
+
+<!-- =====================================================
      SIDE MENU
 ===================================================== -->
 
-<nav class="side-menu" id="sideMenu">
+<nav
+    class="side-menu"
+    id="sideMenu"
+>
 
     <div class="menu-header">
 
-        <span>Menu</span>
+        <span>
+            Menu
+        </span>
 
         <button
             class="menu-close"
@@ -297,22 +313,33 @@
     </div>
 
 
+    <!-- NOVEL -->
+
     <div
-        class="menu-parent"
+        class="menu-item menu-novel"
         id="menuNovel"
         role="button"
         tabindex="0"
         aria-expanded="false"
     >
 
-        <span>Novel</span>
+        <span>
+            Novel
+        </span>
 
-        <span class="menu-arrow">›</span>
+        <span class="menu-arrow">
+            ›
+        </span>
 
     </div>
 
 
-    <div class="novel-submenu" id="novelSubmenu">
+    <!-- SUBMENU NOVEL -->
+
+    <div
+        class="novel-submenu"
+        id="novelSubmenu"
+    >
 
         <a href="novel/on-going.html">
             On-going
@@ -333,24 +360,44 @@
     </div>
 
 
-    <a class="menu-item" href="bookmark.html">
-        <span>Bookmark</span>
+    <!-- BOOKMARK -->
+
+    <a
+        href="bookmark.html"
+        class="menu-item"
+    >
+        <span>
+            Bookmark
+        </span>
     </a>
 
 
-    <a class="menu-item" href="#donasi">
-        <span>Donasi</span>
+    <!-- DONASI -->
+
+    <a
+        class="menu-item"
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        <span>
+            Donasi
+        </span>
     </a>
 
 
-    <a class="menu-item" href="#login">
-        <span>Login</span>
+    <!-- LOGIN -->
+
+    <a
+        href="#login"
+        class="menu-item"
+    >
+        <span>
+            Login
+        </span>
     </a>
 
 </nav>
-
-
-<div class="menu-overlay" id="menuOverlay"></div>
 
 
 
@@ -364,7 +411,9 @@
 
         <div class="search-box">
 
-            <span class="search-icon">🔍</span>
+            <span class="search-icon">
+                🔍
+            </span>
 
             <input
                 type="search"
@@ -435,9 +484,15 @@
             Home
         </a>
 
-        <span>•</span>
+        <span>
+            •
+        </span>
 
-        <a href="#donasi">
+        <a
+            href="https://trakteer.id/DhyonPratama"
+            target="_blank"
+            rel="noopener"
+        >
             Donasi
         </a>
 
@@ -548,6 +603,10 @@ menuOverlay.addEventListener(
 );
 
 
+/* =====================================================
+   SUBMENU NOVEL
+===================================================== */
+
 function toggleNovelSubmenu() {
 
     const isActive =
@@ -592,6 +651,10 @@ menuNovel.addEventListener(
     }
 );
 
+
+/* =====================================================
+   MENU LINKS
+===================================================== */
 
 const menuLinks =
     sideMenu.querySelectorAll("a");
