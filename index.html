@@ -159,6 +159,7 @@
 
         .pagination {
             margin-top: 16px;
+            flex-wrap: wrap;
         }
 
 
@@ -301,35 +302,38 @@
 
         <!-- SUBMENU NOVEL -->
 
-        <div class="novel-submenu" id="novelSubmenu">
+        <div
+            class="novel-submenu"
+            id="novelSubmenu"
+        >
 
-    <a href="novel/on-going.html">
-        On-going
-    </a>
+            <a href="novel/on-going.html">
+                On-going
+            </a>
 
-    <a href="novel/completed.html">
-        Completed
-    </a>
+            <a href="novel/completed.html">
+                Completed
+            </a>
 
-    <a href="novel/hiatus.html">
-        Hiatus
-    </a>
+            <a href="novel/hiatus.html">
+                Hiatus
+            </a>
 
-    <a href="novel/drop.html">
-        Drop
-    </a>
+            <a href="novel/drop.html">
+                Drop
+            </a>
 
-</div>
+        </div>
 
 
         <!-- BOOKMARK -->
 
         <a
-    href="bookmark.html"
-    class="menu-item"
->
-    Bookmark
-</a>
+            href="bookmark.html"
+            class="menu-item"
+        >
+            Bookmark
+        </a>
 
 
         <!-- DONASI -->
@@ -784,8 +788,8 @@
         const novels = [
 
             {
-                title: "Contoh Novel A",
-                genre: "Fantasy • Romance",
+                title: "Heavenly Sword Against the Sky",
+                genre: "Xianxia • Romance",
                 status: "On-going",
                 cover: "images/cover.jpg",
                 chapter: 25,
@@ -794,8 +798,8 @@
             },
 
             {
-                title: "Contoh Novel B",
-                genre: "Xianxia • Romance",
+                title: "Emperor of the Nine Heavens",
+                genre: "Xianxia • Cultivation",
                 status: "On-going",
                 cover: "images/cover.jpg",
                 chapter: 103,
@@ -804,8 +808,8 @@
             },
 
             {
-                title: "Contoh Novel C",
-                genre: "Fantasy • Wuxia",
+                title: "Rebirth of the Celestial Sovereign",
+                genre: "Xuanhuan • Cultivation",
                 status: "Completed",
                 cover: "images/cover.jpg",
                 chapter: 17,
@@ -814,8 +818,8 @@
             },
 
             {
-                title: "Contoh Novel D",
-                genre: "Xuanhuan • Romance",
+                title: "Echoes of the Ancient Immortal",
+                genre: "Xianxia • Romance",
                 status: "Hiatus",
                 cover: "images/cover.jpg",
                 chapter: 42,
@@ -824,8 +828,8 @@
             },
 
             {
-                title: "Contoh Novel E",
-                genre: "Fantasy • Adventure",
+                title: "Path of the Eternal Immortal",
+                genre: "Xianxia • Adventure",
                 status: "On-going",
                 cover: "images/cover.jpg",
                 chapter: 68,
@@ -834,12 +838,22 @@
             },
 
             {
-                title: "Contoh Novel F",
+                title: "The Last Disciple of the Heavenly Sect",
                 genre: "Xianxia • Fantasy",
                 status: "On-going",
                 cover: "images/cover.jpg",
                 chapter: 91,
                 chapterTitle: "Chapter 91",
+                link: "#"
+            },
+
+            {
+                title: "The Forgotten Dao Emperor",
+                genre: "Xuanhuan • Fantasy",
+                status: "Drop",
+                cover: "images/cover.jpg",
+                chapter: 12,
+                chapterTitle: "Chapter 12",
                 link: "#"
             }
 
@@ -847,7 +861,7 @@
 
 
         /* =====================================================
-           NOVEL CARD
+           KARTU NOVEL
         ===================================================== */
 
         function createNovelCard(novel) {
@@ -919,6 +933,20 @@
 
 
         /* =====================================================
+           DATA LATEST UPDATE
+        ===================================================== */
+
+        const latestNovels =
+            [...novels].sort(
+                function (a, b) {
+
+                    return b.chapter - a.chapter;
+
+                }
+            );
+
+
+        /* =====================================================
            LATEST UPDATE
         ===================================================== */
 
@@ -944,7 +972,7 @@
 
 
             const pageNovels =
-                novels.slice(start, end);
+                latestNovels.slice(start, end);
 
 
             container.innerHTML =
@@ -972,7 +1000,7 @@
 
             const totalPages =
                 Math.ceil(
-                    novels.length /
+                    latestNovels.length /
                     latestPerPage
                 );
 
@@ -980,11 +1008,14 @@
             pagination.innerHTML = "";
 
 
-            for (
-                let i = 1;
-                i <= totalPages;
-                i++
-            ) {
+            if (totalPages <= 1) {
+
+                return;
+
+            }
+
+
+            function createPageButton(number) {
 
                 const button =
                     document.createElement(
@@ -992,10 +1023,10 @@
                     );
 
 
-                button.textContent = i;
+                button.textContent = number;
 
 
-                if (i === page) {
+                if (number === page) {
 
                     button.classList.add(
                         "active"
@@ -1008,9 +1039,147 @@
                     "click",
                     function () {
 
-                        currentPage = i;
+                        currentPage = number;
 
-                        showLatestUpdates(i);
+                        showLatestUpdates(number);
+
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth"
+                        });
+
+                    }
+                );
+
+
+                pagination.appendChild(button);
+
+            }
+
+
+            if (totalPages <= 6) {
+
+                for (
+                    let i = 1;
+                    i <= totalPages;
+                    i++
+                ) {
+
+                    createPageButton(i);
+
+                }
+
+            } else {
+
+                createPageButton(1);
+
+
+                if (page > 3) {
+
+                    const dots =
+                        document.createElement(
+                            "span"
+                        );
+
+                    dots.textContent = "...";
+
+                    dots.style.display = "flex";
+                    dots.style.alignItems = "center";
+                    dots.style.padding = "0 3px";
+
+                    pagination.appendChild(dots);
+
+                }
+
+
+                let startPage =
+                    Math.max(
+                        2,
+                        page - 1
+                    );
+
+
+                let endPage =
+                    Math.min(
+                        totalPages - 1,
+                        page + 1
+                    );
+
+
+                if (page <= 3) {
+
+                    startPage = 2;
+                    endPage = 4;
+
+                }
+
+
+                if (page >= totalPages - 2) {
+
+                    startPage =
+                        totalPages - 3;
+
+                    endPage =
+                        totalPages - 1;
+
+                }
+
+
+                for (
+                    let i = startPage;
+                    i <= endPage;
+                    i++
+                ) {
+
+                    createPageButton(i);
+
+                }
+
+
+                if (page < totalPages - 2) {
+
+                    const dots =
+                        document.createElement(
+                            "span"
+                        );
+
+                    dots.textContent = "...";
+
+                    dots.style.display = "flex";
+                    dots.style.alignItems = "center";
+                    dots.style.padding = "0 3px";
+
+                    pagination.appendChild(dots);
+
+                }
+
+
+                createPageButton(totalPages);
+
+            }
+
+
+            if (page < totalPages) {
+
+                const nextButton =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                nextButton.textContent =
+                    "Berikutnya";
+
+
+                nextButton.addEventListener(
+                    "click",
+                    function () {
+
+                        currentPage++;
+
+                        showLatestUpdates(
+                            currentPage
+                        );
 
                         window.scrollTo({
                             top: 0,
@@ -1022,7 +1191,7 @@
 
 
                 pagination.appendChild(
-                    button
+                    nextButton
                 );
 
             }
