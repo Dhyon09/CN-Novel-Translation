@@ -2,543 +2,621 @@
 <html lang="id">
 
 <head>
+    
+ <meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>Chapter 2 - You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
 
-    <title>Chapter 2 - You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
 
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+<style>
 
-    <style>
+    /* =========================
+       NAVIGASI CHAPTER
+    ========================= */
 
-        /* =========================
-           NAVIGASI CHAPTER
-        ========================= */
+    .chapter-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin: 0 0 16px;
+    }
+
+
+    .chapter-nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 38px;
+
+        padding: 7px 6px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--card);
+        color: var(--text);
+
+        text-decoration: none;
+        text-align: center;
+
+        font-size: 14px;
+        line-height: 1.2;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+
+    .chapter-nav-btn:hover,
+    .chapter-nav-btn:active {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    .chapter-nav-btn.disabled {
+        opacity: 0.45;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       RODA GIGI
+    ========================= */
+
+    .reader-settings-area {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        margin: 2px 0 12px;
+    }
+
+
+    .reader-settings-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .reader-settings-btn:hover,
+    .reader-settings-btn:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    .reader-settings-btn.active {
+        transform: rotate(30deg);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       PENGATURAN FONT
+    ========================= */
+
+    .reader-settings {
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        margin-top: 8px;
+
+        padding: 5px 8px;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+
+        background: var(--card);
+    }
+
+
+    .reader-settings.active {
+        display: flex;
+    }
+
+
+    .reader-settings button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 34px;
+        height: 30px;
+
+        padding: 0 7px;
+
+        border: 1px solid var(--border);
+        border-radius: 5px;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-family: inherit;
+        font-size: 14px;
+
+        cursor: pointer;
+    }
+
+
+    .reader-settings button:hover,
+    .reader-settings button:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    #fontSizeDisplay {
+        min-width: 22px;
+
+        color: var(--text);
+
+        font-size: 14px;
+        text-align: center;
+    }
+
+
+    /* =========================
+       JUDUL CHAPTER
+    ========================= */
+
+    .chapter-heading {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+
+    .chapter-number {
+        margin-bottom: 5px;
+
+        color: var(--secondary);
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+
+    .chapter-heading h1 {
+        margin: 0;
+
+        color: var(--text);
+
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+
+    /* =========================
+       TOMBOL KEMBALI KE ATAS
+    ========================= */
+
+    .back-to-top {
+        position: fixed;
+
+        right: 16px;
+        bottom: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 19px;
+
+        cursor: pointer;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
+
+        z-index: 1000;
+    }
+
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .back-to-top:hover,
+    .back-to-top:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
 
         .chapter-navigation {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            gap: 6px;
-            width: 100%;
-            margin: 0 0 16px;
+            gap: 5px;
+            margin-bottom: 14px;
         }
 
 
         .chapter-nav-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 36px;
+            padding: 6px 4px;
 
-            min-height: 38px;
-
-            padding: 7px 6px;
-
-            border: 1px solid var(--border);
-            border-radius: 6px;
-
-            background: var(--card);
-            color: var(--text);
-
-            text-decoration: none;
-            text-align: center;
-
-            font-size: 14px;
-            line-height: 1.2;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease;
+            font-size: 13px;
         }
 
-
-        .chapter-nav-btn:hover,
-        .chapter-nav-btn:active {
-            border-color: var(--primary);
-            background: var(--bg);
-            color: var(--primary);
-        }
-
-
-        .chapter-nav-btn.disabled {
-            opacity: 0.45;
-            pointer-events: none;
-        }
-
-
-        /* =========================
-           RODA GIGI
-        ========================= */
 
         .reader-settings-area {
-            position: relative;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            width: 100%;
-
-            margin: 2px 0 12px;
+            margin-top: 1px;
+            margin-bottom: 11px;
         }
 
 
         .reader-settings-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 35px;
+            height: 35px;
 
-            width: 36px;
-            height: 36px;
-
-            padding: 0;
-
-            border: 1px solid var(--border);
-            border-radius: 50%;
-
-            background: var(--card);
-            color: var(--text);
-
-            font-size: 18px;
-
-            cursor: pointer;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease,
-                transform 0.25s ease;
+            font-size: 17px;
         }
 
-
-        .reader-settings-btn:hover,
-        .reader-settings-btn:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        .reader-settings-btn.active {
-            transform: rotate(30deg);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           PENGATURAN FONT
-        ========================= */
-
-        .reader-settings {
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 8px;
-
-            margin-top: 8px;
-
-            padding: 5px 8px;
-
-            border: 1px solid var(--border);
-            border-radius: 7px;
-
-            background: var(--card);
-        }
-
-
-        .reader-settings.active {
-            display: flex;
-        }
-
-
-        .reader-settings button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            min-width: 34px;
-            height: 30px;
-
-            padding: 0 7px;
-
-            border: 1px solid var(--border);
-            border-radius: 5px;
-
-            background: var(--card);
-            color: var(--text);
-
-            font-family: inherit;
-            font-size: 14px;
-
-            cursor: pointer;
-        }
-
-
-        .reader-settings button:hover,
-        .reader-settings button:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        #fontSizeDisplay {
-            min-width: 22px;
-
-            color: var(--text);
-
-            font-size: 14px;
-            text-align: center;
-        }
-
-
-        /* =========================
-           JUDUL CHAPTER
-        ========================= */
 
         .chapter-heading {
-            text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
 
         .chapter-number {
-            margin-bottom: 5px;
-
-            color: var(--secondary);
-
-            font-size: 15px;
-            line-height: 1.3;
+            font-size: 14px;
         }
 
 
         .chapter-heading h1 {
-            margin: 0;
-
-            color: var(--text);
-
-            font-size: 24px;
-            line-height: 1.3;
+            font-size: 22px;
         }
 
-
-        /* =========================
-           TOMBOL KEMBALI KE ATAS
-        ========================= */
 
         .back-to-top {
-            position: fixed;
+            right: 14px;
+            bottom: 15px;
 
-            right: 16px;
-            bottom: 18px;
+            width: 38px;
+            height: 38px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 40px;
-            height: 40px;
-
-            border: 1px solid var(--border);
-            border-radius: 50%;
-
-            background: var(--card);
-            color: var(--text);
-
-            font-size: 19px;
-
-            cursor: pointer;
-
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-
-            transition:
-                opacity 0.25s ease,
-                visibility 0.25s ease,
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                color 0.25s ease;
-
-            z-index: 1000;
+            font-size: 18px;
         }
 
+    }
 
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-
-        .back-to-top:hover,
-        .back-to-top:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 480px) {
-
-            .chapter-navigation {
-                gap: 5px;
-                margin-bottom: 14px;
-            }
-
-
-            .chapter-nav-btn {
-                min-height: 36px;
-                padding: 6px 4px;
-
-                font-size: 13px;
-            }
-
-
-            .reader-settings-area {
-                margin-top: 1px;
-                margin-bottom: 11px;
-            }
-
-
-            .reader-settings-btn {
-                width: 35px;
-                height: 35px;
-
-                font-size: 17px;
-            }
-
-
-            .chapter-heading {
-                margin-bottom: 22px;
-            }
-
-
-            .chapter-number {
-                font-size: 14px;
-            }
-
-
-            .chapter-heading h1 {
-                font-size: 22px;
-            }
-
-
-            .back-to-top {
-                right: 14px;
-                bottom: 15px;
-
-                width: 38px;
-                height: 38px;
-
-                font-size: 18px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
-
-
+    
 <body>
-
-
+    
 <!-- =========================
      HEADER
 ========================= -->
-
-<header class="site-header">
-
+    
+    <header class="site-header">
+        
     <div class="header-left">
 
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Buka menu"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
-    </div>
-
-
-    <a
-        href="../index.html"
-        class="site-title"
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
     >
-        CN Novel-Translation
-    </a>
+        ☰
+    </button>
+
+</div>
 
 
-    <div class="header-right">
+<a
+    href="../index.html"
+    class="site-title"
+>
+    CN Novel-Translation
+</a>
 
-        <button
-            class="theme-button"
-            id="themeButton"
-            aria-label="Ganti tema"
-        >
-            ☀️
-        </button>
 
-    </div>
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
 
 </header>
-
-
+    
 <!-- =========================
      MENU
 ========================= -->
-
-<div
+    
+    <div
     class="menu-overlay"
     id="menuOverlay"
-></div>
-
-
-<nav
+>
+        
+</div>
+    <nav
     class="side-menu"
     id="sideMenu"
 >
-
     <div class="menu-header">
 
-        <span>
-            Menu
+    <span>
+        Menu
+    </span>
+
+
+    <button
+        class="menu-close"
+        id="menuClose"
+        aria-label="Tutup menu"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- NOVEL -->
+
+<div
+    class="menu-parent"
+    id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+>
+
+    <span>
+        Novel
+    </span>
+
+
+    <span class="menu-arrow">
+        ›
+    </span>
+
+</div>
+
+
+<div
+    class="novel-submenu"
+    id="novelSubmenu"
+>
+
+    <a href="../novel/on-going.html">
+        On-going
+    </a>
+
+
+    <a href="../novel/completed.html">
+        Completed
+    </a>
+
+
+    <a href="../novel/hiatus.html">
+        Hiatus
+    </a>
+
+
+    <a href="../novel/drop.html">
+        Drop
+    </a>
+
+</div>
+
+
+<!-- BOOKMARK -->
+
+<a
+    href="../bookmark.html"
+    class="menu-item"
+>
+    Bookmark
+</a>
+
+
+<!-- DONASI -->
+
+<a
+    href="https://trakteer.id/DhyonPratama"
+    class="menu-item"
+    target="_blank"
+    rel="noopener"
+>
+    Donasi
+</a>
+
+
+<!-- LOGIN -->
+
+<a
+    href="#login"
+    class="menu-item"
+>
+    Login
+</a>
+
+</nav>
+    
+<!-- =========================
+     GLOBAL SEARCH
+========================= -->
+    
+    <div class="global-search-bar">
+        
+    <div class="global-search-inner">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
         </span>
 
 
-        <button
-            class="menu-close"
-            id="menuClose"
-            aria-label="Tutup menu"
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul novel..."
+            autocomplete="off"
         >
-            ×
-        </button>
 
     </div>
 
+</div>
 
-    <!-- NOVEL -->
+</div>
+    
+<!-- =========================
+     READER
+========================= -->
+    
+    <main class="reader-container">
+    
+ <!-- =========================
+     NAVIGASI ATAS
+========================= -->
 
-    <div
-        class="menu-parent"
-        id="menuNovel"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-    >
-
-        <span>
-            Novel
-        </span>
-
-
-        <span class="menu-arrow">
-            ›
-        </span>
-
-    </div>
-
-
-    <div
-        class="novel-submenu"
-        id="novelSubmenu"
-    >
-
-        <a href="../novel/on-going.html">
-            On-going
-        </a>
-
-
-        <a href="../novel/completed.html">
-            Completed
-        </a>
-
-
-        <a href="../novel/hiatus.html">
-            Hiatus
-        </a>
-
-
-        <a href="../novel/drop.html">
-            Drop
-        </a>
-
-    </div>
-
-
-    <!-- BOOKMARK -->
+<nav class="chapter-navigation">
 
     <a
-        href="../bookmark.html"
-        class="menu-item"
+        href="bab-1.html"
+        class="chapter-nav-btn"
     >
-        Bookmark
+        ← Sebelumnya
     </a>
 
 
-    <!-- DONASI -->
-
     <a
-        href="https://trakteer.id/DhyonPratama"
-        class="menu-item"
-        target="_blank"
-        rel="noopener"
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
     >
-        Donasi
+        Daftar Isi
     </a>
 
 
-    <!-- LOGIN -->
-
     <a
-        href="#login"
-        class="menu-item"
+        href="#"
+        class="chapter-nav-btn disabled"
     >
-        Login
+        Selanjutnya →
     </a>
 
 </nav>
 
 
 <!-- =========================
-     GLOBAL SEARCH
+     PENGATURAN PEMBACA
 ========================= -->
 
-<div class="global-search-bar">
+<div class="reader-settings-area">
 
-    <div class="global-search-inner">
+    <button
+        class="reader-settings-btn"
+        id="readerSettingsButton"
+        aria-label="Pengaturan pembaca"
+        aria-expanded="false"
+    >
+        ⚙️
+    </button>
 
-        <div class="search-box">
 
-            <span class="search-icon">
-                🔍
-            </span>
+    <div
+        id="readerSettings"
+        class="reader-settings"
+    >
+
+        <button
+            id="fontDecrease"
+            aria-label="Perkecil ukuran teks"
+        >
+            A−
+        </button>
 
 
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Cari judul novel..."
-                autocomplete="off"
-            >
+        <span id="fontSizeDisplay">
+            18
+        </span>
 
-        </div>
+
+        <button
+            id="fontIncrease"
+            aria-label="Perbesar ukuran teks"
+        >
+            A+
+        </button>
 
     </div>
 
@@ -546,1178 +624,1094 @@
 
 
 <!-- =========================
-     READER
+     JUDUL CHAPTER
 ========================= -->
 
-<main class="reader-container">
+<div class="chapter-heading">
 
-
-    <!-- =========================
-         NAVIGASI ATAS
-    ========================= -->
-
-    <nav class="chapter-navigation">
-
-        <a
-            href="bab-1.html"
-            class="chapter-nav-btn"
-        >
-            ← Sebelumnya
-        </a>
-
-
-        <a
-            href="../novel/you-rejected-my-honor.html"
-            class="chapter-nav-btn"
-        >
-            Daftar Isi
-        </a>
-
-
-        <a
-            href="#"
-            class="chapter-nav-btn disabled"
-        >
-            Selanjutnya →
-        </a>
-
-    </nav>
-
-
-    <!-- =========================
-         PENGATURAN PEMBACA
-    ========================= -->
-
-    <div class="reader-settings-area">
-
-        <button
-            class="reader-settings-btn"
-            id="readerSettingsButton"
-            aria-label="Pengaturan pembaca"
-            aria-expanded="false"
-        >
-            ⚙️
-        </button>
-
-
-        <div
-            id="readerSettings"
-            class="reader-settings"
-        >
-
-            <button
-                id="fontDecrease"
-                aria-label="Perkecil ukuran teks"
-            >
-                A−
-            </button>
-
-
-            <span id="fontSizeDisplay">
-                18
-            </span>
-
-
-            <button
-                id="fontIncrease"
-                aria-label="Perbesar ukuran teks"
-            >
-                A+
-            </button>
-
-        </div>
-
+    <div class="chapter-number">
+        Chapter 2
     </div>
 
 
-    <!-- =========================
-         JUDUL CHAPTER
-    ========================= -->
+    <h1>
+        Mencari Menantu di Bawah Papan Pengumuman, Ia Juga Terlahir Kembali
+    </h1>
 
-    <div class="chapter-heading">
-
-        <div class="chapter-number">
-            Chapter 2
-        </div>
+</div>
 
 
-        <h1>
-            Mencari Menantu di Bawah Papan Pengumuman, Ia Juga Terlahir Kembali
-        </h1>
+<!-- =========================
+     ISI NOVEL
+========================= -->
 
+<article class="reader">
+
+    <p>
+        <strong>Catatan Penulis:</strong>
+    </p>
+
+
+    <p>
+        Sekali lagi saya tegaskan: ini hanyalah novel web sederhana dengan latar sejarah alternatif. Sistem pemerintahan, adat istiadat, dan sebagainya memiliki perbedaan dengan sejarah nyata. Semuanya dibuat demi kebutuhan alur cerita. Mohon pengertiannya. Terima kasih banyak!
+    </p>
+
+
+    <p>
+        ***
+    </p>
+
+
+    <p>
+        Tahun pertama era Chongsheng, musim dingin telah berlalu beberapa waktu lalu, tetapi hawa dingin masih belum sepenuhnya pergi.
+    </p>
+
+
+    <p>
+        Pengumuman hasil ujian musim semi sudah semakin dekat.
+    </p>
+
+
+    <p>
+        Seluruh kota seolah terbangun oleh suasana tegang yang menyelimuti udara.
+    </p>
+
+
+    <p>
+        Di setiap sudut jalan, kedai teh dan rumah makan dipenuhi para gongsheng yang datang menunggu pengumuman, bersama keluarga mereka yang menantikan kabar.
+    </p>
+
+
+    <p>
+        Di mana-mana terlihat orang-orang yang berharap dirinya sendiri atau anak mereka dapat meraih keberhasilan. Di mata mereka, hanya ada satu hal: gelar dan kehormatan.
+    </p>
+
+
+    <p>
+        Bahkan udara pun dipenuhi kegelisahan dan ketidaksabaran, seolah semua orang sudah tidak sabar mengetahui apakah dirinya berhasil lulus ujian.
+    </p>
+
+
+    <p>
+        Tiga pemuda duduk di sebuah kedai kecil selama setengah hari. Dua kendi arak telah mereka habiskan.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> merasa araknya terlalu buruk, sehingga ia kembali meminta pemilik kedai menyajikan satu kendi arak yang lebih baik.
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> menggerutu bahwa karena <strong>Pei Zhang</strong> berasal dari keluarga bangsawan, ia memang terlalu banyak memilih dan mengkritik.
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> duduk di samping mereka sambil mendengarkan keduanya berdebat. Sudut bibirnya sedikit terangkat, tetapi di dalam hatinya berkecamuk gelombang besar yang tidak dapat dilihat orang lain.
+    </p>
+
+
+    <p>
+        Ia sudah memastikan.
+    </p>
+
+
+    <p>
+        Ia telah kembali.
+    </p>
+
+
+    <p>
+        Tahun pertama era Chongsheng.
+    </p>
+
+
+    <p>
+        Setelah ujian musim semi, tetapi sebelum hasilnya diumumkan.
+    </p>
+
+
+    <p>
+        Berbicara tentang <strong>Yang Kai Ji</strong> dan <strong>Pei Zhang</strong>, pertemuannya dengan kedua orang ini benar-benar merupakan sebuah kebetulan.
+    </p>
+
+
+    <p>
+        Ketika mereka bertemu di Gongyuan, tidak seorang pun dari mereka saling mengenal.
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> berasal dari keluarga sederhana. Beberapa generasi leluhurnya dahulu juga pernah hidup makmur. Ia dibesarkan oleh ibunya yang telah menjanda.
+    </p>
+
+
+    <p>
+        Wajahnya tampan seperti batu giok. Ia memiliki bakat tinggi dan cukup sombong terhadap kemampuannya sendiri. Dalam percakapan, ia sering mengutip kitab-kitab klasik dan berbagai literatur, membuat seluruh orang yang hadir terkagum-kagum.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> berasal dari cabang keluarga <strong>Pei</strong> di Jingzhao. Meskipun berasal dari kalangan bangsawan, ia justru paling membenci pandangan yang membeda-bedakan seseorang berdasarkan status keluarga.
+    </p>
+
+
+    <p>
+        Cara bicaranya jenaka dan penuh humor. Ia mengaku sangat ahli dalam ilmu hitung serta metode deduksi dan penalaran.
+    </p>
+
+
+    <p>
+        Keduanya memiliki penampilan yang tampan, sehingga beberapa orang langsung mengenali mereka.
+    </p>
+
+
+    <p>
+        Yang satu adalah cendekiawan terkenal dari wilayah Lingzhou, <strong>Yang Kaiji</strong>, <strong>Yang Boyuan</strong>. Puisi dan tulisannya begitu indah dan tak tertandingi. Orang-orang pada masa itu bahkan menyebutnya sebagai “orang dengan bakat sastra nomor satu di dunia.”
+    </p>
+
+
+    <p>
+        Yang lainnya adalah pemuda terkenal di ibu kota yang gemar bersenang-senang, <strong>Pei Zhang</strong>, <strong>Pei Jinggui</strong>. Dahulu, ia pernah membantu Kediaman Prefek Jingzhao memecahkan sebuah kasus aneh dengan menggunakan metode deduksi dan penalarannya.
+    </p>
+
+
+    <p>
+        Untuk sesaat, banyak gongsheng datang untuk mendekati dan menjalin hubungan dengan mereka.
+    </p>
+
+
+    <p>
+        Sedangkan <strong>Gu Chen</strong> hanyalah seorang yatim piatu yang berasal dari kalangan pengungsi.
+    </p>
+
+
+    <p>
+        Penampilannya terlihat biasa saja. Wajahnya memang cukup tampan dengan sedikit kesan lembut dan bersih. Jika diperhatikan dengan saksama, ia sebenarnya tidak kalah dari <strong>Yang Kai Ji</strong> maupun <strong>Pei Zhang</strong>.
+    </p>
+
+
+    <p>
+        Hanya saja, ia tidak memiliki ciri khas yang terlalu menonjol.
+    </p>
+
+
+    <p>
+        Setelah melihatnya sekali, orang-orang akan segera melupakannya.
+    </p>
+
+
+    <p>
+        Namun begitu <strong>Gu Chen</strong> membuka mulut, mulai dari strategi militer hingga pertanian, dari ilmu perbintangan hingga kitab-kitab sejarah dan klasik, ternyata tidak ada satu pun yang tidak ia kuasai.
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> pernah bertanya kepada siapa ia belajar.
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> hanya menjawab,
+    </p>
+
+
+    <p>
+        “Belajar sendiri.”
+    </p>
+
+
+    <p>
+        Belajar sendiri hingga mencapai tingkat seperti ini?
+    </p>
+
+
+    <p>
+        Keduanya jelas tidak percaya.
+    </p>
+
+
+    <p>
+        Namun mereka juga tidak bertanya lebih jauh.
+    </p>
+
+
+    <p>
+        Mereka hanya merasa bahwa <strong>Gu Chen</strong> memiliki wawasan yang sangat luas dan jelas bukan orang biasa yang akan selamanya hidup tanpa nama.
+    </p>
+
+
+    <p>
+        Setelah itu, <strong>Yang Kai Ji</strong> dan <strong>Pei Zhang</strong> secara bersamaan menghentikan langkah <strong>Gu Chen</strong> untuk mengajaknya berbincang.
+    </p>
+
+
+    <p>
+        Ketiganya kemudian duduk di atas tikar di koridor Gongyuan dan berbincang selama setengah hari.
+    </p>
+
+
+    <p>
+        Mulai dari cara mengatur negara hingga situasi dunia saat ini.
+    </p>
+
+
+    <p>
+        Semakin lama mereka berbicara, semakin mereka merasa cocok satu sama lain. Mereka bahkan memiliki perasaan seolah-olah telah terlambat bertemu.
+    </p>
+
+
+    <p>
+        Meskipun ketiganya memiliki pandangan masing-masing mengenai negara dan rakyat, dan sering kali saling beradu pendapat ketika membahas berbagai persoalan, mereka tetap menjaga sikap seorang junzi.
+    </p>
+
+
+    <p>
+        Mereka dapat berbeda pendapat tanpa kehilangan keharmonisan.
+    </p>
+
+
+    <p>
+        Ketika hendak berpisah, <strong>Pei Zhang</strong> meraih tangan kedua orang itu dan berkata,
+    </p>
+
+
+    <p>
+        “Aku tidak pernah memandang status keluarga. Lulus ataupun tidak dalam ujian kali ini, kalian berdua adalah sahabat yang pasti akan kuakui sebagai teman.”
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> dan <strong>Gu Chen</strong> mengangguk bersamaan.
+    </p>
+
+
+    <p>
+        Tepat ketika <strong>Gu Chen</strong> sedang memikirkan semua itu, tiba-tiba terdengar keributan dari luar.
+    </p>
+
+
+    <p>
+        “Hasil ujian sudah diumumkan! Hasilnya sudah keluar!”
+    </p>
+
+
+    <p>
+        Seluruh jalan seketika seolah meledak dalam kegaduhan.
+    </p>
+
+
+    <p>
+        Para tamu kedai langsung meletakkan sumpit mereka dan bergegas keluar. Pelayan kedai sampai terdorong hingga terhuyung-huyung. Ia sempat memaki beberapa kata, tetapi dirinya sendiri juga tidak tahan untuk berjinjit dan melihat ke luar.
+    </p>
+
+
+    <p>
+        Ketiganya saling berpandangan, meletakkan cangkir arak, lalu mengikuti kerumunan keluar.
+    </p>
+
+
+    <p>
+        Di depan Gongyuan, kerumunan sudah berdesak-desakan hingga tidak ada celah untuk lewat.
+    </p>
+
+
+    <p>
+        Pada sebuah dinding besar tertempel Papan Kuning, dipenuhi nama-nama yang tertulis rapat.
+    </p>
+
+
+    <p>
+        Setelah melihat hasilnya, berbagai reaksi manusia pun terlihat jelas.
+    </p>
+
+
+    <p>
+        Ada yang bersorak kegirangan karena berhasil lulus.
+    </p>
+
+
+    <p>
+        Ada yang memaki karena merasa hasilnya tidak adil.
+    </p>
+
+
+    <p>
+        Ada yang mendongakkan kepala dan menghela napas panjang.
+    </p>
+
+
+    <p>
+        Ada pula yang berdiri terpaku seperti orang bodoh.
+    </p>
+
+
+    <p>
+        Kesedihan dan kebahagiaan bercampur menjadi satu. Dalam sekejap, segala macam drama kehidupan manusia tersaji di hadapan mereka.
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> terdorong oleh arus manusia ke depan. Setelah bersusah payah menerobos kerumunan hingga mendekat, ia mengangkat kepala dan melihat—
+    </p>
+
+
+    <p>
+        Nama mereka bertiga semuanya tercantum di papan.
+    </p>
+
+
+    <p>
+        Tentu saja, peringkat akhir para jinshi masih harus menunggu ujian istana. Setelah ujian tersebut selesai, peringkat mereka baru akan diumumkan dalam upacara Chuanlu di istana kekaisaran.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> berdecak pelan.
+    </p>
+
+
+    <p>
+        “Ck. Putri keluarga <strong>Wang</strong> kali ini pasti akan menjadi istriku.”
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> berkata dengan dingin,
+    </p>
+
+
+    <p>
+        “Bukankah terakhir kali kau mengatakan kepadaku bahwa kau bahkan belum melamar gadis keluarga <strong>Wang</strong> itu? Kalian hanya pernah bertemu sekali.”
+    </p>
+
+
+    <p>
+        “Tenang saja. Di dalam hatinya pasti sudah ada aku. Pertemuan itu saja sudah cukup membuatnya jatuh cinta kepada Tuan Muda ini.”
+    </p>
+
+
+    <p>
+        Saat mengatakannya, mata <strong>Pei Zhang</strong> tampak jernih dan bening, bersinar terang seperti cahaya matahari di ujung langit.
+    </p>
+
+
+    <p>
+        Putri sulung keluarga <strong>Wang</strong> dari Jingzhao memiliki nama panggilan <strong>Zhi</strong>.
+    </p>
+
+
+    <p>
+        Ia adalah seorang wanita berbakat yang namanya setara dengan <strong>Liu Ruolan</strong> di ibu kota. Sifatnya lembut, wajahnya cantik, dan ia memiliki keterampilan dalam meracik wewangian.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> pernah menemukan kantong wewangian miliknya. Ketika mengembalikannya, ia sempat bertemu dengannya sekali.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> sangat menyukainya.
+    </p>
+
+
+    <p>
+        Sejak saat itu, ia bertekad untuk meraih gelar dan kehormatan, kemudian menikahinya dengan megah dan terhormat.
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> tidak ikut dalam gurauan mereka.
+    </p>
+
+
+    <p>
+        Ia hanya berdiri di sana, menatap namanya sendiri yang tercantum di Papan Kuning.
+    </p>
+
+
+    <p>
+        Matahari bersinar terik, membuat papan pengumuman itu sedikit menyilaukan.
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> mengalihkan pandangannya dan melihat ke arah kejauhan.
+    </p>
+
+
+    <p>
+        Tampak garis besar tembok istana dengan genteng-genteng kuning dan dinding merah.
+    </p>
+
+
+    <p>
+        Tempat itulah yang telah menjadi tujuan perjuangannya sepanjang hidup di kehidupan sebelumnya.
+    </p>
+
+
+    <p>
+        Dan tempat itu juga ditakdirkan menjadi tempat di mana ia akan menebus berbagai penyesalan dalam kehidupan kali ini.
+    </p>
+
+
+    <p>
+        Tepat pada saat itu, sebuah tandu berhenti di ujung gang.
+    </p>
+
+
+    <p>
+        Dari dalam tandu turun seorang cendekiawan paruh baya.
+    </p>
+
+
+    <p>
+        Pakaiannya begitu rapi dan mewah, sementara sikapnya menunjukkan wibawa yang luar biasa.
+    </p>
+
+
+    <p>
+        Di belakangnya terdapat sebuah tandu kecil dengan tirai yang tertutup rapat. Samar-samar terlihat bayangan seorang perempuan di dalamnya.
+    </p>
+
+
+    <p>
+        Cendekiawan itu menyapu pandangannya ke seluruh kerumunan, kemudian berjalan lurus ke arah mereka bertiga.
+    </p>
+
+
+    <p>
+        “Apakah Anda Tuan Muda <strong>Yang Kai Ji</strong>?”
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> tertegun sejenak, lalu memberi hormat.
+    </p>
+
+
+    <p>
+        “Saya <strong>Yang Kai Ji</strong> dari Lingzhou. Bolehkah saya mengetahui siapa Anda—”
+    </p>
+
+
+    <p>
+        “Orang tua ini adalah <strong>Liu Ming</strong>, Marquis Cheng'en dari ibu kota.”
+    </p>
+
+
+    <p>
+        <strong>Liu Ming</strong> tersenyum sambil mengamatinya. Tatapannya dipenuhi kekaguman.
+    </p>
+
+
+    <p>
+        “Saya sudah lama mendengar tentang bakat sastra Tuan Muda <strong>Yang</strong>. Setelah bertemu langsung hari ini, ternyata Anda memang benar-benar seorang pemuda yang luar biasa.”
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> berdiri di samping mereka.
+    </p>
+
+
+    <p>
+        Pupil matanya sedikit menyempit.
+    </p>
+
+
+    <p>
+        <strong>Liu Ming</strong>.
+    </p>
+
+
+    <p>
+        Ayah <strong>Liu Ruolan</strong>.
+    </p>
+
+
+    <p>
+        Mertuanya di kehidupan sebelumnya.
+    </p>
+
+
+    <p>
+        Di kehidupan sebelumnya, <strong>Liu Ming</strong> juga memilih menantunya di bawah Papan Kuning.
+    </p>
+
+
+    <p>
+        Saat itu, ia memilih dirinya—seorang yatim piatu yang berasal dari kalangan pengungsi, yang baru saja lulus ujian sastra dan belum mengikuti ujian militer.
+    </p>
+
+
+    <p>
+        Ia memilih <strong>Gu Chen</strong> sebagai menantunya karena hal itu sesuai dengan kebijakan Kaisar baru: mengangkat orang berdasarkan bakat dan kemampuan, tanpa memandang latar belakang keluarga.
+    </p>
+
+
+    <p>
+        Terlebih lagi, <strong>Gu Chen</strong> akan segera mengikuti ujian militer. Hal itu membuat <strong>Liu Ming</strong> merasa bahwa <strong>Gu Chen</strong> akan memiliki lebih banyak pilihan jalan di masa depan.
+    </p>
+
+
+    <p>
+        Saat itu, <strong>Gu Chen</strong> merasa sangat tersanjung.
+    </p>
+
+
+    <p>
+        Ia mengira dirinya telah mendapatkan jodoh yang dianugerahkan oleh langit.
+    </p>
+
+
+    <p>
+        Namun kemudian barulah ia mengetahui bahwa itulah awal dari penyesalan yang akan menghantuinya selama setengah hidupnya.
+    </p>
+
+
+    <p>
+        Sedangkan di kehidupan kali ini—
+    </p>
+
+
+    <p>
+        Orang yang menarik perhatian <strong>Liu Ming</strong> ternyata adalah <strong>Yang Kai Ji</strong>.
+    </p>
+
+
+    <p>
+        Pandangan <strong>Gu Chen</strong> kemudian jatuh pada tandu kecil di belakang <strong>Liu Ming</strong>.
+    </p>
+
+
+    <p>
+        Tirai tandu itu perlahan terangkat.
+    </p>
+
+
+    <p>
+        Sepasang mata dingin dan jernih milik <strong>Liu Ruolan</strong> sedang menatap lurus ke arah <strong>Yang Kai Ji</strong>.
+    </p>
+
+
+    <p>
+        Tatapannya tidak beralih sedikit pun.
+    </p>
+
+
+    <p>
+        Di dalam matanya terkandung kerinduan yang begitu kuat dan membara.
+    </p>
+
+
+    <p>
+        Pada saat itu—
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> memahami semuanya.
+    </p>
+
+
+    <p>
+        Ia juga telah terlahir kembali.
+    </p>
+
+
+    <p>
+        Di kehidupan kali ini, ia pasti telah mengatakan sesuatu kepada ayahnya dan berhasil meyakinkan sang ayah untuk memilih <strong>Yang Kai Ji</strong> ketika mencari menantu di bawah Papan Kuning.
+    </p>
+
+
+    <p>
+        Karena pria yang ingin dinikahinya bukanlah <strong>Gu Chen</strong>.
+    </p>
+
+
+    <p>
+        Tradisi mencari menantu di bawah Papan Kuning sudah menjadi hal yang lazim sejak berbagai dinasti terdahulu.
+    </p>
+
+
+    <p>
+        Pada dasarnya, keluarga hanya ingin mencarikan suami yang memiliki gelar dan masa depan yang baik bagi putri mereka yang bukan putri sulung atau bukan putri dari istri utama, sehingga kelak ia juga memiliki masa depan yang baik.
+    </p>
+
+
+    <p>
+        Hanya saja, para nona bangsawan dari berbagai keluarga ingin mendapatkan kesempatan terlebih dahulu.
+    </p>
+
+
+    <p>
+        Mereka tidak ingin menunggu sampai upacara Chuanlu selesai untuk memperebutkan Zhuangyuan atau Bangyan yang jumlahnya sangat terbatas.
+    </p>
+
+
+    <p>
+        Karena itu, hari pengumuman hasil ujian menjadi saat ketika para bangsawan membawa putri mereka keluar untuk mencari menantu.
+    </p>
+
+
+    <p>
+        Orang-orang di ibu kota bahkan menyebutnya “berebut menantu”.
+    </p>
+
+
+    <p>
+        Sebab jumlah orang yang menginginkan menantu berbakat jauh lebih banyak daripada jumlah orang yang tersedia. Siapa cepat, dia yang mendapatkan.
+    </p>
+
+
+    <p>
+        <strong>Liu Ming</strong> tersenyum ramah.
+    </p>
+
+
+    <p>
+        “Nama Tuan Muda <strong>Yang</strong> telah terkenal karena bakat sastranya. Saya sudah lama mengaguminya. Jika Tuan Muda tidak keberatan, lain hari silakan datang ke kediaman saya untuk berbincang.”
+    </p>
+
+
+    <p>
+        Ucapan itu memang sangat halus.
+    </p>
+
+
+    <p>
+        Namun, siapa di antara orang-orang yang hadir yang tidak memahaminya?
+    </p>
+
+
+    <p>
+        Mencari menantu di bawah Papan Kuning—yang dicari tentu saja adalah menantu pria.
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> menenangkan dirinya sejenak sebelum bertanya,
+    </p>
+
+
+    <p>
+        “Mengapa Marquis memilih saya?”
+    </p>
+
+
+    <p>
+        <strong>Liu Ming</strong> tersenyum.
+    </p>
+
+
+    <p>
+        “Bakat sastra Tuan Muda <strong>Yang</strong> begitu luar biasa dan cara berbicara Anda juga tidak biasa. Siapa pun pasti ingin menjalin hubungan dengan Anda.”
+    </p>
+
+
+    <p>
+        Ia berhenti sejenak dengan penuh makna.
+    </p>
+
+
+    <p>
+        Kemudian ia membuat gerakan mempersilakan dengan tangannya dan memperkenalkan,
+    </p>
+
+
+    <p>
+        “Ini putri saya, <strong>Liu Ruolan</strong>.”
+    </p>
+
+
+    <p>
+        Tatapan <strong>Yang Kai Ji</strong> yang sedikit angkuh melewati <strong>Liu Ming</strong> dan jatuh pada tandu kecil itu.
+    </p>
+
+
+    <p>
+        Wanita di dalam tandu memiliki kecantikan seperti seorang dewi, dengan aura dingin dan anggun yang membuatnya tampak mulia.
+    </p>
+
+
+    <p>
+        Ia mengenakan mantel hijau zamrud, bagaikan lapisan es hijau yang belum mencair di awal musim semi.
+    </p>
+
+
+    <p>
+        Sepasang mata yang seolah mampu berbicara itu terus menatapnya.
+    </p>
+
+
+    <p>
+        Tidak menghindar.
+    </p>
+
+
+    <p>
+        Tidak berkedip.
+    </p>
+
+
+    <p>
+        Tidak mundur.
+    </p>
+
+
+    <p>
+        Tatapan yang dipenuhi kelembutan dan keteguhan itu seolah-olah telah mengunci seseorang yang telah dikenalnya selama bertahun-tahun.
+    </p>
+
+
+    <p>
+        Tatapan itu membawa kepahitan dan kerinduan yang telah dipendam selama bertahun-tahun.
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> entah mengapa merasa ada sesuatu yang aneh.
+    </p>
+
+
+    <p>
+        Namun ia tidak tahu apa yang sebenarnya terasa tidak beres.
+    </p>
+
+
+    <p>
+        Ia pun hanya memberi hormat dengan sopan.
+    </p>
+
+
+    <p>
+        “Terima kasih atas perhatian Marquis dan Nona <strong>Liu</strong>. Izinkan Boyuan mempertimbangkannya terlebih dahulu.”
+    </p>
+
+
+    <p>
+        <strong>Liu Ming</strong> tersenyum dan mengangguk.
+    </p>
+
+
+    <p>
+        Setelah berbasa-basi beberapa saat, ia membawa tandu kecil itu pergi.
+    </p>
+
+
+    <p>
+        Ketika tandu tersebut melewati <strong>Gu Chen</strong>, tirainya bergerak sedikit.
+    </p>
+
+
+    <p>
+        Sepasang mata itu melirik <strong>Gu Chen</strong>.
+    </p>
+
+
+    <p>
+        Hanya sesaat.
+    </p>
+
+
+    <p>
+        Kemudian dengan cepat kembali ditarik.
+    </p>
+
+
+    <p>
+        Tidak ada kerinduan.
+    </p>
+
+
+    <p>
+        Tidak ada rasa bersalah.
+    </p>
+
+
+    <p>
+        Tidak ada apa pun.
+    </p>
+
+
+    <p>
+        Di sisi lain, <strong>Pei Zhang</strong> juga telah dikelilingi oleh beberapa bangsawan.
+    </p>
+
+
+    <p>
+        Wajahnya memiliki kesan pemuda yang agak liar dan suka bersenang-senang, sementara tutur katanya juga menyenangkan. Ditambah lagi, ia berasal dari keluarga bangsawan <strong>Pei</strong>.
+    </p>
+
+
+    <p>
+        Hal itu membuat beberapa bangsawan dari keluarga terpandang berlomba-lomba mengajaknya berbicara.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> kewalahan menghadapinya.
+    </p>
+
+
+    <p>
+        Ia hanya bisa mengeluarkan pepatah lama tentang “perintah orang tua dan perjodohan oleh mak comblang”, lalu mengatakan bahwa dirinya “sudah memiliki seseorang yang disukai”, dan berbagai alasan lainnya untuk menolak mereka satu per satu.
+    </p>
+
+
+    <p>
+        Setelah akhirnya berhasil melepaskan diri, ia mengusap keringat di dahinya dan bergumam,
+    </p>
+
+
+    <p>
+        “Nona <strong>Wang</strong>, demi langit dan bumi, aku benar-benar tidak mengkhianatimu.”
+    </p>
+
+
+    <p>
+        Sedangkan <strong>Gu Chen</strong>—
+    </p>
+
+
+    <p>
+        Secara keseluruhan, penampilannya terlihat biasa saja. Namun jika diperhatikan lebih saksama, ia sebenarnya cukup tampan dengan wajah yang bersih dan lembut.
+    </p>
+
+
+    <p>
+        Sayangnya, tidak ada seorang pun yang mengenalnya.
+    </p>
+
+
+    <p>
+        Tidak ada satu orang pun yang datang untuk mengajaknya berbicara.
+    </p>
+
+
+    <p>
+        <strong>Gu Chen</strong> juga tidak memedulikannya.
+    </p>
+
+
+    <p>
+        Ia hanya berdiri di samping, menyaksikan orang-orang datang dan pergi, mendengarkan suara-suara seperti,
+    </p>
+
+
+    <p>
+        “Aku lulus!”
+    </p>
+
+
+    <p>
+        “Aku berhasil membuat keluargaku bangga!”
+    </p>
+
+
+    <p>
+        Dan berbagai ucapan kegembiraan lainnya.
+    </p>
+
+
+    <p>
+        Hatinya tetap setenang air.
+    </p>
+
+
+    <p>
+        Beberapa saat kemudian, ketiganya kembali berkumpul.
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> memandang <strong>Yang Kai Ji</strong> dengan ekspresi serius.
+    </p>
+
+
+    <p>
+        “Marquis <strong>Liu</strong> tadi memang cukup cerdik. Ia sendiri hanya mewarisi gelar dari leluhurnya. Kalau silsilah keluarganya ditelusuri lebih jauh, keluarganya sebenarnya hanyalah keluarga kerabat kekaisaran, tidak memiliki tradisi keilmuan yang mendalam.”
+    </p>
+
+
+    <p>
+        “Di istana, dirinya sendiri hanya memegang jabatan yang tidak terlalu penting sebagai Chaoyi Dafu. Putra sulungnya yang sah, <strong>Liu Ruoheng</strong>, sudah tiga kali mengikuti ujian tetapi selalu gagal. Sepertinya, ia tidak akan pernah memperoleh gelar atau jabatan melalui ujian.”
+    </p>
+
+
+    <p>
+        “Aku menduga, ia mungkin telah menggunakan beberapa koneksi di istana dan memperoleh banyak informasi mengenai para peserta yang lulus dalam ujian kali ini.”
+    </p>
+
+
+    <p>
+        “Karena itu, ia memutuskan untuk lebih awal mencarikan suami yang baik bagi putrinya. Menurutku, itu memang langkah yang masuk akal.”
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> mengangguk.
+    </p>
+
+
+    <p>
+        Kemudian ia berkata,
+    </p>
+
+
+    <p>
+        “Menurut pengamatanku terhadap para peserta ujian kali ini, selain kita bertiga, semuanya hanyalah orang-orang dengan kemampuan biasa-biasa saja. Jadi tidak aneh jika ia memilihku.”
+    </p>
+
+
+    <p>
+        <strong>Pei Zhang</strong> tersenyum, tetapi dalam nada bicaranya terselip sedikit rasa tidak berdaya.
+    </p>
+
+
+    <p>
+        “Boyuan, Boyuan. Katakan padaku, apakah kau memang selalu berbicara seperti ini? Cobalah belajar sedikit dari Saudara <strong>Gu</strong>.”
+    </p>
+
+
+    <p>
+        <strong>Yang Kai Ji</strong> menggelengkan kepala.
+    </p>
+
+
+    <p>
+        “Apa yang kukatakan adalah kenyataan. Begitu kita keluar dari Gongyuan, aku sudah menyimpulkan bahwa jika kita bertiga tidak menguasai tiga peringkat teratas, berarti pemeriksa utama ujian ini benar-benar tidak memiliki mata.”
+    </p>
+
+
+    <p>
+        Ia memang benar-benar berilmu. Sepanjang hidupnya, selain <strong>Pei Zhang</strong> dan <strong>Gu Chen</strong>, pada dasarnya ia tidak mengakui siapa pun.
+    </p>
+
+
+    <p>
+        Sayangnya, bakat dan ketajamannya terlalu menonjol. Ditambah lagi dengan jabatan yang pernah dipegangnya di Censorate, ia telah menyinggung dan menimbulkan permusuhan dengan cukup banyak orang.
+    </p>
+
+</article>
+
+
+<!-- =========================
+     NAVIGASI BAWAH
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="bab-1.html"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     KOMENTAR
+========================= -->
+
+<section class="comments-section">
+
+    <h2>
+        Komentar
+    </h2>
+
+
+    <div
+        class="giscus"
+        id="giscus-container"
+    >
+        
     </div>
 
-
-    <!-- =========================
-         ISI NOVEL
-    ========================= -->
-
-    <article class="reader">
-
-        <p>
-            <strong>Catatan Penulis:</strong>
-        </p>
-
-
-        <p>
-            Sekali lagi saya tegaskan: ini hanyalah novel web sederhana dengan latar sejarah alternatif. Sistem pemerintahan, adat istiadat, dan sebagainya memiliki perbedaan dengan sejarah nyata. Semuanya dibuat demi kebutuhan alur cerita. Mohon pengertiannya. Terima kasih banyak!
-        </p>
-
-
-        <p>
-            ***
-        </p>
-
-
-        <p>
-            Tahun pertama era Chongsheng, musim dingin telah berlalu beberapa waktu lalu, tetapi hawa dingin masih belum sepenuhnya pergi.
-        </p>
-
-
-        <p>
-            Pengumuman hasil ujian musim semi sudah semakin dekat.
-        </p>
-
-
-        <p>
-            Seluruh kota seolah terbangun oleh suasana tegang yang menyelimuti udara.
-        </p>
-
-
-        <p>
-            Di setiap sudut jalan, kedai teh dan rumah makan dipenuhi para gongsheng yang datang menunggu pengumuman, bersama keluarga mereka yang menantikan kabar.
-        </p>
-
-
-        <p>
-            Di mana-mana terlihat orang-orang yang berharap dirinya sendiri atau anak mereka dapat meraih keberhasilan. Di mata mereka, hanya ada satu hal: gelar dan kehormatan.
-        </p>
-
-
-        <p>
-            Bahkan udara pun dipenuhi kegelisahan dan ketidaksabaran, seolah semua orang sudah tidak sabar mengetahui apakah dirinya berhasil lulus ujian.
-        </p>
-
-
-        <p>
-            Tiga pemuda duduk di sebuah kedai kecil selama setengah hari. Dua kendi arak telah mereka habiskan.
-        </p>
-
-
-        <p>
-            Pei Zhang merasa araknya terlalu buruk, sehingga ia kembali meminta pemilik kedai menyajikan satu kendi arak yang lebih baik.
-        </p>
-
-
-        <p>
-            Yang Kai Ji menggerutu bahwa karena Pei Zhang berasal dari keluarga bangsawan, ia memang terlalu banyak memilih dan mengkritik.
-        </p>
-
-
-        <p>
-            Gu Chen duduk di samping mereka sambil mendengarkan keduanya berdebat. Sudut bibirnya sedikit terangkat, tetapi di dalam hatinya berkecamuk gelombang besar yang tidak dapat dilihat orang lain.
-        </p>
-
-
-        <p>
-            Ia sudah memastikan.
-        </p>
-
-
-        <p>
-            Ia telah kembali.
-        </p>
-
-
-        <p>
-            Tahun pertama era Chongsheng.
-        </p>
-
-
-        <p>
-            Setelah ujian musim semi, tetapi sebelum hasilnya diumumkan.
-        </p>
-
-
-        <p>
-            Berbicara tentang Yang Kai Ji dan Pei Zhang, pertemuannya dengan kedua orang ini benar-benar merupakan sebuah kebetulan.
-        </p>
-
-
-        <p>
-            Ketika mereka bertemu di Gongyuan, tidak seorang pun dari mereka saling mengenal.
-        </p>
-
-
-        <p>
-            Yang Kai Ji berasal dari keluarga sederhana. Beberapa generasi leluhurnya dahulu juga pernah hidup makmur. Ia dibesarkan oleh ibunya yang telah menjanda.
-        </p>
-
-
-        <p>
-            Wajahnya tampan seperti batu giok. Ia memiliki bakat tinggi dan cukup sombong terhadap kemampuannya sendiri. Dalam percakapan, ia sering mengutip kitab-kitab klasik dan berbagai literatur, membuat seluruh orang yang hadir terkagum-kagum.
-        </p>
-
-
-        <p>
-            Pei Zhang berasal dari cabang keluarga Pei di Jingzhao. Meskipun berasal dari kalangan bangsawan, ia justru paling membenci pandangan yang membeda-bedakan seseorang berdasarkan status keluarga.
-        </p>
-
-
-        <p>
-            Cara bicaranya jenaka dan penuh humor. Ia mengaku sangat ahli dalam ilmu hitung serta metode deduksi dan penalaran.
-        </p>
-
-
-        <p>
-            Keduanya memiliki penampilan yang tampan, sehingga beberapa orang langsung mengenali mereka.
-        </p>
-
-
-        <p>
-            Yang satu adalah cendekiawan terkenal dari wilayah Lingzhou, Yang Kaiji, Yang Boyuan. Puisi dan tulisannya begitu indah dan tak tertandingi. Orang-orang pada masa itu bahkan menyebutnya sebagai “orang dengan bakat sastra nomor satu di dunia.”
-        </p>
-
-
-        <p>
-            Yang lainnya adalah pemuda terkenal di ibu kota yang gemar bersenang-senang, Pei Zhang, Pei Jinggui. Dahulu, ia pernah membantu Kediaman Prefek Jingzhao memecahkan sebuah kasus aneh dengan menggunakan metode deduksi dan penalarannya.
-        </p>
-
-
-        <p>
-            Untuk sesaat, banyak gongsheng datang untuk mendekati dan menjalin hubungan dengan mereka.
-        </p>
-
-
-        <p>
-            Sedangkan Gu Chen hanyalah seorang yatim piatu yang berasal dari kalangan pengungsi.
-        </p>
-
-
-        <p>
-            Penampilannya terlihat biasa saja. Wajahnya memang cukup tampan dengan sedikit kesan lembut dan bersih. Jika diperhatikan dengan saksama, ia sebenarnya tidak kalah dari Yang Kai Ji maupun Pei Zhang.
-        </p>
-
-
-        <p>
-            Hanya saja, ia tidak memiliki ciri khas yang terlalu menonjol.
-        </p>
-
-
-        <p>
-            Setelah melihatnya sekali, orang-orang akan segera melupakannya.
-        </p>
-
-
-        <p>
-            Namun begitu Gu Chen membuka mulut, mulai dari strategi militer hingga pertanian, dari ilmu perbintangan hingga kitab-kitab sejarah dan klasik, ternyata tidak ada satu pun yang tidak ia kuasai.
-        </p>
-
-
-        <p>
-            Yang Kai Ji pernah bertanya kepada siapa ia belajar.
-        </p>
-
-
-        <p>
-            Gu Chen hanya menjawab,
-        </p>
-
-
-        <p>
-            “Belajar sendiri.”
-        </p>
-
-
-        <p>
-            Belajar sendiri hingga mencapai tingkat seperti ini?
-        </p>
-
-
-        <p>
-            Keduanya jelas tidak percaya.
-        </p>
-
-
-        <p>
-            Namun mereka juga tidak bertanya lebih jauh.
-        </p>
-
-
-        <p>
-            Mereka hanya merasa bahwa Gu Chen memiliki wawasan yang sangat luas dan jelas bukan orang biasa yang akan selamanya hidup tanpa nama.
-        </p>
-
-
-        <p>
-            Setelah itu, Yang Kai Ji dan Pei Zhang secara bersamaan menghentikan langkah Gu Chen untuk mengajaknya berbincang.
-        </p>
-
-
-        <p>
-            Ketiganya kemudian duduk di atas tikar di koridor Gongyuan dan berbincang selama setengah hari.
-        </p>
-
-
-        <p>
-            Mulai dari cara mengatur negara hingga situasi dunia saat ini.
-        </p>
-
-
-        <p>
-            Semakin lama mereka berbicara, semakin mereka merasa cocok satu sama lain. Mereka bahkan memiliki perasaan seolah-olah telah terlambat bertemu.
-        </p>
-
-
-        <p>
-            Meskipun ketiganya memiliki pandangan masing-masing mengenai negara dan rakyat, dan sering kali saling beradu pendapat ketika membahas berbagai persoalan, mereka tetap menjaga sikap seorang junzi.
-        </p>
-
-
-        <p>
-            Mereka dapat berbeda pendapat tanpa kehilangan keharmonisan.
-        </p>
-
-
-        <p>
-            Ketika hendak berpisah, Pei Zhang meraih tangan kedua orang itu dan berkata,
-        </p>
-
-
-        <p>
-            “Aku tidak pernah memandang status keluarga. Lulus ataupun tidak dalam ujian kali ini, kalian berdua adalah sahabat yang pasti akan kuakui sebagai teman.”
-        </p>
-
-
-        <p>
-            Yang Kai Ji dan Gu Chen mengangguk bersamaan.
-        </p>
-
-
-        <p>
-            Tepat ketika Gu Chen sedang memikirkan semua itu, tiba-tiba terdengar keributan dari luar.
-        </p>
-
-
-        <p>
-            “Hasil ujian sudah diumumkan! Hasilnya sudah keluar!”
-        </p>
-
-
-        <p>
-            Seluruh jalan seketika seolah meledak dalam kegaduhan.
-        </p>
-
-
-        <p>
-            Para tamu kedai langsung meletakkan sumpit mereka dan bergegas keluar. Pelayan kedai sampai terdorong hingga terhuyung-huyung. Ia sempat memaki beberapa kata, tetapi dirinya sendiri juga tidak tahan untuk berjinjit dan melihat ke luar.
-        </p>
-
-
-        <p>
-            Ketiganya saling berpandangan, meletakkan cangkir arak, lalu mengikuti kerumunan keluar.
-        </p>
-
-
-        <p>
-            Di depan Gongyuan, kerumunan sudah berdesak-desakan hingga tidak ada celah untuk lewat.
-        </p>
-
-
-        <p>
-            Pada sebuah dinding besar tertempel Papan Kuning, dipenuhi nama-nama yang tertulis rapat.
-        </p>
-
-
-        <p>
-            Setelah melihat hasilnya, berbagai reaksi manusia pun terlihat jelas.
-        </p>
-
-
-        <p>
-            Ada yang bersorak kegirangan karena berhasil lulus.
-        </p>
-
-
-        <p>
-            Ada yang memaki karena merasa hasilnya tidak adil.
-        </p>
-
-
-        <p>
-            Ada yang mendongakkan kepala dan menghela napas panjang.
-        </p>
-
-
-        <p>
-            Ada pula yang berdiri terpaku seperti orang bodoh.
-        </p>
-
-
-        <p>
-            Kesedihan dan kebahagiaan bercampur menjadi satu. Dalam sekejap, segala macam drama kehidupan manusia tersaji di hadapan mereka.
-        </p>
-
-
-        <p>
-            Gu Chen terdorong oleh arus manusia ke depan. Setelah bersusah payah menerobos kerumunan hingga mendekat, ia mengangkat kepala dan melihat—
-        </p>
-
-
-        <p>
-            Nama mereka bertiga semuanya tercantum di papan.
-        </p>
-
-
-        <p>
-            Tentu saja, peringkat akhir para jinshi masih harus menunggu ujian istana. Setelah ujian tersebut selesai, peringkat mereka baru akan diumumkan dalam upacara Chuanlu di istana kekaisaran.
-        </p>
-
-
-        <p>
-            Pei Zhang berdecak pelan.
-        </p>
-
-
-        <p>
-            “Ck. Putri keluarga Wang kali ini pasti akan menjadi istriku.”
-        </p>
-
-
-        <p>
-            Yang Kai Ji berkata dengan dingin,
-        </p>
-
-
-        <p>
-            “Bukankah terakhir kali kau mengatakan kepadaku bahwa kau bahkan belum melamar gadis keluarga Wang itu? Kalian hanya pernah bertemu sekali.”
-        </p>
-
-
-        <p>
-            “Tenang saja. Di dalam hatinya pasti sudah ada aku. Pertemuan itu saja sudah cukup membuatnya jatuh cinta kepada Tuan Muda ini.”
-        </p>
-
-
-        <p>
-            Saat mengatakannya, mata Pei Zhang tampak jernih dan bening, bersinar terang seperti cahaya matahari di ujung langit.
-        </p>
-
-
-        <p>
-            Putri sulung keluarga Wang dari Jingzhao memiliki nama panggilan Zhi.
-        </p>
-
-
-        <p>
-            Ia adalah seorang wanita berbakat yang namanya setara dengan Liu Ruolan di ibu kota. Sifatnya lembut, wajahnya cantik, dan ia memiliki keterampilan dalam meracik wewangian.
-        </p>
-
-
-        <p>
-            Pei Zhang pernah menemukan kantong wewangian miliknya. Ketika mengembalikannya, ia sempat bertemu dengannya sekali.
-        </p>
-
-
-        <p>
-            Pei Zhang sangat menyukainya.
-        </p>
-
-
-        <p>
-            Sejak saat itu, ia bertekad untuk meraih gelar dan kehormatan, kemudian menikahinya dengan megah dan terhormat.
-        </p>
-
-
-        <p>
-            Gu Chen tidak ikut dalam gurauan mereka.
-        </p>
-
-
-        <p>
-            Ia hanya berdiri di sana, menatap namanya sendiri yang tercantum di Papan Kuning.
-        </p>
-
-
-        <p>
-            Matahari bersinar terik, membuat papan pengumuman itu sedikit menyilaukan.
-        </p>
-
-
-        <p>
-            Gu Chen mengalihkan pandangannya dan melihat ke arah kejauhan.
-        </p>
-
-
-        <p>
-            Tampak garis besar tembok istana dengan genteng-genteng kuning dan dinding merah.
-        </p>
-
-
-        <p>
-            Tempat itulah yang telah menjadi tujuan perjuangannya sepanjang hidup di kehidupan sebelumnya.
-        </p>
-
-
-        <p>
-            Dan tempat itu juga ditakdirkan menjadi tempat di mana ia akan menebus berbagai penyesalan dalam kehidupan kali ini.
-        </p>
-
-
-        <p>
-            Tepat pada saat itu, sebuah tandu berhenti di ujung gang.
-        </p>
-
-
-        <p>
-            Dari dalam tandu turun seorang cendekiawan paruh baya.
-        </p>
-
-
-        <p>
-            Pakaiannya begitu rapi dan mewah, sementara sikapnya menunjukkan wibawa yang luar biasa.
-        </p>
-
-
-        <p>
-            Di belakangnya terdapat sebuah tandu kecil dengan tirai yang tertutup rapat. Samar-samar terlihat bayangan seorang perempuan di dalamnya.
-        </p>
-
-
-        <p>
-            Cendekiawan itu menyapu pandangannya ke seluruh kerumunan, kemudian berjalan lurus ke arah mereka bertiga.
-        </p>
-
-
-        <p>
-            “Apakah Anda Tuan Muda Yang Kai Ji?”
-        </p>
-
-
-        <p>
-            Yang Kai Ji tertegun sejenak, lalu memberi hormat.
-        </p>
-
-
-        <p>
-            “Saya Yang Kai Ji dari Lingzhou. Bolehkah saya mengetahui siapa Anda—”
-        </p>
-
-
-        <p>
-            “Orang tua ini adalah Liu Ming, Marquis Cheng'en dari ibu kota.”
-        </p>
-
-
-        <p>
-            Liu Ming tersenyum sambil mengamatinya. Tatapannya dipenuhi kekaguman.
-        </p>
-
-
-        <p>
-            “Saya sudah lama mendengar tentang bakat sastra Tuan Muda Yang. Setelah bertemu langsung hari ini, ternyata Anda memang benar-benar seorang pemuda yang luar biasa.”
-        </p>
-
-
-        <p>
-            Gu Chen berdiri di samping mereka.
-        </p>
-
-
-        <p>
-            Pupil matanya sedikit menyempit.
-        </p>
-
-
-        <p>
-            Liu Ming.
-        </p>
-
-
-        <p>
-            Ayah Liu Ruolan.
-        </p>
-
-
-        <p>
-            Mertuanya di kehidupan sebelumnya.
-        </p>
-
-
-        <p>
-            Di kehidupan sebelumnya, Liu Ming juga memilih menantunya di bawah Papan Kuning.
-        </p>
-
-
-        <p>
-            Saat itu, ia memilih dirinya—seorang yatim piatu yang berasal dari kalangan pengungsi, yang baru saja lulus ujian sastra dan belum mengikuti ujian militer.
-        </p>
-
-
-        <p>
-            Ia memilih Gu Chen sebagai menantunya karena hal itu sesuai dengan kebijakan Kaisar baru: mengangkat orang berdasarkan bakat dan kemampuan, tanpa memandang latar belakang keluarga.
-        </p>
-
-
-        <p>
-            Terlebih lagi, Gu Chen akan segera mengikuti ujian militer. Hal itu membuat Liu Ming merasa bahwa Gu Chen akan memiliki lebih banyak pilihan jalan di masa depan.
-        </p>
-
-
-        <p>
-            Saat itu, Gu Chen merasa sangat tersanjung.
-        </p>
-
-
-        <p>
-            Ia mengira dirinya telah mendapatkan jodoh yang dianugerahkan oleh langit.
-        </p>
-
-
-        <p>
-            Namun kemudian barulah ia mengetahui bahwa itulah awal dari penyesalan yang akan menghantuinya selama setengah hidupnya.
-        </p>
-
-
-        <p>
-            Sedangkan di kehidupan kali ini—
-        </p>
-
-
-        <p>
-            Orang yang menarik perhatian Liu Ming ternyata adalah Yang Kai Ji.
-        </p>
-
-
-        <p>
-            Pandangan Gu Chen kemudian jatuh pada tandu kecil di belakang Liu Ming.
-        </p>
-
-
-        <p>
-            Tirai tandu itu perlahan terangkat.
-        </p>
-
-
-        <p>
-            Sepasang mata dingin dan jernih milik Liu Ruolan sedang menatap lurus ke arah Yang Kai Ji.
-        </p>
-
-
-        <p>
-            Tatapannya tidak beralih sedikit pun.
-        </p>
-
-
-        <p>
-            Di dalam matanya terkandung kerinduan yang begitu kuat dan membara.
-        </p>
-
-
-        <p>
-            Pada saat itu—
-        </p>
-
-
-        <p>
-            Gu Chen memahami semuanya.
-        </p>
-
-
-        <p>
-            Ia juga telah terlahir kembali.
-        </p>
-
-
-        <p>
-            Di kehidupan kali ini, ia pasti telah mengatakan sesuatu kepada ayahnya dan berhasil meyakinkan sang ayah untuk memilih Yang Kai Ji ketika mencari menantu di bawah Papan Kuning.
-        </p>
-
-
-        <p>
-            Karena pria yang ingin dinikahinya bukanlah Gu Chen.
-        </p>
-
-
-        <p>
-            Tradisi mencari menantu di bawah Papan Kuning sudah menjadi hal yang lazim sejak berbagai dinasti terdahulu.
-        </p>
-
-
-        <p>
-            Pada dasarnya, keluarga hanya ingin mencarikan suami yang memiliki gelar dan masa depan yang baik bagi putri mereka yang bukan putri sulung atau bukan putri dari istri utama, sehingga kelak ia juga memiliki masa depan yang baik.
-        </p>
-
-
-        <p>
-            Hanya saja, para nona bangsawan dari berbagai keluarga ingin mendapatkan kesempatan terlebih dahulu.
-        </p>
-
-
-        <p>
-            Mereka tidak ingin menunggu sampai upacara Chuanlu selesai untuk memperebutkan Zhuangyuan atau Bangyan yang jumlahnya sangat terbatas.
-        </p>
-
-
-        <p>
-            Karena itu, hari pengumuman hasil ujian menjadi saat ketika para bangsawan membawa putri mereka keluar untuk mencari menantu.
-        </p>
-
-
-        <p>
-            Orang-orang di ibu kota bahkan menyebutnya “berebut menantu”.
-        </p>
-
-
-        <p>
-            Sebab jumlah orang yang menginginkan menantu berbakat jauh lebih banyak daripada jumlah orang yang tersedia. Siapa cepat, dia yang mendapatkan.
-        </p>
-
-
-        <p>
-            Liu Ming tersenyum ramah.
-        </p>
-
-
-        <p>
-            “Nama Tuan Muda Yang telah terkenal karena bakat sastranya. Saya sudah lama mengaguminya. Jika Tuan Muda tidak keberatan, lain hari silakan datang ke kediaman saya untuk berbincang.”
-        </p>
-
-
-        <p>
-            Ucapan itu memang sangat halus.
-        </p>
-
-
-        <p>
-            Namun, siapa di antara orang-orang yang hadir yang tidak memahaminya?
-        </p>
-
-
-        <p>
-            Mencari menantu di bawah Papan Kuning—yang dicari tentu saja adalah menantu pria.
-        </p>
-
-
-        <p>
-            Yang Kai Ji menenangkan dirinya sejenak sebelum bertanya,
-        </p>
-
-
-        <p>
-            “Mengapa Marquis memilih saya?”
-        </p>
-
-
-        <p>
-            Liu Ming tersenyum.
-        </p>
-
-
-        <p>
-            “Bakat sastra Tuan Muda Yang begitu luar biasa dan cara berbicara Anda juga tidak biasa. Siapa pun pasti ingin menjalin hubungan dengan Anda.”
-        </p>
-
-
-        <p>
-            Ia berhenti sejenak dengan penuh makna.
-        </p>
-
-
-        <p>
-            Kemudian ia membuat gerakan mempersilakan dengan tangannya dan memperkenalkan,
-        </p>
-
-
-        <p>
-            “Ini putri saya, Liu Ruolan.”
-        </p>
-
-
-        <p>
-            Tatapan Yang Kai Ji yang sedikit angkuh melewati Liu Ming dan jatuh pada tandu kecil itu.
-        </p>
-
-
-        <p>
-            Wanita di dalam tandu memiliki kecantikan seperti seorang dewi, dengan aura dingin dan anggun yang membuatnya tampak mulia.
-        </p>
-
-
-        <p>
-            Ia mengenakan mantel hijau zamrud, bagaikan lapisan es hijau yang belum mencair di awal musim semi.
-        </p>
-
-
-        <p>
-            Sepasang mata yang seolah mampu berbicara itu terus menatapnya.
-        </p>
-
-
-        <p>
-            Tidak menghindar.
-        </p>
-
-
-        <p>
-            Tidak berkedip.
-        </p>
-
-
-        <p>
-            Tidak mundur.
-        </p>
-
-
-        <p>
-            Tatapan yang dipenuhi kelembutan dan keteguhan itu seolah-olah telah mengunci seseorang yang telah dikenalnya selama bertahun-tahun.
-        </p>
-
-
-        <p>
-            Tatapan itu membawa kepahitan dan kerinduan yang telah dipendam selama bertahun-tahun.
-        </p>
-
-
-        <p>
-            Yang Kai Ji entah mengapa merasa ada sesuatu yang aneh.
-        </p>
-
-
-        <p>
-            Namun ia tidak tahu apa yang sebenarnya terasa tidak beres.
-        </p>
-
-
-        <p>
-            Ia pun hanya memberi hormat dengan sopan.
-        </p>
-
-
-        <p>
-            “Terima kasih atas perhatian Marquis dan Nona Liu. Izinkan Boyuan mempertimbangkannya terlebih dahulu.”
-        </p>
-
-
-        <p>
-            Liu Ming tersenyum dan mengangguk.
-        </p>
-
-
-        <p>
-            Setelah berbasa-basi beberapa saat, ia membawa tandu kecil itu pergi.
-        </p>
-
-
-        <p>
-            Ketika tandu tersebut melewati Gu Chen, tirainya bergerak sedikit.
-        </p>
-
-
-        <p>
-            Sepasang mata itu melirik Gu Chen.
-        </p>
-
-
-        <p>
-            Hanya sesaat.
-        </p>
-
-
-        <p>
-            Kemudian dengan cepat kembali ditarik.
-        </p>
-
-
-        <p>
-            Tidak ada kerinduan.
-        </p>
-
-
-        <p>
-            Tidak ada rasa bersalah.
-        </p>
-
-
-        <p>
-            Tidak ada apa pun.
-        </p>
-
-
-        <p>
-            Di sisi lain, Pei Zhang juga telah dikelilingi oleh beberapa bangsawan.
-        </p>
-
-
-        <p>
-            Wajahnya memiliki kesan pemuda yang agak liar dan suka bersenang-senang, sementara tutur katanya juga menyenangkan. Ditambah lagi, ia berasal dari keluarga bangsawan Pei.
-        </p>
-
-
-        <p>
-            Hal itu membuat beberapa bangsawan dari keluarga terpandang berlomba-lomba mengajaknya berbicara.
-        </p>
-
-
-        <p>
-            Pei Zhang kewalahan menghadapinya.
-        </p>
-
-
-        <p>
-            Ia hanya bisa mengeluarkan pepatah lama tentang “perintah orang tua dan perjodohan oleh mak comblang”, lalu mengatakan bahwa dirinya “sudah memiliki seseorang yang disukai”, dan berbagai alasan lainnya untuk menolak mereka satu per satu.
-        </p>
-
-
-        <p>
-            Setelah akhirnya berhasil melepaskan diri, ia mengusap keringat di dahinya dan bergumam,
-        </p>
-
-
-        <p>
-            “Nona Wang, demi langit dan bumi, aku benar-benar tidak mengkhianatimu.”
-        </p>
-
-
-        <p>
-            Sedangkan Gu Chen—
-        </p>
-
-
-        <p>
-            Secara keseluruhan, penampilannya terlihat biasa saja. Namun jika diperhatikan lebih saksama, ia sebenarnya cukup tampan dengan wajah yang bersih dan lembut.
-        </p>
-
-
-        <p>
-            Sayangnya, tidak ada seorang pun yang mengenalnya.
-        </p>
-
-
-        <p>
-            Tidak ada satu orang pun yang datang untuk mengajaknya berbicara.
-        </p>
-
-
-        <p>
-            Gu Chen juga tidak memedulikannya.
-        </p>
-
-
-        <p>
-            Ia hanya berdiri di samping, menyaksikan orang-orang datang dan pergi, mendengarkan suara-suara seperti,
-        </p>
-
-
-        <p>
-            “Aku lulus!”
-        </p>
-
-
-        <p>
-            “Aku berhasil membuat keluargaku bangga!”
-        </p>
-
-
-        <p>
-            Dan berbagai ucapan kegembiraan lainnya.
-        </p>
-
-
-        <p>
-            Hatinya tetap setenang air.
-        </p>
-
-
-        <p>
-            Beberapa saat kemudian, ketiganya kembali berkumpul.
-        </p>
-
-
-        <p>
-            Pei Zhang memandang Yang Kai Ji dengan ekspresi serius.
-        </p>
-
-
-        <p>
-            “Marquis Liu tadi memang cukup cerdik. Ia sendiri hanya mewarisi gelar dari leluhurnya. Kalau silsilah keluarganya ditelusuri lebih jauh, keluarganya sebenarnya hanyalah keluarga kerabat kekaisaran, tidak memiliki tradisi keilmuan yang mendalam.”
-        </p>
-
-
-        <p>
-            “Di istana, dirinya sendiri hanya memegang jabatan yang tidak terlalu penting sebagai Chaoyi Dafu. Putra sulungnya yang sah, Liu Ruoheng, sudah tiga kali mengikuti ujian tetapi selalu gagal. Sepertinya, ia tidak akan pernah memperoleh gelar atau jabatan melalui ujian.”
-        </p>
-
-
-        <p>
-            “Aku menduga, ia mungkin telah menggunakan beberapa koneksi di istana dan memperoleh banyak informasi mengenai para peserta yang lulus dalam ujian kali ini.”
-        </p>
-
-
-        <p>
-            “Karena itu, ia memutuskan untuk lebih awal mencarikan suami yang baik bagi putrinya. Menurutku, itu memang langkah yang masuk akal.”
-        </p>
-
-
-        <p>
-            Yang Kai Ji mengangguk.
-        </p>
-
-
-        <p>
-            Kemudian ia berkata,
-        </p>
-
-
-        <p>
-            “Menurut pengamatanku terhadap para peserta ujian kali ini, selain kita bertiga, semuanya hanyalah orang-orang dengan kemampuan biasa-biasa saja. Jadi tidak aneh jika ia memilihku.”
-        </p>
-
-
-        <p>
-            Pei Zhang tersenyum, tetapi dalam nada bicaranya terselip sedikit rasa tidak berdaya.
-        </p>
-
-
-        <p>
-            “Boyuan, Boyuan. Katakan padaku, apakah kau memang selalu berbicara seperti ini? Cobalah belajar sedikit dari Saudara Gu.”
-        </p>
-
-
-        <p>
-            Yang Kai Ji menggelengkan kepala.
-        </p>
-
-
-        <p>
-            “Apa yang kukatakan adalah kenyataan. Begitu kita keluar dari Gongyuan, aku sudah menyimpulkan bahwa jika kita bertiga tidak menguasai tiga peringkat teratas, berarti pemeriksa utama ujian ini benar-benar tidak memiliki mata.”
-        </p>
-
-
-        <p>
-            Ia memang benar-benar berilmu. Sepanjang hidupnya, selain Pei Zhang dan Gu Chen, pada dasarnya ia tidak mengakui siapa pun.
-        </p>
-
-
-        <p>
-            Sayangnya, bakat dan ketajamannya terlalu menonjol. Ditambah lagi dengan jabatan yang pernah dipegangnya di Censorate, ia telah menyinggung dan menimbulkan permusuhan dengan cukup banyak orang.
-        </p>
-
-    </article>
-
-
-    <!-- =========================
-         NAVIGASI BAWAH
-    ========================= -->
-
-    <nav class="chapter-navigation">
-
-        <a
-            href="bab-1.html"
-            class="chapter-nav-btn"
-        >
-            ← Sebelumnya
-        </a>
-
-
-        <a
-            href="../novel/you-rejected-my-honor.html"
-            class="chapter-nav-btn"
-        >
-            Daftar Isi
-        </a>
-
-
-        <a
-            href="#"
-            class="chapter-nav-btn disabled"
-        >
-            Selanjutnya →
-        </a>
-
-    </nav>
-
-
-    <!-- =========================
-         KOMENTAR
-    ========================= -->
-
-    <section class="comments-section">
-
-        <h2>
-            Komentar
-        </h2>
-
-
-        <div
-            class="giscus"
-            id="giscus-container"
-        ></div>
-
-    </section>
+</section>
 
 </main>
-
+    
 
 <!-- =========================
      BACK TO TOP
 ========================= -->
-
+    
 <button
-    class="back-to-top"
-    id="backToTop"
-    aria-label="Kembali ke atas"
->
-    ↑
-</button>
+class="back-to-top"
+id="backToTop"
+aria-label="Kembali ke atas">
 
+↑
 
+ </button>
+   
 <!-- =========================
      FOOTER
 ========================= -->
-
-<footer class="site-footer">
-
+   
+    <footer class="site-footer">
+    
     <div class="footer-title">
-        CN Novel-Translation
-    </div>
+    CN Novel-Translation
+</div>
 
 
-    <div class="footer-links">
+<div class="footer-links">
 
-        <a href="../index.html">
-            Home
-        </a>
-
-
-        <span>
-            •
-        </span>
+    <a href="../index.html">
+        Home
+    </a>
 
 
-        <a
-            href="https://trakteer.id/DhyonPratama"
-            target="_blank"
-            rel="noopener"
-        >
-            Donasi
-        </a>
-
-    </div>
+    <span>
+        •
+    </span>
 
 
-    <div class="copyright">
-        © Copyright 2026-CN Novel-Translation
-    </div>
+    <a
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        Donasi
+    </a>
+
+</div>
+
+
+<div class="copyright">
+    © Copyright 2026-CN Novel-Translation
+</div>
 
 </footer>
-
-
+    
 <!-- =========================
      JAVASCRIPT
 ========================= -->
-
-<script>
+    
+    <script>
 
 
 /* =====================================================
@@ -2401,7 +2395,6 @@ function updateGiscusTheme() {
 loadGiscus();
 
 </script>
-
 
 </body>
 
