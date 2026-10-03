@@ -2334,6 +2334,91 @@ document.getElementById(
 
         changeFontSize(-1);
 
+/* =====================================================
+   FONT SIZE
+===================================================== */
+
+let fontSize =
+    Number(
+        localStorage.getItem("fontSize")
+    ) || 18;
+
+
+function updateFontSize() {
+
+    const paragraphs =
+        document.querySelectorAll(
+            ".reader p"
+        );
+
+
+    paragraphs.forEach(
+        function (paragraph) {
+
+            paragraph.style.fontSize =
+                fontSize + "px";
+
+        }
+    );
+
+
+    document.getElementById(
+        "fontSizeDisplay"
+    ).textContent = fontSize;
+
+
+    localStorage.setItem(
+        "fontSize",
+        fontSize
+    );
+
+}
+
+
+function loadFontSize() {
+
+    fontSize =
+        Number(
+            localStorage.getItem("fontSize")
+        ) || 18;
+
+    updateFontSize();
+
+}
+
+
+function changeFontSize(amount) {
+
+    fontSize += amount;
+
+
+    if (fontSize < 14) {
+
+        fontSize = 14;
+
+    }
+
+
+    if (fontSize > 28) {
+
+        fontSize = 28;
+
+    }
+
+
+    updateFontSize();
+
+}
+
+
+document.getElementById(
+    "fontDecrease"
+).addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(-1);
+
     }
 );
 
@@ -2350,7 +2435,20 @@ document.getElementById(
 );
 
 
-updateFontSize();
+/* Muat ukuran font saat halaman pertama dibuka */
+loadFontSize();
+
+
+/* Muat ulang ukuran font ketika kembali
+   menggunakan tombol Back HP */
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        loadFontSize();
+
+    }
+);
 
 
 /* =====================================================
