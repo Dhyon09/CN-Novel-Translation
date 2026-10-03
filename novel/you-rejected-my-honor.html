@@ -1,593 +1,590 @@
 <!DOCTYPE html>
 <html lang="id">
-
+    
 <head>
+    
+<meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu - CN Novel-Translation</title>
 
-    <title>You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu - CN Novel-Translation</title>
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
 
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+<style>
 
-    <style>
+    /* =========================
+       DAFTAR CHAPTER
+    ========================= */
 
-        /* =========================
-           DAFTAR CHAPTER
-        ========================= */
+    .chapter-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        max-height: 360px;
+        overflow-y: auto;
+        padding: 2px;
+    }
+
+
+    .chapter-list a {
+        display: flex;
+        align-items: center;
+
+        min-height: 42px;
+
+        padding: 8px 10px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--card);
+        color: var(--text);
+
+        text-decoration: none;
+
+        font-size: 15px;
+        line-height: 1.3;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+
+    .chapter-list a:hover {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    .chapter-list a:active {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       BACAAN TERAKHIR
+    ========================= */
+
+    .last-read {
+        display: none;
+
+        margin-top: 12px;
+    }
+
+
+    .last-read.active {
+        display: block;
+    }
+
+
+    .last-read a {
+        display: inline-block;
+
+        color: var(--primary);
+
+        font-size: 14px;
+        line-height: 1.4;
+
+        text-decoration: none;
+
+        transition:
+            color 0.25s ease,
+            opacity 0.25s ease;
+    }
+
+
+    .last-read a:hover,
+    .last-read a:active {
+        opacity: 0.75;
+        text-decoration: underline;
+    }
+
+
+    /* =========================
+       SCROLLBAR
+    ========================= */
+
+    .chapter-list::-webkit-scrollbar {
+        width: 5px;
+    }
+
+
+    .chapter-list::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 10px;
+    }
+
+
+    .chapter-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
 
         .chapter-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-height: 330px;
             gap: 6px;
-            max-height: 360px;
-            overflow-y: auto;
-            padding: 2px;
         }
 
 
         .chapter-list a {
-            display: flex;
-            align-items: center;
-
-            min-height: 42px;
-
-            padding: 8px 10px;
-
-            border: 1px solid var(--border);
-            border-radius: 6px;
-
-            background: var(--card);
-            color: var(--text);
-
-            text-decoration: none;
-
-            font-size: 15px;
-            line-height: 1.3;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease;
-        }
-
-
-        .chapter-list a:hover {
-            border-color: var(--primary);
-            background: var(--bg);
-            color: var(--primary);
-        }
-
-
-        .chapter-list a:active {
-            border-color: var(--primary);
-            background: var(--bg);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           BACAAN TERAKHIR
-        ========================= */
-
-        .last-read {
-            display: none;
-
-            margin-top: 12px;
-        }
-
-
-        .last-read.active {
-            display: block;
+            min-height: 40px;
+            padding: 8px 9px;
+            font-size: 14px;
         }
 
 
         .last-read a {
-            display: inline-block;
-
-            color: var(--primary);
-
-            font-size: 14px;
-            line-height: 1.4;
-
-            text-decoration: none;
-
-            transition:
-                color 0.25s ease,
-                opacity 0.25s ease;
+            font-size: 13px;
         }
 
+    }
 
-        .last-read a:hover,
-        .last-read a:active {
-            opacity: 0.75;
-            text-decoration: underline;
-        }
-
-
-        /* =========================
-           SCROLLBAR
-        ========================= */
-
-        .chapter-list::-webkit-scrollbar {
-            width: 5px;
-        }
-
-
-        .chapter-list::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 10px;
-        }
-
-
-        .chapter-list::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 480px) {
-
-            .chapter-list {
-                max-height: 330px;
-                gap: 6px;
-            }
-
-
-            .chapter-list a {
-                min-height: 40px;
-                padding: 8px 9px;
-                font-size: 14px;
-            }
-
-
-            .last-read a {
-                font-size: 13px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
-
-
+    
 <body>
-
-
+    
 <!-- =========================
      HEADER
 ========================= -->
-
-<header class="site-header">
-
+    
+    <header class="site-header">
+        
     <div class="header-left">
 
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Buka menu"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
-    </div>
-
-
-    <a
-        href="../index.html"
-        class="site-title"
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
     >
-        CN Novel-Translation
-    </a>
+        ☰
+    </button>
+
+</div>
 
 
-    <div class="header-right">
+<a
+    href="../index.html"
+    class="site-title"
+>
+    CN Novel-Translation
+</a>
 
-        <button
-            class="theme-button"
-            id="themeButton"
-            aria-label="Ganti tema"
-        >
-            ☀️
-        </button>
 
-    </div>
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
 
 </header>
-
-
+    
 <!-- =========================
      MENU
 ========================= -->
-
-<div
+    <div
     class="menu-overlay"
     id="menuOverlay"
-></div>
-
-
-<nav
+>
+        
+</div>
+    
+   <nav
     class="side-menu"
     id="sideMenu"
+><div class="menu-header">
+
+    <span>
+        Menu
+    </span>
+
+
+    <button
+        class="menu-close"
+        id="menuClose"
+        aria-label="Tutup menu"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- NOVEL -->
+
+<div
+    class="menu-parent"
+    id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
 >
 
-    <div class="menu-header">
-
-        <span>
-            Menu
-        </span>
+    <span>
+        Novel
+    </span>
 
 
-        <button
-            class="menu-close"
-            id="menuClose"
-            aria-label="Tutup menu"
-        >
-            ×
-        </button>
+    <span class="menu-arrow">
+        ›
+    </span>
 
-    </div>
+</div>
 
 
-    <!-- NOVEL -->
+<div
+    class="novel-submenu"
+    id="novelSubmenu"
+>
 
-    <div
-        class="menu-parent"
-        id="menuNovel"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-    >
-
-        <span>
-            Novel
-        </span>
-
-
-        <span class="menu-arrow">
-            ›
-        </span>
-
-    </div>
-
-
-    <div
-        class="novel-submenu"
-        id="novelSubmenu"
-    >
-
-        <a href="on-going.html">
-            On-going
-        </a>
-
-
-        <a href="completed.html">
-            Completed
-        </a>
-
-
-        <a href="hiatus.html">
-            Hiatus
-        </a>
-
-
-        <a href="drop.html">
-            Drop
-        </a>
-
-    </div>
-
-
-    <!-- BOOKMARK -->
-
-    <a
-        href="../bookmark.html"
-        class="menu-item"
-    >
-        Bookmark
+    <a href="on-going.html">
+        On-going
     </a>
 
 
-    <!-- DONASI -->
+    <a href="completed.html">
+        Completed
+    </a>
+
+
+    <a href="hiatus.html">
+        Hiatus
+    </a>
+
+
+    <a href="drop.html">
+        Drop
+    </a>
+
+</div>
+
+
+<!-- BOOKMARK -->
+
+<a
+    href="../bookmark.html"
+    class="menu-item"
+>
+    Bookmark
+</a>
+
+
+<!-- DONASI -->
+
+<a
+    href="https://trakteer.id/DhyonPratama"
+    class="menu-item"
+    target="_blank"
+    rel="noopener"
+>
+    Donasi
+</a>
+
+
+<!-- LOGIN -->
+
+<a
+    href="#login"
+    class="menu-item"
+>
+    Login
+</a>
+
+</nav><!-- =========================
+     GLOBAL SEARCH
+========================= -->
+    
+    <div class="global-search-bar">
+    
+    <div class="global-search-inner">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
+        </span>
+
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul novel..."
+            autocomplete="off"
+        >
+
+    </div>
+
+</div>
+
+</div>
+    
+<!-- =========================
+     MAIN
+========================= -->
+    
+    <main>
+    
+    <section class="novel-container">
+
+
+    <!-- =========================
+         INFORMASI NOVEL
+    ========================= -->
+
+    <div class="novel-detail">
+
+        <div class="novel-cover">
+
+            <img
+                src="https://www.kanshuw.com/images/134/134920/134920s.jpg"
+                alt="Cover You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu"
+            >
+
+        </div>
+
+
+        <div class="novel-info">
+
+            <h1>
+                You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu
+            </h1>
+
+
+            <p>
+                <strong>Mandarin:</strong>
+                给你尊荣你不要，来世我去娶郡主
+            </p>
+
+
+            <p>
+                <strong>Genre:</strong>
+                Historical • Romance • Rebirth
+            </p>
+
+
+            <p>
+                <strong>Author:</strong>
+                洪承畴射中大玉儿
+            </p>
+
+
+            <p>
+                <strong>Status:</strong>
+                <strong>Completed</strong>
+            </p>
+
+
+            <!-- MULAI BACA -->
+
+            <a
+                href="../chapter/bab-1.html"
+                class="start-reading-button"
+            >
+                Mulai Baca
+            </a>
+
+
+            <!-- BOOKMARK -->
+
+            <button
+                id="bookmarkButton"
+                class="bookmark-button"
+            >
+                ☆ Bookmark
+            </button>
+
+
+            <!-- BACAAN TERAKHIR -->
+
+            <div
+                class="last-read"
+                id="lastRead"
+            >
+
+                <a
+                    href="#"
+                    id="lastReadLink"
+                >
+                    Bacaan terakhir: Chapter 1
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PEMBATAS -->
+
+    <div class="novel-divider">
+        
+    </div>
+
+
+    <!-- =========================
+         SINOPSIS
+    ========================= -->
+
+    <section class="novel-description">
+
+        <h2>
+            Sinopsis
+        </h2>
+
+
+        <p>
+            Gu Chen, seorang pemuda berbakat yang pernah
+            meraih kehormatan dan kedudukan tinggi, akhirnya
+            menyadari bahwa segala sesuatu yang ia korbankan
+            demi seseorang tidak pernah benar-benar dihargai.
+        </p>
+
+
+        <p>
+            Setelah takdir memberinya kesempatan untuk
+            kembali ke awal kehidupannya, Gu Chen memutuskan
+            untuk tidak lagi mengulangi jalan yang sama.
+            Kali ini, ia akan memilih jalannya sendiri dan
+            tidak lagi mengejar orang yang menolak
+            ketulusannya.
+        </p>
+
+
+        <p>
+            Namun ketika takdir kembali mempertemukannya
+            dengan orang-orang dari kehidupan sebelumnya,
+            sebuah keputusan yang berbeda perlahan mengubah
+            jalan hidupnya.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         DAFTAR CHAPTER
+    ========================= -->
+
+    <section class="chapter-list-section">
+
+        <h2>
+            Daftar Chapter
+        </h2>
+
+
+        <div class="chapter-list">
+
+            <a href="../chapter/bab-3.html">
+                Chapter 3 — Menjunjung Sastra dan Mengutamakan Tindakan, Perselisihan Dua Orang
+            </a>
+
+            <a href="../chapter/bab-2.html">
+                Chapter 2 — Mencari Menantu di Bawah Papan Pengumuman, Ia Juga Terlahir Kembali
+            </a>
+
+            <a href="../chapter/bab-1.html">
+                Chapter 1 — Dahulu Aku Pergi, Kini Jiwaku Kembali
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KOMENTAR
+    ========================= -->
+
+    <section class="comments-section">
+
+        <h2>
+            Komentar
+        </h2>
+
+
+        <div
+            class="giscus"
+            id="giscus-container"
+        ></div>
+
+    </section>
+
+</section>
+
+</main>
+    
+<!-- =========================
+     FOOTER
+========================= -->
+    
+<footer class="site-footer">
+    
+<div class="footer-title">
+    CN Novel-Translation
+</div>
+
+
+<div class="footer-links">
+
+    <a href="../index.html">
+        Home
+    </a>
+
+
+    <span>
+        •
+    </span>
+
 
     <a
         href="https://trakteer.id/DhyonPratama"
-        class="menu-item"
         target="_blank"
         rel="noopener"
     >
         Donasi
     </a>
 
-
-    <!-- LOGIN -->
-
-    <a
-        href="#login"
-        class="menu-item"
-    >
-        Login
-    </a>
-
-</nav>
-
-
-<!-- =========================
-     GLOBAL SEARCH
-========================= -->
-
-<div class="global-search-bar">
-
-    <div class="global-search-inner">
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Cari judul novel..."
-                autocomplete="off"
-            >
-
-        </div>
-
-    </div>
-
 </div>
 
 
-<!-- =========================
-     MAIN
-========================= -->
-
-<main>
-
-    <section class="novel-container">
-
-
-        <!-- =========================
-             INFORMASI NOVEL
-        ========================= -->
-
-        <div class="novel-detail">
-
-            <div class="novel-cover">
-
-                <img
-                    src="https://www.kanshuw.com/images/134/134920/134920s.jpg"
-                    alt="Cover You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu"
-                >
-
-            </div>
-
-
-            <div class="novel-info">
-
-                <h1>
-                    You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu
-                </h1>
-
-
-                <p>
-                    <strong>Mandarin:</strong>
-                    给你尊荣你不要，来世我去娶郡主
-                </p>
-
-
-                <p>
-                    <strong>Genre:</strong>
-                    Historical • Romance • Rebirth
-                </p>
-
-
-                <p>
-                    <strong>Author:</strong>
-                    洪承畴射中大玉儿
-                </p>
-
-
-                <p>
-                    <strong>Status:</strong>
-                    <strong>Completed</strong>
-                </p>
-
-
-                <!-- MULAI BACA -->
-
-                <a
-                    href="../chapter/bab-1.html"
-                    class="start-reading-button"
-                >
-                    Mulai Baca
-                </a>
-
-
-                <!-- BOOKMARK -->
-
-                <button
-                    id="bookmarkButton"
-                    class="bookmark-button"
-                >
-                    ☆ Bookmark
-                </button>
-
-
-                <!-- BACAAN TERAKHIR -->
-
-                <div
-                    class="last-read"
-                    id="lastRead"
-                >
-
-                    <a
-                        href="#"
-                        id="lastReadLink"
-                    >
-                        Bacaan terakhir: Chapter 1
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PEMBATAS -->
-
-        <div class="novel-divider"></div>
-
-
-        <!-- =========================
-             SINOPSIS
-        ========================= -->
-
-        <section class="novel-description">
-
-            <h2>
-                Sinopsis
-            </h2>
-
-
-            <p>
-                Gu Chen, seorang pemuda berbakat yang pernah
-                meraih kehormatan dan kedudukan tinggi, akhirnya
-                menyadari bahwa segala sesuatu yang ia korbankan
-                demi seseorang tidak pernah benar-benar dihargai.
-            </p>
-
-
-            <p>
-                Setelah takdir memberinya kesempatan untuk
-                kembali ke awal kehidupannya, Gu Chen memutuskan
-                untuk tidak lagi mengulangi jalan yang sama.
-                Kali ini, ia akan memilih jalannya sendiri dan
-                tidak lagi mengejar orang yang menolak
-                ketulusannya.
-            </p>
-
-
-            <p>
-                Namun ketika takdir kembali mempertemukannya
-                dengan orang-orang dari kehidupan sebelumnya,
-                sebuah keputusan yang berbeda perlahan mengubah
-                jalan hidupnya.
-            </p>
-
-        </section>
-
-
-        <!-- =========================
-             DAFTAR CHAPTER
-        ========================= -->
-
-        <section class="chapter-list-section">
-
-            <h2>
-                Daftar Chapter
-            </h2>
-
-
-            <div class="chapter-list">
-
-    <a href="../chapter/bab-2.html">
-        Chapter 2 — Mencari Menantu di Bawah Papan Pengumuman, Ia Juga Terlahir Kembali
-    </a>
-
-    <a href="../chapter/bab-1.html">
-        Chapter 1 — Dahulu Aku Pergi, Kini Jiwaku Kembali
-    </a>
-
+<div class="copyright">
+    © Copyright 2026-CN Novel-Translation
 </div>
-        </section>
-
-
-        <!-- =========================
-             KOMENTAR
-        ========================= -->
-
-        <section class="comments-section">
-
-            <h2>
-                Komentar
-            </h2>
-
-
-            <div
-                class="giscus"
-                id="giscus-container"
-            ></div>
-
-        </section>
-
-    </section>
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="site-footer">
-
-    <div class="footer-title">
-        CN Novel-Translation
-    </div>
-
-
-    <div class="footer-links">
-
-        <a href="../index.html">
-            Home
-        </a>
-
-
-        <span>
-            •
-        </span>
-
-
-        <a
-            href="https://trakteer.id/DhyonPratama"
-            target="_blank"
-            rel="noopener"
-        >
-            Donasi
-        </a>
-
-    </div>
-
-
-    <div class="copyright">
-        © Copyright 2026-CN Novel-Translation
-    </div>
 
 </footer>
-
+    
 
 <!-- =========================
      JAVASCRIPT
 ========================= -->
-
-<script>
+    
+    <script>
 
 
 /* =====================================================
@@ -1010,9 +1007,13 @@ const lastReadStorageKey =
 const chapterPaths = {
 
     1: "../chapter/bab-1.html",
-    2: "../chapter/bab-2.html"
+
+    2: "../chapter/bab-2.html",
+
+    3: "../chapter/bab-3.html"
 
 };
+
 
 function loadLastRead() {
 
