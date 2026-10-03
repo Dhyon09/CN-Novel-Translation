@@ -2,1464 +2,1392 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Bab 1 — Dahulu Aku Pergi, Kini Jiwaku Kembali | CN Novel-Translation</title>
 
-    <title>Chapter 1 - Heavenly Sword Against the Sky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+    <link rel="stylesheet" href="../css/style.css">
 
     <style>
-
-        /* =========================
-           NAVIGASI CHAPTER
-        ========================= */
-
-        .chapter-navigation {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            gap: 6px;
-            width: 100%;
-            margin: 0 0 16px;
+        .reader-page {
+            width: min(900px, 100%);
+            margin: 0 auto;
+            padding: 20px 16px 50px;
         }
 
+        .reader-chapter-title {
+            color: var(--text);
+            font-size: clamp(23px, 5vw, 32px);
+            line-height: 1.5;
+            text-align: center;
+            margin: 24px 0 28px;
+            font-weight: 600;
+        }
 
-        .chapter-nav-btn {
+        .reader-navigation {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 18px 0;
+        }
+
+        .reader-navigation a,
+        .reader-navigation span {
             display: flex;
             align-items: center;
             justify-content: center;
-
-            min-height: 38px;
-
-            padding: 7px 6px;
-
-            border: 1px solid var(--border);
-            border-radius: 6px;
-
-            background: var(--card);
-            color: var(--text);
-
-            text-decoration: none;
             text-align: center;
-
-            font-size: 14px;
-            line-height: 1.2;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease;
+            min-height: 42px;
+            padding: 8px 5px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            background: var(--card);
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.25s ease, color 0.25s ease;
         }
 
-
-        .chapter-nav-btn:hover,
-        .chapter-nav-btn:active {
-            border-color: var(--primary);
-            background: var(--bg);
+        .reader-navigation a:hover {
             color: var(--primary);
+            border-color: var(--primary);
         }
 
-
-        .chapter-nav-btn.disabled {
+        .reader-navigation .nav-disabled {
             opacity: 0.45;
             pointer-events: none;
         }
 
-
-        /* =========================
-           RODA GIGI
-        ========================= */
-
-        .reader-settings-area {
-            position: relative;
-
+        .reader-tools {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-
-            width: 100%;
-
-            margin: 2px 0 12px;
+            margin: 22px 0;
         }
 
-
-        .reader-settings-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 36px;
-            height: 36px;
-
-            padding: 0;
-
+        .reader-settings-button {
+            width: 42px;
+            height: 42px;
             border: 1px solid var(--border);
             border-radius: 50%;
-
             background: var(--card);
             color: var(--text);
-
-            font-size: 18px;
-
+            font-size: 20px;
             cursor: pointer;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease,
-                transform 0.25s ease;
         }
 
-
-        .reader-settings-btn:hover,
-        .reader-settings-btn:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        .reader-settings-btn.active {
-            transform: rotate(30deg);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           PENGATURAN FONT
-        ========================= */
-
-        .reader-settings {
+        .font-controls {
             display: none;
-
             align-items: center;
             justify-content: center;
+            gap: 16px;
+            padding: 14px;
+            margin: 0 auto 22px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--card);
+        }
 
-            gap: 8px;
+        .font-controls.active {
+            display: flex;
+        }
 
-            margin-top: 8px;
-
-            padding: 5px 8px;
-
+        .font-controls button {
+            min-width: 38px;
+            min-height: 36px;
             border: 1px solid var(--border);
             border-radius: 7px;
-
-            background: var(--card);
-        }
-
-
-        .reader-settings.active {
-            display: flex;
-        }
-
-
-        .reader-settings button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            min-width: 34px;
-            height: 30px;
-
-            padding: 0 7px;
-
-            border: 1px solid var(--border);
-            border-radius: 5px;
-
-            background: var(--card);
             color: var(--text);
-
-            font-family: inherit;
-            font-size: 14px;
-
+            background: var(--bg);
+            font-size: 18px;
             cursor: pointer;
         }
-
-
-        .reader-settings button:hover,
-        .reader-settings button:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
 
         #fontSizeDisplay {
-            min-width: 22px;
-
+            min-width: 48px;
             color: var(--text);
-
+            text-align: center;
             font-size: 14px;
-            text-align: center;
         }
 
-
-        /* =========================
-           JUDUL CHAPTER
-        ========================= */
-
-        .chapter-heading {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-
-        .chapter-number {
-            margin-bottom: 5px;
-
-            color: var(--secondary);
-
-            font-size: 15px;
-            line-height: 1.3;
-        }
-
-
-        .chapter-heading h1 {
-            margin: 0;
-
+        .reader-content {
             color: var(--text);
-
-            font-size: 24px;
-            line-height: 1.3;
+            font-size: 18px;
+            line-height: 1.95;
+            overflow-wrap: anywhere;
+            transition: color 0.25s ease;
         }
 
+        .reader-content p {
+            margin: 0 0 1.25em;
+            text-indent: 2em;
+        }
 
-        /* =========================
-           TOMBOL KEMBALI KE ATAS
-        ========================= */
+        .reader-content .author-note {
+            text-indent: 0;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--primary);
+            border-radius: 4px;
+            background: var(--card);
+            color: var(--secondary);
+            font-size: 0.88em;
+            line-height: 1.8;
+        }
 
-        .back-to-top {
+        .reader-content .scene-break {
+            text-align: center;
+            text-indent: 0;
+            letter-spacing: 8px;
+            margin: 30px 0;
+            color: var(--secondary);
+        }
+
+        .reader-bottom-navigation {
+            margin-top: 32px;
+        }
+
+        .reader-comments {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .reader-comments h2 {
+            color: var(--text);
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        #backToTop {
             position: fixed;
-
-            right: 16px;
-            bottom: 18px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 40px;
-            height: 40px;
-
+            right: 18px;
+            bottom: 22px;
+            z-index: 50;
+            width: 44px;
+            height: 44px;
             border: 1px solid var(--border);
             border-radius: 50%;
-
-            background: var(--card);
             color: var(--text);
-
-            font-size: 19px;
-
+            background: var(--card);
+            box-shadow: 0 4px 15px var(--shadow);
+            font-size: 22px;
             cursor: pointer;
-
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-
-            transition:
-                opacity 0.25s ease,
-                visibility 0.25s ease,
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                color 0.25s ease;
-
-            z-index: 1000;
+            display: none;
         }
 
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        #backToTop.active {
+            display: block;
         }
-
-
-        .back-to-top:hover,
-        .back-to-top:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 480px) {
+            .reader-page {
+                padding: 12px 14px 36px;
+            }
 
-            .chapter-navigation {
+            .reader-content {
+                line-height: 1.9;
+            }
+
+            .reader-navigation {
                 gap: 5px;
-                margin-bottom: 14px;
             }
 
-
-            .chapter-nav-btn {
-                min-height: 36px;
-                padding: 6px 4px;
-
-                font-size: 13px;
+            .reader-navigation a,
+            .reader-navigation span {
+                font-size: 11px;
+                padding: 7px 3px;
             }
-
-
-            .reader-settings-area {
-                margin-top: 1px;
-                margin-bottom: 11px;
-            }
-
-
-            .reader-settings-btn {
-                width: 35px;
-                height: 35px;
-
-                font-size: 17px;
-            }
-
-
-            .chapter-heading {
-                margin-bottom: 22px;
-            }
-
-
-            .chapter-number {
-                font-size: 14px;
-            }
-
-
-            .chapter-heading h1 {
-                font-size: 22px;
-            }
-
-
-            .back-to-top {
-                right: 14px;
-                bottom: 15px;
-
-                width: 38px;
-                height: 38px;
-
-                font-size: 18px;
-            }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- HEADER -->
+    <header class="site-header">
+        <button class="menu-button" id="menuButton"
+            aria-label="Buka menu" aria-expanded="false">☰</button>
 
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="site-header">
-
-    <div class="header-left">
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Buka menu"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
-    </div>
-
-
-    <a
-        href="../index.html"
-        class="site-title"
-    >
-        CN Novel-Translation
-    </a>
-
-
-    <div class="header-right">
-
-        <button
-            class="theme-button"
-            id="themeButton"
-            aria-label="Ganti tema"
-        >
-            ☀️
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =========================
-     MENU
-========================= -->
-
-<div
-    class="menu-overlay"
-    id="menuOverlay"
-></div>
-
-
-<nav
-    class="side-menu"
-    id="sideMenu"
->
-
-    <div class="menu-header">
-
-        <span>
-            Menu
-        </span>
-
-
-        <button
-            class="menu-close"
-            id="menuClose"
-            aria-label="Tutup menu"
-        >
-            ×
-        </button>
-
-    </div>
-
-
-    <!-- NOVEL -->
-
-    <div
-        class="menu-parent"
-        id="menuNovel"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-    >
-
-        <span>
-            Novel
-        </span>
-
-
-        <span class="menu-arrow">
-            ›
-        </span>
-
-    </div>
-
-
-    <div
-        class="novel-submenu"
-        id="novelSubmenu"
-    >
-
-        <a href="../novel/on-going.html">
-            On-going
+        <a href="../index.html" class="site-title">
+            CN Novel-Translation
         </a>
 
+        <button class="theme-button" id="themeButton"
+            aria-label="Ganti tema">☀️</button>
+    </header>
 
-        <a href="../novel/completed.html">
-            Completed
-        </a>
+    <!-- MENU OVERLAY -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
-
-        <a href="../novel/hiatus.html">
-            Hiatus
-        </a>
-
-
-        <a href="../novel/drop.html">
-            Drop
-        </a>
-
-    </div>
-
-
-    <!-- BOOKMARK -->
-
-    <a
-        href="../bookmark.html"
-        class="menu-item"
-    >
-        Bookmark
-    </a>
-
-
-    <!-- DONASI -->
-
-    <a
-        href="https://trakteer.id/DhyonPratama"
-        class="menu-item"
-        target="_blank"
-        rel="noopener"
-    >
-        Donasi
-    </a>
-
-
-    <!-- LOGIN -->
-
-    <a
-        href="#login"
-        class="menu-item"
-    >
-        Login
-    </a>
-
-</nav>
-
-
-<!-- =========================
-     GLOBAL SEARCH
-========================= -->
-
-<div class="global-search-bar">
-
-    <div class="global-search-inner">
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Cari judul novel..."
-                autocomplete="off"
-            >
-
+    <!-- SIDE MENU -->
+    <aside class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <span>Menu</span>
+            <button class="menu-close" id="menuClose"
+                aria-label="Tutup menu">×</button>
         </div>
 
-    </div>
-
-</div>
-
-
-<!-- =========================
-     READER
-========================= -->
-
-<main class="reader-container">
-
-
-    <!-- =========================
-         NAVIGASI ATAS
-    ========================= -->
-
-    <nav class="chapter-navigation">
-
-        <a
-            href="#"
-            class="chapter-nav-btn disabled"
-        >
-            ← Sebelumnya
-        </a>
-
-
-        <a
-            href="../novel/judul-novel.html"
-            class="chapter-nav-btn"
-        >
-            Daftar Isi
-        </a>
-
-
-        <a
-            href="bab-2.html"
-            class="chapter-nav-btn"
-        >
-            Selanjutnya →
-        </a>
-
-    </nav>
-
-
-    <!-- =========================
-         PENGATURAN PEMBACA
-    ========================= -->
-
-    <div class="reader-settings-area">
-
-        <button
-            class="reader-settings-btn"
-            id="readerSettingsButton"
-            aria-label="Pengaturan pembaca"
-            aria-expanded="false"
-        >
-            ⚙️
-        </button>
-
-
-        <div
-            id="readerSettings"
-            class="reader-settings"
-        >
-
-            <button
-                id="fontDecrease"
-                aria-label="Perkecil ukuran teks"
-            >
-                A−
-            </button>
-
-
-            <span id="fontSizeDisplay">
-                18
-            </span>
-
-
-            <button
-                id="fontIncrease"
-                aria-label="Perbesar ukuran teks"
-            >
-                A+
-            </button>
-
+        <div class="menu-novel" id="menuNovel"
+            tabindex="0" role="button" aria-expanded="false">
+            <span>Novel</span>
+            <span class="submenu-arrow">▾</span>
         </div>
 
-    </div>
-
-
-    <!-- =========================
-         JUDUL CHAPTER
-    ========================= -->
-
-    <div class="chapter-heading">
-
-        <div class="chapter-number">
-            Chapter 1
+        <div class="novel-submenu" id="novelSubmenu">
+            <a href="../novel/on-going.html" class="submenu-item">On-going</a>
+            <a href="../novel/completed.html" class="submenu-item">Completed</a>
+            <a href="../novel/hiatus.html" class="submenu-item">Hiatus</a>
+            <a href="../novel/drop.html" class="submenu-item">Drop</a>
         </div>
 
+        <a href="../bookmark.html" class="menu-item">Bookmark</a>
 
-        <h1>
-            Awal Perjalanan
+        <a class="menu-item"
+            href="https://trakteer.id/DhyonPratama"
+            target="_blank" rel="noopener">Donasi</a>
+
+        <a href="#login" class="menu-item">Login</a>
+    </aside>
+
+    <!-- SEARCH -->
+    <div class="search-wrapper">
+        <form class="search-box" id="searchForm">
+            <input type="search" id="searchInput"
+                placeholder="Cari novel..." autocomplete="off">
+            <button type="submit" aria-label="Cari">🔍</button>
+        </form>
+    </div>
+
+    <!-- READER -->
+    <main class="reader-page">
+
+        <nav class="reader-navigation" aria-label="Navigasi chapter">
+            <span class="nav-disabled">← Sebelumnya</span>
+
+            <a href="../novel/you-rejected-my-honor.html">
+                Daftar Isi
+            </a>
+
+            <span class="nav-disabled">Selanjutnya →</span>
+        </nav>
+
+        <h1 class="reader-chapter-title">
+            Bab 1 — Dahulu Aku Pergi, Kini Jiwaku Kembali
         </h1>
 
-    </div>
-
-
-    <!-- =========================
-         ISI NOVEL
-    ========================= -->
-
-    <article class="reader">
-
-        <p>
-            Ini adalah contoh isi novel untuk Chapter 1.
-            Nantinya bagian ini dapat diganti dengan hasil
-            terjemahan novel yang sebenarnya.
-        </p>
-
-
-        <p>
-            Kesadaran Yun Qingyao perlahan muncul dari dalam
-            kekacauan. Pandangannya masih terasa kabur,
-            sementara tubuhnya belum sepenuhnya dapat bergerak.
-        </p>
-
-
-        <p>
-            Ia mencoba mengingat apa yang telah terjadi
-            sebelumnya. Namun, semakin keras ia mencoba
-            mengingatnya, semakin kacau pikirannya.
-        </p>
-
-
-        <p>
-            Di tempat yang sunyi itu, sebuah suara tiba-tiba
-            terdengar dari hadapannya.
-        </p>
-
-
-        <p>
-            "Siapa kamu?"
-        </p>
-
-
-        <p>
-            Yun Qingyao mengangkat kepalanya perlahan.
-            Tatapannya kemudian tertuju pada sosok yang
-            berdiri tidak jauh darinya.
-        </p>
-
-
-        <p>
-            Untuk sementara waktu, tidak ada seorang pun
-            yang berbicara lagi.
-        </p>
-
-    </article>
-
-
-    <!-- =========================
-         NAVIGASI BAWAH
-    ========================= -->
-
-    <nav class="chapter-navigation">
-
-        <a
-            href="#"
-            class="chapter-nav-btn disabled"
-        >
-            ← Sebelumnya
-        </a>
-
-
-        <a
-            href="../novel/judul-novel.html"
-            class="chapter-nav-btn"
-        >
-            Daftar Isi
-        </a>
-
-
-        <a
-            href="bab-2.html"
-            class="chapter-nav-btn"
-        >
-            Selanjutnya →
-        </a>
-
-    </nav>
-
-
-    <!-- =========================
-         KOMENTAR
-    ========================= -->
-
-    <section class="comments-section">
-
-        <h2>
-            Komentar
-        </h2>
-
-
-        <div
-            class="giscus"
-            id="giscus-container"
-        ></div>
-
-    </section>
-
-</main>
-
-
-<!-- =========================
-     BACK TO TOP
-========================= -->
-
-<button
-    class="back-to-top"
-    id="backToTop"
-    aria-label="Kembali ke atas"
->
-    ↑
-</button>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="site-footer">
-
-    <div class="footer-title">
-        CN Novel-Translation
-    </div>
-
-
-    <div class="footer-links">
-
-        <a href="../index.html">
-            Home
-        </a>
-
-
-        <span>
-            •
-        </span>
-
-
-        <a
-            href="https://trakteer.id/DhyonPratama"
-            target="_blank"
-            rel="noopener"
-        >
-            Donasi
-        </a>
-
-    </div>
-
-
-    <div class="copyright">
-        © Copyright 2026-CN Novel-Translation
-    </div>
-
-</footer>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-
-/* =====================================================
-   MENU
-===================================================== */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-const menuClose =
-    document.getElementById("menuClose");
-
-const menuOverlay =
-    document.getElementById("menuOverlay");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const menuNovel =
-    document.getElementById("menuNovel");
-
-const novelSubmenu =
-    document.getElementById("novelSubmenu");
-
-
-function openMenu() {
-
-    sideMenu.classList.add("active");
-
-    menuOverlay.classList.add("active");
-
-    document.body.classList.add("menu-open");
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        "true"
-    );
-
-}
-
-
-function closeNovelSubmenu() {
-
-    novelSubmenu.classList.remove("active");
-
-    menuNovel.classList.remove("active");
-
-    menuNovel.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-}
-
-
-function closeMenu() {
-
-    sideMenu.classList.remove("active");
-
-    menuOverlay.classList.remove("active");
-
-    document.body.classList.remove("menu-open");
-
-    closeNovelSubmenu();
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-}
-
-
-menuButton.addEventListener(
-    "click",
-    openMenu
-);
-
-
-menuClose.addEventListener(
-    "click",
-    closeMenu
-);
-
-
-menuOverlay.addEventListener(
-    "click",
-    closeMenu
-);
-
-
-function toggleNovelSubmenu() {
-
-    const isActive =
-        novelSubmenu.classList.toggle("active");
-
-
-    menuNovel.classList.toggle(
-        "active",
-        isActive
-    );
-
-
-    menuNovel.setAttribute(
-        "aria-expanded",
-        isActive
-    );
-
-}
-
-
-menuNovel.addEventListener(
-    "click",
-    toggleNovelSubmenu
-);
-
-
-menuNovel.addEventListener(
-    "keydown",
-    function (event) {
-
-        if (
-            event.key === "Enter" ||
-            event.key === " "
-        ) {
-
-            event.preventDefault();
-
-            toggleNovelSubmenu();
-
+        <div class="reader-tools">
+            <button class="reader-settings-button" id="readerSettingsButton"
+                aria-label="Pengaturan ukuran teks">⚙</button>
+        </div>
+
+        <div class="font-controls" id="fontControls">
+            <button id="decreaseFont" aria-label="Perkecil teks">A−</button>
+            <span id="fontSizeDisplay">18 px</span>
+            <button id="increaseFont" aria-label="Perbesar teks">A+</button>
+        </div>
+
+        <article class="reader-content" id="readerContent">
+
+            <p class="author-note">
+                Catatan penulis: Membaca novel ini akan lebih nikmat jika
+                pikiran tidak terlalu terpaku pada hal-hal kecil. Tidak ada
+                sistem; ini murni kisah kelahiran kembali. Alurnya sedikit
+                lambat karena beberapa bab awal digunakan untuk membangun
+                cerita. Tokoh utama wanita baru muncul pada bab 11, sedangkan
+                kedua tokoh utama mulai menjalin hubungan pada bab 26.
+            </p>
+
+            <p class="author-note">
+                Penulis masih pemula dan berharap pembaca berkenan memasukkan
+                novel ini ke rak bacaan. Aku telah mengembara separuh hidupku
+                hanya karena belum bertemu tuan yang tepat. Jika Tuan tidak
+                keberatan, aku bersedia mengangkatmu sebagai ayah angkat!
+            </p>
+
+            <p class="author-note">
+                Latar sejarah dalam cerita ini bersifat fiktif. Beberapa
+                sistem dan pengaturan berbeda dari sejarah nyata, termasuk
+                kedudukan tokoh utama dalam ujian kekaisaran. Semua itu
+                merupakan kebutuhan cerita, jadi mohon jangan terlalu
+                mempermasalahkannya.
+            </p>
+
+            <p class="author-note">
+                Cerita utama ini relatif singkat, hanya sekitar 120 bab.
+                Jadi, para pembaca tidak perlu menimbunnya terlalu lama.
+                Silakan menikmati ceritanya!
+            </p>
+
+            <p>
+                Musim gugur, tahun ke-37 era Chongsheng.
+            </p>
+
+            <p>
+                Adipati Penjaga Negara Da Qian, Gu Chen, sedang duduk di
+                sisi ranjang istrinya, Liu Ruolan, yang terbaring sakit.
+            </p>
+
+            <p>
+                Liu Ruolan, yang dahulu dikenal sebagai salah satu perempuan
+                paling berbakat di ibu kota, kini hanya mampu berbicara dengan
+                napas tersengal-sengal.
+            </p>
+
+            <p>
+                “Gu Chen, sebenarnya selama ini aku selalu mencintai sahabatmu,
+                Yang Kaiji.”
+            </p>
+
+            <p>
+                Ia tidak memanggilnya suami dengan sapaan mesra. Ia hanya
+                menyebut nama Gu Chen dengan sopan, seolah-olah mereka
+                hanyalah dua orang yang tidak begitu dekat.
+            </p>
+
+            <p>
+                Kepala Gu Chen terasa berdengung. Berbagai kenangan muncul
+                di benaknya.
+            </p>
+
+            <p>
+                Pada tahun pertama era Chongsheng, ia mengenakan jubah
+                pengantin merah terang dan menikah dengan Liu Ruolan,
+                putri dari keluarga Marquis Cheng'en di ibu kota.
+            </p>
+
+            <p>
+                Gu Chen sendiri adalah seorang yatim piatu yang berasal dari
+                kalangan pengungsi. Namun, Kaisar Chongsheng yang baru naik
+                takhta menunjuknya sebagai Tanhua dalam ujian sastra dan
+                Zhuangyuan dalam ujian militer pada tahun yang sama.
+            </p>
+
+            <p>
+                Marquis Liu Ming tertarik pada bakatnya. Ia juga memahami
+                bahwa kaisar sedang menerapkan kebijakan baru untuk menekan
+                pengaruh keluarga bangsawan dan mengabaikan perbedaan asal-usul.
+                Karena itulah Gu Chen akhirnya menjadi menantunya.
+            </p>
+
+            <p>
+                Pada malam pengantin mereka, Gu Chen berjanji akan
+                memperlakukannya dengan baik. Liu Ruolan hanya menjawab
+                singkat tanpa mengangkat kepala.
+            </p>
+
+            <p>
+                Ketika Gu Chen berangkat berperang, istrinya mengantarnya
+                sampai ke pintu. Ketika ia kembali ke ibu kota, istrinya
+                menyiapkan makanan dan menunggunya pulang.
+            </p>
+
+            <p>
+                Hubungan mereka selalu sopan dan berjarak, seolah-olah
+                mereka adalah dua orang asing yang menjaga tata krama.
+            </p>
+
+            <p>
+                “Aku tidak mengerti. Aku telah memberimu gelar kehormatan
+                tingkat pertama. Sepanjang hidupku, aku tidak pernah
+                menyentuh perempuan lain. Seluruh penghasilanku kuserahkan
+                ke rumah tangga, dan aku tidak pernah mencampuri apa yang
+                ingin kau miliki.”
+            </p>
+
+            <p>
+                “Dahulu aku mengira kau memang berhati dingin. Namun,
+                mengapa kau justru jatuh cinta kepada Yang Kaiji?”
+            </p>
+
+            <p>
+                Liu Ruolan menatapnya. Mata yang keruh itu tiba-tiba
+                memancarkan sedikit cahaya.
+            </p>
+
+            <p>
+                “Karena kau tidak memahamiku.”
+            </p>
+
+            <p>
+                Gu Chen tertegun. “Namun, kau tidak pernah mengatakan
+                apa yang kau inginkan.”
+            </p>
+
+            <p>
+                “Jadi, kau tidak bisa menebaknya sendiri?” Suaranya sangat
+                lemah, seperti angin dingin yang menyayat hati.
+                “Apakah aku harus selalu mengatakannya terlebih dahulu
+                agar kau mengetahui kesukaanku?”
+            </p>
+
+            <p>
+                “Setiap kali pulang, kau bertanya, ‘Apakah Nyonya baik-baik
+                saja?’ Aku menjawab baik-baik saja, lalu kau langsung
+                memercayainya.”
+            </p>
+
+            <p>
+                “Kau tidak pernah mengatakan sesuatu yang dekat di hati.
+                Kau tidak pernah bertanya apakah aku ingin pergi berjalan-jalan,
+                membaca cerita, atau melakukan sesuatu yang kusukai.”
+            </p>
+
+            <p>
+                “Kau juga tidak pernah bertanya apakah aku merasa kesepian
+                karena harus menjaga rumah besar ini seorang diri.”
+            </p>
+
+            <p>
+                “Sikapmu yang begitu kaku benar-benar membuatku tidak tahu
+                harus berkata apa. Kau tidak pernah memahamiku.”
+            </p>
+
+            <p>
+                Kalimat itu menusuk dada Gu Chen seperti sebilah pisau.
+            </p>
+
+            <p>
+                Sepanjang hidupnya, ia selalu bekerja keras demi urusan
+                negara. Dari Akademi Hanlin ke berbagai wilayah, lalu dari
+                Kementerian Perang hingga pasukan perbatasan utara.
+            </p>
+
+            <p>
+                Ia berperang untuk menjaga perbatasan dan melindungi rakyat.
+                Ia bekerja siang dan malam untuk menyelesaikan urusan
+                kekaisaran. Semua yang dilakukannya bertujuan agar rakyat
+                dapat menjalani kehidupan yang lebih baik.
+            </p>
+
+            <p>
+                Di rumah, istrinya selalu berkata bahwa dirinya baik-baik saja.
+                Karena itu, Gu Chen memercayainya.
+            </p>
+
+            <p>
+                Ia tidak pernah menyangka istrinya menyembunyikan perasaan
+                yang sebenarnya.
+            </p>
+
+            <p>
+                “Kalau begitu, katakanlah dengan jujur. Apa sebenarnya
+                yang kau inginkan?” tanyanya.
+            </p>
+
+            <p>
+                Liu Ruolan sebenarnya sudah tidak ingin berbicara dengannya.
+                Namun, pada akhirnya ia tetap menjawab, seolah-olah
+                sedang memberinya kemurahan hati.
+            </p>
+
+            <p>
+                “Bakat dan wawasan sastra,” jawabnya dengan suara lirih.
+                “Seseorang yang bisa membicarakan puisi dan sastra denganku.
+                Seseorang yang mampu memahami suka dan duka dalam alunan
+                kecapi yang kumainkan.”
+            </p>
+
+            <p>
+                “Seseorang yang bisa mengetahui apa yang kuinginkan
+                bahkan sebelum aku mengatakannya.”
+            </p>
+
+            <p>
+                Ia berhenti sejenak, kemudian menghela napas.
+            </p>
+
+            <p>
+                “Yang Kaiji memahami semua itu. Ia bahkan memahami istrinya,
+                Nyonya Bai. Seharusnya dahulu aku meminta Ayah memilih
+                Yang Kaiji sebagai suamiku.”
+            </p>
+
+            <p>
+                Yang Kaiji adalah Zhuangyuan dalam ujian sastra pada angkatan
+                yang sama dengan Gu Chen. Ia memiliki kemampuan sastra yang
+                luar biasa, pandai berdebat, dan berasal dari keluarga
+                sederhana.
+            </p>
+
+            <p>
+                Tiga peringkat teratas ujian sastra pada angkatan itu adalah
+                Yang Kaiji, Pei Zhang, dan Gu Chen. Mereka berasal dari
+                latar belakang berbeda: satu dari keluarga sederhana,
+                satu dari keluarga bangsawan, dan satu lagi dari kalangan
+                pengungsi.
+            </p>
+
+            <p>
+                Ketiganya telah menjadi sahabat seumur hidup.
+            </p>
+
+            <p>
+                Namun, ternyata istrinya sendiri selama ini mengagumi
+                sahabatnya?
+            </p>
+
+            <p>
+                “Aku bahkan hafal puisi-puisinya. Ia memahami keindahan
+                alam, perasaan cinta, dan pikiran-pikiran yang disimpan
+                seorang perempuan jauh di dalam hatinya.”
+            </p>
+
+            <p>
+                “Lalu kau? Kau hanya membicarakan peperangan di perbatasan,
+                pergerakan bangsa Hu Utara, persediaan bahan makanan,
+                dan nasib para prajurit.”
+            </p>
+
+            <p>
+                Setetes air mata mengalir dari sudut mata Liu Ruolan.
+            </p>
+
+            <p>
+                “Gu Chen, yang kuinginkan bukanlah gelar kehormatan atau
+                kemuliaan. Aku menginginkan seorang suami yang memahamiku.
+                Kau tidak bisa memberikannya kepadaku. Sejak dahulu,
+                kau tidak pernah bisa.”
+            </p>
+
+            <p>
+                “Jika ada kehidupan berikutnya…”
+            </p>
+
+            <p>
+                Tiba-tiba, ia terbatuk hebat. Seluruh tubuhnya gemetar.
+            </p>
+
+            <p>
+                “Aku… tidak ingin menjadi istrimu lagi.”
+            </p>
+
+            <p>
+                Setelah mengucapkan kalimat itu, tangannya terkulai.
+            </p>
+
+            <p>
+                Nyonya Adipati Penjaga Negara telah meninggal dunia.
+            </p>
+
+            <p>
+                Gu Chen duduk di sisi ranjang, mengingat banyak hal yang
+                dahulu tidak pernah ia perhatikan.
+            </p>
+
+            <p>
+                Ia teringat bagaimana istrinya selalu tampak gembira
+                berdandan ketika ia berjanji menghadiri jamuan bersama
+                Pei Zhang dan Yang Kaiji. Dahulu, ia mengira istrinya
+                hanya ingin keluar rumah. Kini ia mengerti bahwa perempuan
+                itu sebenarnya ingin bertemu Yang Kaiji.
+            </p>
+
+            <p>
+                Ia juga teringat bagaimana Liu Ruolan terlihat begitu
+                bahagia saat menyaksikan Yang Kaiji menggubah puisi
+                dalam pertemuan sastra bulan kedelapan. Dahulu, Gu Chen
+                mengira istrinya hanya mengagumi bakat Yang Kaiji.
+                Kini ia mengerti bahwa itu adalah tatapan seorang perempuan
+                kepada lelaki yang dicintainya.
+            </p>
+
+            <p class="scene-break">＊ ＊ ＊</p>
+
+            <p>
+                Hari kesembilan bulan kedua belas, tahun ke-42 era Chongsheng.
+            </p>
+
+            <p>
+                Adipati Penjaga Negara, Gu Chen, meninggal dunia di sebuah
+                kota perbatasan di wilayah utara.
+            </p>
+
+            <p>
+                Selama ia masih hidup, negara-negara kecil di perbatasan
+                tidak berani bertindak gegabah, dan bangsa Hu Utara tidak
+                berani melangkah lebih jauh ke selatan.
+            </p>
+
+            <p>
+                Lima tahun sebelumnya, Gu Chen mengajukan permohonan kepada
+                kaisar untuk menjaga perbatasan dan menahan ancaman bangsa
+                Hu Utara. Sejak saat itu, ia tidak pernah kembali ke ibu kota.
+            </p>
+
+            <p>
+                Sepanjang hidupnya, Gu Chen telah bertempur dalam banyak
+                peperangan dan menulis begitu banyak laporan kepada kaisar.
+                Di tengah badai salju wilayah utara, ia tetap tenang
+                menghadapi seratus ribu pasukan berkuda bangsa Hu.
+            </p>
+
+            <p>
+                Ia memiliki jasa besar, reputasi yang bersih, kepercayaan
+                kaisar, dan penghormatan dari seluruh rakyat.
+            </p>
+
+            <p>
+                Ketika mendengar kabar kematiannya, kaisar menghentikan
+                kegiatan pemerintahan selama tiga hari. Gu Chen dianugerahi
+                gelar kehormatan Taishi dan Taiwei secara anumerta, dengan
+                nama anumerta Zhongwu. Tablet rohnya juga ditempatkan di
+                Kuil Leluhur Kekaisaran.
+            </p>
+
+            <p>
+                Seluruh Da Qian, dari rakyat jelata hingga pejabat istana,
+                berkabung atas kepergiannya.
+            </p>
+
+            <p>
+                Setelah meninggal, jiwa Gu Chen melayang ke atas, semakin
+                tinggi dan semakin tinggi.
+            </p>
+
+            <p>
+                Ia melihat para prajurit di dalam kemah militer berlutut
+                di tanah, menangis dengan suara yang mengguncang langit.
+            </p>
+
+            <p>
+                Ia melihat ibu kota yang berjarak ribuan li dipenuhi
+                kain-kain putih sebagai tanda berkabung. Rakyat dengan
+                sukarela mendirikan altar dupa di jalanan dan berdoa
+                untuknya.
+            </p>
+
+            <p>
+                Jiwa Gu Chen melayang memasuki istana kekaisaran, lalu
+                menuju Kuil Leluhur Kekaisaran.
+            </p>
+
+            <p>
+                Asap dupa mengepul memenuhi kuil.
+            </p>
+
+            <p>
+                Di bagian tengah berdiri tablet roh Kaisar Tianyuan,
+                kaisar pendiri dinasti. Di sebelahnya terdapat tablet
+                Kaisar Liewu, kaisar yang sepanjang hidupnya menaklukkan
+                medan perang. Di sisi lain ada tablet Kaisar Renshou,
+                yang mendorong pertanian dan peternakan serta hidup hemat
+                demi rakyat.
+            </p>
+
+            <p>
+                Tablet roh Gu Chen ditempatkan di aula samping, bersebelahan
+                dengan beberapa pejabat berjasa dari masa pendirian dinasti.
+            </p>
+
+            <p>
+                Pada tablet itu tertulis:
+                <em>Tempat Roh Adipati Gu Chen, Penjaga Negara Da Qian,
+                Bergelar Zhongwu.</em>
+            </p>
+
+            <p>
+                Malam tiba. Badai salju semakin kencang ketika pintu kuil
+                tiba-tiba terbuka.
+            </p>
+
+            <p>
+                Seorang pria berpakaian sederhana berwarna hitam masuk.
+                Rambutnya telah memutih, punggungnya sedikit membungkuk,
+                dan langkahnya tidak lagi mantap.
+            </p>
+
+            <p>
+                Namun, Gu Chen langsung mengenalinya.
+            </p>
+
+            <p>
+                Kaisar Chongsheng, Li Ce.
+            </p>
+
+            <p>
+                Usia kaisar kini telah melewati enam puluh tahun. Ia telah
+                bertakhta selama lebih dari tiga dekade. Pemuda penuh
+                semangat yang dahulu naik takhta itu kini telah menjadi
+                seorang penguasa yang menua.
+            </p>
+
+            <p>
+                Ia berjalan menuju tablet roh Gu Chen dan berdiri lama
+                di hadapannya.
+            </p>
+
+            <p>
+                Di dalam Kuil Leluhur Kekaisaran, hanya tersisa dua sosok:
+                seorang kaisar yang berdiri di bumi dan jiwa seorang
+                menteri yang melayang di udara, terpisah oleh batas
+                antara hidup dan mati.
+            </p>
+
+            <p>
+                Kaisar Chongsheng mengeluarkan sebuah kendi arak dan dua
+                cawan dari lengan bajunya.
+            </p>
+
+            <p>
+                “Upacara siang tadi terlalu rumit. Aku tidak menyukainya,”
+                katanya sambil tersenyum tipis. Namun, suaranya terdengar
+                lelah. “Malam ini, aku datang untuk minum bersamamu.”
+            </p>
+
+            <p>
+                Ia mengisi kedua cawan. Satu diletakkan di depan tablet
+                roh Gu Chen, sedangkan yang lain dipegangnya sendiri.
+            </p>
+
+            <p>
+                “Menteri tercintaku…” Suaranya sedikit serak.
+                “Aku telah mengecewakanmu.”
+            </p>
+
+            <p>
+                Ia menenggak araknya hingga habis, kemudian menuangkan
+                cawan berikutnya.
+            </p>
+
+            <p>
+                “Seandainya aku tahu sejak awal bahwa keluarga Liu akan
+                membuat sisa hidupmu begitu sengsara, seharusnya aku
+                memaksa kalian berpisah dan membiarkanmu menikahi Hongling.”
+            </p>
+
+            <p>
+                Jiwa Gu Chen bergetar hebat.
+            </p>
+
+            <p>
+                Hongling?
+            </p>
+
+            <p>
+                Junzhu Changning, Zhao Hongling?
+            </p>
+
+            <p>
+                Zhao Hongling yang tidak pernah menikah sepanjang hidupnya?
+            </p>
+
+            <p>
+                Kaisar Chongsheng menghela napas.
+            </p>
+
+            <p>
+                “Sepanjang hidupmu, kau telah berjasa dalam pemerintahan
+                maupun peperangan. Awalnya aku berniat menjadikanmu
+                Kepala Sekretariat Agung, tetapi lima tahun lalu kau
+                justru bersikeras pergi menjaga perbatasan.”
+            </p>
+
+            <p>
+                “Kau adalah pedang paling tajam dan paling mudah kugunakan.
+                Selama sebagian besar hidupku, aku mengandalkanmu. Aku
+                menyerahkan peperangan tersulit kepadamu dan memberikan
+                tugas-tugas paling berat. Namun, kau tidak pernah
+                mengecewakanku.”
+            </p>
+
+            <p>
+                Kaisar kembali meneguk araknya.
+            </p>
+
+            <p>
+                Ia menghela napas panjang.
+            </p>
+
+            <p>
+                “Di seluruh dunia ini, kaulah orang yang paling memahami
+                diriku. Sungguh aneh. Seorang pengungsi dengan asal-usul
+                paling rendah dan seorang kaisar dengan kedudukan paling
+                tinggi ternyata sering memikirkan hal yang sama ketika
+                berada di istana.”
+            </p>
+
+            <p>
+                Dari luar aula terdengar langkah kaki. Langkah itu jauh
+                lebih ringan daripada langkah kaisar, jelas merupakan
+                langkah seorang perempuan.
+            </p>
+
+            <p>
+                Jiwa Gu Chen menoleh ke arah pintu.
+            </p>
+
+            <p>
+                Seorang perempuan berdiri di sana.
+            </p>
+
+            <p>
+                Ia mengenakan jubah luar putih polos. Ketika tudungnya
+                terlepas, terlihat wajah yang telah ditandai oleh waktu.
+            </p>
+
+            <p>
+                Wajah itu tidak lagi menyimpan kecantikan luar biasa
+                seperti pada masa mudanya. Yang tersisa hanyalah garis-garis
+                usia dan sepasang mata yang masih bersinar terang.
+            </p>
+
+            <p>
+                Di satu tangannya terdapat lentera, sementara tangan
+                lainnya menggenggam seruling bambu.
+            </p>
+
+            <p>
+                Zhao Hongling.
+            </p>
+
+            <p>
+                Junzhu Changning, yang secara khusus dianugerahi gelar
+                oleh kaisar terdahulu dan menerima kehormatan yang bahkan
+                melampaui banyak pangeran dan putri kekaisaran.
+            </p>
+
+            <p>
+                Ia adalah putri dari Putri Agung Qingxi dan Jenderal
+                Zhao Jingxuan, sepupu kaisar, sekaligus putri tertua
+                keluarga militer Zhao. Dahulu, ia dikenal sebagai
+                perempuan tercantik di ibu kota.
+            </p>
+
+            <p>
+                Namun, entah mengapa, perempuan itu tidak pernah menikah
+                sepanjang hidupnya.
+            </p>
+
+            <p>
+                Meski demikian, posturnya tetap tegap seperti pohon pinus.
+                Setiap langkahnya masih memancarkan ketegasan seorang
+                putri keluarga jenderal.
+            </p>
+
+            <p>
+                “Hamba memberi hormat kepada Yang Mulia,” kata Zhao
+                Hongling sambil membungkuk sedikit kepada Li Ce.
+            </p>
+
+            <p>
+                “Ternyata kau juga datang.” Li Ce mengangguk, lalu
+                memberi ruang di depan tablet roh.
+            </p>
+
+            <p>
+                Zhao Hongling berjalan mendekat. Ia tidak berlutut
+                ataupun mempersembahkan dupa.
+            </p>
+
+            <p>
+                “Gu Chen, di dalam hatiku, kau akan selalu menjadi
+                pahlawan sejati yang menjulang tinggi di antara langit
+                dan bumi.”
+            </p>
+
+            <p>
+                Ia berhenti sejenak sebelum melanjutkan.
+            </p>
+
+            <p>
+                “Kau tidak tahu, dahulu ketika aku tidak menikah,
+                semua orang berkata bahwa aku belum menemukan orang
+                yang kucintai.”
+            </p>
+
+            <p>
+                “Sebenarnya, aku sudah menemukannya.”
+            </p>
+
+            <p>
+                “Namun, orang yang kucintai telah lebih dahulu
+                menikahi perempuan lain.”
+            </p>
+
+            <p>
+                Jiwa Gu Chen seakan dihantam sesuatu. Gelombang emosi
+                yang dahsyat mendadak mengguncang hatinya.
+            </p>
+
+            <p>
+                “Biarkan aku menghadiahkan sebuah lagu untukmu.”
+            </p>
+
+            <p>
+                Zhao Hongling mundur selangkah, mengangkat seruling
+                bambu ke bibirnya, lalu memejamkan mata dan mulai
+                meniupkannya perlahan.
+            </p>
+
+            <p class="scene-break">＊ ＊ ＊</p>
+
+            <p>
+                Suara seruling mulai terdengar.
+            </p>
+
+            <p>
+                Melodinya begitu sunyi dan penuh kesedihan, seperti
+                mimpi yang telah tersimpan selama puluhan tahun di
+                dalam kamar seorang perempuan.
+            </p>
+
+            <p>
+                Suara seruling menggema di aula luas Kuil Leluhur
+                Kekaisaran. Alunannya menyusup di antara tablet roh,
+                berputar melewati tiang-tiang, naik menuju langit-langit,
+                lalu berubah menjadi desahan samar yang menghilang
+                di tengah malam bersalju.
+            </p>
+
+            <p>
+                Gu Chen tidak pernah menyangka bahwa seorang perempuan
+                bisa memilih untuk tidak menikah seumur hidup hanya
+                karena dirinya.
+            </p>
+
+            <p>
+                Ia tidak mengetahui apa pun.
+            </p>
+
+            <p>
+                Sebagaimana ia tidak pernah mengetahui bahwa Liu Ruolan
+                mencintai Yang Kaiji, ia juga tidak pernah mengetahui
+                bahwa Zhao Hongling telah mencintainya sepanjang hidup.
+            </p>
+
+            <p>
+                Ia telah menyaksikan perpisahan dan kematian berkali-kali.
+                Ia telah membaca begitu banyak kitab dan menghitung
+                berbagai kemungkinan pergerakan pasukan musuh.
+            </p>
+
+            <p>
+                Namun, satu hal yang tidak pernah berhasil dipahaminya
+                adalah hati seorang perempuan.
+            </p>
+
+            <p>
+                Alunan seruling perlahan melemah. Beberapa nada terakhir
+                terdengar seperti desahan sekaligus isak tangis, bergema
+                lama sebelum akhirnya menghilang.
+            </p>
+
+            <p>
+                Zhao Hongling menurunkan serulingnya.
+            </p>
+
+            <p>
+                “Semoga di kehidupan berikutnya, segalanya berjalan
+                baik untukmu.”
+            </p>
+
+            <p>
+                Setelah itu, ia berbalik, memberi hormat kepada Li Ce,
+                lalu membawa lenteranya dan berjalan menembus badai salju.
+            </p>
+
+            <p>
+                Li Ce memandang punggungnya hingga menghilang di balik
+                pintu aula. Lama kemudian, ia menghela napas pelan.
+            </p>
+
+            <p>
+                “Sepupuku yang satu itu…”
+            </p>
+
+            <p>
+                Tiba-tiba, angin kencang bertiup di luar aula. Pintu
+                kuil terbanting hingga tertutup. Nyala lampu abadi
+                bergoyang hebat dan hampir padam.
+            </p>
+
+            <p>
+                Jiwa Gu Chen kembali ditarik oleh kekuatan misterius.
+                Ia mulai berputar, terangkat, lalu jatuh. Segala sesuatu
+                di hadapannya menjadi kabur dan terdistorsi.
+            </p>
+
+            <p>
+                Langit-langit Kuil Leluhur Kekaisaran, tulisan emas
+                pada tablet roh, sosok kaisar yang menua, dan lentera
+                yang menjauh di tengah badai salju…
+            </p>
+
+            <p>
+                Dalam sekejap, ia seolah mendengar seseorang memanggil
+                namanya.
+            </p>
+
+            <p>
+                Kemudian—
+            </p>
+
+            <p>
+                “Saudara Gu? Gu Chen!”
+            </p>
+
+            <p>
+                Sebuah tangan melambai-lambai di depan matanya.
+            </p>
+
+            <p>
+                “Ada apa? Kenapa melamun? Jangan-jangan kau sudah mabuk
+                hanya setelah tiga cawan?”
+            </p>
+
+            <p>
+                Gu Chen tiba-tiba membuka matanya.
+            </p>
+
+            <p>
+                Ia sedang duduk di depan meja kayu yang berminyak.
+                Di hadapannya terdapat tiga piring kecil berisi makanan
+                dan sebuah kendi arak keruh.
+            </p>
+
+            <p>
+                Dua orang duduk di seberang meja. Yang satu berwajah
+                tampan seperti batu giok dengan ekspresi serius.
+                Yang lainnya juga memiliki paras rupawan dan sedang
+                memiringkan kepala sambil melambaikan tangan di depan
+                wajahnya.
+            </p>
+
+            <p>
+                Yang Kaiji. Pei Zhang.
+            </p>
+
+            <p>
+                Suara orang-orang yang ramai terdengar di sekelilingnya.
+                Udara dipenuhi aroma arak dan makanan, serta suasana
+                kehidupan sehari-hari yang begitu akrab.
+            </p>
+
+            <p>
+                Gu Chen menunduk memandangi tangannya.
+            </p>
+
+            <p>
+                Tangan itu masih muda dan kuat. Tidak ada bintik-bintik
+                penuaan ataupun bekas luka yang memenuhi kulitnya.
+            </p>
+
+            <p>
+                Ia ingat saat ini.
+            </p>
+
+            <p>
+                Ujian musim semi pada tahun pertama era Chongsheng
+                baru saja selesai, dan pengumuman hasilnya akan segera
+                dilakukan.
+            </p>
+
+            <p>
+                Usianya baru delapan belas tahun.
+            </p>
+
+            <p>
+                Beberapa hari sebelumnya, ia berkenalan dengan dua
+                sahabatnya itu. Kini mereka datang bersama untuk
+                menunggu pengumuman hasil ujian.
+            </p>
+
+            <p>
+                Dalam kehidupan ini, ia belum menikahi Liu Ruolan.
+            </p>
+
+            <p>
+                Dalam kehidupan ini, ia juga belum bertemu Zhao Hongling.
+            </p>
+
+            <p>
+                Ia masih belum…
+            </p>
+
+            <p>
+                Tangan Gu Chen mulai gemetar.
+            </p>
+
+            <p>
+                “Saudara Gu?” Pei Zhang meletakkan sumpitnya dan
+                memandangnya dengan khawatir. “Mengapa wajahmu terlihat
+                kurang sehat?”
+            </p>
+
+            <p>
+                Yang Kaiji berkata dengan bingung, “Jangan-jangan kau
+                gugup? Tenang saja. Jika kita bertiga sampai gagal,
+                berarti hampir tidak ada orang yang akan lulus ujian
+                musim semi kali ini.”
+            </p>
+
+            <p>
+                Gu Chen memandangi mereka. Ia menatap wajah kedua
+                sahabatnya yang masih muda dan dunia yang memberinya
+                kesempatan untuk mengubah segalanya.
+            </p>
+
+            <p>
+                Ia tidak mampu berkata-kata.
+            </p>
+
+            <p>
+                Tenggorokannya terasa seolah tersumbat sesuatu.
+                Ada begitu banyak hal yang ingin ia katakan, tetapi
+                pada akhirnya tidak satu kata pun berhasil keluar.
+            </p>
+
+            <p>
+                Ia telah terlahir kembali.
+            </p>
+
+        </article>
+
+        <!-- NAVIGASI BAWAH -->
+        <nav class="reader-navigation reader-bottom-navigation"
+            aria-label="Navigasi chapter bawah">
+
+            <span class="nav-disabled">← Sebelumnya</span>
+
+            <a href="../novel/you-rejected-my-honor.html">
+                Daftar Isi
+            </a>
+
+            <span class="nav-disabled">Selanjutnya →</span>
+        </nav>
+
+        <!-- KOMENTAR -->
+        <section class="reader-comments">
+            <h2>Komentar</h2>
+
+            <script
+                src="https://giscus.app/client.js"
+                data-repo="Dhyon09/cn-novel-translation"
+                data-repo-id="R_kgDOU4Dcig"
+                data-category="General"
+                data-category-id="DIC_kwDOU4Dcis4DG3Ff"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="id"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-title">CN Novel-Translation</div>
+
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <span>•</span>
+            <a href="https://trakteer.id/DhyonPratama"
+                target="_blank" rel="noopener">Donasi</a>
+        </div>
+
+        <div class="footer-copyright">
+            © Copyright 2026-CN Novel-Translation
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Kembali ke atas">↑</button>
+
+    <script>
+        /* MENU */
+        const menuButton = document.getElementById("menuButton");
+        const menuClose = document.getElementById("menuClose");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const sideMenu = document.getElementById("sideMenu");
+        const menuNovel = document.getElementById("menuNovel");
+        const novelSubmenu = document.getElementById("novelSubmenu");
+
+        function openMenu() {
+            sideMenu.classList.add("active");
+            menuOverlay.classList.add("active");
+            document.body.classList.add("menu-open");
+            menuButton.setAttribute("aria-expanded", "true");
         }
 
-    }
-);
-
-
-const menuLinks =
-    sideMenu.querySelectorAll("a");
-
-
-menuLinks.forEach(function (link) {
-
-    link.addEventListener(
-        "click",
-        function () {
-
-            closeMenu();
-
-        }
-    );
-
-});
-
-
-document.addEventListener(
-    "keydown",
-    function (event) {
-
-        if (event.key === "Escape") {
-
-            closeMenu();
-
+        function closeNovelSubmenu() {
+            novelSubmenu.classList.remove("active");
+            menuNovel.classList.remove("active");
+            menuNovel.setAttribute("aria-expanded", "false");
         }
 
-    }
-);
-
-
-/* =====================================================
-   DARK / LIGHT MODE
-===================================================== */
-
-const themeButton =
-    document.getElementById("themeButton");
-
-
-function loadTheme() {
-
-    const savedTheme =
-        localStorage.getItem("theme");
-
-
-    if (savedTheme === "dark") {
-
-        document.body.classList.add("dark");
-
-        themeButton.textContent = "🌙";
-
-    } else {
-
-        document.body.classList.remove("dark");
-
-        themeButton.textContent = "☀️";
-
-    }
-
-}
-
-
-themeButton.addEventListener(
-    "click",
-    function () {
-
-        document.body.classList.toggle("dark");
-
-
-        if (
-            document.body.classList.contains("dark")
-        ) {
-
-            localStorage.setItem(
-                "theme",
-                "dark"
-            );
-
-            themeButton.textContent = "🌙";
-
-        } else {
-
-            localStorage.setItem(
-                "theme",
-                "light"
-            );
-
-            themeButton.textContent = "☀️";
-
+        function closeMenu() {
+            sideMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
+            document.body.classList.remove("menu-open");
+            closeNovelSubmenu();
+            menuButton.setAttribute("aria-expanded", "false");
         }
 
+        menuButton.addEventListener("click", openMenu);
+        menuClose.addEventListener("click", closeMenu);
+        menuOverlay.addEventListener("click", closeMenu);
 
-        updateGiscusTheme();
+        function toggleNovelSubmenu() {
+            const isActive = novelSubmenu.classList.toggle("active");
+            menuNovel.classList.toggle("active", isActive);
+            menuNovel.setAttribute("aria-expanded", String(isActive));
+        }
 
-    }
-);
+        menuNovel.addEventListener("click", toggleNovelSubmenu);
 
+        menuNovel.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                toggleNovelSubmenu();
+            }
+        });
 
-loadTheme();
+        sideMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", closeMenu);
+        });
 
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") closeMenu();
+        });
 
-window.addEventListener(
-    "pageshow",
-    function () {
+        /* MODE TERANG/GELAP */
+        const themeButton = document.getElementById("themeButton");
+
+        function syncGiscusTheme() {
+            const iframe = document.querySelector("iframe.giscus-frame");
+            if (!iframe) return;
+
+            const theme = document.body.classList.contains("dark")
+                ? "dark"
+                : "light";
+
+            iframe.contentWindow.postMessage({
+                giscus: {
+                    setConfig: { theme: theme }
+                }
+            }, "https://giscus.app");
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark");
+                themeButton.textContent = "🌙";
+            } else {
+                document.body.classList.remove("dark");
+                themeButton.textContent = "☀️";
+            }
+
+            syncGiscusTheme();
+        }
+
+        themeButton.addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+                themeButton.textContent = "🌙";
+            } else {
+                localStorage.setItem("theme", "light");
+                themeButton.textContent = "☀️";
+            }
+
+            syncGiscusTheme();
+        });
 
         loadTheme();
 
-        updateGiscusTheme();
+        window.addEventListener("message", syncGiscusTheme);
+
+        /* PENCARIAN */
+        document.getElementById("searchForm").addEventListener(
+            "submit",
+            function (event) {
+                event.preventDefault();
+
+                const keyword = document.getElementById("searchInput")
+                    .value.trim();
+
+                if (!keyword) return;
+
+                window.location.href =
+                    "../index.html?search=" + encodeURIComponent(keyword);
+            }
+        );
+
+        /* UKURAN FONT */
+        const readerContent = document.getElementById("readerContent");
+        const fontControls = document.getElementById("fontControls");
+        const fontSizeDisplay = document.getElementById("fontSizeDisplay");
+        const readerSettingsButton =
+            document.getElementById("readerSettingsButton");
+
+        let fontSize = Number(localStorage.getItem("fontSize")) || 18;
+        fontSize = Math.max(14, Math.min(28, fontSize));
+
+        function updateFontSize() {
+            readerContent.style.fontSize = fontSize + "px";
+            fontSizeDisplay.textContent = fontSize + " px";
+            localStorage.setItem("fontSize", String(fontSize));
+        }
+
+        readerSettingsButton.addEventListener("click", function () {
+            fontControls.classList.toggle("active");
+        });
+
+        document.getElementById("decreaseFont").addEventListener(
+            "click",
+            function () {
+                fontSize = Math.max(14, fontSize - 1);
+                updateFontSize();
+            }
+        );
+
+        document.getElementById("increaseFont").addEventListener(
+            "click",
+            function () {
+                fontSize = Math.min(28, fontSize + 1);
+                updateFontSize();
+            }
+        );
 
         updateFontSize();
 
-    }
-);
-
-
-/* =====================================================
-   READER SETTINGS
-===================================================== */
-
-const readerSettingsButton =
-    document.getElementById(
-        "readerSettingsButton"
-    );
-
-
-const readerSettings =
-    document.getElementById(
-        "readerSettings"
-    );
-
-
-readerSettingsButton.addEventListener(
-    "click",
-    function () {
-
-        const isActive =
-            readerSettings.classList.toggle(
-                "active"
-            );
-
-
-        readerSettingsButton.classList.toggle(
-            "active",
-            isActive
-        );
-
-
-        readerSettingsButton.setAttribute(
-            "aria-expanded",
-            isActive
-        );
-
-    }
-);
-
-
-/* =====================================================
-   FONT SIZE
-===================================================== */
-
-let fontSize =
-    Number(
-        localStorage.getItem("fontSize")
-    ) || 18;
-
-
-function updateFontSize() {
-
-    const paragraphs =
-        document.querySelectorAll(
-            ".reader p"
-        );
-
-
-    paragraphs.forEach(
-        function (paragraph) {
-
-            paragraph.style.fontSize =
-                fontSize + "px";
-
-        }
-    );
-
-
-    document.getElementById(
-        "fontSizeDisplay"
-    ).textContent = fontSize;
-
-
-    localStorage.setItem(
-        "fontSize",
-        fontSize
-    );
-
-}
-
-
-function changeFontSize(amount) {
-
-    fontSize += amount;
-
-
-    if (fontSize < 14) {
-
-        fontSize = 14;
-
-    }
-
-
-    if (fontSize > 28) {
-
-        fontSize = 28;
-
-    }
-
-
-    updateFontSize();
-
-}
-
-
-document.getElementById(
-    "fontDecrease"
-).addEventListener(
-    "click",
-    function () {
-
-        changeFontSize(-1);
-
-    }
-);
-
-
-document.getElementById(
-    "fontIncrease"
-).addEventListener(
-    "click",
-    function () {
-
-        changeFontSize(1);
-
-    }
-);
-
-
-updateFontSize();
-
-
-/* =====================================================
-   BACAAN TERAKHIR
-===================================================== */
-
-const lastReadStorageKey =
-    "lastRead_HeavenlySwordAgainstTheSky";
-
-
-localStorage.setItem(
-    lastReadStorageKey,
-    "1"
-);
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-
-searchInput.addEventListener(
-    "keydown",
-    function (event) {
-
-        if (
-            event.key === "Enter"
-            &&
-            searchInput.value.trim() !== ""
-        ) {
-
-            const query =
-                encodeURIComponent(
-                    searchInput.value.trim()
-                );
-
-
-            window.location.href =
-                "../index.html?search=" +
-                query;
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   BACK TO TOP
-===================================================== */
-
-const backToTop =
-    document.getElementById(
-        "backToTop"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    function () {
-
-        if (window.scrollY > 500) {
-
-            backToTop.classList.add(
-                "show"
-            );
-
-        } else {
-
-            backToTop.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-backToTop.addEventListener(
-    "click",
-    function () {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+        /* BACaan TERAKHIR */
+        const lastReadStorageKey = "lastRead_YouRejectedMyHonor";
+
+        localStorage.setItem(lastReadStorageKey, "1");
+
+        /* KEMBALI KE ATAS */
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 500) {
+                backToTop.classList.add("active");
+            } else {
+                backToTop.classList.remove("active");
+            }
         });
 
-    }
-);
-
-
-/* =====================================================
-   GISCUS
-===================================================== */
-
-function loadGiscus() {
-
-    const container =
-        document.getElementById(
-            "giscus-container"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    if (
-        container.querySelector("script")
-    ) {
-
-        return;
-
-    }
-
-
-    const script =
-        document.createElement("script");
-
-
-    script.src =
-        "https://giscus.app/client.js";
-
-
-    script.setAttribute(
-        "data-repo",
-        "Dhyon09/cn-novel-translation"
-    );
-
-
-    script.setAttribute(
-        "data-repo-id",
-        "R_kgDOU4Dcig"
-    );
-
-
-    script.setAttribute(
-        "data-category",
-        "General"
-    );
-
-
-    script.setAttribute(
-        "data-category-id",
-        "DIC_kwDOU4Dcis4DG3Ff"
-    );
-
-
-    script.setAttribute(
-        "data-mapping",
-        "pathname"
-    );
-
-
-    script.setAttribute(
-        "data-strict",
-        "0"
-    );
-
-
-    script.setAttribute(
-        "data-reactions-enabled",
-        "1"
-    );
-
-
-    script.setAttribute(
-        "data-emit-metadata",
-        "0"
-    );
-
-
-    script.setAttribute(
-        "data-input-position",
-        "bottom"
-    );
-
-
-    script.setAttribute(
-        "data-theme",
-        document.body.classList.contains("dark")
-            ? "dark"
-            : "light"
-    );
-
-
-    script.setAttribute(
-        "data-lang",
-        "id"
-    );
-
-
-    script.setAttribute(
-        "data-loading",
-        "lazy"
-    );
-
-
-    script.crossOrigin =
-        "anonymous";
-
-
-    script.async = true;
-
-
-    container.appendChild(script);
-
-}
-
-
-function updateGiscusTheme() {
-
-    const iframe =
-        document.querySelector(
-            "iframe.giscus-frame"
-        );
-
-
-    if (!iframe) {
-
-        return;
-
-    }
-
-
-    const theme =
-        document.body.classList.contains("dark")
-            ? "dark"
-            : "light";
-
-
-    iframe.contentWindow.postMessage(
-        {
-            giscus: {
-
-                setConfig: {
-
-                    theme: theme
-
-                }
-
-            }
-
-        },
-        "https://giscus.app"
-    );
-
-}
-
-
-loadGiscus();
-
-</script>
-
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
 
 </body>
-
 </html>
