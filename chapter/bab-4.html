@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    
+ <meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Chapter 4 - You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
+
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
+
+<style>
+
+    /* =========================
+       NAVIGASI CHAPTER
+    ========================= */
+
+    .chapter-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin: 0 0 16px;
+    }
+
+
+    .chapter-nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 38px;
+
+        padding: 7px 6px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--card);
+        color: var(--text);
+
+        text-decoration: none;
+        text-align: center;
+
+        font-size: 14px;
+        line-height: 1.2;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+
+    .chapter-nav-btn:hover,
+    .chapter-nav-btn:active {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    .chapter-nav-btn.disabled {
+        opacity: 0.45;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       RODA GIGI
+    ========================= */
+
+    .reader-settings-area {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        margin: 2px 0 12px;
+    }
+
+
+    .reader-settings-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .reader-settings-btn:hover,
+    .reader-settings-btn:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    .reader-settings-btn.active {
+        transform: rotate(30deg);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       PENGATURAN FONT
+    ========================= */
+
+    .reader-settings {
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        margin-top: 8px;
+
+        padding: 5px 8px;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+
+        background: var(--card);
+    }
+
+
+    .reader-settings.active {
+        display: flex;
+    }
+
+
+    .reader-settings button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 34px;
+        height: 30px;
+
+        padding: 0 7px;
+
+        border: 1px solid var(--border);
+        border-radius: 5px;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-family: inherit;
+        font-size: 14px;
+
+        cursor: pointer;
+    }
+
+
+    .reader-settings button:hover,
+    .reader-settings button:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    #fontSizeDisplay {
+        min-width: 22px;
+
+        color: var(--text);
+
+        font-size: 14px;
+        text-align: center;
+    }
+
+
+    /* =========================
+       JUDUL CHAPTER
+    ========================= */
+
+    .chapter-heading {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+
+    .chapter-number {
+        margin-bottom: 5px;
+
+        color: var(--secondary);
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+
+    .chapter-heading h1 {
+        margin: 0;
+
+        color: var(--text);
+
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+
+    /* =========================
+       TOMBOL KEMBALI KE ATAS
+    ========================= */
+
+    .back-to-top {
+        position: fixed;
+
+        right: 16px;
+        bottom: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 19px;
+
+        cursor: pointer;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
+
+        z-index: 1000;
+    }
+
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .back-to-top:hover,
+    .back-to-top:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        .chapter-navigation {
+            gap: 5px;
+            margin-bottom: 14px;
+        }
+
+
+        .chapter-nav-btn {
+            min-height: 36px;
+            padding: 6px 4px;
+
+            font-size: 13px;
+        }
+
+
+        .reader-settings-area {
+            margin-top: 1px;
+            margin-bottom: 11px;
+        }
+
+
+        .reader-settings-btn {
+            width: 35px;
+            height: 35px;
+
+            font-size: 17px;
+        }
+
+
+        .chapter-heading {
+            margin-bottom: 22px;
+        }
+
+
+        .chapter-number {
+            font-size: 14px;
+        }
+
+
+        .chapter-heading h1 {
+            font-size: 22px;
+        }
+
+
+        .back-to-top {
+            right: 14px;
+            bottom: 15px;
+
+            width: 38px;
+            height: 38px;
+
+            font-size: 18px;
+        }
+
+    }
+
+</style>
+
+</head>
+    
+<body>
+    
+<!-- =========================
+     HEADER
+========================= -->
+    
+    <header class="site-header">
+        
+    <div class="header-left">
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+</div>
+
+
+<a
+    href="../index.html"
+    class="site-title"
+>
+    CN Novel-Translation
+</a>
+
+
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
+
+</header>
+    
+<!-- =========================
+     MENU
+========================= -->
+    
+    <div
+    class="menu-overlay"
+    id="menuOverlay"
+>
+        
+</div>
+    <nav
+    class="side-menu"
+    id="sideMenu"
+>
+    <div class="menu-header">
+
+    <span>
+        Menu
+    </span>
+
+
+    <button
+        class="menu-close"
+        id="menuClose"
+        aria-label="Tutup menu"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- NOVEL -->
+
+<div
+    class="menu-parent"
+    id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+>
+
+    <span>
+        Novel
+    </span>
+
+
+    <span class="menu-arrow">
+        ›
+    </span>
+
+</div>
+
+
+<div
+    class="novel-submenu"
+    id="novelSubmenu"
+>
+
+    <a href="../novel/on-going.html">
+        On-going
+    </a>
+
+
+    <a href="../novel/completed.html">
+        Completed
+    </a>
+
+
+    <a href="../novel/hiatus.html">
+        Hiatus
+    </a>
+
+
+    <a href="../novel/drop.html">
+        Drop
+    </a>
+
+</div>
+
+
+<!-- BOOKMARK -->
+
+<a
+    href="../bookmark.html"
+    class="menu-item"
+>
+    Bookmark
+</a>
+
+
+<!-- DONASI -->
+
+<a
+    href="https://trakteer.id/DhyonPratama"
+    class="menu-item"
+    target="_blank"
+    rel="noopener"
+>
+    Donasi
+</a>
+
+
+<!-- LOGIN -->
+
+<a
+    href="#login"
+    class="menu-item"
+>
+    Login
+</a>
+
+</nav>
+    
+<!-- =========================
+     GLOBAL SEARCH
+========================= -->
+    
+    <div class="global-search-bar">
+        
+    <div class="global-search-inner">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
+        </span>
+
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul novel..."
+            autocomplete="off"
+        >
+
+    </div>
+
+</div>
+
+</div>
+    
+<!-- =========================
+     READER
+========================= -->
+    
+    <main class="reader-container">
+    
+ <!-- =========================
+     NAVIGASI ATAS
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="bab-3.html"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     PENGATURAN PEMBACA
+========================= -->
+
+<div class="reader-settings-area">
+
+    <button
+        class="reader-settings-btn"
+        id="readerSettingsButton"
+        aria-label="Pengaturan pembaca"
+        aria-expanded="false"
+    >
+        ⚙️
+    </button>
+
+
+    <div
+        id="readerSettings"
+        class="reader-settings"
+    >
+
+        <button
+            id="fontDecrease"
+            aria-label="Perkecil ukuran teks"
+        >
+            A−
+        </button>
+
+
+        <span id="fontSizeDisplay">
+            18
+        </span>
+
+
+        <button
+            id="fontIncrease"
+            aria-label="Perbesar ukuran teks"
+        >
+            A+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JUDUL CHAPTER
+========================= -->
+
+<div class="chapter-heading">
+
+    <div class="chapter-number">
+        Chapter 4
+    </div>
+
+
+    <h1>
+        Di Hadapan Tangga Istana, Bertemu Kembali dengan Sang Kaisar
+    </h1>
+
+</div>
+
+
+<!-- =========================
+     ISI NOVEL
+========================= -->
+
+<article class="reader">
+
+        <p>
+            Tahun pertama era Chongsheng, musim semi, Aula Istana Hanyuan.
+        </p>
+
+        <p>
+            <strong>Gu Chen</strong> dan para jinshi mengikuti seorang pengawas istana, melewati lorong-lorong panjang di dalam istana, melintasi Gerbang Chengtian, Gerbang Duan, dan Gerbang Wu, terus berjalan menuju bagian dalam istana.
+        </p>
+
+        <p>
+            Dinding merah dan genting kuning, pintu-pintu besar berlapis cat merah, serta paku dan cincin pintu dari tembaga. Di kedua sisi Jalan Kekaisaran berdiri para prajurit pengawal istana yang memegang tombak. Tatapan mereka setajam elang dan tubuh mereka tidak bergerak sedikit pun.
+        </p>
+
+        <p>
+            Dalam ujian istana, Kaisar tidak dapat hadir karena suatu alasan, sehingga Perdana Menteri Agung menggantikan Kaisar sebagai pengawas ujian. Para peserta harus mengerjakan soal di tempat.
+        </p>
+
+        <p>
+            Lebih dari dua ratus gongshi duduk di dalam aula istana. Masing-masing memiliki sebuah meja panjang, sebuah tempat lilin, dan setumpuk kertas kosong.
+        </p>
+
+        <p>
+            Begitu selesai, jawaban harus langsung diserahkan dan tidak diperbolehkan untuk diperbaiki.
+        </p>
+
+        <p>
+            <strong>Gu Chen</strong> duduk di sudut ruangan, sementara di hadapannya terbentang soal esai kebijakan.
+        </p>
+
+        <p>
+            Soal itu disusun sendiri oleh Kaisar Chongsheng—“Membahas tentang meninggalkan kemewahan dan menjalani hidup sederhana.”
+        </p>
+
+        <p>
+            Dia membacanya beberapa kali, lalu mencelupkan kuas ke dalam tinta dan mulai menulis dengan cepat.
+        </p>
+
+        <p>
+            Dia tidak mengutip kitab-kitab klasik ataupun menumpuk kata-kata indah. Yang dia tuliskan semuanya berasal dari apa yang pernah dia alami di biro pengawalan, di kuil yang telah rusak, di toko buku, serta berbagai hal yang pernah dia pikirkan dalam kehidupan sebelumnya.
+        </p>
+
+        <p>
+            Dia menulis dengan cepat.
+        </p>
+
+        <p>
+            Setelah menuliskan kata terakhir, dia meletakkan kuas, meniup kertas agar tintanya cepat kering, lalu menyerahkannya. Setelah itu, dia berdiri, merapikan pakaian dan penampilannya, kemudian berbalik dan meninggalkan Aula Istana Hanyuan.
+        </p>
+
+        <p>
+            Di belakangnya, masih ada orang-orang yang terus menulis dengan tekun. Ada pula yang menggigit ujung kuas sambil mengerutkan kening, berpikir keras.
+        </p>
+
+        <p>
+            -------
+        </p>
+
+        <p>
+            Beberapa hari kemudian, setelah seluruh lembar jawaban selesai diperiksa, <strong>Gu Chen</strong> dan para pelajar lainnya kembali dibawa ke Aula Istana Hanyuan.
+        </p>
+
+        <p>
+            Di bawah tangga batu merah di depan aula istana, lebih dari dua ratus jinshi yang baru lulus berdiri dalam barisan.
+        </p>
+
+        <p>
+            Di atas tangga, para pejabat sipil dan militer berdiri di kedua sisi. Pakaian dan topi resmi mereka tampak rapi dan megah, sementara suasana begitu khidmat dan sunyi.
+        </p>
+
+        <p>
+            Di atas panggung tinggi di depan aula istana, terdapat sebuah meja kekaisaran berukiran naga.
+        </p>
+
+        <p>
+            Di belakang meja itu terdapat sebuah takhta besar yang diukir dengan sembilan naga emas bercakar lima. Di bawah sinar pagi, ukiran tersebut berkilauan.
+        </p>
+
+        <p>
+            Takhta itu masih kosong.
+        </p>
+
+        <p>
+            Semua orang berdiri dengan tangan terjuntai di sisi tubuh, menunggu suara itu—
+        </p>
+
+        <p>
+            “Paduka Kaisar tiba—!”
+        </p>
+
+        <p>
+            Suara pengawas istana menggema panjang di seluruh bangunan istana.
+        </p>
+
+        <p>
+            Terdengar suara langkah kaki.
+        </p>
+
+        <p>
+            <strong>Gu Chen</strong> sedikit mengangkat pandangannya.
+        </p>
+
+        <p>
+            Dia melihat Kaisar Chongsheng.
+        </p>
+
+        <p>
+            <strong>Li Ce</strong> yang masih muda keluar dari belakang aula istana. Selangkah demi selangkah, dia menaiki tangga batu merah dan berhenti di depan takhta.
+        </p>
+
+        <p>
+            Dia tidak langsung duduk.
+        </p>
+
+        <p>
+            Sebaliknya, dia terlebih dahulu menyapu pandangan ke seluruh orang yang berada di dalam aula istana.
+        </p>
+
+        <p>
+            Hari ini dia mengenakan pakaian resmi untuk menghadap istana, dengan jubah hitam dan bawahan merah tua, dihiasi dua belas lambang kebesaran. Untaian manik-manik giok pada mahkotanya bergoyang ringan.
+        </p>
+
+        <p>
+            Wajahnya tidak bisa dikatakan sangat tampan, tetapi ada aura yang membuat orang sulit melupakannya.
+        </p>
+
+        <p>
+            Alisnya sedikit terangkat, matanya setajam bintang dingin, dan sudut bibirnya sedikit menurun. Ada kesan seperti sebilah pedang yang belum terhunus.
+        </p>
+
+        <p>
+            Usianya tampak baru sedikit di atas dua puluh tahun, tepat pada masa ketika seseorang sedang penuh semangat dan ambisi.
+        </p>
+
+        <p>
+            <strong>Gu Chen</strong> menatapnya dan tiba-tiba merasa tenggorokannya sedikit tercekat.
+        </p>
+
+        <p>
+            Dia teringat bahwa bertahun-tahun kemudian, di kehidupan sebelumnya, rambut di pelipis pria ini telah memutih dan kerutan di sudut matanya menjadi dalam seperti terukir oleh pisau.
+        </p>
+
+        <p>
+            Namun saat ini, dia masih begitu muda dan begitu tajam, seperti sebilah pedang berharga yang baru saja terhunus, memancarkan ketajaman tanpa tanding dan mampu menembus segala rintangan.
+        </p>
+
+        <p>
+            Di mata pria itu, <strong>Gu Chen</strong> melihat ambisi yang tersembunyi dalam-dalam.
+        </p>
+
+        <p>
+            Dia juga melihat belas kasih yang tak berujung terhadap seluruh rakyat di negeri ini.
+        </p>
+
+        <p>
+            Ketika masih menjadi seorang pangeran, Kaisar ini pernah menyamar sebagai pedagang biasa dan berkeliling menginspeksi berbagai daerah. Bersama pengawalnya, <strong>Luo Suqing</strong>, dia mengembara di dunia persilatan selama beberapa tahun.
+        </p>
+
+        <p>
+            Selama tahun-tahun itu, dia pernah tidur di kuil yang telah rusak, memakan roti dingin, dan menyaksikan sendiri penderitaan rakyat yang terpaksa menjual anak-anak mereka serta keadaan tragis ketika orang-orang bahkan harus menukar anak demi mendapatkan makanan.
+        </p>
+
+        <p>
+            Setelah naik takhta, dia pernah bersumpah di hadapan arwah mendiang Kaisar bahwa dia pasti akan mengubah keadaan negeri ini.
+        </p>
+
+        <p>
+            Negara yang diwarisinya adalah sebuah negeri yang telah terkuras oleh pemerintahan yang keras dan kekacauan selama beberapa generasi.
+        </p>
+
+        <p>
+            Segalanya harus dibangun kembali. Kehidupan rakyat berada dalam keadaan sulit, sementara keluarga-keluarga bangsawan telah mengakar begitu dalam sehingga ada hambatan di mana-mana. Dia memiliki ambisi yang besar, tetapi tidak memiliki cukup ruang untuk mewujudkannya.
+        </p>
+
+        <p>
+            Dia memiliki perasaan yang sangat tulus dan penuh gairah. Dia bisa tertawa, marah, memaki orang, bahkan menangis di hadapan permaisuri dan para pejabat kepercayaannya.
+        </p>
+
+        <p>
+            Dia mengutamakan urusan nyata, memiliki pandangan jauh ke depan dan gagasan sendiri, serta berani menggunakan orang-orang berbakat dan tahu bagaimana menempatkan mereka sesuai kemampuan.
+        </p>
+
+        <p>
+            Selain itu, dia sangat adil terhadap siapa pun. Orang yang berjasa akan diberi penghargaan, yang melakukan kesalahan akan dihukum, dan yang melakukan kejahatan akan dijatuhi hukuman—bahkan keluarga kerajaan sekalipun tidak terkecuali.
+        </p>
+
+        <p>
+            Dia selalu waspada dari pagi hingga malam dan tidak pernah mengendurkan usahanya. Dengan satu tangan, dia mengangkat orang-orang berbakat dari keluarga biasa. Dengan tangan lainnya, dia menenangkan para pejabat lama dari keluarga bangsawan.
+        </p>
+
+        <p>
+            Dia berjalan menyeimbangkan diri di ujung mata pedang, berusaha mencari jalan untuk melakukan perubahan di tengah celah yang sempit.
+        </p>
+
+        <p>
+            Dia menerapkan kebijakan-kebijakan baru, mengurangi jumlah pejabat yang tidak diperlukan, menata kembali kepemilikan tanah, membersihkan pemerintahan dari para pejabat yang korup, memperkuat perbatasan...
+        </p>
+
+        <p>
+            Setiap langkahnya seperti berjalan di atas es tipis. Setiap langkahnya juga membuatnya menyinggung banyak orang.
+        </p>
+
+        <p>
+            Namun, dia tidak pernah mundur.
+        </p>
+
+        <p>
+            Tiga puluh tahun kemudian, pemerintahan menjadi bersih, perbatasan menjadi aman, dan rakyat memiliki persediaan makanan yang cukup setiap tahun.
+        </p>
+
+        <p>
+            Semua orang mengatakan bahwa dia adalah seorang Kaisar yang berhasil membawa negeri menuju kebangkitan.
+        </p>
+
+        <p>
+            Pada suatu malam di kehidupan sebelumnya, Kaisar Chongsheng, <strong>Li Ce</strong>, pernah minum bersama <strong>Gu Chen</strong>.
+        </p>
+
+        <p>
+            Ketika keduanya sudah cukup mabuk, dia tiba-tiba berkata, “Aku adalah penguasa pemerintahan, tetapi aku telah mengkhianati seluruh pemerintahan.”
+        </p>
+
+        <p>
+            Dia tidak mengatakan bagian selanjutnya.
+        </p>
+
+        <p>
+            Namun <strong>Gu Chen</strong> tahu apa yang ingin dia katakan.
+        </p>
+
+        <p>
+            Bagian selanjutnya adalah—
+        </p>
+
+        <p>
+            <em>“Karena di dalam hatinya, yang paling dia pikirkan adalah jutaan rakyat yang berada di luar istana.”</em>
+        </p>
+
+        <p>
+            Demi hal itu, dia tidak segan menjadi musuh keluarga kerajaan dan keluarga bangsawan.
+        </p>
+
+        <p>
+            Dia juga tidak keberatan jika para sarjana dan pejabat sipil diam-diam mencacinya sebagai orang yang “kejam dan tidak tahu berterima kasih” ataupun “dingin dan tanpa belas kasihan”.
+        </p>
+
+        <p>
+            Dia bahkan rela menginjak reputasinya sendiri hingga tenggelam ke dalam lumpur.
+        </p>
+
+        <p>
+            Selama rakyat hidup makmur dan negeri berada dalam keadaan damai, dia bersedia melakukan apa pun.
+        </p>
+
+        <p>
+            Sepanjang sejarah, hanya sedikit Kaisar yang seperti dirinya.
+        </p>
+
+        <p>
+            “Umumkan—para jinshi yang baru lulus dipersilakan memasuki aula istana!”
+        </p>
+
+        <p>
+            Suara pengawas istana menarik <strong>Gu Chen</strong> kembali dari lamunannya.
+        </p>
+
+        <p>
+            Lebih dari dua ratus jinshi masuk satu per satu dan berdiri dengan rapi di dalam aula istana.
+        </p>
+
+        <p>
+            Kaisar Chongsheng duduk di kursi utama. Tatapannya menyapu wajah semua orang di dalam aula istana, penuh dengan penilaian dan pengamatan.
+        </p>
+
+        <p>
+            “Dalam ujian kali ini, Aku sendiri telah membaca esai kebijakan yang kalian tulis. Kalian semua adalah orang-orang berbakat yang sulit ditemukan.”
+        </p>
+
+        <p>
+            Dia melambaikan tangannya. Suaranya jernih, tetapi mengandung wibawa yang tidak terbantahkan.
+        </p>
+
+        <p>
+            “Mulai pembacaan hasilnya.”
+        </p>
+
+        <p>
+            Seorang pejabat dari Kuil Honglu melangkah keluar, membuka gulungan sutra kuning, lalu mulai membacakan nama-nama.
+        </p>
+
+        <p>
+            “Ujian musim semi tahun pertama era Chongsheng menghasilkan dua ratus tiga belas jinshi. Atas titah Kaisar—”
+        </p>
+
+        <p>
+            “Peringkat pertama tingkat pertama, <strong>Zhuangyuan</strong>—<strong>Yang Kaiji</strong> dari Kabupaten Zhi, Prefektur Lingzhou, Wilayah Tianguang.”
+        </p>
+
+        <p>
+            <strong>Yang Kaiji</strong> melangkah keluar, lalu berlutut dan memberi hormat untuk mengucapkan terima kasih atas anugerah Kaisar.
+        </p>
+
+        <p>
+            Wajahnya tampan seperti batu giok, sementara sikapnya begitu anggun dan penuh wibawa, seolah-olah baru saja keluar dari sebuah lukisan.
+        </p>
+
+        <p>
+            Tatapan banyak orang di istana menjadi sedikit lebih lembut.
+        </p>
+
+        <p>
+            Pemuda berbakat seperti ini memang akan membuat siapa pun merasa senang ketika melihatnya.
+        </p>
+
+        <p>
+            “Peringkat kedua tingkat pertama, <strong>Bangyan</strong>—<strong>Pei Zhang</strong> dari Prefektur Jingzhao.”
+        </p>
+
+        <p>
+            <strong>Pei Zhang</strong> melangkah keluar dan berlutut untuk mengucapkan terima kasih atas anugerah Kaisar.
+        </p>
+
+        <p>
+            Sikapnya tenang dan anggun. Para anggota keluarga bangsawan di sekitarnya mengangguk puas setelah melihatnya.
+        </p>
+
+        <p>
+            Namun, <strong>Gu Chen</strong> tahu bahwa di dalam hati, pria itu sebenarnya sedang memikirkan Nona <strong>Wang</strong> yang selama ini didambakannya.
+        </p>
+
+        <p>
+            “Peringkat ketiga tingkat pertama, <strong>Tanhua</strong>—<strong>Gu Chen</strong>, dari kalangan pengungsi.”
+        </p>
+
+        <p>
+            <strong>Gu Chen</strong> melangkah keluar dan berlutut untuk mengucapkan terima kasih atas anugerah Kaisar.
+        </p>
+
+        <p>
+            Dari sudut matanya, dia melihat cukup banyak orang di dalam istana mengerutkan kening.
+        </p>
+
+        <p>
+            Tiga kata <em>“dari kalangan pengungsi”</em> bagaikan sebuah batu yang dilemparkan ke dalam permukaan air yang tenang. Seketika, hal itu menimbulkan berbagai reaksi di antara para pejabat.
+        </p>
+
+        <p>
+            Ada yang berbisik-bisik.
+        </p>
+
+        <p>
+            Ada yang menggelengkan kepala.
+        </p>
+
+        <p>
+            Ada pula yang memalingkan wajah dengan tatapan penuh ketidaksukaan.
+        </p>
+
+        <p>
+            Tiga peringkat teratas yang ditetapkan oleh Kaisar tahun ini bisa dikatakan telah dipikirkan dengan matang.
+        </p>
+
+        <p>
+            Atau lebih tepatnya, peringkat ketiga orang ini mungkin sudah ditentukan oleh Kaisar Chongsheng sejak awal.
+        </p>
+
+        <p>
+            Dia memilih <strong>Yang Kaiji</strong>, seorang pemuda dari keluarga biasa, sebagai Zhuangyuan. Kemudian dia memilih <strong>Pei Zhang</strong> dari keluarga bangsawan untuk menutup mulut para bangsawan.
+        </p>
+
+        <p>
+            Terakhir, dia bahkan mendobrak aturan tak tertulis yang selama ini berlaku dalam pemilihan Tanhua, dengan mengangkat <strong>Gu Chen</strong>, seorang pemuda yang berasal dari kalangan pengungsi, sebagai Tanhua.
+        </p>
+
+        <p>
+            Inilah kebijakan negara yang hendak diumumkan Kaisar kepada seluruh negeri untuk masa depan—
+        </p>
+
+        <p>
+            <strong>Mengangkat orang berdasarkan kemampuan dan menempatkan mereka sesuai keahlian, tanpa memandang asal-usul.</strong>
+        </p>
+
+        <p>
+            Beberapa saat kemudian, setelah seluruh nama selesai dibacakan, para jinshi berlutut di hadapan Kaisar, menunggu titahnya.
+        </p>
+
+        <p>
+            Tiba-tiba, seseorang di antara para pejabat istana angkat bicara.
+        </p>
+
+        <p>
+            Dia adalah seorang Censor dari Censorate bernama <strong>Zhang Zhongwen</strong>. Dia berasal dari keluarga bangsawan dan juga memiliki hubungan kekerabatan dengan keluarga kerajaan. Dia sangat menjunjung tinggi latar belakang keluarga.
+        </p>
+
+        <p>
+            Dia melangkah keluar dan memberi hormat dengan tangan terkatup.
+        </p>
+
+        <p>
+            “Paduka Kaisar, ada satu hal yang tidak saya mengerti. Dalam catatan asal-usul Tanhua ini, <strong>Gu Chen</strong>, tertulis bahwa status kependudukannya adalah ‘pengungsi’. Selama lebih dari seratus tahun sejak berdirinya Da Qian, telah ada begitu banyak orang yang berhasil lulus ujian kekaisaran, tetapi tidak pernah ada seorang pun dari kalangan pengungsi yang berhasil lulus ujian. Bolehkah saya bertanya kepada Tanhua <strong>Gu</strong>, bagaimana seseorang yang berasal dari kalangan pengungsi bisa belajar membaca dan menulis?”
+        </p>
+
+        <p>
+            Pertanyaan itu sama sekali tidak terdengar sopan.
+        </p>
+
+        <p>
+            Seorang pengungsi tidak memiliki catatan kependudukan, tidak memiliki harta, dan tidak memiliki klan atau keluarga besar untuk menjadi tempat bergantung.
+        </p>
+
+        <p>
+            Bagi orang seperti itu, bisa bertahan hidup saja sudah merupakan sebuah kemewahan, apalagi belajar membaca dan menulis.
+        </p>
+
+        <p>
+            Aula istana menjadi sunyi.
+        </p>
+
+        <p>
+            Tatapan semua orang tertuju kepada <strong>Gu Chen</strong>.
+        </p>
+
+        <p>
+            <strong>Gu Chen</strong> menegakkan tubuhnya dan menghadap sang Censor itu. Sikapnya tenang, tidak rendah diri dan tidak pula congkak.
+        </p>
+
+        <p>
+            “Menjawab pertanyaan Tuan, ketika masih kecil, saya pernah mengemis makanan di sebuah kuil yang telah rusak di pedesaan. Di sana, saya bertemu seorang pendongeng.”
+        </p>
+
+        <p>
+            “Pendongeng itu menerima pekerjaan menyalin buku, tetapi tidak ingin mengerjakannya sendiri. Karena itu, dia mengajari saya menulis dan meminta saya menyalin buku untuknya sebagai pengganti... makanan. Dari situlah saya belajar membaca dan menulis.”
+        </p>
+
+        <p>
+            Aula istana menjadi semakin sunyi.
+        </p>
+
+        <p>
+            <strong>Menyalin buku demi mendapatkan makanan.</strong>
+        </p>
+
+        <p>
+            Empat kata itu terdengar begitu menusuk di tengah aula istana yang megah dan berkilauan tersebut.
+        </p>
+
+</article>
+
+
+<!-- =========================
+     NAVIGASI BAWAH
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="bab-3.html"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     KOMENTAR
+========================= -->
+
+<section class="comments-section">
+
+    <h2>
+        Komentar
+    </h2>
+
+
+    <div
+        class="giscus"
+        id="giscus-container"
+    >
+        
+    </div>
+
+</section>
+
+</main>
+    
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
+    
+<button
+class="back-to-top"
+id="backToTop"
+aria-label="Kembali ke atas">
+
+↑
+
+ </button>
+   
+<!-- =========================
+     FOOTER
+========================= -->
+   
+    <footer class="site-footer">
+    
+    <div class="footer-title">
+    CN Novel-Translation
+</div>
+
+
+<div class="footer-links">
+
+    <a href="../index.html">
+        Home
+    </a>
+
+
+    <span>
+        •
+    </span>
+
+
+    <a
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        Donasi
+    </a>
+
+</div>
+
+
+<div class="copyright">
+    © Copyright 2026-CN Novel-Translation
+</div>
+
+</footer>
+    
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+    
+    <script>
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const menuClose =
+    document.getElementById("menuClose");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const menuNovel =
+    document.getElementById("menuNovel");
+
+const novelSubmenu =
+    document.getElementById("novelSubmenu");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
+
+
+function closeNovelSubmenu() {
+
+    novelSubmenu.classList.remove("active");
+
+    menuNovel.classList.remove("active");
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+function closeMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    closeNovelSubmenu();
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+function toggleNovelSubmenu() {
+
+    const isActive =
+        novelSubmenu.classList.toggle("active");
+
+
+    menuNovel.classList.toggle(
+        "active",
+        isActive
+    );
+
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        isActive
+    );
+
+}
+
+
+menuNovel.addEventListener(
+    "click",
+    toggleNovelSubmenu
+);
+
+
+menuNovel.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            toggleNovelSubmenu();
+
+        }
+
+    }
+);
+
+
+const menuLinks =
+    sideMenu.querySelectorAll("a");
+
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function () {
+
+            closeMenu();
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function loadTheme() {
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "🌙";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            themeButton.textContent = "🌙";
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            themeButton.textContent = "☀️";
+
+        }
+
+
+        updateGiscusTheme();
+
+    }
+);
+
+
+loadTheme();
+
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        loadTheme();
+
+        updateGiscusTheme();
+
+        updateFontSize();
+
+    }
+);
+
+
+/* =====================================================
+   READER SETTINGS
+===================================================== */
+
+const readerSettingsButton =
+    document.getElementById(
+        "readerSettingsButton"
+    );
+
+
+const readerSettings =
+    document.getElementById(
+        "readerSettings"
+    );
+
+
+readerSettingsButton.addEventListener(
+    "click",
+    function () {
+
+        const isActive =
+            readerSettings.classList.toggle(
+                "active"
+            );
+
+
+        readerSettingsButton.classList.toggle(
+            "active",
+            isActive
+        );
+
+
+        readerSettingsButton.setAttribute(
+            "aria-expanded",
+            isActive
+        );
+
+    }
+);
+
+
+/* =====================================================
+   FONT SIZE
+===================================================== */
+
+const fontSizeDisplay =
+    document.getElementById(
+        "fontSizeDisplay"
+    );
+
+
+const fontDecrease =
+    document.getElementById(
+        "fontDecrease"
+    );
+
+
+const fontIncrease =
+    document.getElementById(
+        "fontIncrease"
+    );
+
+
+function getSavedFontSize() {
+
+    return (
+        Number(
+            localStorage.getItem("fontSize")
+        ) || 18
+    );
+
+}
+
+
+function updateFontSize() {
+
+    const fontSize =
+        getSavedFontSize();
+
+
+    const paragraphs =
+        document.querySelectorAll(
+            ".reader p"
+        );
+
+
+    paragraphs.forEach(
+        function (paragraph) {
+
+            paragraph.style.fontSize =
+                fontSize + "px";
+
+        }
+    );
+
+
+    fontSizeDisplay.textContent =
+        fontSize;
+
+}
+
+
+function changeFontSize(amount) {
+
+    let fontSize =
+        getSavedFontSize();
+
+
+    fontSize += amount;
+
+
+    if (fontSize < 14) {
+
+        fontSize = 14;
+
+    }
+
+
+    if (fontSize > 28) {
+
+        fontSize = 28;
+
+    }
+
+
+    localStorage.setItem(
+        "fontSize",
+        fontSize
+    );
+
+
+    updateFontSize();
+
+}
+
+
+fontDecrease.addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(-1);
+
+    }
+);
+
+
+fontIncrease.addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(1);
+
+    }
+);
+
+
+/* Saat pertama membuka chapter */
+updateFontSize();
+
+
+/* Saat kembali menggunakan tombol Back HP */
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        updateFontSize();
+
+    }
+);
+
+
+/* =====================================================
+   BACAAN TERAKHIR
+===================================================== */
+
+const lastReadStorageKey =
+    "lastRead_YouRejectedMyHonor";
+
+
+localStorage.setItem(
+    lastReadStorageKey,
+    "4"
+);
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+searchInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+            &&
+            searchInput.value.trim() !== ""
+        ) {
+
+            const query =
+                encodeURIComponent(
+                    searchInput.value.trim()
+                );
+
+
+            window.location.href =
+                "../index.html?search=" +
+                query;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backToTop =
+    document.getElementById(
+        "backToTop"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add(
+                "show"
+            );
+
+        } else {
+
+            backToTop.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+backToTop.addEventListener(
+    "click",
+    function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+/* =====================================================
+   GISCUS
+===================================================== */
+
+function loadGiscus() {
+
+    const container =
+        document.getElementById(
+            "giscus-container"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    if (
+        container.querySelector("script")
+    ) {
+
+        return;
+
+    }
+
+
+    const script =
+        document.createElement("script");
+
+
+    script.src =
+        "https://giscus.app/client.js";
+
+
+    script.setAttribute(
+        "data-repo",
+        "Dhyon09/cn-novel-translation"
+    );
+
+
+    script.setAttribute(
+        "data-repo-id",
+        "R_kgDOU4Dcig"
+    );
+
+
+    script.setAttribute(
+        "data-category",
+        "General"
+    );
+
+
+    script.setAttribute(
+        "data-category-id",
+        "DIC_kwDOU4Dcis4DG3Ff"
+    );
+
+
+    script.setAttribute(
+        "data-mapping",
+        "pathname"
+    );
+
+
+    script.setAttribute(
+        "data-strict",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-reactions-enabled",
+        "1"
+    );
+
+
+    script.setAttribute(
+        "data-emit-metadata",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-input-position",
+        "bottom"
+    );
+
+
+    script.setAttribute(
+        "data-theme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+
+
+    script.setAttribute(
+        "data-lang",
+        "id"
+    );
+
+
+    script.setAttribute(
+        "data-loading",
+        "lazy"
+    );
+
+
+    script.crossOrigin =
+        "anonymous";
+
+
+    script.async = true;
+
+
+    container.appendChild(script);
+
+}
+
+
+function updateGiscusTheme() {
+
+    const iframe =
+        document.querySelector(
+            "iframe.giscus-frame"
+        );
+
+
+    if (!iframe) {
+
+        return;
+
+    }
+
+
+    const theme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+
+    iframe.contentWindow.postMessage(
+        {
+            giscus: {
+
+                setConfig: {
+
+                    theme: theme
+
+                }
+
+            }
+
+        },
+        "https://giscus.app"
+    );
+
+}
+
+
+loadGiscus();
+
+</script>
+
+</body>
+
+</html>
