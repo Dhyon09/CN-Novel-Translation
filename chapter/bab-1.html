@@ -1,544 +1,617 @@
 <!DOCTYPE html>
 <html lang="id">
-
+    
 <head>
+    
+<meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>Chapter 1 - You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
 
-    <title>Chapter 1 - You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
 
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+<style>
 
-    <style>
+    /* =========================
+       NAVIGASI CHAPTER
+    ========================= */
 
-        /* =========================
-           NAVIGASI CHAPTER
-        ========================= */
+    .chapter-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin: 0 0 16px;
+    }
+
+
+    .chapter-nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 38px;
+
+        padding: 7px 6px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--card);
+        color: var(--text);
+
+        text-decoration: none;
+        text-align: center;
+
+        font-size: 14px;
+        line-height: 1.2;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+
+    .chapter-nav-btn:hover,
+    .chapter-nav-btn:active {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    .chapter-nav-btn.disabled {
+        opacity: 0.45;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       RODA GIGI
+    ========================= */
+
+    .reader-settings-area {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        margin: 2px 0 12px;
+    }
+
+
+    .reader-settings-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .reader-settings-btn:hover,
+    .reader-settings-btn:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    .reader-settings-btn.active {
+        transform: rotate(30deg);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       PENGATURAN FONT
+    ========================= */
+
+    .reader-settings {
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        margin-top: 8px;
+
+        padding: 5px 8px;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+
+        background: var(--card);
+    }
+
+
+    .reader-settings.active {
+        display: flex;
+    }
+
+
+    .reader-settings button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 34px;
+        height: 30px;
+
+        padding: 0 7px;
+
+        border: 1px solid var(--border);
+        border-radius: 5px;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-family: inherit;
+        font-size: 14px;
+
+        cursor: pointer;
+    }
+
+
+    .reader-settings button:hover,
+    .reader-settings button:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    #fontSizeDisplay {
+        min-width: 22px;
+
+        color: var(--text);
+
+        font-size: 14px;
+        text-align: center;
+    }
+
+
+    /* =========================
+       JUDUL CHAPTER
+    ========================= */
+
+    .chapter-heading {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+
+    .chapter-number {
+        margin-bottom: 5px;
+
+        color: var(--secondary);
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+
+    .chapter-heading h1 {
+        margin: 0;
+
+        color: var(--text);
+
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+
+    /* =========================
+       TOMBOL KEMBALI KE ATAS
+    ========================= */
+
+    .back-to-top {
+        position: fixed;
+
+        right: 16px;
+        bottom: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 19px;
+
+        cursor: pointer;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
+
+        z-index: 1000;
+    }
+
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .back-to-top:hover,
+    .back-to-top:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
 
         .chapter-navigation {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            gap: 6px;
-            width: 100%;
-            margin: 0 0 16px;
+            gap: 5px;
+            margin-bottom: 14px;
         }
 
 
         .chapter-nav-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 36px;
+            padding: 6px 4px;
 
-            min-height: 38px;
-
-            padding: 7px 6px;
-
-            border: 1px solid var(--border);
-            border-radius: 6px;
-
-            background: var(--card);
-            color: var(--text);
-
-            text-decoration: none;
-            text-align: center;
-
-            font-size: 14px;
-            line-height: 1.2;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease;
+            font-size: 13px;
         }
 
-
-        .chapter-nav-btn:hover,
-        .chapter-nav-btn:active {
-            border-color: var(--primary);
-            background: var(--bg);
-            color: var(--primary);
-        }
-
-
-        .chapter-nav-btn.disabled {
-            opacity: 0.45;
-            pointer-events: none;
-        }
-
-
-        /* =========================
-           RODA GIGI
-        ========================= */
 
         .reader-settings-area {
-            position: relative;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            width: 100%;
-
-            margin: 2px 0 12px;
+            margin-top: 1px;
+            margin-bottom: 11px;
         }
 
 
         .reader-settings-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 35px;
+            height: 35px;
 
-            width: 36px;
-            height: 36px;
-
-            padding: 0;
-
-            border: 1px solid var(--border);
-            border-radius: 50%;
-
-            background: var(--card);
-            color: var(--text);
-
-            font-size: 18px;
-
-            cursor: pointer;
-
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease,
-                transform 0.25s ease;
+            font-size: 17px;
         }
 
-
-        .reader-settings-btn:hover,
-        .reader-settings-btn:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        .reader-settings-btn.active {
-            transform: rotate(30deg);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           PENGATURAN FONT
-        ========================= */
-
-        .reader-settings {
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 8px;
-
-            margin-top: 8px;
-
-            padding: 5px 8px;
-
-            border: 1px solid var(--border);
-            border-radius: 7px;
-
-            background: var(--card);
-        }
-
-
-        .reader-settings.active {
-            display: flex;
-        }
-
-
-        .reader-settings button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            min-width: 34px;
-            height: 30px;
-
-            padding: 0 7px;
-
-            border: 1px solid var(--border);
-            border-radius: 5px;
-
-            background: var(--card);
-            color: var(--text);
-
-            font-family: inherit;
-            font-size: 14px;
-
-            cursor: pointer;
-        }
-
-
-        .reader-settings button:hover,
-        .reader-settings button:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        #fontSizeDisplay {
-            min-width: 22px;
-
-            color: var(--text);
-
-            font-size: 14px;
-            text-align: center;
-        }
-
-
-        /* =========================
-           JUDUL CHAPTER
-        ========================= */
 
         .chapter-heading {
-            text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
 
         .chapter-number {
-            margin-bottom: 5px;
-
-            color: var(--secondary);
-
-            font-size: 15px;
-            line-height: 1.3;
+            font-size: 14px;
         }
 
 
         .chapter-heading h1 {
-            margin: 0;
-
-            color: var(--text);
-
-            font-size: 24px;
-            line-height: 1.3;
+            font-size: 22px;
         }
 
-
-        /* =========================
-           TOMBOL KEMBALI KE ATAS
-        ========================= */
 
         .back-to-top {
-            position: fixed;
+            right: 14px;
+            bottom: 15px;
 
-            right: 16px;
-            bottom: 18px;
+            width: 38px;
+            height: 38px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 40px;
-            height: 40px;
-
-            border: 1px solid var(--border);
-            border-radius: 50%;
-
-            background: var(--card);
-            color: var(--text);
-
-            font-size: 19px;
-
-            cursor: pointer;
-
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-
-            transition:
-                opacity 0.25s ease,
-                visibility 0.25s ease,
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                color 0.25s ease;
-
-            z-index: 1000;
+            font-size: 18px;
         }
 
+    }
 
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-
-        .back-to-top:hover,
-        .back-to-top:active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 480px) {
-
-            .chapter-navigation {
-                gap: 5px;
-                margin-bottom: 14px;
-            }
-
-
-            .chapter-nav-btn {
-                min-height: 36px;
-                padding: 6px 4px;
-
-                font-size: 13px;
-            }
-
-
-            .reader-settings-area {
-                margin-top: 1px;
-                margin-bottom: 11px;
-            }
-
-
-            .reader-settings-btn {
-                width: 35px;
-                height: 35px;
-
-                font-size: 17px;
-            }
-
-
-            .chapter-heading {
-                margin-bottom: 22px;
-            }
-
-
-            .chapter-number {
-                font-size: 14px;
-            }
-
-
-            .chapter-heading h1 {
-                font-size: 22px;
-            }
-
-
-            .back-to-top {
-                right: 14px;
-                bottom: 15px;
-
-                width: 38px;
-                height: 38px;
-
-                font-size: 18px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
-
-
+    
 <body>
-
-
+    
 <!-- =========================
      HEADER
 ========================= -->
-
-<header class="site-header">
-
+    
+    <header class="site-header">
     <div class="header-left">
 
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Buka menu"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
-    </div>
-
-
-    <a
-        href="../index.html"
-        class="site-title"
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
     >
-        CN Novel-Translation
-    </a>
+        ☰
+    </button>
+
+</div>
 
 
-    <div class="header-right">
+<a
+    href="../index.html"
+    class="site-title"
+>
+    CN Novel-Translation
+</a>
 
-        <button
-            class="theme-button"
-            id="themeButton"
-            aria-label="Ganti tema"
-        >
-            ☀️
-        </button>
 
-    </div>
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
 
 </header>
 
-
+    
 <!-- =========================
      MENU
 ========================= -->
-
+    
 <div
     class="menu-overlay"
     id="menuOverlay"
-></div>
-
-
-<nav
+></div><nav
     class="side-menu"
     id="sideMenu"
+><div class="menu-header">
+
+    <span>
+        Menu
+    </span>
+
+
+    <button
+        class="menu-close"
+        id="menuClose"
+        aria-label="Tutup menu"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- NOVEL -->
+
+<div
+    class="menu-parent"
+    id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
 >
 
-    <div class="menu-header">
+    <span>
+        Novel
+    </span>
 
-        <span>
-            Menu
+
+    <span class="menu-arrow">
+        ›
+    </span>
+
+</div>
+
+
+<div
+    class="novel-submenu"
+    id="novelSubmenu"
+>
+
+    <a href="../novel/on-going.html">
+        On-going
+    </a>
+
+
+    <a href="../novel/completed.html">
+        Completed
+    </a>
+
+
+    <a href="../novel/hiatus.html">
+        Hiatus
+    </a>
+
+
+    <a href="../novel/drop.html">
+        Drop
+    </a>
+
+</div>
+
+
+<!-- BOOKMARK -->
+
+<a
+    href="../bookmark.html"
+    class="menu-item"
+>
+    Bookmark
+</a>
+
+
+<!-- DONASI -->
+
+<a
+    href="https://trakteer.id/DhyonPratama"
+    class="menu-item"
+    target="_blank"
+    rel="noopener"
+>
+    Donasi
+</a>
+
+
+<!-- LOGIN -->
+
+<a
+    href="#login"
+    class="menu-item"
+>
+    Login
+</a>
+
+</nav>
+    
+<!-- =========================
+     GLOBAL SEARCH
+========================= -->
+    
+    <div class="global-search-bar"><div class="global-search-inner">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
         </span>
 
 
-        <button
-            class="menu-close"
-            id="menuClose"
-            aria-label="Tutup menu"
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul novel..."
+            autocomplete="off"
         >
-            ×
-        </button>
 
     </div>
 
+</div>
 
-    <!-- NOVEL -->
+</div>
+    
+<!-- =========================
+     READER
+========================= -->
+    
+    <main class="reader-container">
+    
+    
+<!-- =========================
+     NAVIGASI ATAS
+========================= -->
 
-    <div
-        class="menu-parent"
-        id="menuNovel"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-    >
-
-        <span>
-            Novel
-        </span>
-
-
-        <span class="menu-arrow">
-            ›
-        </span>
-
-    </div>
-
-
-    <div
-        class="novel-submenu"
-        id="novelSubmenu"
-    >
-
-        <a href="../novel/on-going.html">
-            On-going
-        </a>
-
-
-        <a href="../novel/completed.html">
-            Completed
-        </a>
-
-
-        <a href="../novel/hiatus.html">
-            Hiatus
-        </a>
-
-
-        <a href="../novel/drop.html">
-            Drop
-        </a>
-
-    </div>
-
-
-    <!-- BOOKMARK -->
+<nav class="chapter-navigation">
 
     <a
-        href="../bookmark.html"
-        class="menu-item"
+        href="#"
+        class="chapter-nav-btn disabled"
     >
-        Bookmark
+        ← Sebelumnya
     </a>
 
 
-    <!-- DONASI -->
-
     <a
-        href="https://trakteer.id/DhyonPratama"
-        class="menu-item"
-        target="_blank"
-        rel="noopener"
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
     >
-        Donasi
+        Daftar Isi
     </a>
 
 
-    <!-- LOGIN -->
-
     <a
-        href="#login"
-        class="menu-item"
+        class="chapter-nav-btn"
+        href="bab-2.html"
     >
-        Login
+        Selanjutnya →
     </a>
 
 </nav>
 
 
 <!-- =========================
-     GLOBAL SEARCH
+     PENGATURAN PEMBACA
 ========================= -->
 
-<div class="global-search-bar">
+<div class="reader-settings-area">
 
-    <div class="global-search-inner">
+    <button
+        class="reader-settings-btn"
+        id="readerSettingsButton"
+        aria-label="Pengaturan pembaca"
+        aria-expanded="false"
+    >
+        ⚙️
+    </button>
 
-        <div class="search-box">
 
-            <span class="search-icon">
-                🔍
-            </span>
+    <div
+        id="readerSettings"
+        class="reader-settings"
+    >
+
+        <button
+            id="fontDecrease"
+            aria-label="Perkecil ukuran teks"
+        >
+            A−
+        </button>
 
 
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Cari judul novel..."
-                autocomplete="off"
-            >
+        <span id="fontSizeDisplay">
+            18
+        </span>
 
-        </div>
+
+        <button
+            id="fontIncrease"
+            aria-label="Perbesar ukuran teks"
+        >
+            A+
+        </button>
 
     </div>
 
@@ -546,1428 +619,1338 @@
 
 
 <!-- =========================
-     READER
+     JUDUL CHAPTER
 ========================= -->
 
-<main class="reader-container">
+<div class="chapter-heading">
 
-
-    <!-- =========================
-         NAVIGASI ATAS
-    ========================= -->
-
-    <nav class="chapter-navigation">
-
-        <a
-            href="#"
-            class="chapter-nav-btn disabled"
-        >
-            ← Sebelumnya
-        </a>
-
-
-        <a
-            href="../novel/you-rejected-my-honor.html"
-            class="chapter-nav-btn"
-        >
-            Daftar Isi
-        </a>
-
-
-        <a
-            class="chapter-nav-btn"
-            href="bab-2.html"
-        >
-            Selanjutnya →
-        </a>
-
-    </nav>
-
-
-    <!-- =========================
-         PENGATURAN PEMBACA
-    ========================= -->
-
-    <div class="reader-settings-area">
-
-        <button
-            class="reader-settings-btn"
-            id="readerSettingsButton"
-            aria-label="Pengaturan pembaca"
-            aria-expanded="false"
-        >
-            ⚙️
-        </button>
-
-
-        <div
-            id="readerSettings"
-            class="reader-settings"
-        >
-
-            <button
-                id="fontDecrease"
-                aria-label="Perkecil ukuran teks"
-            >
-                A−
-            </button>
-
-
-            <span id="fontSizeDisplay">
-                18
-            </span>
-
-
-            <button
-                id="fontIncrease"
-                aria-label="Perbesar ukuran teks"
-            >
-                A+
-            </button>
-
-        </div>
-
+    <div class="chapter-number">
+        Chapter 1
     </div>
 
 
-    <!-- =========================
-         JUDUL CHAPTER
-    ========================= -->
+    <h1>
+        Dahulu Aku Pergi, Kini Jiwaku Kembali
+    </h1>
 
-    <div class="chapter-heading">
+</div>
 
-        <div class="chapter-number">
-            Chapter 1
-        </div>
 
+<!-- =========================
+     ISI NOVEL
+========================= -->
 
-        <h1>
-            Dahulu Aku Pergi, Kini Jiwaku Kembali
-        </h1>
+<article class="reader">
 
-    </div>
+    <p>
+        <strong>Catatan Penulis:</strong>
+    </p>
 
 
-    <!-- =========================
-         ISI NOVEL
-    ========================= -->
+    <p>
+        Novel ini lebih nikmat dibaca setelah disimpan di dalam otak. Tidak ada sistem, murni kisah kelahiran kembali. Alurnya agak lambat di awal dan beberapa chapter pertama lebih banyak digunakan untuk membangun cerita. Tokoh utama wanita baru muncul di Chapter 11, sedangkan <strong>Gu Chen</strong> dan tokoh utama wanita mulai saling menyatakan perasaan pada Chapter 26!
+    </p>
 
-    <article class="reader">
 
-        <p>
-            <strong>Catatan Penulis:</strong>
-        </p>
+    <p>
+        <strong>Catatan Penulis:</strong>
+    </p>
 
 
-        <p>
-            Novel ini lebih nikmat dibaca setelah disimpan di dalam otak. Tidak ada sistem, murni kisah kelahiran kembali. Alurnya agak lambat di awal dan beberapa chapter pertama lebih banyak digunakan untuk membangun cerita. Tokoh utama wanita baru muncul di Chapter 11, sedangkan <strong>Gu Chen</strong> dan tokoh utama wanita mulai saling menyatakan perasaan pada Chapter 26!
-        </p>
+    <p>
+        Ini adalah novel pertamaku. Mohon dukungannya dengan memasukkannya ke rak buku! Aku telah mengembara setengah hidupku hanya karena belum bertemu dengan seorang penguasa yang layak. Jika Tuan tidak keberatan, aku bersedia mengangkatmu sebagai ayah angkat!
+    </p>
 
 
-        <p>
-            <strong>Catatan Penulis:</strong>
-        </p>
+    <p>
+        <strong>Catatan Penulis:</strong>
+    </p>
 
 
-        <p>
-            Ini adalah novel pertamaku. Mohon dukungannya dengan memasukkannya ke rak buku! Aku telah mengembara setengah hidupku hanya karena belum bertemu dengan seorang penguasa yang layak. Jika Tuan tidak keberatan, aku bersedia mengangkatmu sebagai ayah angkat!
-        </p>
+    <p>
+        Ini adalah sejarah alternatif! Hanya sebuah novel web sederhana! Ingat, novel ini lebih baik dibaca tanpa terlalu memikirkan detailnya. Beberapa sistem dalam novel berbeda dengan sejarah nyata, seperti status <strong>Gu Chen</strong> sebagai Tanhua dan sebagainya. Semua itu murni demi kebutuhan alur cerita. Jadi, jangan terlalu diperdebatkan. Terima kasih atas pengertiannya!
+    </p>
 
 
-        <p>
-            <strong>Catatan Penulis:</strong>
-        </p>
+    <p>
+        <strong>Catatan Penulis:</strong>
+    </p>
 
 
-        <p>
-            Ini adalah sejarah alternatif! Hanya sebuah novel web sederhana! Ingat, novel ini lebih baik dibaca tanpa terlalu memikirkan detailnya. Beberapa sistem dalam novel berbeda dengan sejarah nyata, seperti status <strong>Gu Chen</strong> sebagai Tanhua dan sebagainya. Semua itu murni demi kebutuhan alur cerita. Jadi, jangan terlalu diperdebatkan. Terima kasih atas pengertiannya!
-        </p>
+    <p>
+        Cerita ini cukup singkat, hanya terdiri dari 120 chapter. Para ayah angkat tidak perlu menunggu sampai novelnya tamat. Silakan langsung membacanya!
+    </p>
 
 
-        <p>
-            <strong>Catatan Penulis:</strong>
-        </p>
+    <p>
+        ***
+    </p>
 
 
-        <p>
-            Cerita ini cukup singkat, hanya terdiri dari 120 chapter. Para ayah angkat tidak perlu menunggu sampai novelnya tamat. Silakan langsung membacanya!
-        </p>
+    <p>
+        Tahun ke-37 era Chongsheng, musim gugur.
+    </p>
 
 
-        <p>
-            ***
-        </p>
+    <p>
+        Adipati Penjaga Negara <strong>Gu Chen</strong>, sedang menjaga istrinya, <strong>Liu Ruolan</strong>, yang terbaring sakit di ranjang.
+    </p>
 
 
-        <p>
-            Tahun ke-37 era Chongsheng, musim gugur.
-        </p>
+    <p>
+        <strong>Liu Ruolan</strong>, yang dahulu dikenal sebagai wanita berbakat di ibu kota, kini telah berada di ambang kematian. Napasnya begitu lemah.
+    </p>
 
 
-        <p>
-            Adipati Penjaga Negara <strong>Gu Chen</strong>, sedang menjaga istrinya, <strong>Liu Ruolan</strong>, yang terbaring sakit di ranjang.
-        </p>
+    <p>
+        “<strong>Gu Chen</strong>, sebenarnya sejak awal aku selalu mencintai sahabatmu, <strong>Yang Kai Ji</strong>.”
+    </p>
 
 
-        <p>
-            <strong>Liu Ruolan</strong>, yang dahulu dikenal sebagai wanita berbakat di ibu kota, kini telah berada di ambang kematian. Napasnya begitu lemah.
-        </p>
+    <p>
+        Ia tidak memanggilnya “suamiku”, juga tidak memanggilnya “tuan”. Ia hanya menyebut namanya dengan sikap yang begitu sopan dan berjarak.
+    </p>
 
 
-        <p>
-            “<strong>Gu Chen</strong>, sebenarnya sejak awal aku selalu mencintai sahabatmu, <strong>Yang Kai Ji</strong>.”
-        </p>
+    <p>
+        Pikiran <strong>Gu Chen</strong> berdengung.
+    </p>
 
 
-        <p>
-            Ia tidak memanggilnya “suamiku”, juga tidak memanggilnya “tuan”. Ia hanya menyebut namanya dengan sikap yang begitu sopan dan berjarak.
-        </p>
+    <p>
+        Banyak kenangan lama bermunculan di benaknya.
+    </p>
 
 
-        <p>
-            Pikiran <strong>Gu Chen</strong> berdengung.
-        </p>
+    <p>
+        Pada tahun pertama era Chongsheng, ia mengenakan pakaian pengantin berwarna merah terang dan masuk ke dalam keluarga Marquis Cheng'en sebagai menantu. Ia menikahi <strong>Liu Ruolan</strong>, wanita berbakat yang terkenal di seluruh ibu kota.
+    </p>
 
 
-        <p>
-            Banyak kenangan lama bermunculan di benaknya.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> sendiri adalah seorang yatim piatu yang berasal dari kalangan pengungsi. Namun, Kaisar baru, Kaisar Chongsheng, secara khusus menunjuknya sebagai Tanhua dalam ujian sastra dan Zhuangyuan dalam ujian militer pada tahun pertama era Chongsheng.
+    </p>
 
 
-        <p>
-            Pada tahun pertama era Chongsheng, ia mengenakan pakaian pengantin berwarna merah terang dan masuk ke dalam keluarga Marquis Cheng'en sebagai menantu. Ia menikahi <strong>Liu Ruolan</strong>, wanita berbakat yang terkenal di seluruh ibu kota.
-        </p>
+    <p>
+        Marquis Cheng'en, <strong>Liu Ming</strong>, tertarik pada bakatnya. Selain itu, Marquis <strong>Liu</strong> mengetahui bahwa Kaisar baru sedang menjalankan kebijakan baru yang bertujuan menekan keluarga bangsawan dan mengabaikan latar belakang keluarga.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> sendiri adalah seorang yatim piatu yang berasal dari kalangan pengungsi. Namun, Kaisar baru, Kaisar Chongsheng, secara khusus menunjuknya sebagai Tanhua dalam ujian sastra dan Zhuangyuan dalam ujian militer pada tahun pertama era Chongsheng.
-        </p>
+    <p>
+        Karena itulah, <strong>Gu Chen</strong> akhirnya menjadi menantunya.
+    </p>
 
 
-        <p>
-            Marquis Cheng'en, <strong>Liu Ming</strong>, tertarik pada bakatnya. Selain itu, Marquis <strong>Liu</strong> mengetahui bahwa Kaisar baru sedang menjalankan kebijakan baru yang bertujuan menekan keluarga bangsawan dan mengabaikan latar belakang keluarga.
-        </p>
+    <p>
+        Pada malam pengantin mereka, <strong>Gu Chen</strong> berkata bahwa ia akan memperlakukannya dengan baik sepanjang hidupnya.
+    </p>
 
 
-        <p>
-            Karena itulah, <strong>Gu Chen</strong> akhirnya menjadi menantunya.
-        </p>
+    <p>
+        <strong>Liu Ruolan</strong> hanya menjawab pelan tanpa mengangkat kepala.
+    </p>
 
 
-        <p>
-            Pada malam pengantin mereka, <strong>Gu Chen</strong> berkata bahwa ia akan memperlakukannya dengan baik sepanjang hidupnya.
-        </p>
+    <p>
+        “Hmm.”
+    </p>
 
 
-        <p>
-            <strong>Liu Ruolan</strong> hanya menjawab pelan tanpa mengangkat kepala.
-        </p>
+    <p>
+        Ketika <strong>Gu Chen</strong> berangkat berperang, ia mengantarnya sampai ke pintu.
+    </p>
 
 
-        <p>
-            “Hmm.”
-        </p>
+    <p>
+        Ketika <strong>Gu Chen</strong> kembali ke ibu kota, ia menyiapkan makanan dan menunggunya pulang.
+    </p>
 
 
-        <p>
-            Ketika <strong>Gu Chen</strong> berangkat berperang, ia mengantarnya sampai ke pintu.
-        </p>
+    <p>
+        Hubungan mereka selalu sopan dan penuh jarak, seolah-olah mereka hanyalah sepasang orang asing yang menjaga kehormatan satu sama lain.
+    </p>
 
 
-        <p>
-            Ketika <strong>Gu Chen</strong> kembali ke ibu kota, ia menyiapkan makanan dan menunggunya pulang.
-        </p>
+    <p>
+        “Aku tidak mengerti. Aku memberimu gelar kehormatan tingkat pertama, sepanjang hidupku aku juga tidak pernah menyentuh wanita lain. Semua gajiku kuserahkan kepada keluarga. Apa pun yang kau inginkan, tidak pernah sekalipun aku menolak atau mempertanyakannya.”
+    </p>
 
 
-        <p>
-            Hubungan mereka selalu sopan dan penuh jarak, seolah-olah mereka hanyalah sepasang orang asing yang menjaga kehormatan satu sama lain.
-        </p>
+    <p>
+        “Dahulu aku hanya mengira kau memang memiliki sifat dingin secara alami. Tapi kau… kenapa sebenarnya kau bisa mencintai <strong>Yang Kai Ji</strong>?”
+    </p>
 
 
-        <p>
-            “Aku tidak mengerti. Aku memberimu gelar kehormatan tingkat pertama, sepanjang hidupku aku juga tidak pernah menyentuh wanita lain. Semua gajiku kuserahkan kepada keluarga. Apa pun yang kau inginkan, aku tidak pernah menanyakannya.”
-        </p>
+    <p>
+        <strong>Liu Ruolan</strong> menatapnya.
+    </p>
 
 
-        <p>
-            “Dahulu aku hanya mengira kau memang memiliki sifat dingin secara alami. Tapi kau… kenapa sebenarnya kau bisa mencintai <strong>Yang Kai Ji</strong>?”
-        </p>
+    <p>
+        Tiba-tiba, seberkas cahaya muncul di kedua matanya yang telah keruh.
+    </p>
 
 
-        <p>
-            <strong>Liu Ruolan</strong> menatapnya.
-        </p>
+    <p>
+        “Karena kau tidak memahamiku.”
+    </p>
 
 
-        <p>
-            Tiba-tiba, seberkas cahaya muncul di kedua matanya yang telah keruh.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> tertegun.
+    </p>
 
 
-        <p>
-            “Karena kau tidak memahamiku.”
-        </p>
+    <p>
+        “Tapi kau tidak pernah mengatakan apa yang kau inginkan.”
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> tertegun.
-        </p>
+    <p>
+        “Jadi kau tidak pernah berpikir untuk menebaknya?”
+    </p>
 
 
-        <p>
-            “Tapi kau tidak pernah mengatakan apa yang kau inginkan.”
-        </p>
+    <p>
+        Suaranya begitu lemah, seperti hembusan angin dingin yang penuh kepahitan.
+    </p>
 
 
-        <p>
-            “Jadi kau tidak pernah berpikir untuk menebaknya?”
-        </p>
+    <p>
+        “Setiap kali aku harus mengatakannya terlebih dahulu, barulah kau mengetahui apa yang kusukai?”
+    </p>
 
 
-        <p>
-            Suaranya begitu lemah, seperti hembusan angin dingin yang penuh kepahitan.
-        </p>
+    <p>
+        “Setiap kali kau pulang, kau bertanya kepadaku, ‘Bagaimana keadaanmu, Nyonya?’ Aku menjawab, ‘Baik,’ lalu kau langsung mempercayainya.”
+    </p>
 
 
-        <p>
-            “Setiap kali aku harus mengatakannya terlebih dahulu, barulah kau mengetahui apa yang kusukai?”
-        </p>
+    <p>
+        “Kau tidak pernah mengatakan kata-kata mesra kepadaku. Kau tidak pernah bertanya apakah aku ingin pergi ke suatu tempat untuk bersenang-senang. Kau tidak pernah bertanya apakah aku ingin membaca cerita. Kau juga tidak pernah bertanya apakah aku merasa bosan karena harus sendirian menjaga rumah ini.”
+    </p>
 
 
-        <p>
-            “Setiap kali kau pulang, kau bertanya kepadaku, ‘Bagaimana keadaanmu, Nyonya?’ Aku menjawab, ‘Baik,’ lalu kau langsung mempercayainya.”
-        </p>
+    <p>
+        “Kekakuanmu benar-benar membuat seseorang tidak tahu harus berkata apa. Kau tidak pernah memahamiku.”
+    </p>
 
 
-        <p>
-            “Kau tidak pernah mengatakan kata-kata mesra kepadaku. Kau tidak pernah bertanya apakah aku ingin pergi ke suatu tempat untuk bersenang-senang. Kau tidak pernah bertanya apakah aku ingin membaca cerita. Kau juga tidak pernah bertanya apakah aku merasa bosan karena harus sendirian menjaga rumah ini.”
-        </p>
+    <p>
+        Kalimat itu terasa seperti sebilah pisau yang menancap tepat di dada <strong>Gu Chen</strong>.
+    </p>
 
 
-        <p>
-            “Kekakuanmu benar-benar membuat seseorang tidak tahu harus berkata apa. Kau tidak pernah memahamiku.”
-        </p>
+    <p>
+        Sepanjang hidupnya, ia selalu bekerja keras demi negara.
+    </p>
 
 
-        <p>
-            Kalimat itu terasa seperti sebilah pisau yang menancap tepat di dada <strong>Gu Chen</strong>.
-        </p>
+    <p>
+        Dari Akademi Hanlin hingga berbagai kabupaten dan prefektur, dari Kementerian Perang hingga pasukan di perbatasan utara.
+    </p>
 
 
-        <p>
-            Sepanjang hidupnya, ia selalu bekerja keras demi negara.
-        </p>
+    <p>
+        Di luar rumah, ia berperang demi melindungi wilayah dan menenteramkan rakyat.
+    </p>
 
 
-        <p>
-            Dari Akademi Hanlin hingga berbagai kabupaten dan prefektur, dari Kementerian Perang hingga pasukan di perbatasan utara.
-        </p>
+    <p>
+        Ia bekerja siang dan malam demi menjalankan tugas untuk istana.
+    </p>
 
 
-        <p>
-            Di luar rumah, ia berperang demi melindungi wilayah dan menenteramkan rakyat.
-        </p>
+    <p>
+        Semua yang dilakukannya adalah demi agar rakyat di seluruh dunia dapat menjalani kehidupan yang lebih baik.
+    </p>
 
 
-        <p>
-            Ia bekerja siang dan malam demi menjalankan tugas untuk istana.
-        </p>
+    <p>
+        Di rumah, istrinya mengatakan bahwa semuanya “baik-baik saja”.
+    </p>
 
 
-        <p>
-            Semua yang dilakukannya adalah demi agar rakyat di seluruh dunia dapat menjalani kehidupan yang lebih baik.
-        </p>
+    <p>
+        Tentu saja ia mempercayainya.
+    </p>
 
 
-        <p>
-            Di rumah, istrinya mengatakan bahwa semuanya “baik-baik saja”.
-        </p>
+    <p>
+        Ia tidak pernah menyangka bahwa istrinya akan berbohong kepadanya.
+    </p>
 
 
-        <p>
-            Tentu saja ia mempercayainya.
-        </p>
+    <p>
+        “Kalau begitu, jawab aku dengan jujur. Sebenarnya apa yang kau inginkan?”
+    </p>
 
 
-        <p>
-            Ia tidak pernah menyangka bahwa istrinya akan berbohong kepadanya.
-        </p>
+    <p>
+        <strong>Liu Ruolan</strong> sebenarnya sudah tidak ingin berbicara dengannya.
+    </p>
 
 
-        <p>
-            “Kalau begitu, jawab aku dengan jujur. Sebenarnya apa yang kau inginkan?”
-        </p>
+    <p>
+        Namun pada akhirnya, seolah-olah ia menunjukkan sedikit belas kasihan, ia tetap menjawab.
+    </p>
 
 
-        <p>
-            <strong>Liu Ruolan</strong> sebenarnya sudah tidak ingin berbicara dengannya.
-        </p>
+    <p>
+        “Bakat.”
+    </p>
 
 
-        <p>
-            Namun pada akhirnya, seolah-olah ia menunjukkan sedikit belas kasihan, ia tetap menjawab.
-        </p>
+    <p>
+        Suaranya begitu lemah.
+    </p>
 
 
-        <p>
-            “Bakat.”
-        </p>
+    <p>
+        “Seseorang yang bisa berbicara denganku tentang puisi dan sastra. Seseorang yang bisa memahami suka dan dukaku melalui alunan musik yang kumainkan. Seseorang yang tidak perlu menunggu sampai aku mengatakannya untuk mengetahui apa yang kuinginkan.”
+    </p>
 
 
-        <p>
-            Suaranya begitu lemah.
-        </p>
+    <p>
+        Ia berhenti sejenak, lalu menghela napas.
+    </p>
 
 
-        <p>
-            “Seseorang yang bisa berbicara denganku tentang puisi dan sastra. Seseorang yang bisa memahami suka dan dukaku melalui alunan musik yang kumainkan. Seseorang yang tidak perlu menunggu sampai aku mengatakannya untuk mengetahui apa yang kuinginkan.”
-        </p>
+    <p>
+        “<strong>Yang Kai Ji</strong> memahamiku. Dia memahami istrinya, <strong>Bai Shi</strong>.”
+    </p>
 
 
-        <p>
-            Ia berhenti sejenak, lalu menghela napas.
-        </p>
+    <p>
+        “Dahulu, seharusnya aku meminta Ayah untuk memilih <strong>Yang Kai Ji</strong> sebagai menantunya.”
+    </p>
 
 
-        <p>
-            “<strong>Yang Kai Ji</strong> memahamiku. Dia memahami istrinya, <strong>Bai Shi</strong>.”
-        </p>
+    <p>
+        ***
+    </p>
 
 
-        <p>
-            “Dahulu, seharusnya aku meminta Ayah untuk memilih <strong>Yang Kai Ji</strong> sebagai menantunya.”
-        </p>
+    <p>
+        <strong>Yang Kai Ji</strong> adalah Zhuangyuan dalam ujian sastra pada angkatannya. Wawasannya luas, kepiawaiannya dalam berbicara luar biasa, dan ia merupakan seorang cendekiawan berbakat yang berasal dari keluarga sederhana.
+    </p>
 
 
-        <p>
-            ***
-        </p>
+    <p>
+        Tiga besar dalam ujian sastra pada angkatan itu adalah <strong>Yang Kai Ji</strong>, <strong>Pei Zhang</strong>, dan dirinya sendiri, <strong>Gu Chen</strong>.
+    </p>
 
 
-        <p>
-            <strong>Yang Kai Ji</strong> adalah Zhuangyuan dalam ujian sastra pada angkatannya. Wawasannya luas, kepiawaiannya dalam berbicara luar biasa, dan ia merupakan seorang cendekiawan berbakat yang berasal dari keluarga sederhana.
-        </p>
+    <p>
+        Mereka bertiga berasal dari latar belakang yang berbeda—satu dari keluarga sederhana, satu dari keluarga bangsawan, dan dirinya sendiri berasal dari kalangan pengungsi.
+    </p>
 
 
-        <p>
-            Tiga besar dalam ujian sastra pada angkatan itu adalah <strong>Yang Kai Ji</strong>, <strong>Pei Zhang</strong>, dan dirinya sendiri, <strong>Gu Chen</strong>.
-        </p>
+    <p>
+        Namun, mereka bertiga telah menjadi sahabat seumur hidup.
+    </p>
 
 
-        <p>
-            Mereka bertiga berasal dari latar belakang yang berbeda—satu dari keluarga sederhana, satu dari keluarga bangsawan, dan dirinya sendiri berasal dari kalangan pengungsi.
-        </p>
+    <p>
+        Dan ternyata, istrinya selama ini justru mengagumi sahabatnya sendiri?
+    </p>
 
 
-        <p>
-            Namun, mereka bertiga telah menjadi sahabat seumur hidup.
-        </p>
+    <p>
+        “Aku bisa menghafal semua puisi dan syairnya. Dia memahami keindahan musim dan kehidupan, memahami perasaan cinta antara pria dan wanita, memahami segala pikiran yang disimpan seorang perempuan jauh di dalam hatinya dan tak mampu diungkapkan dengan kata-kata.”
+    </p>
 
 
-        <p>
-            Dan ternyata, istrinya selama ini justru mengagumi sahabatnya sendiri?
-        </p>
+    <p>
+        “Lalu bagaimana denganmu? Kau hanya tahu membicarakan peperangan di perbatasan, pergerakan Hu Utara, persediaan logistik, serta hidup dan mati para prajurit.”
+    </p>
 
 
-        <p>
-            “Aku bisa menghafal semua puisi dan syairnya. Dia memahami keindahan musim dan kehidupan, memahami perasaan cinta antara pria dan wanita, memahami segala pikiran yang disimpan seorang perempuan jauh di dalam hatinya dan tak mampu diungkapkan dengan kata-kata.”
-        </p>
+    <p>
+        Setetes air mata mengalir dari sudut mata <strong>Liu Ruolan</strong>.
+    </p>
 
 
-        <p>
-            “Lalu bagaimana denganmu? Kau hanya tahu membicarakan peperangan di perbatasan, pergerakan Hu Utara, persediaan logistik, serta hidup dan mati para prajurit.”
-        </p>
+    <p>
+        “<strong>Gu Chen</strong>, yang kuinginkan bukanlah gelar kehormatan, bukan pula kemuliaan. Yang kuinginkan adalah seorang suami yang memahamiku. Kau tidak bisa memberikannya kepadaku. Sejak awal, kau memang tidak pernah bisa memberikannya.”
+    </p>
 
 
-        <p>
-            Setetes air mata mengalir dari sudut mata <strong>Liu Ruolan</strong>.
-        </p>
+    <p>
+        “Jika di kehidupan berikutnya…”
+    </p>
 
 
-        <p>
-            “<strong>Gu Chen</strong>, yang kuinginkan bukanlah gelar kehormatan, bukan pula kemuliaan. Yang kuinginkan adalah seorang suami yang memahamiku. Kau tidak bisa memberikannya kepadaku. Sejak awal, kau memang tidak pernah bisa memberikannya.”
-        </p>
+    <p>
+        Tiba-tiba, ia terbatuk-batuk dengan hebat. Seluruh tubuhnya gemetar.
+    </p>
 
 
-        <p>
-            “Jika di kehidupan berikutnya…”
-        </p>
+    <p>
+        “Aku… tidak ingin menjadi istrimu lagi.”
+    </p>
 
 
-        <p>
-            Tiba-tiba, ia terbatuk-batuk dengan hebat. Seluruh tubuhnya gemetar.
-        </p>
+    <p>
+        Setelah mengucapkan kalimat itu, tangannya terkulai.
+    </p>
 
 
-        <p>
-            “Aku… tidak ingin menjadi istrimu lagi.”
-        </p>
+    <p>
+        Istri Adipati Penjaga Negara telah meninggal dunia.
+    </p>
 
 
-        <p>
-            Setelah mengucapkan kalimat itu, tangannya terkulai.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> duduk di sisi ranjang, mengingat kembali begitu banyak hal dari masa lalu yang dahulu tidak pernah ia pedulikan.
+    </p>
 
 
-        <p>
-            Istri Adipati Penjaga Negara telah meninggal dunia.
-        </p>
+    <p>
+        Ia teringat bahwa setiap kali dirinya bersama kedua sahabatnya, <strong>Pei Zhang</strong> dan <strong>Yang Kai Ji</strong>, mengadakan jamuan, <strong>Liu Ruolan</strong> baru akan tersenyum, berdandan, lalu ikut keluar bersamanya.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> duduk di sisi ranjang, mengingat kembali begitu banyak hal dari masa lalu yang dahulu tidak pernah ia pedulikan.
-        </p>
+    <p>
+        Ia dulu mengira istrinya hanya ingin keluar berjalan-jalan.
+    </p>
 
 
-        <p>
-            Ia teringat bahwa setiap kali dirinya bersama kedua sahabatnya, <strong>Pei Zhang</strong> dan <strong>Yang Kai Ji</strong>, mengadakan jamuan, <strong>Liu Ruolan</strong> baru akan tersenyum, berdandan, lalu ikut keluar bersamanya.
-        </p>
+    <p>
+        Kini barulah ia mengerti.
+    </p>
 
 
-        <p>
-            Ia dulu mengira istrinya hanya ingin keluar berjalan-jalan.
-        </p>
+    <p>
+        Yang ingin ditemuinya adalah <strong>Yang Kai Ji</strong>.
+    </p>
 
 
-        <p>
-            Kini barulah ia mengerti.
-        </p>
+    <p>
+        Ia teringat bagaimana <strong>Liu Ruolan</strong> selalu tampak begitu bahagia ketika menyaksikan <strong>Yang Kai Ji</strong> menggubah puisi dalam Festival Puisi Bulan Kedelapan.
+    </p>
 
 
-        <p>
-            Yang ingin ditemuinya adalah <strong>Yang Kai Ji</strong>.
-        </p>
+    <p>
+        Ia dulu mengira istrinya hanya mengagumi bakat <strong>Yang Kai Ji</strong>.
+    </p>
 
 
-        <p>
-            Ia teringat bagaimana <strong>Liu Ruolan</strong> selalu tampak begitu bahagia ketika menyaksikan <strong>Yang Kai Ji</strong> menggubah puisi dalam Festival Puisi Bulan Kedelapan.
-        </p>
+    <p>
+        Kini barulah ia memahami.
+    </p>
 
 
-        <p>
-            Ia dulu mengira istrinya hanya mengagumi bakat <strong>Yang Kai Ji</strong>.
-        </p>
+    <p>
+        Itulah tatapan seorang perempuan ketika melihat pria yang dicintainya.
+    </p>
 
 
-        <p>
-            Kini barulah ia memahami.
-        </p>
+    <p>
+        ……
+    </p>
 
 
-        <p>
-            Itulah tatapan seorang perempuan ketika melihat pria yang dicintainya.
-        </p>
+    <p>
+        Tahun ke-42 era Chongsheng, hari kesembilan bulan kedua belas.
+    </p>
 
 
-        <p>
-            ……
-        </p>
+    <p>
+        Adipati Penjaga Negara, <strong>Gu Chen</strong>, wafat di sebuah kota perbatasan di wilayah utara.
+    </p>
 
 
-        <p>
-            Tahun ke-42 era Chongsheng, hari kesembilan bulan kedua belas.
-        </p>
+    <p>
+        Selama hidupnya, negara-negara kecil di perbatasan tidak berani bertindak gegabah, sementara bangsa Hu Utara tidak berani melangkahkan kaki sedikit pun ke selatan.
+    </p>
 
 
-        <p>
-            Adipati Penjaga Negara, <strong>Gu Chen</strong>, wafat di sebuah kota perbatasan di wilayah utara.
-        </p>
+    <p>
+        Lima tahun sebelumnya, Adipati Penjaga Negara, <strong>Gu Chen</strong>, mengajukan permohonan kepada Kaisar untuk ditempatkan menjaga perbatasan demi memberikan tekanan kepada Hu Utara.
+    </p>
 
 
-        <p>
-            Selama hidupnya, negara-negara kecil di perbatasan tidak berani bertindak gegabah, sementara bangsa Hu Utara tidak berani melangkahkan kaki sedikit pun ke selatan.
-        </p>
+    <p>
+        Sejak saat itu, ia tidak pernah kembali ke istana.
+    </p>
 
 
-        <p>
-            Lima tahun sebelumnya, Adipati Penjaga Negara, <strong>Gu Chen</strong>, mengajukan permohonan kepada Kaisar untuk ditempatkan menjaga perbatasan demi memberikan tekanan kepada Hu Utara.
-        </p>
+    <p>
+        Sepanjang hidupnya, <strong>Gu Chen</strong> telah terlibat dalam tak terhitung banyaknya peperangan dan menulis tak terhitung banyaknya memorial kepada Kaisar.
+    </p>
 
 
-        <p>
-            Sejak saat itu, ia tidak pernah kembali ke istana.
-        </p>
+    <p>
+        Di tengah badai salju wilayah utara, ia mampu menghadapi seratus ribu pasukan berkuda Hu tanpa sedikit pun mengubah ekspresinya.
+    </p>
 
 
-        <p>
-            Sepanjang hidupnya, <strong>Gu Chen</strong> telah terlibat dalam tak terhitung banyaknya peperangan dan menulis tak terhitung banyaknya memorial kepada Kaisar.
-        </p>
+    <p>
+        Ia memiliki jasa besar, nama baik yang bersih, kepercayaan dari Kaisar, serta penghormatan dari seluruh rakyat.
+    </p>
 
 
-        <p>
-            Di tengah badai salju wilayah utara, ia mampu menghadapi seratus ribu pasukan berkuda Hu tanpa sedikit pun mengubah ekspresinya.
-        </p>
+    <p>
+        Ketika Kaisar mendengar kabar kematiannya, ia menghentikan kegiatan pemerintahan selama tiga hari.
+    </p>
 
 
-        <p>
-            Ia memiliki jasa besar, nama baik yang bersih, kepercayaan dari Kaisar, serta penghormatan dari seluruh rakyat.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> dianugerahi gelar anumerta sebagai Taishi dan Tawei, serta diberikan gelar anumerta “Zhongwu”. Tablet rohnya ditempatkan di Kuil Leluhur Kekaisaran untuk menerima penghormatan bersama para leluhur dan tokoh berjasa.
+    </p>
 
 
-        <p>
-            Ketika Kaisar mendengar kabar kematiannya, ia menghentikan kegiatan pemerintahan selama tiga hari.
-        </p>
+    <p>
+        Seluruh Da Qian, dari rakyat jelata hingga para pejabat istana, berkabung atas kepergiannya.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> dianugerahi gelar anumerta sebagai Taishi dan Tawei, serta diberikan gelar anumerta “Zhongwu”. Tablet rohnya ditempatkan di Kuil Leluhur Kekaisaran untuk menerima penghormatan bersama para leluhur dan tokoh berjasa.
-        </p>
+    <p>
+        Setelah kematiannya, jiwa <strong>Gu Chen</strong> perlahan melayang ke atas, semakin tinggi dan semakin tinggi.
+    </p>
 
 
-        <p>
-            Seluruh Da Qian, dari rakyat jelata hingga para pejabat istana, berkabung atas kepergiannya.
-        </p>
+    <p>
+        Ia melihat para prajurit di dalam kemah militer berlutut memenuhi tanah, tangisan mereka menggema hingga ke langit.
+    </p>
 
 
-        <p>
-            Setelah kematiannya, jiwa <strong>Gu Chen</strong> perlahan melayang ke atas, semakin tinggi dan semakin tinggi.
-        </p>
+    <p>
+        Ia melihat bahwa ribuan li jauhnya, di ibu kota, kain putih tanda berkabung telah digantung di berbagai tempat.
+    </p>
 
 
-        <p>
-            Ia melihat para prajurit di dalam kemah militer berlutut memenuhi tanah, tangisan mereka menggema hingga ke langit.
-        </p>
+    <p>
+        Rakyat bahkan secara sukarela mendirikan meja persembahan di pinggir jalan, menyalakan dupa dan berdoa untuknya.
+    </p>
 
 
-        <p>
-            Ia melihat bahwa ribuan li jauhnya, di ibu kota, kain putih tanda berkabung telah digantung di berbagai tempat.
-        </p>
+    <p>
+        Jiwanya kemudian melayang memasuki istana kekaisaran, lalu masuk ke Kuil Leluhur Kekaisaran.
+    </p>
 
 
-        <p>
-            Rakyat bahkan secara sukarela mendirikan meja persembahan di pinggir jalan, menyalakan dupa dan berdoa untuknya.
-        </p>
+    <p>
+        Asap dupa putih mengepul memenuhi kuil.
+    </p>
 
 
-        <p>
-            Jiwanya kemudian melayang memasuki istana kekaisaran, lalu masuk ke Kuil Leluhur Kekaisaran.
-        </p>
+    <p>
+        Di posisi paling tengah terdapat Taizu, Kaisar Tianyuan, sang pendiri kekaisaran.
+    </p>
 
 
-        <p>
-            Asap dupa putih mengepul memenuhi kuil.
-        </p>
+    <p>
+        Di salah satu sisinya adalah Kaisar Liewu, sang penguasa yang menaklukkan berbagai wilayah dengan menunggang kuda dan menghabiskan seluruh hidupnya dalam peperangan.
+    </p>
 
 
-        <p>
-            Di posisi paling tengah terdapat Taizu, Kaisar Tianyuan, sang pendiri kekaisaran.
-        </p>
+    <p>
+        Di sisi lainnya adalah Kaisar Renshou, yang mendorong rakyat untuk bertani, hidup sederhana, serta mencintai rakyatnya.
+    </p>
 
 
-        <p>
-            Di salah satu sisinya adalah Kaisar Liewu, sang penguasa yang menaklukkan berbagai wilayah dengan menunggang kuda dan menghabiskan seluruh hidupnya dalam peperangan.
-        </p>
+    <p>
+        Tablet roh <strong>Gu Chen</strong> ditempatkan di aula samping, berdampingan dengan beberapa menteri berjasa sejak berdirinya kekaisaran.
+    </p>
 
 
-        <p>
-            Di sisi lainnya adalah Kaisar Renshou, yang mendorong rakyat untuk bertani, hidup sederhana, serta mencintai rakyatnya.
-        </p>
+    <p>
+        Pada tablet itu tertulis:
+    </p>
 
 
-        <p>
-            Tablet roh <strong>Gu Chen</strong> ditempatkan di aula samping, berdampingan dengan beberapa menteri berjasa sejak berdirinya kekaisaran.
-        </p>
+    <p>
+        “Tablet Roh <strong>Gu Chen</strong>, Adipati Penjaga Negara Zhongwu dari Da Qian.”
+    </p>
 
 
-        <p>
-            Pada tablet itu tertulis:
-        </p>
+    <p>
+        Malam tiba.
+    </p>
 
 
-        <p>
-            “Tablet Roh <strong>Gu Chen</strong>, Adipati Penjaga Negara Zhongwu dari Da Qian.”
-        </p>
+    <p>
+        Angin dan salju di luar semakin ganas.
+    </p>
 
 
-        <p>
-            Malam tiba.
-        </p>
+    <p>
+        Tiba-tiba, pintu Kuil Leluhur Kekaisaran terbuka.
+    </p>
 
 
-        <p>
-            Angin dan salju di luar semakin ganas.
-        </p>
+    <p>
+        Seorang pria yang mengenakan pakaian sederhana berwarna hitam masuk ke dalam.
+    </p>
 
 
-        <p>
-            Tiba-tiba, pintu Kuil Leluhur Kekaisaran terbuka.
-        </p>
+    <p>
+        Rambut pria itu telah memutih, punggungnya sedikit membungkuk, dan langkahnya pun tampak tertatih.
+    </p>
 
 
-        <p>
-            Seorang pria yang mengenakan pakaian sederhana berwarna hitam masuk ke dalam.
-        </p>
+    <p>
+        Namun, <strong>Gu Chen</strong> tetap langsung mengenalinya.
+    </p>
 
 
-        <p>
-            Rambut pria itu telah memutih, punggungnya sedikit membungkuk, dan langkahnya pun tampak tertatih.
-        </p>
+    <p>
+        Kaisar Chongsheng, <strong>Li Ce</strong>.
+    </p>
 
 
-        <p>
-            Namun, <strong>Gu Chen</strong> tetap langsung mengenalinya.
-        </p>
+    <p>
+        Yang Mulia kini telah berusia lebih dari enam puluh tahun dan telah menduduki takhta selama lebih dari tiga puluh tahun.
+    </p>
 
 
-        <p>
-            Kaisar Chongsheng, <strong>Li Ce</strong>.
-        </p>
+    <p>
+        Dari seorang pemuda yang dahulu penuh semangat dan ambisi, ia kini telah berubah menjadi seorang penguasa yang mulai memasuki usia senja.
+    </p>
 
 
-        <p>
-            Yang Mulia kini telah berusia lebih dari enam puluh tahun dan telah menduduki takhta selama lebih dari tiga puluh tahun.
-        </p>
+    <p>
+        Ia berjalan menuju tablet roh <strong>Gu Chen</strong> dan berdiri di sana dalam waktu yang sangat lama.
+    </p>
 
 
-        <p>
-            Dari seorang pemuda yang dahulu penuh semangat dan ambisi, ia kini telah berubah menjadi seorang penguasa yang mulai memasuki usia senja.
-        </p>
+    <p>
+        Di dalam Kuil Leluhur Kekaisaran, kini hanya tersisa dua orang—seorang berdiri di atas tanah, sementara seorang lagi melayang di langit, terpisah oleh jarak antara hidup dan mati.
+    </p>
 
 
-        <p>
-            Ia berjalan menuju tablet roh <strong>Gu Chen</strong> dan berdiri di sana dalam waktu yang sangat lama.
-        </p>
+    <p>
+        Kaisar Chongsheng mengeluarkan sebuah kendi arak dan dua cangkir dari lengan bajunya.
+    </p>
 
 
-        <p>
-            Di dalam Kuil Leluhur Kekaisaran, kini hanya tersisa dua orang—seorang berdiri di atas tanah, sementara seorang lagi melayang di langit, terpisah oleh jarak antara hidup dan mati.
-        </p>
+    <p>
+        “Upacara pada siang hari terlalu rumit. Aku tidak menyukainya.”
+    </p>
 
 
-        <p>
-            Kaisar Chongsheng mengeluarkan sebuah kendi arak dan dua cangkir dari lengan bajunya.
-        </p>
+    <p>
+        Ia tersenyum dengan susah payah, tetapi suaranya terdengar sedikit lelah.
+    </p>
 
 
-        <p>
-            “Upacara pada siang hari terlalu rumit. Aku tidak menyukainya.”
-        </p>
+    <p>
+        “Malam ini, aku datang untuk menemanimu minum.”
+    </p>
 
 
-        <p>
-            Ia tersenyum dengan susah payah, tetapi suaranya terdengar sedikit lelah.
-        </p>
+    <p>
+        Ia menuangkan arak ke kedua cangkir hingga penuh.
+    </p>
 
 
-        <p>
-            “Malam ini, aku datang untuk menemanimu minum.”
-        </p>
+    <p>
+        Satu diletakkannya di depan tablet roh <strong>Gu Chen</strong>, sementara satu lagi ia pegang sendiri.
+    </p>
 
 
-        <p>
-            Ia menuangkan arak ke kedua cangkir hingga penuh.
-        </p>
+    <p>
+        “<strong>Gu Aiqing</strong>…”
+    </p>
 
 
-        <p>
-            Satu diletakkannya di depan tablet roh <strong>Gu Chen</strong>, sementara satu lagi ia pegang sendiri.
-        </p>
+    <p>
+        Suaranya sedikit serak.
+    </p>
 
 
-        <p>
-            “<strong>Gu Aiqing</strong>…”
-        </p>
+    <p>
+        “Aku telah mengecewakanmu.”
+    </p>
 
 
-        <p>
-            Suaranya sedikit serak.
-        </p>
+    <p>
+        Ia mendongakkan kepala dan menghabiskan araknya, lalu menuangkan secangkir lagi.
+    </p>
 
 
-        <p>
-            “Aku telah mengecewakanmu.”
-        </p>
+    <p>
+        “Seandainya sejak awal aku tahu wanita keluarga <strong>Liu</strong> itu akan membuat sisa hidupmu begitu penuh kesedihan, seharusnya aku memaksa kalian berdua bercerai dan membiarkanmu menikahi <strong>Hongling</strong>.”
+    </p>
 
 
-        <p>
-            Ia mendongakkan kepala dan menghabiskan araknya, lalu menuangkan secangkir lagi.
-        </p>
+    <p>
+        Jiwa <strong>Gu Chen</strong> tiba-tiba bergetar hebat.
+    </p>
 
 
-        <p>
-            “Seandainya sejak awal aku tahu wanita keluarga <strong>Liu</strong> itu akan membuat sisa hidupmu begitu penuh kesedihan, seharusnya aku memaksa kalian berdua bercerai dan membiarkanmu menikahi <strong>Hongling</strong>.”
-        </p>
+    <p>
+        <strong>Hongling</strong>?
+    </p>
 
 
-        <p>
-            Jiwa <strong>Gu Chen</strong> tiba-tiba bergetar hebat.
-        </p>
+    <p>
+        Putri Junzhu Changning, <strong>Zhao Hongling</strong>?
+    </p>
 
 
-        <p>
-            <strong>Hongling</strong>?
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong> yang sepanjang hidupnya tidak pernah menikah itu?
+    </p>
 
 
-        <p>
-            Putri Junzhu Changning, <strong>Zhao Hongling</strong>?
-        </p>
+    <p>
+        Kaisar Chongsheng menghela napas.
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong> yang sepanjang hidupnya tidak pernah menikah itu?
-        </p>
+    <p>
+        “Sepanjang hidupmu, kau telah memiliki pencapaian luar biasa dalam pemerintahan maupun militer. Awalnya, aku bermaksud menjadikanmu sebagai Kepala Menteri, tetapi lima tahun lalu kau justru bersikeras pergi menjaga perbatasan.”
+    </p>
 
 
-        <p>
-            Kaisar Chongsheng menghela napas.
-        </p>
+    <p>
+        “Kau adalah pedang paling tajam dan paling mudah kugunakan yang kumiliki. Hampir sepanjang hidupku, aku memanfaatkanmu. Aku menyerahkan peperangan yang paling sulit kepadamu dan memberikan tugas-tugas yang paling berat kepadamu.”
+    </p>
 
 
-        <p>
-            “Sepanjang hidupmu, kau telah memiliki pencapaian luar biasa dalam pemerintahan maupun militer. Awalnya, aku bermaksud menjadikanmu sebagai Kepala Menteri, tetapi lima tahun lalu kau justru bersikeras pergi menjaga perbatasan.”
-        </p>
+    <p>
+        “Namun kau tidak pernah mengecewakanku.”
+    </p>
 
 
-        <p>
-            “Kau adalah pedang paling tajam dan paling mudah kugunakan yang kumiliki. Hampir sepanjang hidupku, aku memanfaatkanmu. Aku menyerahkan peperangan yang paling sulit kepadamu dan memberikan tugas-tugas yang paling berat kepadamu.”
-        </p>
+    <p>
+        Kaisar Chongsheng kembali meneguk araknya.
+    </p>
 
 
-        <p>
-            “Namun kau tidak pernah mengecewakanku.”
-        </p>
+    <p>
+        Kemudian ia mengembuskan napas panjang.
+    </p>
 
 
-        <p>
-            Kaisar Chongsheng kembali meneguk araknya.
-        </p>
+    <p>
+        “Di seluruh dunia ini, kaulah orang yang paling memahamiku. Kalau dipikir-pikir, sungguh aneh. Seorang pengungsi dengan latar belakang paling rendah dan seorang Kaisar dengan latar belakang paling mulia, ketika berada di istana, justru selalu dapat memikirkan hal yang sama.”
+    </p>
 
 
-        <p>
-            Kemudian ia mengembuskan napas panjang.
-        </p>
+    <p>
+        Dari luar aula perlahan terdengar suara langkah kaki.
+    </p>
 
 
-        <p>
-            “Di seluruh dunia ini, kaulah orang yang paling memahamiku. Kalau dipikir-pikir, sungguh aneh. Seorang pengungsi dengan latar belakang paling rendah dan seorang Kaisar dengan latar belakang paling mulia, ketika berada di istana, justru selalu dapat memikirkan hal yang sama.”
-        </p>
+    <p>
+        Kali ini jauh lebih ringan daripada sebelumnya.
+    </p>
 
 
-        <p>
-            Dari luar aula perlahan terdengar suara langkah kaki.
-        </p>
+    <p>
+        Langkah seorang perempuan.
+    </p>
 
 
-        <p>
-            Kali ini jauh lebih ringan daripada sebelumnya.
-        </p>
+    <p>
+        Jiwa <strong>Gu Chen</strong> menoleh.
+    </p>
 
 
-        <p>
-            Langkah seorang perempuan.
-        </p>
+    <p>
+        Seorang wanita berdiri di ambang pintu aula.
+    </p>
 
 
-        <p>
-            Jiwa <strong>Gu Chen</strong> menoleh.
-        </p>
+    <p>
+        Ia mengenakan jubah luar berwarna putih polos.
+    </p>
 
 
-        <p>
-            Seorang wanita berdiri di ambang pintu aula.
-        </p>
+    <p>
+        Tudung kepalanya telah diturunkan, memperlihatkan wajah yang telah dipenuhi jejak usia.
+    </p>
 
 
-        <p>
-            Ia mengenakan jubah luar berwarna putih polos.
-        </p>
+    <p>
+        Tidak ada lagi kecantikan luar biasa yang dahulu pernah menghiasi wajah itu.
+    </p>
 
 
-        <p>
-            Tudung kepalanya telah diturunkan, memperlihatkan wajah yang telah dipenuhi jejak usia.
-        </p>
+    <p>
+        Yang tersisa hanyalah keriput yang diukir waktu dan sepasang mata yang masih memancarkan cahaya terang.
+    </p>
 
 
-        <p>
-            Tidak ada lagi kecantikan luar biasa yang dahulu pernah menghiasi wajah itu.
-        </p>
+    <p>
+        Di satu tangannya, ia membawa sebuah lentera.
+    </p>
 
 
-        <p>
-            Yang tersisa hanyalah keriput yang diukir waktu dan sepasang mata yang masih memancarkan cahaya terang.
-        </p>
+    <p>
+        Di tangan lainnya, ia menggenggam seruling bambu.
+    </p>
 
 
-        <p>
-            Di satu tangannya, ia membawa sebuah lentera.
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong>.
+    </p>
 
 
-        <p>
-            Di tangan lainnya, ia menggenggam seruling bambu.
-        </p>
+    <p>
+        Junzhu Changning, yang secara khusus dianugerahi gelar tersebut oleh mendiang Kaisar. Ia memperoleh kehormatan dan kasih sayang kekaisaran yang bahkan melampaui banyak pangeran dan putri.
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong>.
-        </p>
+    <p>
+        Ia adalah putri dari Qingxi Dazhang Gongzhu, adik perempuan Kaisar, dan Jenderal <strong>Zhao Jingxuan</strong>.
+    </p>
 
 
-        <p>
-            Junzhu Changning, yang secara khusus dianugerahi gelar tersebut oleh mendiang Kaisar. Ia memperoleh kehormatan dan kasih sayang kekaisaran yang bahkan melampaui banyak pangeran dan putri.
-        </p>
+    <p>
+        Ia juga sepupu Kaisar, putri sulung keluarga <strong>Zhao</strong> dari kalangan militer, serta pernah dikenal sebagai wanita tercantik nomor satu di ibu kota.
+    </p>
 
 
-        <p>
-            Ia adalah putri dari Qingxi Dazhang Gongzhu, adik perempuan Kaisar, dan Jenderal <strong>Zhao Jingxuan</strong>.
-        </p>
+    <p>
+        Namun entah karena alasan apa, wanita itu tidak pernah menikah sepanjang hidupnya.
+    </p>
 
 
-        <p>
-            Ia juga sepupu Kaisar, putri sulung keluarga <strong>Zhao</strong> dari kalangan militer, serta pernah dikenal sebagai wanita tercantik nomor satu di ibu kota.
-        </p>
+    <p>
+        Meski begitu, ketika memasuki aula, posturnya masih tegap seperti pohon pinus.
+    </p>
 
 
-        <p>
-            Namun entah karena alasan apa, wanita itu tidak pernah menikah sepanjang hidupnya.
-        </p>
+    <p>
+        Setiap langkahnya masih membawa keteguhan dan keberanian khas putri keluarga jenderal.
+    </p>
 
 
-        <p>
-            Meski begitu, ketika memasuki aula, posturnya masih tegap seperti pohon pinus.
-        </p>
+    <p>
+        “Salam kepada Yang Mulia.”
+    </p>
 
 
-        <p>
-            Setiap langkahnya masih membawa keteguhan dan keberanian khas putri keluarga jenderal.
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong> membungkuk sedikit kepada <strong>Li Ce</strong>.
+    </p>
 
 
-        <p>
-            “Salam kepada Yang Mulia.”
-        </p>
+    <p>
+        “Benar saja, kau juga datang.”
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong> membungkuk sedikit kepada <strong>Li Ce</strong>.
-        </p>
+    <p>
+        <strong>Li Ce</strong> mengangguk dan memberikan tempat di depan tablet roh kepada <strong>Zhao Hongling</strong>.
+    </p>
 
 
-        <p>
-            “Benar saja, kau juga datang.”
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong> berjalan menuju tablet roh.
+    </p>
 
 
-        <p>
-            <strong>Li Ce</strong> mengangguk dan memberikan tempat di depan tablet roh kepada <strong>Zhao Hongling</strong>.
-        </p>
+    <p>
+        Ia tidak berlutut.
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong> berjalan menuju tablet roh.
-        </p>
+    <p>
+        Ia juga tidak menyalakan dupa.
+    </p>
 
 
-        <p>
-            Ia tidak berlutut.
-        </p>
+    <p>
+        “<strong>Gu Chen</strong>, di dalam hatiku…”
+    </p>
 
 
-        <p>
-            Ia juga tidak menyalakan dupa.
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong> mengucapkannya kata demi kata.
+    </p>
 
 
-        <p>
-            “<strong>Gu Chen</strong>, di dalam hatiku…”
-        </p>
+    <p>
+        “kau akan selalu menjadi seorang pahlawan besar yang berdiri tegak di antara langit dan bumi.”
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong> mengucapkannya kata demi kata.
-        </p>
+    <p>
+        “Kau tidak tahu, dahulu ketika aku tidak menikah, semua orang di dunia berkata bahwa aku belum menemukan pria yang kucintai.”
+    </p>
 
 
-        <p>
-            “kau akan selalu menjadi seorang pahlawan besar yang berdiri tegak di antara langit dan bumi.”
-        </p>
+    <p>
+        “Padahal, aku sudah menemukannya.”
+    </p>
 
 
-        <p>
-            “Kau tidak tahu, dahulu ketika aku tidak menikah, semua orang di dunia berkata bahwa aku belum menemukan pria yang kucintai.”
-        </p>
+    <p>
+        “Namun pria yang kucintai telah menikahi orang lain sejak dahulu.”
+    </p>
 
 
-        <p>
-            “Padahal, aku sudah menemukannya.”
-        </p>
+    <p>
+        Jiwa <strong>Gu Chen</strong> seolah dihantam sesuatu.
+    </p>
 
 
-        <p>
-            “Namun pria yang kucintai telah menikahi orang lain sejak dahulu.”
-        </p>
+    <p>
+        Di dalam hatinya tiba-tiba muncul gejolak hebat yang mengguncang seluruh dirinya.
+    </p>
 
 
-        <p>
-            Jiwa <strong>Gu Chen</strong> seolah dihantam sesuatu.
-        </p>
+    <p>
+        “Biarkan lagu ini kupersembahkan untukmu.”
+    </p>
 
 
-        <p>
-            Di dalam hatinya tiba-tiba muncul gejolak hebat yang mengguncang seluruh dirinya.
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong> mundur selangkah.
+    </p>
 
 
-        <p>
-            “Biarkan lagu ini kupersembahkan untukmu.”
-        </p>
+    <p>
+        Ia mengangkat seruling bambu ke bibirnya, memejamkan mata, lalu perlahan meniupkannya.
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong> mundur selangkah.
-        </p>
+    <p>
+        Suara seruling pun terdengar.
+    </p>
 
 
-        <p>
-            Ia mengangkat seruling bambu ke bibirnya, memejamkan mata, lalu perlahan meniupkannya.
-        </p>
+    <p>
+        Alunannya begitu sendu dan penuh kepedihan, seolah-olah merupakan mimpi yang telah dipendam seorang perempuan di dalam kamar selama puluhan tahun.
+    </p>
 
 
-        <p>
-            Suara seruling pun terdengar.
-        </p>
+    <p>
+        Suara seruling itu menggema di dalam Kuil Leluhur Kekaisaran yang luas, menembus celah-celah di antara tablet roh, mengitari tiang-tiang dan balok bangunan, lalu naik hingga ke langit-langit tinggi.
+    </p>
 
 
-        <p>
-            Alunannya begitu sendu dan penuh kepedihan, seolah-olah merupakan mimpi yang telah dipendam seorang perempuan di dalam kamar selama puluhan tahun.
-        </p>
+    <p>
+        Pada akhirnya, alunan itu berubah menjadi desahan samar yang nyaris tak terdengar, kemudian menghilang di tengah malam yang diselimuti angin dan salju.
+    </p>
 
 
-        <p>
-            Suara seruling itu menggema di dalam Kuil Leluhur Kekaisaran yang luas, menembus celah-celah di antara tablet roh, mengitari tiang-tiang dan balok bangunan, lalu naik hingga ke langit-langit tinggi.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> tidak pernah menyangka bahwa ada seorang perempuan yang bersedia tidak menikah seumur hidupnya demi dirinya, dan mencintainya sedalam itu.
+    </p>
 
 
-        <p>
-            Pada akhirnya, alunan itu berubah menjadi desahan samar yang nyaris tak terdengar, kemudian menghilang di tengah malam yang diselimuti angin dan salju.
-        </p>
+    <p>
+        Ia tidak tahu apa-apa.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> tidak pernah menyangka bahwa ada seorang perempuan yang bersedia tidak menikah seumur hidupnya demi dirinya, dan mencintainya sedalam itu.
-        </p>
+    <p>
+        Sama seperti ia tidak pernah tahu bahwa <strong>Liu Ruolan</strong> menyukai <strong>Yang Kai Ji</strong>, ia juga tidak pernah tahu bahwa <strong>Zhao Hongling</strong> telah mencintainya sepanjang hidupnya.
+    </p>
 
 
-        <p>
-            Ia tidak tahu apa-apa.
-        </p>
+    <p>
+        Ia telah terbiasa menyaksikan perpisahan antara hidup dan mati.
+    </p>
 
 
-        <p>
-            Sama seperti ia tidak pernah tahu bahwa <strong>Liu Ruolan</strong> menyukai <strong>Yang Kai Ji</strong>, ia juga tidak pernah tahu bahwa <strong>Zhao Hongling</strong> telah mencintainya sepanjang hidupnya.
-        </p>
+    <p>
+        Ia telah membaca seluruh buku di dunia, menghitung dengan cermat setiap jalur pergerakan pasukan musuh.
+    </p>
 
 
-        <p>
-            Ia telah terbiasa menyaksikan perpisahan antara hidup dan mati.
-        </p>
+    <p>
+        Namun satu-satunya hal yang tidak pernah mampu dipahaminya adalah hati seorang perempuan.
+    </p>
 
 
-        <p>
-            Ia telah membaca seluruh buku di dunia, menghitung dengan cermat setiap jalur pergerakan pasukan musuh.
-        </p>
+    <p>
+        Suara seruling itu perlahan merendah.
+    </p>
 
 
-        <p>
-            Namun satu-satunya hal yang tidak pernah mampu dipahaminya adalah hati seorang perempuan.
-        </p>
+    <p>
+        Beberapa nada terakhir terdengar seperti desahan, tetapi juga seperti isak tangis, bergema lama di dalam aula tanpa kunjung menghilang.
+    </p>
 
 
-        <p>
-            Suara seruling itu perlahan merendah.
-        </p>
+    <p>
+        <strong>Zhao Hongling</strong> menurunkan serulingnya.
+    </p>
 
 
-        <p>
-            Beberapa nada terakhir terdengar seperti desahan, tetapi juga seperti isak tangis, bergema lama di dalam aula tanpa kunjung menghilang.
-        </p>
+    <p>
+        “Semoga di kehidupan berikutnya, segalanya berjalan baik untukmu.”
+    </p>
 
 
-        <p>
-            <strong>Zhao Hongling</strong> menurunkan serulingnya.
-        </p>
+    <p>
+        Setelah itu, ia berbalik dan memberi hormat kepada <strong>Li Ce</strong>.
+    </p>
 
 
-        <p>
-            “Semoga di kehidupan berikutnya, segalanya berjalan baik untukmu.”
-        </p>
+    <p>
+        Sambil membawa lenteranya, ia berjalan memasuki angin dan salju.
+    </p>
 
 
-        <p>
-            Setelah itu, ia berbalik dan memberi hormat kepada <strong>Li Ce</strong>.
-        </p>
+    <p>
+        <strong>Li Ce</strong> menatap punggungnya hingga menghilang di balik pintu aula.
+    </p>
 
 
-        <p>
-            Sambil membawa lenteranya, ia berjalan memasuki angin dan salju.
-        </p>
+    <p>
+        Setelah terdiam cukup lama, ia menghela napas pelan.
+    </p>
 
 
-        <p>
-            <strong>Li Ce</strong> menatap punggungnya hingga menghilang di balik pintu aula.
-        </p>
+    <p>
+        “Sepupuku yang satu ini…”
+    </p>
 
 
-        <p>
-            Setelah terdiam cukup lama, ia menghela napas pelan.
-        </p>
+    <p>
+        Tiba-tiba, angin kencang bertiup dari luar aula.
+    </p>
 
 
-        <p>
-            “Sepupuku yang satu ini…”
-        </p>
+    <p>
+        Pintu aula terbanting hingga tertutup.
+    </p>
 
 
-        <p>
-            Tiba-tiba, angin kencang bertiup dari luar aula.
-        </p>
+    <p>
+        Api lampu abadi di dalam aula bergoyang hebat beberapa kali dan hampir padam.
+    </p>
 
 
-        <p>
-            Pintu aula terbanting hingga tertutup.
-        </p>
+    <p>
+        Jiwa <strong>Gu Chen</strong> kembali ditarik oleh kekuatan yang tidak diketahui.
+    </p>
 
 
-        <p>
-            Api lampu abadi di dalam aula bergoyang hebat beberapa kali dan hampir padam.
-        </p>
+    <p>
+        Tubuhnya mulai berputar, naik, lalu jatuh.
+    </p>
 
 
-        <p>
-            Jiwa <strong>Gu Chen</strong> kembali ditarik oleh kekuatan yang tidak diketahui.
-        </p>
+    <p>
+        Segala sesuatu di hadapannya menjadi kabur dan terdistorsi.
+    </p>
 
 
-        <p>
-            Tubuhnya mulai berputar, naik, lalu jatuh.
-        </p>
+    <p>
+        Langit-langit Kuil Leluhur Kekaisaran, tulisan emas pada tablet roh, punggung sang Kaisar yang telah renta, lentera yang semakin menjauh di tengah badai salju…
+    </p>
 
 
-        <p>
-            Segala sesuatu di hadapannya menjadi kabur dan terdistorsi.
-        </p>
+    <p>
+        Dalam sekejap, ia seolah mendengar seseorang memanggil namanya.
+    </p>
 
 
-        <p>
-            Langit-langit Kuil Leluhur Kekaisaran, tulisan emas pada tablet roh, punggung sang Kaisar yang telah renta, lentera yang semakin menjauh di tengah badai salju…
-        </p>
+    <p>
+        Lalu—
+    </p>
 
 
-        <p>
-            Dalam sekejap, ia seolah mendengar seseorang memanggil namanya.
-        </p>
+    <p>
+        “Kakak <strong>Gu</strong>? <strong>Gu Chen</strong>!”
+    </p>
 
 
-        <p>
-            Lalu—
-        </p>
+    <p>
+        Sebuah tangan melambai-lambai di depan matanya.
+    </p>
 
 
-        <p>
-            “Kakak <strong>Gu</strong>? <strong>Gu Chen</strong>!”
-        </p>
+    <p>
+        “Ada apa? Melamun begitu? Jangan-jangan baru minum tiga cangkir sudah mabuk.”
+    </p>
 
 
-        <p>
-            Sebuah tangan melambai-lambai di depan matanya.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> tiba-tiba membuka matanya.
+    </p>
 
 
-        <p>
-            “Ada apa? Melamun begitu? Jangan-jangan baru minum tiga cangkir sudah mabuk.”
-        </p>
+    <p>
+        Ia duduk di depan sebuah meja kayu yang berminyak.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> tiba-tiba membuka matanya.
-        </p>
+    <p>
+        Di hadapannya terdapat tiga piring kecil berisi hidangan sederhana dan sebuah kendi arak keruh.
+    </p>
 
 
-        <p>
-            Ia duduk di depan sebuah meja kayu yang berminyak.
-        </p>
+    <p>
+        Di seberang meja duduk dua orang.
+    </p>
 
 
-        <p>
-            Di hadapannya terdapat tiga piring kecil berisi hidangan sederhana dan sebuah kendi arak keruh.
-        </p>
+    <p>
+        Yang satu memiliki wajah tampan seperti batu giok, dengan ekspresi serius.
+    </p>
 
 
-        <p>
-            Di seberang meja duduk dua orang.
-        </p>
+    <p>
+        Sementara yang lainnya juga memiliki paras yang sangat rupawan. Ia sedang memiringkan kepala sambil menatap <strong>Gu Chen</strong> dan mengayunkan tangannya di depan wajahnya.
+    </p>
 
 
-        <p>
-            Yang satu memiliki wajah tampan seperti batu giok, dengan ekspresi serius.
-        </p>
+    <p>
+        <strong>Yang Kai Ji</strong>.
+    </p>
 
 
-        <p>
-            Sementara yang lainnya juga memiliki paras yang sangat rupawan. Ia sedang memiringkan kepala sambil menatap <strong>Gu Chen</strong> dan mengayunkan tangannya di depan wajahnya.
-        </p>
+    <p>
+        <strong>Pei Zhang</strong>.
+    </p>
 
 
-        <p>
-            <strong>Yang Kai Ji</strong>.
-        </p>
+    <p>
+        Di telinganya terdengar suara orang-orang yang ramai.
+    </p>
 
 
-        <p>
-            <strong>Pei Zhang</strong>.
-        </p>
+    <p>
+        Udara dipenuhi aroma arak dan masakan, bercampur dengan suasana kehidupan manusia yang begitu akrab.
+    </p>
 
 
-        <p>
-            Di telinganya terdengar suara orang-orang yang ramai.
-        </p>
+    <p>
+        <strong>Gu Chen</strong> menunduk dan melihat tangannya.
+    </p>
 
 
-        <p>
-            Udara dipenuhi aroma arak dan masakan, bercampur dengan suasana kehidupan manusia yang begitu akrab.
-        </p>
+    <p>
+        Masih muda.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> menunduk dan melihat tangannya.
-        </p>
+    <p>
+        Kuat.
+    </p>
 
 
-        <p>
-            Masih muda.
-        </p>
+    <p>
+        Tidak ada bintik-bintik penuaan.
+    </p>
 
 
-        <p>
-            Kuat.
-        </p>
+    <p>
+        Tidak ada bekas luka yang memenuhi kulitnya.
+    </p>
 
 
-        <p>
-            Tidak ada bintik-bintik penuaan.
-        </p>
+    <p>
+        Ia teringat waktu ini.
+    </p>
 
 
-        <p>
-            Tidak ada bekas luka yang memenuhi kulitnya.
-        </p>
+    <p>
+        Ujian musim semi pada tahun pertama era Chongsheng telah selesai dan hasilnya akan segera diumumkan.
+    </p>
 
 
-        <p>
-            Ia teringat waktu ini.
-        </p>
+    <p>
+        Saat itu, ia baru berusia delapan belas tahun.
+    </p>
 
 
-        <p>
-            Ujian musim semi pada tahun pertama era Chongsheng telah selesai dan hasilnya akan segera diumumkan.
-        </p>
+    <p>
+        Ia sedang menunggu pengumuman hasil ujian bersama dua sahabat yang baru dikenalnya beberapa hari sebelumnya.
+    </p>
 
 
-        <p>
-            Saat itu, ia baru berusia delapan belas tahun.
-        </p>
+    <p>
+        Di kehidupan ini, ia belum menikahi <strong>Liu Ruolan</strong>.
+    </p>
 
 
-        <p>
-            Ia sedang menunggu pengumuman hasil ujian bersama dua sahabat yang baru dikenalnya beberapa hari sebelumnya.
-        </p>
+    <p>
+        Di kehidupan ini, ia belum bertemu <strong>Zhao Hongling</strong>.
+    </p>
 
 
-        <p>
-            Di kehidupan ini, ia belum menikahi <strong>Liu Ruolan</strong>.
-        </p>
+    <p>
+        Ia masih belum…
+    </p>
 
 
-        <p>
-            Di kehidupan ini, ia belum bertemu <strong>Zhao Hongling</strong>.
-        </p>
+    <p>
+        Tangan <strong>Gu Chen</strong> mulai gemetar.
+    </p>
 
 
-        <p>
-            Ia masih belum…
-        </p>
+    <p>
+        “Kakak <strong>Gu</strong>?”
+    </p>
 
 
-        <p>
-            Tangan <strong>Gu Chen</strong> mulai gemetar.
-        </p>
+    <p>
+        <strong>Pei Zhang</strong> meletakkan sumpitnya dan menatap <strong>Gu Chen</strong> dengan penuh perhatian.
+    </p>
 
 
-        <p>
-            “Kakak <strong>Gu</strong>?”
-        </p>
+    <p>
+        “Kenapa wajahmu terlihat kurang baik?”
+    </p>
 
 
-        <p>
-            <strong>Pei Zhang</strong> meletakkan sumpitnya dan menatap <strong>Gu Chen</strong> dengan penuh perhatian.
-        </p>
+    <p>
+        <strong>Yang Kai Ji</strong> justru berkata dengan wajah penuh kebingungan,
+    </p>
 
 
-        <p>
-            “Kenapa wajahmu terlihat kurang baik?”
-        </p>
+    <p>
+        “Jangan-jangan kau gugup? Tenang saja. Kalau kita bertiga sampai gagal dalam ujian, berarti hanya akan ada sedikit sekali orang yang berhasil lulus dalam ujian musim semi kali ini.”
+    </p>
 
 
-        <p>
-            <strong>Yang Kai Ji</strong> justru berkata dengan wajah penuh kebingungan,
-        </p>
+    <p>
+        <strong>Gu Chen</strong> menatap mereka.
+    </p>
 
 
-        <p>
-            “Jangan-jangan kau gugup? Tenang saja. Kalau kita bertiga sampai gagal dalam ujian, berarti hanya akan ada sedikit sekali orang yang berhasil lulus dalam ujian musim semi kali ini.”
-        </p>
+    <p>
+        Ia menatap kedua sahabatnya yang masih muda itu.
+    </p>
 
 
-        <p>
-            <strong>Gu Chen</strong> menatap mereka.
-        </p>
+    <p>
+        Ia menatap dunia yang masih memberinya kesempatan untuk mengubah segalanya.
+    </p>
 
 
-        <p>
-            Ia menatap kedua sahabatnya yang masih muda itu.
-        </p>
+    <p>
+        Namun, ia tidak mampu berkata apa-apa.
+    </p>
 
 
-        <p>
-            Ia menatap dunia yang masih memberinya kesempatan untuk mengubah segalanya.
-        </p>
+    <p>
+        Tenggorokannya terasa seperti tersumbat oleh sesuatu.
+    </p>
 
 
-        <p>
-            Namun, ia tidak mampu berkata apa-apa.
-        </p>
+    <p>
+        Seolah-olah ada sepuluh ribu kata yang ingin tumpah keluar, tetapi pada akhirnya tidak satu pun mampu ia ucapkan.
+    </p>
 
 
-        <p>
-            Tenggorokannya terasa seperti tersumbat oleh sesuatu.
-        </p>
+    <p>
+        Ia telah terlahir kembali.
+    </p>
 
+</article>
 
-        <p>
-            Seolah-olah ada sepuluh ribu kata yang ingin tumpah keluar, tetapi pada akhirnya tidak satu pun mampu ia ucapkan.
-        </p>
 
+<!-- =========================
+     NAVIGASI BAWAH
+========================= -->
 
-        <p>
-            Ia telah terlahir kembali.
-        </p>
+<nav class="chapter-navigation">
 
-    </article>
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        ← Sebelumnya
+    </a>
 
 
-    <!-- =========================
-         NAVIGASI BAWAH
-    ========================= -->
+    <a
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
 
-    <nav class="chapter-navigation">
 
-        <a
-            href="#"
-            class="chapter-nav-btn disabled"
-        >
-            ← Sebelumnya
-        </a>
+    <a
+        class="chapter-nav-btn"
+        href="bab-2.html"
+    >
+        Selanjutnya →
+    </a>
 
+</nav>
 
-        <a
-            href="../novel/you-rejected-my-honor.html"
-            class="chapter-nav-btn"
-        >
-            Daftar Isi
-        </a>
 
+<!-- =========================
+     KOMENTAR
+========================= -->
 
-        <a
-            class="chapter-nav-btn"
-            href="bab-2.html"
-        >
-            Selanjutnya →
-        </a>
+<section class="comments-section">
 
-    </nav>
+    <h2>
+        Komentar
+    </h2>
 
 
-    <!-- =========================
-         KOMENTAR
-    ========================= -->
+    <div
+        class="giscus"
+        id="giscus-container"
+    ></div>
 
-    <section class="comments-section">
-
-        <h2>
-            Komentar
-        </h2>
-
-
-        <div
-            class="giscus"
-            id="giscus-container"
-        ></div>
-
-    </section>
+</section>
 
 </main>
 
-
+    
 <!-- =========================
      BACK TO TOP
 ========================= -->
 
 <button
-    class="back-to-top"
-    id="backToTop"
-    aria-label="Kembali ke atas"
->
-    ↑
+class="back-to-top"
+id="backToTop"
+aria-label="Kembali ke atas"
+
+«»
+
+↑
+
 </button>
-
-
+    
 <!-- =========================
      FOOTER
 ========================= -->
 
-<footer class="site-footer">
-
-    <div class="footer-title">
-        CN Novel-Translation
-    </div>
+<footer class="site-footer"><div class="footer-title">
+    CN Novel-Translation
+</div>
 
 
-    <div class="footer-links">
+<div class="footer-links">
 
-        <a href="../index.html">
-            Home
-        </a>
-
-
-        <span>
-            •
-        </span>
+    <a href="../index.html">
+        Home
+    </a>
 
 
-        <a
-            href="https://trakteer.id/DhyonPratama"
-            target="_blank"
-            rel="noopener"
-        >
-            Donasi
-        </a>
-
-    </div>
+    <span>
+        •
+    </span>
 
 
-    <div class="copyright">
-        © Copyright 2026-CN Novel-Translation
-    </div>
+    <a
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        Donasi
+    </a>
 
-</footer>
+</div>
 
 
-<!-- =========================
+<div class="copyright">
+    © Copyright 2026-CN Novel-Translation
+</div>
+
+</footer><!-- =========================
      JAVASCRIPT
-========================= -->
-
-<script>
+========================= --><script>
 
 
 /* =====================================================
