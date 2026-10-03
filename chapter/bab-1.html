@@ -2265,13 +2265,32 @@ readerSettingsButton.addEventListener(
    FONT SIZE
 ===================================================== */
 
-let fontSize =
-    Number(
-        localStorage.getItem("fontSize")
-    ) || 18;
+const fontSizeDisplay =
+    document.getElementById("fontSizeDisplay");
+
+const fontDecrease =
+    document.getElementById("fontDecrease");
+
+const fontIncrease =
+    document.getElementById("fontIncrease");
+
+
+function getSavedFontSize() {
+
+    return (
+        Number(
+            localStorage.getItem("fontSize")
+        ) || 18
+    );
+
+}
 
 
 function updateFontSize() {
+
+    const fontSize =
+        getSavedFontSize();
+
 
     const paragraphs =
         document.querySelectorAll(
@@ -2289,32 +2308,17 @@ function updateFontSize() {
     );
 
 
-    document.getElementById(
-        "fontSizeDisplay"
-    ).textContent = fontSize;
-
-
-    localStorage.setItem(
-        "fontSize",
-        fontSize
-    );
-
-}
-
-
-function loadFontSize() {
-
-    fontSize =
-        Number(
-            localStorage.getItem("fontSize")
-        ) || 18;
-
-    updateFontSize();
+    fontSizeDisplay.textContent =
+        fontSize;
 
 }
 
 
 function changeFontSize(amount) {
+
+    let fontSize =
+        getSavedFontSize();
+
 
     fontSize += amount;
 
@@ -2333,14 +2337,18 @@ function changeFontSize(amount) {
     }
 
 
+    localStorage.setItem(
+        "fontSize",
+        fontSize
+    );
+
+
     updateFontSize();
 
 }
 
 
-document.getElementById(
-    "fontDecrease"
-).addEventListener(
+fontDecrease.addEventListener(
     "click",
     function () {
 
@@ -2350,9 +2358,7 @@ document.getElementById(
 );
 
 
-document.getElementById(
-    "fontIncrease"
-).addEventListener(
+fontIncrease.addEventListener(
     "click",
     function () {
 
@@ -2362,17 +2368,16 @@ document.getElementById(
 );
 
 
-/* Muat ukuran font saat halaman pertama dibuka */
-loadFontSize();
+/* Saat pertama membuka chapter */
+updateFontSize();
 
 
-/* Muat ulang ukuran font ketika kembali
-   menggunakan tombol Back HP */
+/* Saat kembali menggunakan tombol Back HP */
 window.addEventListener(
     "pageshow",
     function () {
 
-        loadFontSize();
+        updateFontSize();
 
     }
 );
