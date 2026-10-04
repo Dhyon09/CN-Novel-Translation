@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    
+ <meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Chapter 1 - They Asked You to Interrogate the Saintess, Yet You Made Her Your Dao Companion?</title>
+
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
+
+<style>
+
+    /* =========================
+       NAVIGASI CHAPTER
+    ========================= */
+
+    .chapter-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin: 0 0 16px;
+    }
+
+
+    .chapter-nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 38px;
+
+        padding: 7px 6px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--card);
+        color: var(--text);
+
+        text-decoration: none;
+        text-align: center;
+
+        font-size: 14px;
+        line-height: 1.2;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+
+    .chapter-nav-btn:hover,
+    .chapter-nav-btn:active {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    .chapter-nav-btn.disabled {
+        opacity: 0.45;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       RODA GIGI
+    ========================= */
+
+    .reader-settings-area {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        margin: 2px 0 12px;
+    }
+
+
+    .reader-settings-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .reader-settings-btn:hover,
+    .reader-settings-btn:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    .reader-settings-btn.active {
+        transform: rotate(30deg);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       PENGATURAN FONT
+    ========================= */
+
+    .reader-settings {
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        margin-top: 8px;
+
+        padding: 5px 8px;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+
+        background: var(--card);
+    }
+
+
+    .reader-settings.active {
+        display: flex;
+    }
+
+
+    .reader-settings button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 34px;
+        height: 30px;
+
+        padding: 0 7px;
+
+        border: 1px solid var(--border);
+        border-radius: 5px;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-family: inherit;
+        font-size: 14px;
+
+        cursor: pointer;
+    }
+
+
+    .reader-settings button:hover,
+    .reader-settings button:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    #fontSizeDisplay {
+        min-width: 22px;
+
+        color: var(--text);
+
+        font-size: 14px;
+        text-align: center;
+    }
+
+
+    /* =========================
+       JUDUL CHAPTER
+    ========================= */
+
+    .chapter-heading {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+
+    .chapter-number {
+        margin-bottom: 5px;
+
+        color: var(--secondary);
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+
+    .chapter-heading h1 {
+        margin: 0;
+
+        color: var(--text);
+
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+
+    /* =========================
+       TOMBOL KEMBALI KE ATAS
+    ========================= */
+
+    .back-to-top {
+        position: fixed;
+
+        right: 16px;
+        bottom: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 19px;
+
+        cursor: pointer;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
+
+        z-index: 1000;
+    }
+
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .back-to-top:hover,
+    .back-to-top:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        .chapter-navigation {
+            gap: 5px;
+            margin-bottom: 14px;
+        }
+
+
+        .chapter-nav-btn {
+            min-height: 36px;
+            padding: 6px 4px;
+
+            font-size: 13px;
+        }
+
+
+        .reader-settings-area {
+            margin-top: 1px;
+            margin-bottom: 11px;
+        }
+
+
+        .reader-settings-btn {
+            width: 35px;
+            height: 35px;
+
+            font-size: 17px;
+        }
+
+
+        .chapter-heading {
+            margin-bottom: 22px;
+        }
+
+
+        .chapter-number {
+            font-size: 14px;
+        }
+
+
+        .chapter-heading h1 {
+            font-size: 22px;
+        }
+
+
+        .back-to-top {
+            right: 14px;
+            bottom: 15px;
+
+            width: 38px;
+            height: 38px;
+
+            font-size: 18px;
+        }
+
+    }
+
+</style>
+
+</head>
+    
+<body>
+    
+<!-- =========================
+     HEADER
+========================= -->
+    
+    <header class="site-header">
+        
+    <div class="header-left">
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+</div>
+
+
+<a
+    href="../index.html"
+    class="site-title"
+>
+    CN Novel-Translation
+</a>
+
+
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
+
+</header>
+    
+<!-- =========================
+     MENU
+========================= -->
+    
+    <div
+    class="menu-overlay"
+    id="menuOverlay"
+>
+        
+</div>
+    <nav
+    class="side-menu"
+    id="sideMenu"
+>
+    <div class="menu-header">
+
+    <span>
+        Menu
+    </span>
+
+
+    <button
+        class="menu-close"
+        id="menuClose"
+        aria-label="Tutup menu"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- NOVEL -->
+
+<div
+    class="menu-parent"
+    id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+>
+
+    <span>
+        Novel
+    </span>
+
+
+    <span class="menu-arrow">
+        ›
+    </span>
+
+</div>
+
+
+<div
+    class="novel-submenu"
+    id="novelSubmenu"
+>
+
+    <a href="../novel/on-going.html">
+        On-going
+    </a>
+
+
+    <a href="../novel/completed.html">
+        Completed
+    </a>
+
+
+    <a href="../novel/hiatus.html">
+        Hiatus
+    </a>
+
+
+    <a href="../novel/drop.html">
+        Drop
+    </a>
+
+</div>
+
+
+<!-- BOOKMARK -->
+
+<a
+    href="../bookmark.html"
+    class="menu-item"
+>
+    Bookmark
+</a>
+
+
+<!-- DONASI -->
+
+<a
+    href="https://trakteer.id/DhyonPratama"
+    class="menu-item"
+    target="_blank"
+    rel="noopener"
+>
+    Donasi
+</a>
+
+
+<!-- LOGIN -->
+
+<a
+    href="#login"
+    class="menu-item"
+>
+    Login
+</a>
+
+</nav>
+    
+<!-- =========================
+     GLOBAL SEARCH
+========================= -->
+    
+    <div class="global-search-bar">
+        
+    <div class="global-search-inner">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
+        </span>
+
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul novel..."
+            autocomplete="off"
+        >
+
+    </div>
+
+</div>
+
+</div>
+    
+<!-- =========================
+     READER
+========================= -->
+    
+    <main class="reader-container">
+    
+ <!-- =========================
+     NAVIGASI ATAS
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="#"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/they-asked-you-to-interrogate-the-saintess.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     PENGATURAN PEMBACA
+========================= -->
+
+<div class="reader-settings-area">
+
+    <button
+        class="reader-settings-btn"
+        id="readerSettingsButton"
+        aria-label="Pengaturan pembaca"
+        aria-expanded="false"
+    >
+        ⚙️
+    </button>
+
+
+    <div
+        id="readerSettings"
+        class="reader-settings"
+    >
+
+        <button
+            id="fontDecrease"
+            aria-label="Perkecil ukuran teks"
+        >
+            A−
+        </button>
+
+
+        <span id="fontSizeDisplay">
+            18
+        </span>
+
+
+        <button
+            id="fontIncrease"
+            aria-label="Perbesar ukuran teks"
+        >
+            A+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JUDUL CHAPTER
+========================= -->
+
+<div class="chapter-heading">
+
+    <div class="chapter-number">
+        Chapter 1
+    </div>
+
+
+    <h1>
+        Interogasi, Sesak
+    </h1>
+
+</div>
+
+
+<!-- =========================
+     ISI NOVEL
+========================= -->
+
+<article class="reader">
+
+<p>Kesadaran <strong>Yun Qingyao</strong> perlahan muncul dari kekacauan.</p>
+<p>Dengungan terdengar di telinganya, disusul suara tetesan air yang datang dari tempat yang sangat jauh. Setetes, lalu setetes lagi.</p>
+<p>Dia mencoba beberapa kali sebelum akhirnya membuka mata. Pandangannya masih kabur, hanya terlihat seberkas cahaya hijau redup yang bergoyang-goyang.</p>
+<p>Udara dipenuhi aroma besi berkarat.</p>
+<p>Bercampur dengan sedikit aroma amis dan manis yang sangat samar, manis hingga terasa pahit, dengan bau yang begitu menusuk.</p>
+<p>Apakah itu darah?</p>
+<p>Rasa dingin merembes dari lempengan batu di bawah tubuhnya, menembus pakaian tipis dan meresap hingga ke tulang.</p>
+<p>Dia menggerakkan jarinya. Ujung jarinya menyentuh permukaan batu yang kasar.</p>
+<p>Sesuatu menekan pergelangan tangannya, berat dan keras.</p>
+<p>Hal yang sama juga terjadi pada pergelangan kakinya.</p>
+<p>Apakah itu rantai?</p>
+<p>Satu-satunya kabar baik adalah... energi spiritualnya masih ada.</p>
+<p>Secara naluriah dia menghela napas lega dan menggerakkan dantian-nya. Namun, energi spiritual itu tertahan di dalam meridian dan mengalir dengan sangat lambat.</p>
+<p><strong>Yun Qingyao</strong> mencoba berkali-kali. Setiap kali energi itu hampir mengalir menuju meridian jantung, sebuah kekuatan dari luar selalu mengalihkannya. Seolah-olah seseorang berada di balik kehampaan, dengan santai menekan titik nadinya.</p>
+<p>Hal itu membuat <strong>Yun Qingyao</strong> sepenuhnya tersadar.</p>
+<p>Dia tidak terburu-buru mengangkat kepala. Dia sedikit memalingkan wajah untuk menghindari cahaya hijau redup itu, membiarkan matanya perlahan menyesuaikan diri.</p>
+<p>Sejauh pandangannya, terlihat dinding batu berwarna biru kehitaman yang sangat tinggi. Dia bahkan tidak dapat melihat bagian atasnya ketika mendongak. Permukaannya dipenuhi bekas ukiran yang sudah berbintik-bintik.</p>
+<p>Cahaya hijau turun dari atas, membuat seluruh ruangan dipenuhi warna yang terasa tidak sehat.</p>
+<p>Dia melihat seseorang.</p>
+<p>Orang itu duduk sekitar satu zhang di depannya.</p>
+<p>Sebuah kursi kayu tanpa sandaran, kokoh dan stabil.</p>
+<p>Orang itu duduk tegak, kedua tangannya diletakkan di atas lutut.</p>
+<p>Jubah hitam yang sudah tua, dengan ujung lengan yang sangat ketat. Bagian pergelangan tangan yang terlihat tampak pucat di bawah cahaya hijau redup.</p>
+<p>Hal yang paling mencolok adalah topeng di wajahnya.</p>
+<p>Seluruhnya berwarna perunggu gelap, membentang dari dahi hingga dagu dan menutupi seluruh wajahnya dengan rapat.</p>
+<p>Permukaan topeng dihiasi pola-pola yang sangat halus. Pola wajah binatang dan pola awan-petir saling berjalin, memantulkan kilau dingin berwarna hijau kebiruan di bawah cahaya hijau pucat.</p>
+<p>Dia hanya memperlihatkan sepasang mata yang tersembunyi di balik bayangan.</p>
+<p>Orang itu pasti sudah duduk seperti itu sebelum dia sadar.</p>
+<p>“Sudah bangun?”</p>
+<p><strong>Yun Qingyao</strong> tidak mengalihkan pandangannya. Dia tidak menjawab.</p>
+<p>“<strong>Yun Qingyao</strong>, Saintess dari Sekte Xuantian, dengan kultivasi <strong>Late Golden Core</strong>, pemimpin generasi muda dari jalan lurus. Benar begitu?”</p>
+<p><strong>Yun Qingyao</strong> tetap diam.</p>
+<p>Pria bertopeng itu juga hanya menatapnya.</p>
+<p>Keheningan di antara mereka perlahan dipenuhi hawa dingin, membuat suasana di ruang batu itu semakin berat.</p>
+<p>Setelah beberapa lama, orang itu bergerak.</p>
+<p>Dia mengeluarkan sebuah lempengan giok dari lengan bajunya. Seluruh permukaannya tampak halus dan hangat, dengan satu karakter <strong>临</strong> terukir di atasnya.</p>
+<p>“Lempengan giok ini terus kau genggam saat pingsan. Kurasa, benda ini sangat penting bagimu.”</p>
+<p>Suaranya tidak keras.</p>
+<p>“Karena itu, aku hanya ingin menanyakan satu hal, apa tujuanmu datang ke sini?”</p>
+<p><strong>Yun Qingyao</strong> menatapnya tanpa menjawab.</p>
+<p>Tatapannya sangat tenang.</p>
+<p>Tenang tanpa sedikit pun riak.</p>
+<p><strong>Jiang Linyuan</strong> menunggu beberapa saat, lalu memasukkan kembali lempengan giok itu ke dalam lengan bajunya dengan gerakan santai.</p>
+<p>“Kalau begitu, aku akan mengganti pertanyaannya.”</p>
+<p>Dia berkata, “Dari mana kau datang sepanjang perjalanan ini?”</p>
+<p>“Siapa yang membantumu masuk ke sini?”</p>
+<p>Tetap tidak ada jawaban.</p>
+<p>Bahkan <strong>Yun Qingyao</strong> tidak mengubah posisinya sedikit pun. Punggungnya tetap tegak, sementara rantai terjuntai longgar di pergelangan tangannya.</p>
+<p>Dia hanya menatapnya dengan tatapan yang sangat tenang sekaligus sangat dingin.</p>
+<p><strong>Jiang Linyuan</strong> terdiam sejenak, lalu tiba-tiba berdiri dari kursinya.</p>
+<p>Dia merapikan lengan jubahnya dan melangkah maju.</p>
+<p>Dia berhenti tepat di hadapannya.</p>
+<p>“Kau tidak mau bicara karena masih menganggap dirimu sebagai Saintess dari Sekte Xuantian?”</p>
+<p>Nada suaranya tetap tenang.</p>
+<p>“Tapi ini adalah Ruang Wenxin. Aturan di sini berbeda dengan semua yang pernah kau temui sebelumnya.”</p>
+<p>Dia sedikit membungkuk, mata di balik topengnya bertemu dengan tatapan <strong>Yun Qingyao</strong>.</p>
+<p>“Apakah kau masih bisa keluar dari sini suatu hari nanti atau tidak, sama sekali tidak berkaitan dengan bagaimana kau menjawab pertanyaanku.”</p>
+<p>“Semuanya hanya bergantung pada... suasana hatiku.”</p>
+<p>Suaranya sangat lembut.</p>
+<p><strong>Yun Qingyao</strong> tetap menatapnya, wajahnya tidak menunjukkan sedikit pun perubahan.</p>
+<p>Beberapa saat kemudian, dia akhirnya membuka mulut. Suaranya dingin dan tajam.</p>
+<p>“Bajingan dari jalan iblis, jangan bermimpi.”</p>
+<p><strong>Jiang Linyuan</strong> tidak berkata apa-apa. Dia meluruskan tubuh, mundur, lalu kembali duduk di kursi kayu.</p>
+<p>Dia tidak menunjukkan kemarahan ataupun ekspresi tersinggung.</p>
+<p>Dia hanya duduk dengan tenang.</p>
+<p>Di ruang interogasi, hanya tersisa suara tetesan air.</p>
+<p><strong>Yun Qingyao</strong> menutup matanya. Bahkan untuk melihatnya lagi pun dia tidak sudi.</p>
+<p>Napasnya tetap tenang dan posturnya tetap tegap. Selain beberapa helai rambut berantakan yang jatuh di sisi wajahnya dan bekas tipis pada leher akibat gesekan rantai, hampir tidak terlihat sedikit pun tanda bahwa dia berada dalam keadaan menyedihkan.</p>
+<p>Waktu berlalu sedikit demi sedikit.</p>
+<p><strong>Jiang Linyuan</strong> menyipitkan matanya.</p>
+<p>Dia menatapnya.</p>
+<p>Seolah-olah telah menunggu cukup lama, dia kembali membuka mulut.</p>
+<p>“Kau tidak datang ke sini sendirian. Di mana rekan-rekanmu?”</p>
+<p>Dia kembali berbicara, suaranya tetap sama seperti sebelumnya, tidak tinggi dan tidak rendah.</p>
+<p><strong>Yun Qingyao</strong> tidak membuka mata.</p>
+<p>Namun, <strong>Jiang Linyuan</strong> tidak berniat melepaskannya.</p>
+<p>“Kau punya rekan.”</p>
+<p>Dia melanjutkan dengan nada penuh keyakinan, “Dan mereka sama sekali tidak mungkin meninggalkanmu sendirian.”</p>
+<p>“Aku tidak punya rekan.”</p>
+<p><strong>Yun Qingyao</strong> membuka mata. Tatapannya langsung mengarah kepadanya, setiap katanya diucapkan dengan jelas.</p>
+<p>“Kalau mau membunuhku, bunuh saja. Jangan banyak bertanya.”</p>
+<p><strong>Jiang Linyuan</strong> tidak menjawab lagi.</p>
+<p>Dia hanya menatapnya dalam waktu yang lama.</p>
+<p>Matanya sangat terang. Di bawah cahaya hijau redup itu, tidak terlihat sedikit pun tanda bahwa dia akan menyerah.</p>
+<p>Dia tiba-tiba berdiri dan kembali berjalan ke hadapannya.</p>
+<p>Kali ini dia berjalan lebih dekat, begitu dekat hingga ujung sepatunya hampir bersentuhan dengan tubuhnya.</p>
+<p>Rantai dan lantai batu membuatnya tidak bisa mundur. Dia hanya bisa mendongakkan kepala, memperlihatkan seluruh lehernya.</p>
+<p>Dia berdiri, sementara dia duduk.</p>
+<p>“Tidak masalah kalau sekarang kau tidak mau menjawabku.”</p>
+<p>Katanya.</p>
+<p>“Aku punya banyak cara untuk membuatmu membuka mulut.”</p>
+<p><strong>Yun Qingyao</strong> tidak berkata apa-apa. Dia hanya mendongakkan kepala dan menatapnya.</p>
+<p>Di matanya tidak ada permohonan ataupun sedikit pun rasa takut.</p>
+<p>Hanya kemarahan.</p>
+<p><strong>Jiang Linyuan</strong> mengangkat tangannya. Di bawah cahaya hijau redup, kelima jarinya tampak panjang.</p>
+<p>Dia membalik tangannya dan membentuk segel.</p>
+<p>Segel pada tubuh <strong>Yun Qingyao</strong> seketika mulai bereaksi.</p>
+<p>Puluhan pola hitam kecil muncul dari belenggu di tangan dan kakinya, lalu bergerak menyusuri kulit dan menembus ke dalam meridiannya.</p>
+<p>Rasa sakit yang hebat menyerang seluruh tubuhnya secara bersamaan, dingin dan ngilu hingga menembus tulang.</p>
+<p>Tubuh <strong>Yun Qingyao</strong> tertekuk ke belakang. Punggungnya membentur lantai batu yang dingin, sementara pinggangnya melengkung ke atas secara tiba-tiba.</p>
+<p>Dia menggigit bibir bawahnya.</p>
+<p>Tidak mengeluarkan suara.</p>
+<p>Keringat dingin yang halus mulai muncul di dahinya. Beberapa helai rambut yang basah menempel di sisi wajahnya, membuat wajahnya tampak semakin pucat.</p>
+<p>Seluruh tubuhnya gemetar. Rantai di tubuhnya mengeluarkan getaran yang sangat halus, tetapi dia tetap tidak mengeluarkan suara sedikit pun.</p>
+<p>Sepasang mata yang selalu dingin itu masih terbuka dengan keras kepala, menatap wajah <strong>Jiang Linyuan</strong> tanpa berkedip.</p>
+<p>Namun, <strong>Jiang Linyuan</strong> membungkuk. Satu tangannya menekan bahunya, sementara tangan lainnya menyibak rambutnya yang berantakan, lalu kelima jarinya mencengkeram lehernya.</p>
+<p>Jika kultivasinya masih ada, sesak seperti ini tentu tidak akan mampu memengaruhi <strong>Yun Qingyao</strong>.</p>
+<p>Namun saat ini, dia membuka mulut, tetapi tidak mampu menghirup sedikit pun udara. Dadanya naik turun dengan hebat, tetapi tidak ada udara yang masuk.</p>
+<p>Tubuhnya mulai kehilangan kendali akibat rasa sakit dan sesak yang bercampur menjadi satu. Pinggangnya melengkung ke atas tanpa bisa dikendalikan.</p>
+<p>Pandangannya mulai kabur.</p>
+<p>Topeng perunggu itu bergoyang di depan matanya, begitu dekat hingga setiap pola di permukaannya terlihat jelas.</p>
+<p>Dia mengatupkan gigi dan mengerahkan sisa tenaga terakhirnya untuk memaksakan dua kata keluar dari tenggorokannya.</p>
+<p>“Ba... jingan...”</p>
+<p>Kesadarannya runtuh sedikit demi sedikit, sementara dengungan di telinganya menelan segala sesuatu.</p>
+<p>Tepat ketika dia mengira dirinya akan mati seperti itu, tangan yang mencengkeram lehernya terlepas.</p>
+<p>Udara masuk ke paru-parunya, disertai rasa perih yang kuat.</p>
+<p><strong>Yun Qingyao</strong> tiba-tiba terbatuk-batuk dan tubuhnya meringkuk ke depan.</p>
+<p>Air mata bercampur keringat mengalir dari sudut matanya, membuat wajahnya tampak berantakan.</p>
+<p>Dia terengah-engah, dadanya naik turun dengan hebat. Lima bekas jari yang jelas terlihat muncul di lehernya.</p>
+<p>Warna kemerahan akibat sesak menjalar dari belakang telinganya hingga ke tulang selangka.</p>
+<p>Bibirnya sedikit terbuka, basah berkilau oleh keringat dingin dan air mata. Di sudut bibirnya masih terdapat sedikit bekas darah akibat gigitan yang tadi dibuatnya.</p>
+<p>Kedua matanya berkabut oleh air mata. Ujung matanya memerah, sementara butiran air mata menggantung di bulu matanya, seolah hendak jatuh tetapi masih tertahan. Namun, dia tetap memaksakan matanya untuk terbuka, pandangannya sudah buyar.</p>
+<p>Dia terduduk lemas di sana, keempat anggota tubuhnya masih tertahan oleh rantai.</p>
+<p><strong>Jiang Linyuan</strong> meluruskan tubuhnya dan mundur selangkah.</p>
+<p>Napasnya tetap tenang.</p>
+<p>Setidaknya, begitulah yang terdengar.</p>
+<p>“Hari ini cukup sampai di sini.”</p>
+<p>“Aku harap, besok mulutmu masih sekeras sekarang.”</p>
+<p>Katanya.</p>
+<p>Meski orang itu berada tepat di hadapannya, suaranya terdengar seolah datang dari tempat yang sangat jauh.</p>
+<p><strong>Yun Qingyao</strong> sudah tidak memiliki tenaga untuk mengangkat kepala. Dia hanya mendengar suara engsel pintu yang berputar, lalu semuanya kembali sunyi.</p>
+<p>……</p>
+<p>……</p>
+
+</article>
+
+
+<!-- =========================
+     NAVIGASI BAWAH
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="#"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/they-asked-you-to-interrogate-the-saintess.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     KOMENTAR
+========================= -->
+
+<section class="comments-section">
+
+    <h2>
+        Komentar
+    </h2>
+
+
+    <div
+        class="giscus"
+        id="giscus-container"
+    >
+        
+    </div>
+
+</section>
+
+</main>
+    
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
+    
+<button
+class="back-to-top"
+id="backToTop"
+aria-label="Kembali ke atas">
+
+↑
+
+ </button>
+   
+<!-- =========================
+     FOOTER
+========================= -->
+   
+    <footer class="site-footer">
+    
+    <div class="footer-title">
+    CN Novel-Translation
+</div>
+
+
+<div class="footer-links">
+
+    <a href="../index.html">
+        Home
+    </a>
+
+
+    <span>
+        •
+    </span>
+
+
+    <a
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        Donasi
+    </a>
+
+</div>
+
+
+<div class="copyright">
+    © Copyright 2026-CN Novel-Translation
+</div>
+
+</footer>
+    
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+    
+    <script>
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const menuClose =
+    document.getElementById("menuClose");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const menuNovel =
+    document.getElementById("menuNovel");
+
+const novelSubmenu =
+    document.getElementById("novelSubmenu");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
+
+
+function closeNovelSubmenu() {
+
+    novelSubmenu.classList.remove("active");
+
+    menuNovel.classList.remove("active");
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+function closeMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    closeNovelSubmenu();
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+function toggleNovelSubmenu() {
+
+    const isActive =
+        novelSubmenu.classList.toggle("active");
+
+
+    menuNovel.classList.toggle(
+        "active",
+        isActive
+    );
+
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        isActive
+    );
+
+}
+
+
+menuNovel.addEventListener(
+    "click",
+    toggleNovelSubmenu
+);
+
+
+menuNovel.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            toggleNovelSubmenu();
+
+        }
+
+    }
+);
+
+
+const menuLinks =
+    sideMenu.querySelectorAll("a");
+
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function () {
+
+            closeMenu();
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function loadTheme() {
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "🌙";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            themeButton.textContent = "🌙";
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            themeButton.textContent = "☀️";
+
+        }
+
+
+        updateGiscusTheme();
+
+    }
+);
+
+
+loadTheme();
+
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        loadTheme();
+
+        updateGiscusTheme();
+
+        updateFontSize();
+
+    }
+);
+
+
+/* =====================================================
+   READER SETTINGS
+===================================================== */
+
+const readerSettingsButton =
+    document.getElementById(
+        "readerSettingsButton"
+    );
+
+
+const readerSettings =
+    document.getElementById(
+        "readerSettings"
+    );
+
+
+readerSettingsButton.addEventListener(
+    "click",
+    function () {
+
+        const isActive =
+            readerSettings.classList.toggle(
+                "active"
+            );
+
+
+        readerSettingsButton.classList.toggle(
+            "active",
+            isActive
+        );
+
+
+        readerSettingsButton.setAttribute(
+            "aria-expanded",
+            isActive
+        );
+
+    }
+);
+
+
+/* =====================================================
+   FONT SIZE
+===================================================== */
+
+const fontSizeDisplay =
+    document.getElementById(
+        "fontSizeDisplay"
+    );
+
+
+const fontDecrease =
+    document.getElementById(
+        "fontDecrease"
+    );
+
+
+const fontIncrease =
+    document.getElementById(
+        "fontIncrease"
+    );
+
+
+function getSavedFontSize() {
+
+    return (
+        Number(
+            localStorage.getItem("fontSize")
+        ) || 18
+    );
+
+}
+
+
+function updateFontSize() {
+
+    const fontSize =
+        getSavedFontSize();
+
+
+    const paragraphs =
+        document.querySelectorAll(
+            ".reader p"
+        );
+
+
+    paragraphs.forEach(
+        function (paragraph) {
+
+            paragraph.style.fontSize =
+                fontSize + "px";
+
+        }
+    );
+
+
+    fontSizeDisplay.textContent =
+        fontSize;
+
+}
+
+
+function changeFontSize(amount) {
+
+    let fontSize =
+        getSavedFontSize();
+
+
+    fontSize += amount;
+
+
+    if (fontSize < 14) {
+
+        fontSize = 14;
+
+    }
+
+
+    if (fontSize > 28) {
+
+        fontSize = 28;
+
+    }
+
+
+    localStorage.setItem(
+        "fontSize",
+        fontSize
+    );
+
+
+    updateFontSize();
+
+}
+
+
+fontDecrease.addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(-1);
+
+    }
+);
+
+
+fontIncrease.addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(1);
+
+    }
+);
+
+
+/* Saat pertama membuka chapter */
+updateFontSize();
+
+
+/* Saat kembali menggunakan tombol Back HP */
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        updateFontSize();
+
+    }
+);
+
+
+/* =====================================================
+   BACAAN TERAKHIR
+===================================================== */
+
+const lastReadStorageKey =
+    "lastRead_TheyAskedYouToInterrogateTheSaintess";
+
+
+localStorage.setItem(
+    lastReadStorageKey,
+    "1"
+);
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+searchInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+            &&
+            searchInput.value.trim() !== ""
+        ) {
+
+            const query =
+                encodeURIComponent(
+                    searchInput.value.trim()
+                );
+
+
+            window.location.href =
+                "../index.html?search=" +
+                query;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backToTop =
+    document.getElementById(
+        "backToTop"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add(
+                "show"
+            );
+
+        } else {
+
+            backToTop.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+backToTop.addEventListener(
+    "click",
+    function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+/* =====================================================
+   GISCUS
+===================================================== */
+
+function loadGiscus() {
+
+    const container =
+        document.getElementById(
+            "giscus-container"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    if (
+        container.querySelector("script")
+    ) {
+
+        return;
+
+    }
+
+
+    const script =
+        document.createElement("script");
+
+
+    script.src =
+        "https://giscus.app/client.js";
+
+
+    script.setAttribute(
+        "data-repo",
+        "Dhyon09/cn-novel-translation"
+    );
+
+
+    script.setAttribute(
+        "data-repo-id",
+        "R_kgDOU4Dcig"
+    );
+
+
+    script.setAttribute(
+        "data-category",
+        "General"
+    );
+
+
+    script.setAttribute(
+        "data-category-id",
+        "DIC_kwDOU4Dcis4DG3Ff"
+    );
+
+
+    script.setAttribute(
+        "data-mapping",
+        "pathname"
+    );
+
+
+    script.setAttribute(
+        "data-strict",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-reactions-enabled",
+        "1"
+    );
+
+
+    script.setAttribute(
+        "data-emit-metadata",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-input-position",
+        "bottom"
+    );
+
+
+    script.setAttribute(
+        "data-theme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+
+
+    script.setAttribute(
+        "data-lang",
+        "id"
+    );
+
+
+    script.setAttribute(
+        "data-loading",
+        "lazy"
+    );
+
+
+    script.crossOrigin =
+        "anonymous";
+
+
+    script.async = true;
+
+
+    container.appendChild(script);
+
+}
+
+
+function updateGiscusTheme() {
+
+    const iframe =
+        document.querySelector(
+            "iframe.giscus-frame"
+        );
+
+
+    if (!iframe) {
+
+        return;
+
+    }
+
+
+    const theme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+
+    iframe.contentWindow.postMessage(
+        {
+            giscus: {
+
+                setConfig: {
+
+                    theme: theme
+
+                }
+
+            }
+
+        },
+        "https://giscus.app"
+    );
+
+}
+
+
+loadGiscus();
+
+</script>
+
+</body>
+
+</html>
