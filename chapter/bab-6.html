@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    
+ <meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Chapter 6 - You Rejected My Honor, So in My Next Life, I'll Marry the Junzhu</title>
+
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
+
+<style>
+
+    /* =========================
+       NAVIGASI CHAPTER
+    ========================= */
+
+    .chapter-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin: 0 0 16px;
+    }
+
+
+    .chapter-nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 38px;
+
+        padding: 7px 6px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--card);
+        color: var(--text);
+
+        text-decoration: none;
+        text-align: center;
+
+        font-size: 14px;
+        line-height: 1.2;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+
+    .chapter-nav-btn:hover,
+    .chapter-nav-btn:active {
+        border-color: var(--primary);
+        background: var(--bg);
+        color: var(--primary);
+    }
+
+
+    .chapter-nav-btn.disabled {
+        opacity: 0.45;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       RODA GIGI
+    ========================= */
+
+    .reader-settings-area {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        margin: 2px 0 12px;
+    }
+
+
+    .reader-settings-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .reader-settings-btn:hover,
+    .reader-settings-btn:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    .reader-settings-btn.active {
+        transform: rotate(30deg);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       PENGATURAN FONT
+    ========================= */
+
+    .reader-settings {
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        margin-top: 8px;
+
+        padding: 5px 8px;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+
+        background: var(--card);
+    }
+
+
+    .reader-settings.active {
+        display: flex;
+    }
+
+
+    .reader-settings button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 34px;
+        height: 30px;
+
+        padding: 0 7px;
+
+        border: 1px solid var(--border);
+        border-radius: 5px;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-family: inherit;
+        font-size: 14px;
+
+        cursor: pointer;
+    }
+
+
+    .reader-settings button:hover,
+    .reader-settings button:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    #fontSizeDisplay {
+        min-width: 22px;
+
+        color: var(--text);
+
+        font-size: 14px;
+        text-align: center;
+    }
+
+
+    /* =========================
+       JUDUL CHAPTER
+    ========================= */
+
+    .chapter-heading {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+
+    .chapter-number {
+        margin-bottom: 5px;
+
+        color: var(--secondary);
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+
+    .chapter-heading h1 {
+        margin: 0;
+
+        color: var(--text);
+
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+
+    /* =========================
+       TOMBOL KEMBALI KE ATAS
+    ========================= */
+
+    .back-to-top {
+        position: fixed;
+
+        right: 16px;
+        bottom: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 19px;
+
+        cursor: pointer;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
+
+        z-index: 1000;
+    }
+
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .back-to-top:hover,
+    .back-to-top:active {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        .chapter-navigation {
+            gap: 5px;
+            margin-bottom: 14px;
+        }
+
+
+        .chapter-nav-btn {
+            min-height: 36px;
+            padding: 6px 4px;
+
+            font-size: 13px;
+        }
+
+
+        .reader-settings-area {
+            margin-top: 1px;
+            margin-bottom: 11px;
+        }
+
+
+        .reader-settings-btn {
+            width: 35px;
+            height: 35px;
+
+            font-size: 17px;
+        }
+
+
+        .chapter-heading {
+            margin-bottom: 22px;
+        }
+
+
+        .chapter-number {
+            font-size: 14px;
+        }
+
+
+        .chapter-heading h1 {
+            font-size: 22px;
+        }
+
+
+        .back-to-top {
+            right: 14px;
+            bottom: 15px;
+
+            width: 38px;
+            height: 38px;
+
+            font-size: 18px;
+        }
+
+    }
+
+</style>
+
+</head>
+    
+<body>
+    
+<!-- =========================
+     HEADER
+========================= -->
+    
+    <header class="site-header">
+        
+    <div class="header-left">
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+</div>
+
+
+<a
+    href="../index.html"
+    class="site-title"
+>
+    CN Novel-Translation
+</a>
+
+
+<div class="header-right">
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="Ganti tema"
+    >
+        ☀️
+    </button>
+
+</div>
+
+</header>
+    
+<!-- =========================
+     MENU
+========================= -->
+    
+    <div
+    class="menu-overlay"
+    id="menuOverlay"
+>
+        
+</div>
+    <nav
+    class="side-menu"
+    id="sideMenu"
+>
+    <div class="menu-header">
+
+    <span>
+        Menu
+    </span>
+
+
+    <button
+        class="menu-close"
+        id="menuClose"
+        aria-label="Tutup menu"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- NOVEL -->
+
+<div
+    class="menu-parent"
+    id="menuNovel"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+>
+
+    <span>
+        Novel
+    </span>
+
+
+    <span class="menu-arrow">
+        ›
+    </span>
+
+</div>
+
+
+<div
+    class="novel-submenu"
+    id="novelSubmenu"
+>
+
+    <a href="../novel/on-going.html">
+        On-going
+    </a>
+
+
+    <a href="../novel/completed.html">
+        Completed
+    </a>
+
+
+    <a href="../novel/hiatus.html">
+        Hiatus
+    </a>
+
+
+    <a href="../novel/drop.html">
+        Drop
+    </a>
+
+</div>
+
+
+<!-- BOOKMARK -->
+
+<a
+    href="../bookmark.html"
+    class="menu-item"
+>
+    Bookmark
+</a>
+
+
+<!-- DONASI -->
+
+<a
+    href="https://trakteer.id/DhyonPratama"
+    class="menu-item"
+    target="_blank"
+    rel="noopener"
+>
+    Donasi
+</a>
+
+
+<!-- LOGIN -->
+
+<a
+    href="#login"
+    class="menu-item"
+>
+    Login
+</a>
+
+</nav>
+    
+<!-- =========================
+     GLOBAL SEARCH
+========================= -->
+    
+    <div class="global-search-bar">
+        
+    <div class="global-search-inner">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
+        </span>
+
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari judul novel..."
+            autocomplete="off"
+        >
+
+    </div>
+
+</div>
+
+</div>
+    
+<!-- =========================
+     READER
+========================= -->
+    
+    <main class="reader-container">
+    
+ <!-- =========================
+     NAVIGASI ATAS
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="bab-5.html"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     PENGATURAN PEMBACA
+========================= -->
+
+<div class="reader-settings-area">
+
+    <button
+        class="reader-settings-btn"
+        id="readerSettingsButton"
+        aria-label="Pengaturan pembaca"
+        aria-expanded="false"
+    >
+        ⚙️
+    </button>
+
+
+    <div
+        id="readerSettings"
+        class="reader-settings"
+    >
+
+        <button
+            id="fontDecrease"
+            aria-label="Perkecil ukuran teks"
+        >
+            A−
+        </button>
+
+
+        <span id="fontSizeDisplay">
+            18
+        </span>
+
+
+        <button
+            id="fontIncrease"
+            aria-label="Perbesar ukuran teks"
+        >
+            A+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JUDUL CHAPTER
+========================= -->
+
+<div class="chapter-heading">
+
+    <div class="chapter-number">
+        Chapter 6
+    </div>
+
+
+    <h1>
+        Lulus Ujian Militer, Menulis Cerita
+    </h1>
+
+</div>
+
+
+<!-- =========================
+     ISI NOVEL
+========================= -->
+
+<article class="reader">
+
+<p>Setelah arak-arakan keliling kota berakhir, ujian militer pun dilaksanakan beberapa hari kemudian.</p>
+<p>Di arena ujian, panji-panji berkibar liar diterpa angin kencang. Suaranya bergemuruh dan memekakkan telinga, sementara tiang-tiang bendera sedikit membungkuk diterpa hembusan angin.</p>
+<p>Pada hari pertama, yang diuji adalah <strong>kemampuan memanah dan pertarungan jarak dekat</strong>.</p>
+<p>Ujian memanah dibagi menjadi <strong>memanah dengan berjalan kaki</strong> dan <strong>memanah dari atas kuda</strong>.</p>
+<p>Sasaran berada seratus langkah jauhnya. Bagian tengahnya berwarna hitam dengan tepian putih, bergoyang-goyang pelan tertiup angin.</p>
+<p><strong>Gu Chen</strong> memasang anak panah, menarik busur, membidik—</p>
+<p>Anak panah melesat membelah angin disertai suara siulan tajam, tepat mengenai pusat sasaran.</p>
+<p>Sepuluh anak panah ditembakkan berturut-turut. Semuanya mengenai sasaran, bahkan hampir tepat di titik yang sama. Ujung-ujung anak panah tertancap dalam di pusat sasaran, menyerupai bunga besi yang sedang mekar.</p>
+<p>Seluruh arena hening tanpa suara.</p>
+<p>Kemudian, sorak-sorai menggelegar seperti guntur.</p>
+<p>Saat ujian berakhir, penguji mencatat hasilnya di buku penilaian. Bahkan suaranya terdengar sedikit bergetar.</p>
+<p>“Cabang memanah, <strong>Gu Chen</strong>, juara pertama.”</p>
+<p>Ujian pertarungan jarak dekat terdiri dari <strong>pertarungan tangan kosong</strong> dan <strong>pertarungan menggunakan senjata</strong>.</p>
+<p><strong>Gu Chen</strong> terus mengalahkan lawan-lawannya hingga babak terakhir. Lawannya adalah seorang pria kekar bertubuh besar, dengan otot dada yang menonjol seperti dua bongkahan besi.</p>
+<p>Begitu pertandingan dimulai, pria itu langsung menyerang dengan ganas. Tinju-tinjunya melesat cepat, menimbulkan suara angin yang menderu.</p>
+<p><strong>Gu Chen</strong> tidak menahannya secara langsung. Dia memiringkan tubuh untuk menghindar, lalu memanfaatkan tenaga lawan untuk melawannya. Telapak tangannya menghantam tepat pada sendi siku pria kekar tersebut.</p>
+<p>Pria itu mengerang tertahan, lalu seluruh lengan kanannya terkulai.</p>
+<p>Pertandingan kedua adalah pertarungan menggunakan senjata.</p>
+<p><strong>Gu Chen</strong> kembali melewati setiap babak dengan kemenangan. Pada pertandingan terakhir, lawannya menggunakan tombak kayu. Ujung tombak itu bergerak cepat dan bergetar, menyerupai ular perak yang menjulurkan lidahnya.</p>
+<p><strong>Gu Chen</strong> mencabut pedang kayunya dan maju menyambut.</p>
+<p>Dengan mengandalkan kekuatan alaminya, gerakan tubuh yang gesit, serta ilmu pedang yang ditempa selama berada di biro pengawalan, dia terus menghindari dan melancarkan serangan balik terhadap setiap tusukan tombak lawannya.</p>
+<p>Akhirnya, kilatan pedang melintas—</p>
+<p>Pedang kayu <strong>Gu Chen</strong> telah menempel tepat di leher lawannya.</p>
+<p>Hanya dalam beberapa jurus, dia berhasil mengalahkan lawannya.</p>
+<p>Setelah pertandingan berakhir, para penguji masih terkejut. Mereka saling berpandangan sebelum kembali menuliskan hasilnya di buku penilaian.</p>
+<p>“Cabang pertarungan jarak dekat, <strong>Gu Chen</strong>, juara pertama.”</p>
+<p>Pada hari kedua, ujian beralih ke <strong>esai strategi dan kebijakan militer</strong>.</p>
+<p><strong>Gu Chen</strong> menunduk di atas meja dan menulis dengan cepat. Ribuan kata mengalir tanpa henti dari penanya, membahas segala hal mulai dari pengelolaan lahan pertanian untuk mendukung pasukan hingga pertahanan perbatasan utara, dari pendistribusian perbekalan hingga analisis situasi musuh.</p>
+<p>Tulisannya sangat matang dan penuh pertimbangan.</p>
+<p>Dia mencurahkan seluruh pengetahuan dan pengalaman yang telah dikumpulkannya selama bertahun-tahun di kehidupan sebelumnya ke dalam satu tulisan.</p>
+<p>Setelah membaca esai strategi <strong>Gu Chen</strong>, Wakil Menteri Kementerian Perang, <strong>Wei Qianqiu</strong>, membawanya ke istana.</p>
+<p>Kepada kaisar, dia hanya mengatakan empat kata:</p>
+<p>“Ini adalah bakat seorang panglima.”</p>
+<p>-------</p>
+<p>Beberapa hari kemudian, tanpa diragukan lagi, <strong>Gu Chen</strong> menjadi <strong>Wuzhuangyuan</strong>, juara utama ujian militer tahun itu.</p>
+<p>Seluruh ibu kota ramai membicarakan <strong>Gu Chen</strong>.</p>
+<p>“Juara ketiga ujian sipil sekaligus juara utama ujian militer. Lulus ujian sipil dan militer sekaligus—belum pernah ada yang seperti ini sejak zaman dahulu.”</p>
+<p>Ada yang mengatakan bahwa dirinya adalah seorang jenius yang dianugerahkan oleh langit, bakat yang hanya muncul sekali dalam seratus tahun.</p>
+<p>Namun, sebagian orang dari kalangan keluarga bangsawan justru mencibir.</p>
+<p>“Dia hanya seorang pengungsi yang kebetulan beruntung.”</p>
+<p><strong>Gu Chen</strong> sama sekali tidak menghiraukan semua pembicaraan itu.</p>
+<p>Dia tahu persis seberapa besar kemampuannya.</p>
+<p>Di kehidupan sebelumnya, dia telah menghabiskan seluruh hidupnya untuk membuktikan bahwa kaisar tidak salah memilihnya.</p>
+<p>Di kehidupan ini, dia hanya akan melakukan semuanya dengan lebih baik.</p>
+<p>Peristiwa selanjutnya tetap berlangsung sama seperti di kehidupan sebelumnya. <strong>Gu Chen</strong> ditempatkan di <strong>Akademi Hanlin</strong>.</p>
+<p>Di istana, para pejabat terus memperdebatkan jabatan yang akan diberikan kepada <strong>Gu Chen</strong>.</p>
+<p>Sebagian berpendapat bahwa Da Qian selalu lebih mengutamakan urusan sipil daripada militer, sehingga seharusnya dia diberikan jabatan sipil.</p>
+<p>Namun, ada pula yang tidak ingin menjadi rekan satu kantor dengan seseorang yang berasal dari kalangan pengungsi. Mereka berpendapat bahwa <strong>Gu Chen</strong> seharusnya diberi jabatan militer.</p>
+<p>Akhirnya, <strong>Gu Chen</strong> diperlakukan seperti sebuah bola yang ditendang ke sana kemari.</p>
+<p>Mereka berdebat selama beberapa hari, tetapi tetap tidak menemukan keputusan.</p>
+<p>Pada akhirnya, kaisar sendiri yang mengambil keputusan:</p>
+<p>“Angkat dia sebagai Penyunting Akademi Hanlin, tingkat tujuh.”</p>
+<p>Menjadikan seorang tanhua sebagai penyunting di Akademi Hanlin memang merupakan jalur yang wajar. Namun, pada saat yang sama, keputusan itu juga merupakan bentuk perlindungan kaisar terhadapnya.</p>
+<p>Seorang pemuda yang berasal dari kalangan pengungsi tiba-tiba memperoleh reputasi sebagai orang yang menguasai sastra sekaligus ilmu militer. Itu saja sudah cukup untuk mengundang kebencian dari kalangan keluarga bangsawan.</p>
+<p>Jika dia langsung diberi jabatan sipil atau militer yang memiliki kekuasaan nyata, kemungkinan besar dia akan ditekan habis-habisan oleh orang-orang yang berasal dari keluarga bangsawan.</p>
+<p>Lebih baik dia terlebih dahulu tinggal di Akademi Hanlin. Membaca lebih banyak buku, melihat lebih banyak hal, dan mengenal lebih banyak orang. Setelah perhatian terhadap dirinya mereda, barulah dipikirkan langkah selanjutnya.</p>
+<p>Akademi Hanlin berada di sudut tenggara kompleks istana. Dindingnya berwarna abu-abu dengan genteng berwarna gelap. Beberapa pohon pagoda tua tumbuh di dalam halaman, menaungi seluruh tempat itu hingga tampak menutupi langit.</p>
+<p>Kehidupan di sini sederhana dan membosankan. Menyunting, mengoreksi, serta menata kitab-kitab kuno, hari demi hari melakukan pekerjaan yang sama.</p>
+<p>Namun, <strong>Gu Chen</strong> menyukai tempat ini.</p>
+<p>Dia menyukai aroma tinta yang memenuhi udara.</p>
+<p>Dia menyukai halaman-halaman buku yang telah menguning.</p>
+<p>Dia juga menyukai ketenangan yang membuat seseorang seolah dapat “berdialog dengan orang-orang dari zaman dahulu”.</p>
+<p>Yang lebih penting, di tempat ini ada seseorang yang sangat dia hormati di kehidupan sebelumnya.</p>
+<p><strong>Li Zhiyuan.</strong></p>
+<p>Seorang pengajar di Akademi Hanlin, berpangkat pejabat tingkat lima. Dahulu dia pernah menjadi tanhua pada masa pemerintahan Zhengzhi, tetapi karena berasal dari keluarga biasa, separuh hidupnya berlalu dalam keadaan tidak memperoleh kesempatan untuk berkembang.</p>
+<p>Tubuhnya kurus, tulang pipinya menonjol tinggi, sementara sepasang matanya tampak cekung seolah-olah dia sudah bertahun-tahun tidak pernah tidur dengan nyenyak.</p>
+<p>Pakaiannya selalu tampak telah dicuci berkali-kali hingga warnanya memudar. Ujung lengan bajunya bahkan sudah mulai berjumbai, tetapi setiap bagiannya selalu tertata rapi dan tanpa cela.</p>
+<p>Dia tidak banyak bicara.</p>
+<p>Sekali membuka mulut, dia langsung membicarakan hal yang penting. Dia tidak pernah berbasa-basi, tidak pernah bersikap sok akrab, dan tidak pernah menjilat siapa pun.</p>
+<p>Di kehidupan sebelumnya, ketika <strong>Gu Chen</strong> baru memasuki dunia pemerintahan, dia tidak memahami apa pun.</p>
+<p>Adalah <strong>Li Zhiyuan</strong> yang bersih dan berintegritas yang mengajarinya bagaimana menjadi seorang pejabat yang sesungguhnya. Berkat dirinya, <strong>Gu Chen</strong> tidak sampai terpengaruh oleh kebiasaan di istana yang penuh dengan permainan kepentingan, mencari keuntungan pribadi, serta membentuk kelompok demi kepentingan masing-masing.</p>
+<p>Dia juga memberinya pengetahuan dan prinsip untuk bertahan hidup serta menjalani kehidupan, juga keteguhan dan prinsip moral seorang pria sejati yang berdiri di antara langit dan bumi.</p>
+<p>Bahkan ketika <strong>Gu Chen</strong> sesekali melakukan kesalahan dalam kehidupannya di masa lalu, <strong>Li Zhiyuan</strong> mampu melihat akar persoalannya dan memberinya beberapa nasihat.</p>
+<p>Bisa dikatakan bahwa alasan <strong>Gu Chen</strong> di kehidupan sebelumnya mampu membentuk sifat yang berhati-hati dan tenang, serta berkali-kali mengalahkan orang-orang Hu Utara di medan perang, tidak terlepas dari bimbingan dan perhatian <strong>Li Zhiyuan</strong> sejak awal.</p>
+<p>Meskipun keduanya tidak pernah menjalani upacara resmi untuk menjadi guru dan murid, <strong>Li Zhiyuan</strong> selalu meminta <strong>Gu Chen</strong> memanggilnya “Guru”.</p>
+<p>Saat ini, <strong>Li Zhiyuan</strong> berjalan berkeliling di Akademi Hanlin. Pada akhirnya, langkahnya berhenti tepat di hadapan <strong>Gu Chen</strong>.</p>
+<p>“Kau <strong>Gu Chen</strong>?”</p>
+<p>“Benar.”</p>
+<p>“Juara utama ujian militer, tanhua ujian sipil.”</p>
+<p>“Benar.”</p>
+<p><strong>Li Zhiyuan</strong> menatapnya sejenak.</p>
+<p>Tatapannya tenang dan datar. Sulit untuk mengetahui apakah dia sedang mengagumi atau justru mencari-cari kekurangannya.</p>
+<p>Dia terdiam beberapa saat sebelum berkata,</p>
+<p>“Aku kekurangan seseorang untuk membantu mengerjakan pekerjaan-pekerjaan kecil. Apakah kau bersedia datang membantuku?”</p>
+<p>Hati <strong>Gu Chen</strong> terasa menghangat.</p>
+<p>Di kehidupan sebelumnya, <strong>Li Zhiyuan</strong> juga mengatakan hal yang sama.</p>
+<p>Tidak ada ucapan untuk menerimanya sebagai murid, juga tidak langsung mengatakan bahwa dia akan mengajarinya. Dia hanya dengan sederhana berkata, “Aku kekurangan seseorang untuk membantu mengerjakan pekerjaan-pekerjaan kecil.”</p>
+<p>Itulah <strong>Li Zhiyuan</strong>.</p>
+<p>Tegas, sederhana, dan tidak pandai berkata-kata.</p>
+<p>Namun, hatinya lebih hangat daripada siapa pun.</p>
+<p>“Murid bersedia.”</p>
+<p><strong>Li Zhiyuan</strong> tidak mengatakan apa-apa lagi. Dia berbalik dan berjalan pergi, lalu berkata,</p>
+<p>“Ikuti aku.”</p>
+<p><strong>Gu Chen</strong> mengikuti di belakangnya. Mereka melewati deretan rak buku hingga tiba di sebuah ruangan kecil yang terletak paling dalam.</p>
+<p>Ruangan itu dipenuhi buku dan naskah. Hampir tidak ada tempat untuk melangkah.</p>
+<p><strong>Li Zhiyuan</strong> duduk di depan meja, lalu menunjuk setumpuk buku di sudut ruangan.</p>
+<p>“Periksa semua itu. Kalau ada yang tidak kau mengerti, tanyakan kepadaku.”</p>
+<p>Setelah itu, dia tidak lagi memedulikannya.</p>
+<p><strong>Gu Chen</strong> duduk, membuka buku pertama, lalu mulai memeriksa dan mengoreksi isinya.</p>
+<p>Dibandingkan dengan kehidupan sebelumnya, di kehidupan ini dia jauh lebih terbiasa dengan pekerjaan semacam ini.</p>
+<p>Dia mengerjakannya dengan sangat teliti, tidak melewatkan satu karakter pun.</p>
+<p>Ketika menemukan kisah atau referensi kuno yang jarang dikenal, dia mencatat perbandingannya dengan kitab-kitab lain. Ketika menemukan bagian yang bertentangan dengan bagian sebelumnya atau sesudahnya, dia menandainya dan menambahkan hasil penelitiannya sendiri.</p>
+<p>Setengah bulan kemudian, <strong>Li Zhiyuan</strong> membolak-balik naskah yang telah selesai diperiksa <strong>Gu Chen</strong>.</p>
+<p>Kemudian dia mengeluarkan sebuah kotak makanan dan berkata,</p>
+<p>“Istri gurumu membuat terlalu banyak makanan.”</p>
+<p><strong>Gu Chen</strong> tertegun sejenak, lalu segera memahami maksudnya.</p>
+<p>Kotak makanan dari istri gurunya adalah penghargaan terbesar yang bisa diberikan <strong>Li Zhiyuan</strong> kepada murid-muridnya.</p>
+<p>Sebab <strong>Li Zhiyuan</strong> tidak pernah memuji seseorang secara langsung.</p>
+<p>Dia hanya akan meminta istrinya memasak satu porsi makanan tambahan. Dengan cara itu, dia menyampaikan pesan:</p>
+<p>“Pekerjaanmu bagus.”</p>
+<p>Saat <strong>Gu Chen</strong> membawa kotak makanan itu keluar dari Akademi Hanlin, sudut bibirnya sedikit terangkat.</p>
+<p>Malam perlahan semakin larut.</p>
+<p>Di sebuah gang kecil di kawasan timur ibu kota, terdapat sebuah rumah tua dan sederhana yang nyaris tidak menarik perhatian. Rumah itulah yang disewa <strong>Gu Chen</strong>.</p>
+<p>Perabotan di dalamnya sangat sederhana. Hanya ada sebuah tempat tidur, sebuah meja, dan sebuah kursi. Beberapa tumpukan buku berada di sudut ruangan, sementara sebuah lampu minyak terletak di atas meja.</p>
+<p>Sumbu lampu telah dipotong berkali-kali. Nyala apinya berkelap-kelip, berusaha menerangi ruang kecil di sekitarnya.</p>
+<p>Setelah segala urusan tempat tinggalnya beres, dia juga mulai memikirkan rencana untuk masa depan. Hal itu sebenarnya sudah terpikir olehnya sejak arak-arakan keliling kota.</p>
+<p>Setelah mendapatkan kesempatan untuk menjalani hidup sekali lagi, pikirannya masih tertuju pada perbatasan utara, tempat yang selama bertahun-tahun dia pertahankan.</p>
+<p>Dalam hati, dia berpikir:</p>
+<p>Dahulu, ketika menjadi panglima di perbatasan utara, dia telah melihat begitu banyak kejadian dan bertemu dengan begitu banyak orang.</p>
+<p>Sekarang dia memiliki waktu luang. Bukankah lebih baik jika dia menulis beberapa cerita?</p>
+<p>Dia akan mencatat satu per satu orang dan kejadian yang pernah terjadi di perbatasan utara.</p>
+<p>Membiarkan orang-orang di dunia mengetahui kisah mereka.</p>
+<p><strong>Gu Chen</strong> duduk di depan meja dan membentangkan selembar kertas, lalu mencelupkan kuas hingga penuh dengan tinta.</p>
+<p>Namun, dia tidak langsung menulis.</p>
+<p>Dia memejamkan mata dan berpikir lama.</p>
+<p>Dia teringat kepada para pahlawan di perbatasan utara yang hingga akhir hayatnya tidak pernah dikenang siapa pun.</p>
+<p>Ada seorang tabib militer yang pincang, berusia lebih dari empat puluh tahun. Tubuhnya kurus dan kulitnya gelap. Setiap hari dia membanggakan putranya yang berhasil mendapatkan gelar akademik.</p>
+<p>Dia menjaga perbatasan bukan hanya demi putranya, tetapi juga demi rakyat.</p>
+<p>Ada seorang pemanah ulung yang berasal dari keluarga pemburu.</p>
+<p>Sepanjang hidupnya, dia tidak pernah berhasil menikah. Dia selalu berkata, “Setelah perang selesai, baru kita bicarakan soal keluarga.”</p>
+<p>Dia bergabung dengan militer pada usia lima belas tahun dan baru kembali pada usia enam puluh tahun. Tali busurnya telah meninggalkan lekukan dalam pada jari-jarinya.</p>
+<p>Dia jarang berbicara.</p>
+<p>Setiap hari, dia hanya berlatih memanah.</p>
+<p>Hingga akhirnya, bahkan dengan mata terpejam, dia mampu mengenai sekeping koin tembaga yang berada seratus langkah jauhnya.</p>
+<p>Ketika pensiun dari militer, dia memberikan seluruh uang yang telah dikumpulkannya selama bertahun-tahun untuk biaya menikah kepada para prajurit di sekitarnya.</p>
+<p>Ada sepasang ayah dan anak.</p>
+<p>Sang ayah adalah seorang veteran, sementara putranya sudah mengikuti dirinya ke medan perang sejak berusia enam belas tahun.</p>
+<p>Setelah sang ayah gugur dalam pertempuran, putranya mengkremasi jasadnya dan menyimpan abunya di dalam sebuah guci keramik kasar. Dia kemudian membawa guci itu di punggungnya dan terus bertempur.</p>
+<p>Belakangan, seseorang membujuknya untuk mengirim abu ayahnya kembali ke kampung halaman.</p>
+<p>Dia hanya menggelengkan kepala dan berkata,</p>
+<p>“Pesan terakhir ayahku adalah agar dia bisa melihat dengan matanya sendiri putranya membunuh orang-orang Hu.”</p>
+<p>Ada sepasang kakak beradik.</p>
+<p>Sang kakak bernama <strong>Ahu</strong>, sedangkan adiknya bernama <strong>Abao</strong>. Keduanya memiliki wajah yang sangat mirip. Bahkan para veteran pun tidak mampu membedakan siapa yang lebih tua dan siapa yang lebih muda.</p>
+<p>Setiap kali dilakukan pemeriksaan barisan, para prajurit selalu harus bertanya,</p>
+<p>“Kau kakaknya atau adiknya?”</p>
+<p>Kemudian, dalam sebuah pertempuran sengit, mata sang kakak terluka akibat sabetan pedang melengkung milik orang-orang Hu. Sejak saat itu, dia kehilangan penglihatan pada salah satu matanya.</p>
+<p>Sejak saat itu pula, tidak ada lagi orang yang salah membedakan mereka.</p>
+<p>Ada seorang pria dari suku Hu yang memiliki kemampuan berkuda luar biasa.</p>
+<p>Hidungnya tinggi dan matanya dalam. Sekilas saja sudah jelas bahwa dia bukan orang dari Dataran Tengah.</p>
+<p>Dia adalah seorang yatim piatu yang ditemukan dan dibesarkan oleh sepasang suami istri peternak dari Da Qian yang baik hati. Sejak kecil, dia tumbuh di tengah lingkungan mereka dan mempelajari ajaran para orang bijak.</p>
+<p>Namun, wajahnya tidak bisa menipu siapa pun.</p>
+<p>Dia tidak mungkin mengikuti ujian untuk mendapatkan gelar akademik, apalagi memasuki pemerintahan. Pada akhirnya, dia hanya bisa menjadi seorang prajurit.</p>
+<p>Namun, ketika bertempur, dia justru bertarung lebih gigih daripada siapa pun.</p>
+<p>Ada seorang budak pengurus kuda.</p>
+<p>Dia difitnah melarikan diri dari wajib militer dan kemudian dikirim untuk bertugas di ketentaraan.</p>
+<p>Suatu hari, dalam sebuah pertempuran mendadak, dia memacu kudanya menerjang barisan musuh dan tidak pernah kembali.</p>
+<p>Sebelum meninggal, dia meminta seorang rekan sekampung untuk menyampaikan pesan kepada panglima.</p>
+<p>“Katakan kepada Jenderal setelah kau kembali, aku bukan seorang pembelot.”</p>
+<p>Dan masih banyak lagi...</p>
+<p>Orang-orang seperti mereka, kisah-kisah seperti itu, tidak akan pernah tercatat dalam kitab sejarah.</p>
+<p>Dalam karya-karya sejarah yang begitu megah, hanya ada para kaisar dan jenderal, hanya ada jasa-jasa besar di medan perang, hanya ada kata-kata seperti “menebas musuh”, “merebut kembali wilayah”, dan “kemenangan besar”.</p>
+<p>Namun, orang-orang biasa yang gugur di atas salju, tewas di bawah pedang melengkung orang-orang Hu, dan akhirnya digilas sejarah hingga menjadi debu—tidak ada seorang pun yang akan mengingat nama mereka.</p>
+<p>Tetapi <strong>Gu Chen</strong> ingin mengingat mereka.</p>
+<p>Dia tidak ingin mereka menjalani hidup dengan sia-sia.</p>
+<p>Ujung kuas akhirnya menyentuh kertas, membuat tinta perlahan menyebar.</p>
+<p>Dia mulai menulis goresan demi goresan.</p>
+<p>Dia sudah memikirkan nama cerita ini.</p>
+<p>Namanya adalah—</p>
+<p><strong>Kisah Para Pahlawan Perbatasan Utara.</strong></p>
+<p>Setelah berpikir sejenak, dia juga memilih nama pena untuk dirinya sendiri:</p>
+<p><strong>Wuming Sheng</strong>.</p>
+<p>Dia terlalu memahami medan perang.</p>
+<p>Jika dia menggunakan nama aslinya untuk menulis, begitu buku ini tersebar, hal itu pasti akan menimbulkan masalah yang tidak perlu. Orang-orang mungkin akan mengira bahwa dia pernah bertempur di medan perang perbatasan utara.</p>
+<p>Setelah itu, dia mulai menulis:</p>
+<p>“Konon, di tanah perbatasan utara yang dingin dan tandus, salju serta badai telah menyelimuti langit sepanjang tahun. Namun, di atas tanah beku ini, ada sekelompok manusia yang menggunakan darah mereka untuk menghangatkan seluruh tanah ini...”</p>
+<p><strong>Gu Chen</strong> menulis dengan sangat lambat.</p>
+<p>Sangat lambat.</p>
+<p>Di luar jendela, angin kencang tiba-tiba bertiup. Deru angin menerjang masuk, membuat jendela berderit keras, seolah-olah sebuah pohon tua sedang merintih. Suaranya terdengar sangat jelas di tengah malam yang sunyi.</p>
+<p><strong>Gu Chen</strong> tidak mengangkat kepala.</p>
+<p>Ujung kuasnya terus bergerak di atas kertas.</p>
+<p>Minyak lampu telah terbakar lebih dari separuh, membuat nyalanya meredup. Dia menaikkan sumbu lampu sedikit.</p>
+<p>Api berkedip sekali, lalu kembali menyala lebih terang.</p>
+<p>Di seluruh ruangan itu, hanya tersisa cahaya lampu yang tak padam, pena yang tak berhenti bergerak, dan sebuah hati yang menolak membiarkan orang-orang itu menjalani hidup dengan sia-sia.</p>
+</article>
+
+
+<!-- =========================
+     NAVIGASI BAWAH
+========================= -->
+
+<nav class="chapter-navigation">
+
+    <a
+        href="#"
+        class="chapter-nav-btn"
+    >
+        ← Sebelumnya
+    </a>
+
+
+    <a
+        href="../novel/you-rejected-my-honor.html"
+        class="chapter-nav-btn"
+    >
+        Daftar Isi
+    </a>
+
+
+    <a
+        href="#"
+        class="chapter-nav-btn disabled"
+    >
+        Selanjutnya →
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     KOMENTAR
+========================= -->
+
+<section class="comments-section">
+
+    <h2>
+        Komentar
+    </h2>
+
+
+    <div
+        class="giscus"
+        id="giscus-container"
+    >
+        
+    </div>
+
+</section>
+
+</main>
+    
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
+    
+<button
+class="back-to-top"
+id="backToTop"
+aria-label="Kembali ke atas">
+
+↑
+
+ </button>
+   
+<!-- =========================
+     FOOTER
+========================= -->
+   
+    <footer class="site-footer">
+    
+    <div class="footer-title">
+    CN Novel-Translation
+</div>
+
+
+<div class="footer-links">
+
+    <a href="../index.html">
+        Home
+    </a>
+
+
+    <span>
+        •
+    </span>
+
+
+    <a
+        href="https://trakteer.id/DhyonPratama"
+        target="_blank"
+        rel="noopener"
+    >
+        Donasi
+    </a>
+
+</div>
+
+
+<div class="copyright">
+    © Copyright 2026-CN Novel-Translation
+</div>
+
+</footer>
+    
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+    
+    <script>
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const menuClose =
+    document.getElementById("menuClose");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const menuNovel =
+    document.getElementById("menuNovel");
+
+const novelSubmenu =
+    document.getElementById("novelSubmenu");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
+
+
+function closeNovelSubmenu() {
+
+    novelSubmenu.classList.remove("active");
+
+    menuNovel.classList.remove("active");
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+function closeMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    closeNovelSubmenu();
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+function toggleNovelSubmenu() {
+
+    const isActive =
+        novelSubmenu.classList.toggle("active");
+
+
+    menuNovel.classList.toggle(
+        "active",
+        isActive
+    );
+
+
+    menuNovel.setAttribute(
+        "aria-expanded",
+        isActive
+    );
+
+}
+
+
+menuNovel.addEventListener(
+    "click",
+    toggleNovelSubmenu
+);
+
+
+menuNovel.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            toggleNovelSubmenu();
+
+        }
+
+    }
+);
+
+
+const menuLinks =
+    sideMenu.querySelectorAll("a");
+
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function () {
+
+            closeMenu();
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function loadTheme() {
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "🌙";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            themeButton.textContent = "🌙";
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            themeButton.textContent = "☀️";
+
+        }
+
+
+        updateGiscusTheme();
+
+    }
+);
+
+
+loadTheme();
+
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        loadTheme();
+
+        updateGiscusTheme();
+
+        updateFontSize();
+
+    }
+);
+
+
+/* =====================================================
+   READER SETTINGS
+===================================================== */
+
+const readerSettingsButton =
+    document.getElementById(
+        "readerSettingsButton"
+    );
+
+
+const readerSettings =
+    document.getElementById(
+        "readerSettings"
+    );
+
+
+readerSettingsButton.addEventListener(
+    "click",
+    function () {
+
+        const isActive =
+            readerSettings.classList.toggle(
+                "active"
+            );
+
+
+        readerSettingsButton.classList.toggle(
+            "active",
+            isActive
+        );
+
+
+        readerSettingsButton.setAttribute(
+            "aria-expanded",
+            isActive
+        );
+
+    }
+);
+
+
+/* =====================================================
+   FONT SIZE
+===================================================== */
+
+const fontSizeDisplay =
+    document.getElementById(
+        "fontSizeDisplay"
+    );
+
+
+const fontDecrease =
+    document.getElementById(
+        "fontDecrease"
+    );
+
+
+const fontIncrease =
+    document.getElementById(
+        "fontIncrease"
+    );
+
+
+function getSavedFontSize() {
+
+    return (
+        Number(
+            localStorage.getItem("fontSize")
+        ) || 18
+    );
+
+}
+
+
+function updateFontSize() {
+
+    const fontSize =
+        getSavedFontSize();
+
+
+    const paragraphs =
+        document.querySelectorAll(
+            ".reader p"
+        );
+
+
+    paragraphs.forEach(
+        function (paragraph) {
+
+            paragraph.style.fontSize =
+                fontSize + "px";
+
+        }
+    );
+
+
+    fontSizeDisplay.textContent =
+        fontSize;
+
+}
+
+
+function changeFontSize(amount) {
+
+    let fontSize =
+        getSavedFontSize();
+
+
+    fontSize += amount;
+
+
+    if (fontSize < 14) {
+
+        fontSize = 14;
+
+    }
+
+
+    if (fontSize > 28) {
+
+        fontSize = 28;
+
+    }
+
+
+    localStorage.setItem(
+        "fontSize",
+        fontSize
+    );
+
+
+    updateFontSize();
+
+}
+
+
+fontDecrease.addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(-1);
+
+    }
+);
+
+
+fontIncrease.addEventListener(
+    "click",
+    function () {
+
+        changeFontSize(1);
+
+    }
+);
+
+
+/* Saat pertama membuka chapter */
+updateFontSize();
+
+
+/* Saat kembali menggunakan tombol Back HP */
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        updateFontSize();
+
+    }
+);
+
+
+/* =====================================================
+   BACAAN TERAKHIR
+===================================================== */
+
+const lastReadStorageKey =
+    "lastRead_YouRejectedMyHonor";
+
+
+localStorage.setItem(
+    lastReadStorageKey,
+    "6"
+);
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+searchInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+            &&
+            searchInput.value.trim() !== ""
+        ) {
+
+            const query =
+                encodeURIComponent(
+                    searchInput.value.trim()
+                );
+
+
+            window.location.href =
+                "../index.html?search=" +
+                query;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backToTop =
+    document.getElementById(
+        "backToTop"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add(
+                "show"
+            );
+
+        } else {
+
+            backToTop.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+backToTop.addEventListener(
+    "click",
+    function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+/* =====================================================
+   GISCUS
+===================================================== */
+
+function loadGiscus() {
+
+    const container =
+        document.getElementById(
+            "giscus-container"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    if (
+        container.querySelector("script")
+    ) {
+
+        return;
+
+    }
+
+
+    const script =
+        document.createElement("script");
+
+
+    script.src =
+        "https://giscus.app/client.js";
+
+
+    script.setAttribute(
+        "data-repo",
+        "Dhyon09/cn-novel-translation"
+    );
+
+
+    script.setAttribute(
+        "data-repo-id",
+        "R_kgDOU4Dcig"
+    );
+
+
+    script.setAttribute(
+        "data-category",
+        "General"
+    );
+
+
+    script.setAttribute(
+        "data-category-id",
+        "DIC_kwDOU4Dcis4DG3Ff"
+    );
+
+
+    script.setAttribute(
+        "data-mapping",
+        "pathname"
+    );
+
+
+    script.setAttribute(
+        "data-strict",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-reactions-enabled",
+        "1"
+    );
+
+
+    script.setAttribute(
+        "data-emit-metadata",
+        "0"
+    );
+
+
+    script.setAttribute(
+        "data-input-position",
+        "bottom"
+    );
+
+
+    script.setAttribute(
+        "data-theme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+
+
+    script.setAttribute(
+        "data-lang",
+        "id"
+    );
+
+
+    script.setAttribute(
+        "data-loading",
+        "lazy"
+    );
+
+
+    script.crossOrigin =
+        "anonymous";
+
+
+    script.async = true;
+
+
+    container.appendChild(script);
+
+}
+
+
+function updateGiscusTheme() {
+
+    const iframe =
+        document.querySelector(
+            "iframe.giscus-frame"
+        );
+
+
+    if (!iframe) {
+
+        return;
+
+    }
+
+
+    const theme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+
+    iframe.contentWindow.postMessage(
+        {
+            giscus: {
+
+                setConfig: {
+
+                    theme: theme
+
+                }
+
+            }
+
+        },
+        "https://giscus.app"
+    );
+
+}
+
+
+loadGiscus();
+
+</script>
+
+</body>
+
+</html>
