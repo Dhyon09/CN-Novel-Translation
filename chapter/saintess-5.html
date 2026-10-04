@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 - They Asked You to Interrogate the Saintess, Yet You Made Her Your Dao Companion?</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.chapter-navigation{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:6px;width:100%;margin:0 0 16px}
+.chapter-nav-btn{display:flex;align-items:center;justify-content:center;min-height:38px;padding:7px 6px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);text-decoration:none;text-align:center;font-size:14px;line-height:1.2;transition:border-color .25s ease,background-color .25s ease,color .25s ease}
+.chapter-nav-btn:hover,.chapter-nav-btn:active{border-color:var(--primary);background:var(--bg);color:var(--primary)}
+.chapter-nav-btn.disabled{opacity:.45;pointer-events:none}
+.reader-settings-area{position:relative;display:flex;flex-direction:column;align-items:center;width:100%;margin:2px 0 12px}
+.reader-settings-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1px solid var(--border);border-radius:50%;background:var(--card);color:var(--text);font-size:18px;cursor:pointer;transition:border-color .25s ease,background-color .25s ease,color .25s ease,transform .25s ease}
+.reader-settings-btn:hover,.reader-settings-btn:active{border-color:var(--primary);color:var(--primary)}
+.reader-settings-btn.active{transform:rotate(30deg);border-color:var(--primary);color:var(--primary)}
+.reader-settings{display:none;align-items:center;justify-content:center;gap:8px;margin-top:8px;padding:5px 8px;border:1px solid var(--border);border-radius:7px;background:var(--card)}
+.reader-settings.active{display:flex}
+.reader-settings button{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;border:1px solid var(--border);border-radius:5px;background:var(--card);color:var(--text);font-family:inherit;font-size:14px;cursor:pointer}
+.reader-settings button:hover,.reader-settings button:active{border-color:var(--primary);color:var(--primary)}
+#fontSizeDisplay{min-width:22px;color:var(--text);font-size:14px;text-align:center}
+.chapter-heading{text-align:center;margin-bottom:24px}
+.chapter-number{margin-bottom:5px;color:var(--secondary);font-size:15px;line-height:1.3}
+.chapter-heading h1{margin:0;color:var(--text);font-size:24px;line-height:1.3}
+.back-to-top{position:fixed;right:16px;bottom:18px;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:50%;background:var(--card);color:var(--text);font-size:19px;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s ease,visibility .25s ease,transform .25s ease,border-color .25s ease,color .25s ease;z-index:1000}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover,.back-to-top:active{border-color:var(--primary);color:var(--primary)}
+@media(max-width:480px){.chapter-navigation{gap:5px;margin-bottom:14px}.chapter-nav-btn{min-height:36px;padding:6px 4px;font-size:13px}.reader-settings-area{margin-top:1px;margin-bottom:11px}.reader-settings-btn{width:35px;height:35px;font-size:17px}.chapter-heading{margin-bottom:22px}.chapter-number{font-size:14px}.chapter-heading h1{font-size:22px}.back-to-top{right:14px;bottom:15px;width:38px;height:38px;font-size:18px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="header-left"><button class="menu-button" id="menuButton" aria-label="Buka menu" aria-expanded="false">☰</button></div>
+<a href="../index.html" class="site-title">CN Novel-Translation</a>
+<div class="header-right"><button class="theme-button" id="themeButton" aria-label="Ganti tema">☀️</button></div>
+</header>
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="side-menu" id="sideMenu">
+<div class="menu-header"><span>Menu</span><button class="menu-close" id="menuClose" aria-label="Tutup menu">×</button></div>
+<div class="menu-parent" id="menuNovel" role="button" tabindex="0" aria-expanded="false"><span>Novel</span><span class="menu-arrow">›</span></div>
+<div class="novel-submenu" id="novelSubmenu">
+<a href="../novel/on-going.html">On-going</a>
+<a href="../novel/completed.html">Completed</a>
+<a href="../novel/hiatus.html">Hiatus</a>
+<a href="../novel/drop.html">Drop</a>
+</div>
+<a href="../bookmark.html" class="menu-item">Bookmark</a>
+<a href="https://trakteer.id/DhyonPratama" class="menu-item" target="_blank" rel="noopener">Donasi</a>
+<a href="#login" class="menu-item">Login</a>
+</nav>
+<div class="global-search-bar"><div class="global-search-inner"><div class="search-box"><span class="search-icon">🔍</span><input type="search" id="searchInput" placeholder="Cari judul novel..." autocomplete="off"></div></div></div>
+<main class="reader-container">
+<nav class="chapter-navigation">
+<a href="saintess-4.html" class="chapter-nav-btn">← Sebelumnya</a>
+<a href="../novel/they-asked-you-to-interrogate-the-saintess.html" class="chapter-nav-btn">Daftar Isi</a>
+<a href="#" class="chapter-nav-btn disabled">Selanjutnya →</a>
+</nav>
+<div class="reader-settings-area">
+<button class="reader-settings-btn" id="readerSettingsButton" aria-label="Pengaturan pembaca" aria-expanded="false">⚙️</button>
+<div id="readerSettings" class="reader-settings">
+<button id="fontDecrease" aria-label="Perkecil ukuran teks">A−</button>
+<span id="fontSizeDisplay">18</span>
+<button id="fontIncrease" aria-label="Perbesar ukuran teks">A+</button>
+</div>
+</div>
+<div class="chapter-heading">
+<div class="chapter-number">Chapter 5</div>
+<h1>Waktu Mendesak</h1>
+</div>
+<article class="reader">
+<p><strong>Jiang Linyuan</strong> menatap mata <strong>Yun Qingyao</strong>.</p>
+<p>Namun, <strong>Yun Qingyao</strong> sama sekali tidak gentar. Dia justru membalas tatapannya tanpa sedikit pun menunjukkan kelemahan.</p>
+<p>Hal itu membuat <strong>Jiang Linyuan</strong> sejenak merasa linglung.</p>
+<p>Yang dilihatnya bukan lagi sepasang mata dingin dan tajam milik <strong>Yun Qingyao</strong>, melainkan sebuah kenangan yang bahkan hampir dia lupakan—air hujan mengalir dari ujung atap membentuk tirai, sementara seorang anak laki-laki meringkuk di sudut gang yang berlumpur dengan sepotong roti berjamur tergenggam erat di telapak tangannya. Dari kejauhan, suara lonceng kuil Tao terdengar dalam dan panjang, menembus tirai hujan, sekaligus menembus dirinya.</p>
+<p>Jika memungkinkan, <strong>Jiang Linyuan</strong> juga tidak ingin menjadi seorang kultivator dari Sekte Suci, yang di mata jalan lurus dikenal sebagai sekte iblis.</p>
+<p>Namun, keinginan manusia tidak selalu sejalan dengan keadaan. Sepanjang hidup, sebagian besar waktu seseorang hanya bisa mengikuti arus dunia tanpa mampu menentukan pilihannya sendiri.</p>
+<p>Jika saat itu ada seseorang yang bersedia mengulurkan tangan kepadanya, mungkin dirinya akan menjadi orang yang berbeda. Dia mungkin akan berdiri tegak di bawah sinar matahari, seperti wanita di hadapannya sekarang—punggung tegak dan hati yang bersih.</p>
+<p>Pikiran-pikiran yang telah lama terkubur di dasar ingatannya tiba-tiba muncul tanpa tanda.</p>
+<p>Jika memungkinkan, dia benar-benar ingin langsung berpihak kepada <strong>Yun Qingyao</strong>, menceritakan semua yang dia ketahui kepadanya, lalu melepaskan topeng ini…</p>
+<p>Tidak.</p>
+<p><strong>Jiang Linyuan</strong> segera menggigit ujung lidahnya.</p>
+<p>Mengapa dia bisa memikirkan semua ini?</p>
+<p>Hatinya seketika waspada. Dia secara naluriah mengaktifkan <strong>Catatan Penyiksaan Penguji Hati</strong>. Aura dingin menusuk tulang bangkit dari pusat pikirannya, kemudian bergerak berlawanan arah melalui meridian, perlahan menghapus emosi hangat yang tidak seharusnya muncul.</p>
+<p>Pikirannya kembali jernih.</p>
+<p>Saat membuka mata kembali, dia kebetulan menangkap kilatan cahaya yang muncul sesaat di mata <strong>Yun Qingyao</strong>—warna keemasan yang sangat samar, memancarkan cahaya menyilaukan sebelum seketika menghilang jauh di dalam tatapannya yang dingin.</p>
+<p>Dia mengenali teknik ini.</p>
+<p>Itu adalah <strong>Teknik Menjernihkan Hati dan Menerangi Jiwa</strong> dari aliran Shangqing Sekte Xuantian. Teknik tersebut secara khusus digunakan untuk menembus gangguan terhadap pikiran, sekaligus mampu memantulkan kondisi batin seseorang kembali kepada lawannya.</p>
+<p>“Teknik batin?”</p>
+<p>Keduanya hampir mengucapkan kata yang sama pada saat bersamaan.</p>
+<p>Suara <strong>Jiang Linyuan</strong> terdengar sedikit lebih berat dari sebelumnya, disertai kewaspadaan dingin.</p>
+<p>Meridian spiritual <strong>Yun Qingyao</strong> telah dikunci oleh Tali Pengikat Abadi, seluruh energi sejatinya telah lenyap, tetapi dia masih memiliki tenaga untuk mengaktifkan sebuah teknik batin.</p>
+<p><strong>Yun Qingyao</strong> juga mengerutkan kening sambil menatapnya.</p>
+<p>Wajahnya pucat. Karena tekanan dari Tali Pengikat Abadi, napasnya memang sudah tidak lancar. Namun, dia tetap memaksakan dirinya untuk bertahan dan berkata dengan suara rendah serta serak,</p>
+<p>“Barusan… teknik apa yang kau gunakan?”</p>
+<p>Pertanyaannya begitu terus terang, bahkan dia sama sekali tidak repot-repot menyembunyikan maksudnya.</p>
+<p><strong>Jiang Linyuan</strong> terdiam sejenak. Tatapannya di balik topeng perunggu tetap tertuju pada wajahnya, tetapi dia tidak menjawab pertanyaan itu. Sebaliknya, dia perlahan berkata,</p>
+<p>“Saintess benar-benar memiliki kemampuan yang luar biasa. Meridian spiritualmu telah dikunci, dantianmu telah mengalami kerusakan, tetapi kau masih mampu mengaktifkan Teknik Menjernihkan Hati dan Menerangi Jiwa.”</p>
+<p>Tatapan <strong>Yun Qingyao</strong> sedikit berubah, tetapi dia tidak menyangkalnya. Dia hanya merapatkan bibir.</p>
+<p>Keduanya berdiri berhadapan dalam jarak tiga langkah.</p>
+<p>Cahaya hijau samar mengalir di sepanjang dinding batu. Tali Pengikat Abadi berwarna hitam melilit erat tubuhnya, menghalangi pernapasannya.</p>
+<p><strong>Jiang Linyuan</strong> menurunkan pandangan dan tenggelam dalam pikirannya.</p>
+<p>Pada saat dirinya kehilangan kesadaran sesaat tadi, apakah <strong>Yun Qingyao</strong> melihat sesuatu?</p>
+<p>Dia tidak ingin menanyakannya.</p>
+<p>Namun, kejadian itu membuatnya menyadari satu hal—keteguhan hati wanita ini jauh melampaui perkiraannya. Dalam keadaan tubuhnya terbelenggu, dia masih mampu menggunakan sisa kesadaran spiritualnya untuk mengaktifkan teknik sekte dan mencari celah dari orang yang menginterogasinya.</p>
+<p>Jika dirinya tidak memiliki <strong>Catatan Penyiksaan Penguji Hati</strong> untuk melawannya, sekaligus melindungi pikirannya dari pengaruh tersebut, mungkin hari ini dia sudah jatuh ke dalam perangkapnya.</p>
+<p><strong>Jiang Linyuan</strong> kembali mengangkat pandangan. Nada suaranya kembali tenang seperti biasa, tetapi kali ini terdengar sedikit lebih dingin.</p>
+<p>“Kalau Saintess masih memiliki tenaga untuk menggunakan teknik batin, sepertinya Tali Pengikat Abadi milikku masih kurang erat.”</p>
+<p>Nada suaranya datar dan sama sekali tidak terdengar mengancam, tetapi dia sengaja menekankan kata <em>kurang erat</em>.</p>
+<p>Bulu mata <strong>Yun Qingyao</strong> bergetar samar.</p>
+<p>Dia tidak menjawab, tetapi bahunya yang semula tegak tanpa disadari menegang sedikit.</p>
+<p>Begitu suara <strong>Jiang Linyuan</strong> berhenti, jarinya yang tersembunyi di balik lengan bajunya bergerak sedikit.</p>
+<p>Tali Pengikat Abadi menerima perintah tersebut dan tiba-tiba mengencang.</p>
+<p>Napas <strong>Yun Qingyao</strong> seketika tercekat.</p>
+<p>Tekanan tali tepat mengenai bagian bawah tulang rusuknya. Tidak sampai berlebihan, tetapi cukup untuk menghambat gerak tubuhnya setiap kali menarik napas.</p>
+<p>Teknik batin yang baru saja digunakannya telah menghabiskan sisa kesadaran spiritualnya. Kini dia bahkan tidak mampu sepenuhnya menahan rasa sakit maupun reaksinya sendiri. Tekanan tali tersebut membuat suara kecil lolos dari tenggorokannya.</p>
+<p><strong>Yun Qingyao</strong> memejamkan mata sejenak.</p>
+<p>Rasa sakit sebenarnya bukan masalah terbesar.</p>
+<p>Yang lebih mengganggunya adalah metode pengikatan yang digunakan pria tidak tahu malu ini. Dibandingkan rasa sakitnya, posisi tubuh yang dipaksakan membuatnya semakin tidak nyaman.</p>
+<p>Tubuhnya terpaksa mempertahankan posisi yang tidak nyaman, sementara tali terus menahannya agar tidak dapat bergerak bebas.</p>
+<p>Akhirnya, kemarahan yang selama ini tertahan tidak lagi dapat disembunyikan dari matanya.</p>
+<p>Dia tiba-tiba memalingkan kepala. Bibirnya bergerak, dan tepat ketika makian hendak keluar—</p>
+<p><strong>Jiang Linyuan</strong> bergerak.</p>
+<p>Dia bangkit dari kursinya dan melangkah ke hadapannya. Tubuhnya sedikit membungkuk, sementara tangan kirinya terangkat.</p>
+<p>Dua jarinya mencengkeram dagu <strong>Yun Qingyao</strong>.</p>
+<p>Tekanannya tidak besar, tetapi cukup kuat untuk menahan gerak kepalanya dan memaksanya kembali menatap lurus ke arahnya.</p>
+<p>Topeng perunggu itu berada sangat dekat dengan wajahnya. Cahaya hijau samar dari belakang mengalir melewati mereka, membuat pola pada topeng tersebut terlihat semakin jelas.</p>
+<p><strong>Yun Qingyao</strong> terpaksa mengangkat wajah. Makian yang hendak keluar tertahan, hanya menyisakan hembusan napas dari sela bibirnya.</p>
+<p><strong>Jiang Linyuan</strong> menundukkan kepala dan menatapnya. Tatapan di balik topeng tetap tenang tanpa sedikit pun gejolak.</p>
+<p>“<strong>Yun Qingyao</strong>.”</p>
+<p>Suaranya tidak keras, bahkan bisa dikatakan lembut. Namun, di balik kelembutan itu terdapat keyakinan yang mutlak.</p>
+<p>“Kenapa kau masih belum memahami keadaanmu sendiri?”</p>
+<p>Pupil <strong>Yun Qingyao</strong> menyusut sesaat.</p>
+<p>Wajahnya masih ditahan sehingga sulit berbicara, tetapi kemarahan di matanya sama sekali tidak berkurang. Sebaliknya, amarah itu justru semakin membara, disertai permusuhan yang kuat saat dia terus menatapnya.</p>
+<p><strong>Jiang Linyuan</strong> tidak melepaskan tangannya. Dengan nada yang tenang dan stabil, dia melanjutkan,</p>
+<p>“Kau terikat di sini. Meridian spiritualmu telah disegel dan seluruh energi sejatimu telah lenyap. Hidup dan matimu berada di tanganku.”</p>
+<p>“Kau sendiri sangat memahami hal itu. Namun, kau tetap bersikeras mempertahankan sikap seolah-olah tidak akan pernah tunduk—”</p>
+<p><strong>Jiang Linyuan</strong> sedikit memiringkan kepalanya. Nada suaranya sengaja dibuat seolah-olah hanya diliputi sedikit kebingungan.</p>
+<p>“Untuk siapa kau melakukan semua ini?”</p>
+<p><strong>Yun Qingyao</strong> tidak dapat berbicara karena dagunya masih ditahan. Tali Pengikat Abadi yang melilit tubuhnya membuat napasnya terasa berat. Keringat tipis mulai membasahi dahinya, membuat beberapa helai rambut di sisi wajahnya menempel di kulit.</p>
+<p>Namun, dia tetap tidak mau menundukkan pandangan. Sepasang mata dinginnya terus menatap tajam ke arah mata di balik topeng.</p>
+<p><strong>Jiang Linyuan</strong> menunggu beberapa saat.</p>
+<p>Tidak ada jawaban.</p>
+<p>Tentu saja dia tidak dapat menjawab.</p>
+<p><strong>Jiang Linyuan</strong> tersenyum, lalu melepaskan tangannya dari dagu <strong>Yun Qingyao</strong>, yang selama tadi membuatnya kesulitan berbicara. Dia mundur setengah langkah sebelum kembali berdiri tegak.</p>
+<p>Dengan kedua tangan di belakang punggung, dia berdiri di hadapannya. Topeng perunggu yang menutupi wajahnya memancarkan kesan keras dan dingin.</p>
+<p>Setelah dagunya dilepaskan, <strong>Yun Qingyao</strong> perlahan menundukkan wajah. Rambutnya menutupi sebagian besar ekspresinya, hanya menyisakan dagu kecil yang menegang hingga tampak pucat.</p>
+<p>Setelah terdiam cukup lama, dia akhirnya berkata dengan suara serak dan berat,</p>
+<p>“…Apa urusanmu?”</p>
+<p><strong>Jiang Linyuan</strong> mendengarnya, tetapi tidak menjawab. Di balik topeng, bibirnya hanya bergerak sedikit, seolah menahan sesuatu yang tidak ingin dia ungkapkan.</p>
+<nav class="chapter-navigation">
+<a href="saintess-4.html" class="chapter-nav-btn">← Sebelumnya</a>
+<a href="../novel/they-asked-you-to-interrogate-the-saintess.html" class="chapter-nav-btn">Daftar Isi</a>
+<a href="#" class="chapter-nav-btn disabled">Selanjutnya →</a>
+</nav>
+<section class="comments-section">
+<h2>Komentar</h2>
+<div class="giscus" id="giscus-container"></div>
+</section>
+</main>
+<button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
+<footer class="site-footer">
+<div class="footer-title">CN Novel-Translation</div>
+<div class="footer-links"><a href="../index.html">Home</a><span>•</span><a href="https://trakteer.id/DhyonPratama" target="_blank" rel="noopener">Donasi</a></div>
+<div class="copyright">© Copyright 2026-CN Novel-Translation</div>
+</footer>
+<script>
+const menuButton=document.getElementById("menuButton"),menuClose=document.getElementById("menuClose"),menuOverlay=document.getElementById("menuOverlay"),sideMenu=document.getElementById("sideMenu"),menuNovel=document.getElementById("menuNovel"),novelSubmenu=document.getElementById("novelSubmenu");
+function openMenu(){sideMenu.classList.add("active");menuOverlay.classList.add("active");document.body.classList.add("menu-open");menuButton.setAttribute("aria-expanded","true")}
+function closeNovelSubmenu(){novelSubmenu.classList.remove("active");menuNovel.classList.remove("active");menuNovel.setAttribute("aria-expanded","false")}
+function closeMenu(){sideMenu.classList.remove("active");menuOverlay.classList.remove("active");document.body.classList.remove("menu-open");closeNovelSubmenu();menuButton.setAttribute("aria-expanded","false")}
+menuButton.addEventListener("click",openMenu);menuClose.addEventListener("click",closeMenu);menuOverlay.addEventListener("click",closeMenu);
+function toggleNovelSubmenu(){const isActive=novelSubmenu.classList.toggle("active");menuNovel.classList.toggle("active",isActive);menuNovel.setAttribute("aria-expanded",isActive)}
+menuNovel.addEventListener("click",toggleNovelSubmenu);menuNovel.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleNovelSubmenu()}});
+sideMenu.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeMenu));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+const themeButton=document.getElementById("themeButton");
+function loadTheme(){const saved=localStorage.getItem("theme");if(saved==="dark"){document.body.classList.add("dark");themeButton.textContent="🌙"}else{document.body.classList.remove("dark");themeButton.textContent="☀️"}}
+themeButton.addEventListener("click",function(){document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");localStorage.setItem("theme",dark?"dark":"light");themeButton.textContent=dark?"🌙":"☀️";updateGiscusTheme()});loadTheme();
+const readerSettingsButton=document.getElementById("readerSettingsButton"),readerSettings=document.getElementById("readerSettings"),fontSizeDisplay=document.getElementById("fontSizeDisplay"),fontDecrease=document.getElementById("fontDecrease"),fontIncrease=document.getElementById("fontIncrease");
+readerSettingsButton.addEventListener("click",function(){const active=readerSettings.classList.toggle("active");readerSettingsButton.classList.toggle("active",active);readerSettingsButton.setAttribute("aria-expanded",active)});
+function getSavedFontSize(){return Number(localStorage.getItem("fontSize"))||18}
+function updateFontSize(){const size=getSavedFontSize();document.querySelectorAll(".reader p").forEach(p=>p.style.fontSize=size+"px");fontSizeDisplay.textContent=size}
+function changeFontSize(amount){let size=getSavedFontSize()+amount;if(size<14)size=14;if(size>28)size=28;localStorage.setItem("fontSize",size);updateFontSize()}
+fontDecrease.addEventListener("click",()=>changeFontSize(-1));fontIncrease.addEventListener("click",()=>changeFontSize(1));updateFontSize();
+const lastReadStorageKey="lastRead_TheyAskedYouToInterrogateTheSaintess";localStorage.setItem(lastReadStorageKey,"5");
+const searchInput=document.getElementById("searchInput");searchInput.addEventListener("keydown",function(e){if(e.key==="Enter"&&searchInput.value.trim()!==""){window.location.href="../index.html?search="+encodeURIComponent(searchInput.value.trim())}});
+const backToTop=document.getElementById("backToTop");window.addEventListener("scroll",function(){backToTop.classList.toggle("show",window.scrollY>500)});backToTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
+function loadGiscus(){const container=document.getElementById("giscus-container");if(!container||container.querySelector("script"))return;const script=document.createElement("script");script.src="https://giscus.app/client.js";script.setAttribute("data-repo","Dhyon09/cn-novel-translation");script.setAttribute("data-repo-id","R_kgDOU4Dcig");script.setAttribute("data-category","General");script.setAttribute("data-category-id","DIC_kwDOU4Dcis4DG3Ff");script.setAttribute("data-mapping","pathname");script.setAttribute("data-strict","0");script.setAttribute("data-reactions-enabled","1");script.setAttribute("data-emit-metadata","0");script.setAttribute("data-input-position","bottom");script.setAttribute("data-theme",document.body.classList.contains("dark")?"dark":"light");script.setAttribute("data-lang","id");script.setAttribute("data-loading","lazy");script.crossOrigin="anonymous";script.async=true;container.appendChild(script)}
+function updateGiscusTheme(){const iframe=document.querySelector("iframe.giscus-frame");if(!iframe)return;iframe.contentWindow.postMessage({giscus:{setConfig:{theme:document.body.classList.contains("dark")?"dark":"light"}}},"https://giscus.app")}
+window.addEventListener("pageshow",function(){loadTheme();updateFontSize();updateGiscusTheme()});loadGiscus();
+</script>
+</body>
+</html>
