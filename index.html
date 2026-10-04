@@ -37,6 +37,27 @@
         gap: 10px;
     }
 
+    /* Novel Random dibuat sedikit lebih compact tanpa mengubah Latest Update */
+    #randomNovels {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    #randomNovels .novel-card-content {
+        padding: 7px 8px 8px;
+    }
+
+    #randomNovels .novel-card-content h3 {
+        font-size: 13px;
+        line-height: 1.3;
+        margin-bottom: 4px;
+    }
+
+    #randomNovels .novel-card-content p,
+    #randomNovels .novel-card-content span {
+        font-size: 11px;
+    }
+
     .novel-card {
         min-width: 0;
         background: var(--card);
@@ -81,11 +102,17 @@
     @media (max-width: 480px) {
         .home-container { padding: 14px 12px 28px; }
         .novel-grid { gap: 9px; }
+        #randomNovels { gap: 7px; }
+        #randomNovels .novel-card-content { padding: 6px 7px 7px; }
+        #randomNovels .novel-card-content h3 { font-size: 12px; }
+        #randomNovels .novel-card-content p,
+        #randomNovels .novel-card-content span { font-size: 10px; }
         .section-heading h2 { font-size: 18px; }
     }
 
     @media (min-width: 700px) {
         .novel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+        #randomNovels { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
     }
 </style>
 
