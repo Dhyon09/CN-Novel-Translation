@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="id">
 
 <head>
@@ -12,7 +13,6 @@
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-
         .chapter-list {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -34,10 +34,7 @@
             text-decoration: none;
             font-size: 15px;
             line-height: 1.3;
-            transition:
-                border-color 0.25s ease,
-                background-color 0.25s ease,
-                color 0.25s ease;
+            transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
         }
 
         .chapter-list a:hover,
@@ -85,7 +82,6 @@
         }
 
         @media (max-width: 480px) {
-
             .chapter-list {
                 max-height: 330px;
                 gap: 6px;
@@ -100,9 +96,7 @@
             .last-read a {
                 font-size: 13px;
             }
-
         }
-
     </style>
 
 </head>
@@ -112,35 +106,13 @@
 <header class="site-header">
 
     <div class="header-left">
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Buka menu"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
+        <button class="menu-button" id="menuButton" aria-label="Buka menu" aria-expanded="false">☰</button>
     </div>
 
-    <a
-        href="../index.html"
-        class="site-title"
-    >
-        CN Novel-Translation
-    </a>
+    <a href="../index.html" class="site-title">CN Novel-Translation</a>
 
     <div class="header-right">
-
-        <button
-            class="theme-button"
-            id="themeButton"
-            aria-label="Ganti tema"
-        >
-            ☀️
-        </button>
-
+        <button class="theme-button" id="themeButton" aria-label="Ganti tema">☀️</button>
     </div>
 
 </header>
@@ -150,58 +122,27 @@
 <nav class="side-menu" id="sideMenu">
 
     <div class="menu-header">
-
         <span>Menu</span>
-
-        <button
-            class="menu-close"
-            id="menuClose"
-            aria-label="Tutup menu"
-        >
-            ×
-        </button>
-
+        <button class="menu-close" id="menuClose" aria-label="Tutup menu">×</button>
     </div>
 
-    <div
-        class="menu-parent"
-        id="menuNovel"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-    >
-
+    <div class="menu-parent" id="menuNovel" role="button" tabindex="0" aria-expanded="false">
         <span>Novel</span>
-
         <span class="menu-arrow">›</span>
-
     </div>
 
     <div class="novel-submenu" id="novelSubmenu">
-
         <a href="on-going.html">On-going</a>
         <a href="completed.html">Completed</a>
         <a href="hiatus.html">Hiatus</a>
         <a href="drop.html">Drop</a>
-
     </div>
 
-    <a href="../bookmark.html" class="menu-item">
-        Bookmark
-    </a>
+    <a href="../bookmark.html" class="menu-item">Bookmark</a>
 
-    <a
-        href="https://trakteer.id/DhyonPratama"
-        class="menu-item"
-        target="_blank"
-        rel="noopener"
-    >
-        Donasi
-    </a>
+    <a href="https://trakteer.id/DhyonPratama" class="menu-item" target="_blank" rel="noopener">Donasi</a>
 
-    <a href="#login" class="menu-item">
-        Login
-    </a>
+    <a href="#login" class="menu-item">Login</a>
 
 </nav>
 
@@ -210,16 +151,8 @@
     <div class="global-search-inner">
 
         <div class="search-box">
-
             <span class="search-icon">🔍</span>
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Cari judul novel..."
-                autocomplete="off"
-            >
-
+            <input type="search" id="searchInput" placeholder="Cari judul novel..." autocomplete="off">
         </div>
 
     </div>
@@ -233,66 +166,27 @@
         <div class="novel-detail">
 
             <div class="novel-cover">
-
-                <img
-                    src="../images/interrogate-the-saintess-cover.jpg"
-                    alt="Cover They Asked You to Interrogate the Saintess, Yet You Made Her Your Dao Companion?"
-                >
-
+                <img src="../images/interrogate-the-saintess-cover.jpg" alt="Cover They Asked You to Interrogate the Saintess, Yet You Made Her Dao Companion?">
             </div>
 
             <div class="novel-info">
 
-                <h1>
-                    They Asked You to Interrogate the Saintess, Yet You Made Her Your Dao Companion?
-                </h1>
+                <h1>They Asked You to Interrogate the Saintess, Yet You Made Her Dao Companion?</h1>
 
-                <p>
-                    <strong>Mandarin:</strong>
-                    让你拷问圣女，你把她审成道侣？
-                </p>
+                <p><strong>Mandarin:</strong> 让你拷问圣女，你把她审成道侣？</p>
 
-                <p>
-                    <strong>Genre:</strong>
-                    Xuanhuan • Eastern Fantasy • System • Transmigration • Single Female Lead
-                </p>
+                <p><strong>Genre:</strong> Xuanhuan • Eastern Fantasy • System • Transmigration • Single Female Lead</p>
 
-                <p>
-                    <strong>Author:</strong>
-                    百草神农自知毒
-                </p>
+                <p><strong>Author:</strong> 百草神农自知毒</p>
 
-                <p>
-                    <strong>Status:</strong>
-                    <strong>On-going</strong>
-                </p>
+                <p><strong>Status:</strong> <strong>On-going</strong></p>
 
-                <a
-                    href="../chapter/saintess-1.html"
-                    class="start-reading-button"
-                >
-                    Mulai Baca
-                </a>
+                <a href="../chapter/saintess-1.html" class="start-reading-button">Mulai Baca</a>
 
-                <button
-                    id="bookmarkButton"
-                    class="bookmark-button"
-                >
-                    ☆ Bookmark
-                </button>
+                <button id="bookmarkButton" class="bookmark-button">☆ Bookmark</button>
 
-                <div
-                    class="last-read"
-                    id="lastRead"
-                >
-
-                    <a
-                        href="#"
-                        id="lastReadLink"
-                    >
-                        Bacaan terakhir: Chapter 1
-                    </a>
-
+                <div class="last-read" id="lastRead">
+                    <a href="#" id="lastReadLink">Bacaan terakhir: Chapter 1</a>
                 </div>
 
             </div>
@@ -305,17 +199,17 @@
 
             <h2>Sinopsis</h2>
 
-            <p>
-                Seorang tokoh utama mendapat tugas untuk menginterogasi seorang Saintess.
-                Namun, alih-alih berakhir sebagai pemeriksaan biasa, hubungan keduanya justru
-                berkembang ke arah yang sama sekali tidak terduga.
-            </p>
+            <p><strong>【Xuanhuan • Protagonis Wanita Tunggal • Sistem dengan Keberadaan Rendah】</strong></p>
 
-            <p>
-                Dengan sistem dan perjalanan transmigrasinya, dia perlahan melangkah lebih
-                jauh ke dunia kultivasi dan menghadapi berbagai rahasia yang tersembunyi
-                di balik para kultivator dan Saintess.
-            </p>
+            <p>Jiang Linyuan telah tiba di dunia kultivasi selama dua puluh tahun. Keputusan paling tidak berdaya yang pernah dia ambil adalah bergabung dengan sekte iblis ketika sudah tidak memiliki pilihan lain.</p>
+
+            <p>Awalnya, dia mengira akan menghabiskan seluruh hidupnya di sekte iblis. Namun, tanpa diduga, sebuah sistem tiba-tiba terbangun dalam dirinya.</p>
+
+            <p>Hanya saja, sistem ini sepertinya... agak tidak biasa?</p>
+
+            <p>Dan... mengapa tatapan Saintess dari jalan lurus terhadapnya semakin lama semakin aneh?</p>
+
+            <p><strong>Yun Qingyao:</strong> “Hari ini kita mau bermain apa, Su—am—i?”</p>
 
         </section>
 
@@ -324,11 +218,7 @@
             <h2>Daftar Chapter</h2>
 
             <div class="chapter-list">
-
-                <a href="../chapter/saintess-1.html">
-                    Chapter 1
-                </a>
-
+                <a href="../chapter/saintess-1.html">Chapter 1</a>
             </div>
 
         </section>
@@ -337,10 +227,7 @@
 
             <h2>Komentar</h2>
 
-            <div
-                class="giscus"
-                id="giscus-container"
-            ></div>
+            <div class="giscus" id="giscus-container"></div>
 
         </section>
 
@@ -350,31 +237,15 @@
 
 <footer class="site-footer">
 
-    <div class="footer-title">
-        CN Novel-Translation
-    </div>
+    <div class="footer-title">CN Novel-Translation</div>
 
     <div class="footer-links">
-
-        <a href="../index.html">
-            Home
-        </a>
-
+        <a href="../index.html">Home</a>
         <span>•</span>
-
-        <a
-            href="https://trakteer.id/DhyonPratama"
-            target="_blank"
-            rel="noopener"
-        >
-            Donasi
-        </a>
-
+        <a href="https://trakteer.id/DhyonPratama" target="_blank" rel="noopener">Donasi</a>
     </div>
 
-    <div class="copyright">
-        © Copyright 2026-CN Novel-Translation
-    </div>
+    <div class="copyright">© Copyright 2026-CN Novel-Translation</div>
 
 </footer>
 
@@ -382,62 +253,32 @@
 
 /* MENU */
 
-const menuButton =
-    document.getElementById("menuButton");
-
-const menuClose =
-    document.getElementById("menuClose");
-
-const menuOverlay =
-    document.getElementById("menuOverlay");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const menuNovel =
-    document.getElementById("menuNovel");
-
-const novelSubmenu =
-    document.getElementById("novelSubmenu");
+const menuButton = document.getElementById("menuButton");
+const menuClose = document.getElementById("menuClose");
+const menuOverlay = document.getElementById("menuOverlay");
+const sideMenu = document.getElementById("sideMenu");
+const menuNovel = document.getElementById("menuNovel");
+const novelSubmenu = document.getElementById("novelSubmenu");
 
 function openMenu() {
-
     sideMenu.classList.add("active");
     menuOverlay.classList.add("active");
     document.body.classList.add("menu-open");
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        "true"
-    );
-
+    menuButton.setAttribute("aria-expanded", "true");
 }
 
 function closeNovelSubmenu() {
-
     novelSubmenu.classList.remove("active");
     menuNovel.classList.remove("active");
-
-    menuNovel.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
+    menuNovel.setAttribute("aria-expanded", "false");
 }
 
 function closeMenu() {
-
     sideMenu.classList.remove("active");
     menuOverlay.classList.remove("active");
     document.body.classList.remove("menu-open");
-
     closeNovelSubmenu();
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
+    menuButton.setAttribute("aria-expanded", "false");
 }
 
 menuButton.addEventListener("click", openMenu);
@@ -445,317 +286,157 @@ menuClose.addEventListener("click", closeMenu);
 menuOverlay.addEventListener("click", closeMenu);
 
 function toggleNovelSubmenu() {
-
-    const isActive =
-        novelSubmenu.classList.toggle("active");
-
-    menuNovel.classList.toggle(
-        "active",
-        isActive
-    );
-
-    menuNovel.setAttribute(
-        "aria-expanded",
-        isActive
-    );
-
+    const isActive = novelSubmenu.classList.toggle("active");
+    menuNovel.classList.toggle("active", isActive);
+    menuNovel.setAttribute("aria-expanded", isActive);
 }
 
-menuNovel.addEventListener(
-    "click",
-    toggleNovelSubmenu
-);
+menuNovel.addEventListener("click", toggleNovelSubmenu);
 
-menuNovel.addEventListener(
-    "keydown",
-    function (event) {
-
-        if (
-            event.key === "Enter" ||
-            event.key === " "
-        ) {
-
-            event.preventDefault();
-            toggleNovelSubmenu();
-
-        }
-
+menuNovel.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleNovelSubmenu();
     }
-);
-
-const menuLinks =
-    sideMenu.querySelectorAll("a");
-
-menuLinks.forEach(function (link) {
-
-    link.addEventListener(
-        "click",
-        closeMenu
-    );
-
 });
 
-document.addEventListener(
-    "keydown",
-    function (event) {
+const menuLinks = sideMenu.querySelectorAll("a");
 
-        if (event.key === "Escape") {
-            closeMenu();
-        }
+menuLinks.forEach(function (link) {
+    link.addEventListener("click", closeMenu);
+});
 
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        closeMenu();
     }
-);
+});
 
 
 /* DARK / LIGHT MODE */
 
-const themeButton =
-    document.getElementById("themeButton");
+const themeButton = document.getElementById("themeButton");
 
 function loadTheme() {
-
-    const savedTheme =
-        localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
-
         document.body.classList.add("dark");
         themeButton.textContent = "🌙";
-
     } else {
-
         document.body.classList.remove("dark");
         themeButton.textContent = "☀️";
-
     }
-
 }
 
-themeButton.addEventListener(
-    "click",
-    function () {
+themeButton.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
 
-        document.body.classList.toggle("dark");
-
-        if (
-            document.body.classList.contains("dark")
-        ) {
-
-            localStorage.setItem("theme", "dark");
-            themeButton.textContent = "🌙";
-
-        } else {
-
-            localStorage.setItem("theme", "light");
-            themeButton.textContent = "☀️";
-
-        }
-
-        updateGiscusTheme();
-
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeButton.textContent = "🌙";
+    } else {
+        localStorage.setItem("theme", "light");
+        themeButton.textContent = "☀️";
     }
-);
+
+    updateGiscusTheme();
+});
 
 loadTheme();
 
-window.addEventListener(
-    "pageshow",
-    function () {
-
-        loadTheme();
-        updateGiscusTheme();
-        loadBookmark();
-        loadLastRead();
-
-    }
-);
+window.addEventListener("pageshow", function () {
+    loadTheme();
+    updateGiscusTheme();
+    loadBookmark();
+    loadLastRead();
+});
 
 
 /* BOOKMARK */
 
-const bookmarkButton =
-    document.getElementById("bookmarkButton");
+const bookmarkButton = document.getElementById("bookmarkButton");
 
 const bookmarkData = {
-
-    title:
-        "They Asked You to Interrogate the Saintess, Yet You Made Her Dao Companion?",
-
-    mandarin:
-        "让你拷问圣女，你把她审成道侣？",
-
-    genre:
-        "Xuanhuan • Eastern Fantasy • System • Transmigration • Single Female Lead",
-
-    author:
-        "百草神农自知毒",
-
-    status:
-        "On-going",
-
-    cover:
-        "../images/cover.jpg",
-
-    chapter:
-        1,
-
-    chapterTitle:
-        "Chapter 1",
-
-    link:
-        "they-asked-you-to-interrogate-the-saintess.html"
-
+    title: "They Asked You to Interrogate the Saintess, Yet You Made Her Your Dao Companion?",
+    mandarin: "让你拷问圣女，你把她审成道侣？",
+    genre: "Xuanhuan • Eastern Fantasy • System • Transmigration • Single Female Lead",
+    author: "百草神农自知毒",
+    status: "On-going",
+    cover: "../images/interrogate-the-saintess-cover.jpg",
+    chapter: 1,
+    chapterTitle: "Chapter 1",
+    link: "they-asked-you-to-interrogate-the-saintess.html"
 };
 
-const bookmarkStorageKey =
-    "bookmarks";
+const bookmarkStorageKey = "bookmarks";
 
 function getBookmarks() {
-
-    return JSON.parse(
-        localStorage.getItem(
-            bookmarkStorageKey
-        )
-    ) || [];
-
+    return JSON.parse(localStorage.getItem(bookmarkStorageKey)) || [];
 }
 
 function saveBookmarks(bookmarks) {
-
-    localStorage.setItem(
-        bookmarkStorageKey,
-        JSON.stringify(bookmarks)
-    );
-
+    localStorage.setItem(bookmarkStorageKey, JSON.stringify(bookmarks));
 }
 
 function isBookmarked() {
+    const bookmarks = getBookmarks();
 
-    const bookmarks =
-        getBookmarks();
-
-    return bookmarks.some(
-        function (novel) {
-
-            return novel.link ===
-                bookmarkData.link;
-
-        }
-    );
-
+    return bookmarks.some(function (novel) {
+        return novel.link === bookmarkData.link;
+    });
 }
 
 function loadBookmark() {
-
     if (isBookmarked()) {
-
-        bookmarkButton.textContent =
-            "★ Sudah di Bookmark";
-
-        bookmarkButton.classList.add(
-            "bookmarked"
-        );
-
+        bookmarkButton.textContent = "★ Sudah di Bookmark";
+        bookmarkButton.classList.add("bookmarked");
     } else {
-
-        bookmarkButton.textContent =
-            "☆ Bookmark";
-
-        bookmarkButton.classList.remove(
-            "bookmarked"
-        );
-
+        bookmarkButton.textContent = "☆ Bookmark";
+        bookmarkButton.classList.remove("bookmarked");
     }
-
 }
 
-bookmarkButton.addEventListener(
-    "click",
-    function () {
+bookmarkButton.addEventListener("click", function () {
+    let bookmarks = getBookmarks();
 
-        let bookmarks =
-            getBookmarks();
-
-        if (isBookmarked()) {
-
-            bookmarks =
-                bookmarks.filter(
-                    function (novel) {
-
-                        return novel.link !==
-                            bookmarkData.link;
-
-                    }
-                );
-
-        } else {
-
-            bookmarks.unshift(
-                bookmarkData
-            );
-
-        }
-
-        saveBookmarks(bookmarks);
-        loadBookmark();
-
+    if (isBookmarked()) {
+        bookmarks = bookmarks.filter(function (novel) {
+            return novel.link !== bookmarkData.link;
+        });
+    } else {
+        bookmarks.unshift(bookmarkData);
     }
-);
+
+    saveBookmarks(bookmarks);
+    loadBookmark();
+});
 
 loadBookmark();
 
 
 /* BACAAN TERAKHIR */
 
-const lastRead =
-    document.getElementById("lastRead");
+const lastRead = document.getElementById("lastRead");
+const lastReadLink = document.getElementById("lastReadLink");
 
-const lastReadLink =
-    document.getElementById("lastReadLink");
-
-const lastReadStorageKey =
-    "lastRead_TheyAskedYouToInterrogateTheSaintess";
+const lastReadStorageKey = "lastRead_TheyAskedYouToInterrogateTheSaintess";
 
 const chapterPaths = {
-
-    1:
-        "../chapter/saintess-1.html"
-
+    1: "../chapter/saintess-1.html"
 };
 
 function loadLastRead() {
+    const savedChapter = Number(localStorage.getItem(lastReadStorageKey));
 
-    const savedChapter =
-        Number(
-            localStorage.getItem(
-                lastReadStorageKey
-            )
-        );
-
-    if (
-        !savedChapter ||
-        !chapterPaths[savedChapter]
-    ) {
-
-        lastRead.classList.remove(
-            "active"
-        );
-
+    if (!savedChapter || !chapterPaths[savedChapter]) {
+        lastRead.classList.remove("active");
         return;
-
     }
 
-    lastReadLink.textContent =
-        "Bacaan terakhir: Chapter " +
-        savedChapter;
-
-    lastReadLink.href =
-        chapterPaths[savedChapter];
-
-    lastRead.classList.add(
-        "active"
-    );
-
+    lastReadLink.textContent = "Bacaan terakhir: Chapter " + savedChapter;
+    lastReadLink.href = chapterPaths[savedChapter];
+    lastRead.classList.add("active");
 }
 
 loadLastRead();
@@ -763,141 +444,60 @@ loadLastRead();
 
 /* SEARCH */
 
-const searchInput =
-    document.getElementById("searchInput");
+const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener(
-    "input",
-    function () {
+searchInput.addEventListener("input", function () {
+    const keyword = searchInput.value.trim();
 
-        const keyword =
-            searchInput.value.trim();
-
-        if (keyword !== "") {
-
-            window.location.href =
-                "../index.html?search=" +
-                encodeURIComponent(
-                    keyword
-                );
-
-        }
-
+    if (keyword !== "") {
+        window.location.href = "../index.html?search=" + encodeURIComponent(keyword);
     }
-);
+});
 
 
 /* GISCUS */
 
 function loadGiscus() {
-
-    const container =
-        document.getElementById(
-            "giscus-container"
-        );
+    const container = document.getElementById("giscus-container");
 
     if (!container) {
         return;
     }
 
-    if (
-        container.querySelector("script")
-    ) {
+    if (container.querySelector("script")) {
         return;
     }
 
-    const script =
-        document.createElement("script");
+    const script = document.createElement("script");
 
-    script.src =
-        "https://giscus.app/client.js";
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "Dhyon09/cn-novel-translation");
+    script.setAttribute("data-repo-id", "R_kgDOU4Dcig");
+    script.setAttribute("data-category", "General");
+    script.setAttribute("data-category-id", "DIC_kwDOU4Dcis4DG3Ff");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "bottom");
+    script.setAttribute("data-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    script.setAttribute("data-lang", "id");
+    script.setAttribute("data-loading", "lazy");
 
-    script.setAttribute(
-        "data-repo",
-        "Dhyon09/cn-novel-translation"
-    );
-
-    script.setAttribute(
-        "data-repo-id",
-        "R_kgDOU4Dcig"
-    );
-
-    script.setAttribute(
-        "data-category",
-        "General"
-    );
-
-    script.setAttribute(
-        "data-category-id",
-        "DIC_kwDOU4Dcis4DG3Ff"
-    );
-
-    script.setAttribute(
-        "data-mapping",
-        "pathname"
-    );
-
-    script.setAttribute(
-        "data-strict",
-        "0"
-    );
-
-    script.setAttribute(
-        "data-reactions-enabled",
-        "1"
-    );
-
-    script.setAttribute(
-        "data-emit-metadata",
-        "0"
-    );
-
-    script.setAttribute(
-        "data-input-position",
-        "bottom"
-    );
-
-    script.setAttribute(
-        "data-theme",
-        document.body.classList.contains("dark")
-            ? "dark"
-            : "light"
-    );
-
-    script.setAttribute(
-        "data-lang",
-        "id"
-    );
-
-    script.setAttribute(
-        "data-loading",
-        "lazy"
-    );
-
-    script.crossOrigin =
-        "anonymous";
-
+    script.crossOrigin = "anonymous";
     script.async = true;
 
     container.appendChild(script);
-
 }
 
 function updateGiscusTheme() {
-
-    const iframe =
-        document.querySelector(
-            "iframe.giscus-frame"
-        );
+    const iframe = document.querySelector("iframe.giscus-frame");
 
     if (!iframe) {
         return;
     }
 
-    const theme =
-        document.body.classList.contains("dark")
-            ? "dark"
-            : "light";
+    const theme = document.body.classList.contains("dark") ? "dark" : "light";
 
     iframe.contentWindow.postMessage(
         {
@@ -909,7 +509,6 @@ function updateGiscusTheme() {
         },
         "https://giscus.app"
     );
-
 }
 
 loadGiscus();
