@@ -1,226 +1,82 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 7 - They Asked You to Interrogate the Saintess, Yet You Made Her Your Dao Companion?</title>
-<link rel="stylesheet" href="../css/style.css">
-<style>
-.chapter-navigation{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:6px;width:100%;margin:0 0 16px}
-.chapter-nav-btn{display:flex;align-items:center;justify-content:center;min-height:38px;padding:7px 6px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);text-decoration:none;text-align:center;font-size:14px;line-height:1.2;transition:border-color .25s ease,background-color .25s ease,color .25s ease}
-.chapter-nav-btn:hover,.chapter-nav-btn:active{border-color:var(--primary);background:var(--bg);color:var(--primary)}
-.chapter-nav-btn.disabled{opacity:.45;pointer-events:none}
-.reader-settings-area{position:relative;display:flex;flex-direction:column;align-items:center;width:100%;margin:2px 0 12px}
-.reader-settings-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1px solid var(--border);border-radius:50%;background:var(--card);color:var(--text);font-size:18px;cursor:pointer;transition:border-color .25s ease,background-color .25s ease,color .25s ease,transform .25s ease}
-.reader-settings-btn:hover,.reader-settings-btn:active{border-color:var(--primary);color:var(--primary)}
-.reader-settings-btn.active{transform:rotate(30deg);border-color:var(--primary);color:var(--primary)}
-.reader-settings{display:none;align-items:center;justify-content:center;gap:8px;margin-top:8px;padding:5px 8px;border:1px solid var(--border);border-radius:7px;background:var(--card)}
-.reader-settings.active{display:flex}
-.reader-settings button{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;border:1px solid var(--border);border-radius:5px;background:var(--card);color:var(--text);font-family:inherit;font-size:14px;cursor:pointer}
-.reader-settings button:hover,.reader-settings button:active{border-color:var(--primary);color:var(--primary)}
-#fontSizeDisplay{min-width:22px;color:var(--text);font-size:14px;text-align:center}
-.chapter-heading{text-align:center;margin-bottom:24px}
-.chapter-number{margin-bottom:5px;color:var(--secondary);font-size:15px;line-height:1.3}
-.chapter-heading h1{margin:0;color:var(--text);font-size:24px;line-height:1.3}
-.back-to-top{position:fixed;right:16px;bottom:18px;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:50%;background:var(--card);color:var(--text);font-size:19px;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s ease,visibility .25s ease,transform .25s ease,border-color .25s ease,color .25s ease;z-index:1000}
-.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
-.back-to-top:hover,.back-to-top:active{border-color:var(--primary);color:var(--primary)}
-@media(max-width:480px){.chapter-navigation{gap:5px;margin-bottom:14px}.chapter-nav-btn{min-height:36px;padding:6px 4px;font-size:13px}.reader-settings-area{margin-top:1px;margin-bottom:11px}.reader-settings-btn{width:35px;height:35px;font-size:17px}.chapter-heading{margin-bottom:22px}.chapter-number{font-size:14px}.chapter-heading h1{font-size:22px}.back-to-top{right:14px;bottom:15px;width:38px;height:38px;font-size:18px}}
-</style>
-</head>
-<body>
-<header class="site-header">
-<div class="header-left"><button class="menu-button" id="menuButton" aria-label="Buka menu" aria-expanded="false">☰</button></div>
-<a href="../index.html" class="site-title">CN Novel-Translation</a>
-<div class="header-right"><button class="theme-button" id="themeButton" aria-label="Ganti tema">☀️</button></div>
-</header>
-<div class="menu-overlay" id="menuOverlay"></div>
-<nav class="side-menu" id="sideMenu">
-<div class="menu-header"><span>Menu</span><button class="menu-close" id="menuClose" aria-label="Tutup menu">×</button></div>
-<div class="menu-parent" id="menuNovel" role="button" tabindex="0" aria-expanded="false"><span>Novel</span><span class="menu-arrow">›</span></div>
-<div class="novel-submenu" id="novelSubmenu">
-<a href="../novel/on-going.html">On-going</a>
-<a href="../novel/completed.html">Completed</a>
-<a href="../novel/hiatus.html">Hiatus</a>
-<a href="../novel/drop.html">Drop</a>
-</div>
-<a href="../bookmark.html" class="menu-item">Bookmark</a>
-<a href="https://trakteer.id/DhyonPratama" class="menu-item" target="_blank" rel="noopener">Donasi</a>
-<a href="#login" class="menu-item">Login</a>
-</nav>
-<div class="global-search-bar"><div class="global-search-inner"><div class="search-box"><span class="search-icon">🔍</span><input type="search" id="searchInput" placeholder="Cari judul novel..." autocomplete="off"></div></div></div>
-<main class="reader-container">
-<nav class="chapter-navigation">
-<a href="saintess-6.html" class="chapter-nav-btn">← Sebelumnya</a>
-<a href="../novel/they-asked-you-to-interrogate-the-saintess.html" class="chapter-nav-btn">Daftar Isi</a>
-<a href="#" class="chapter-nav-btn disabled">Selanjutnya →</a>
-</nav>
-<div class="reader-settings-area">
-<button class="reader-settings-btn" id="readerSettingsButton" aria-label="Pengaturan pembaca" aria-expanded="false">⚙️</button>
-<div id="readerSettings" class="reader-settings">
-<button id="fontDecrease" aria-label="Perkecil ukuran teks">A−</button>
-<span id="fontSizeDisplay">18</span>
-<button id="fontIncrease" aria-label="Perbesar ukuran teks">A+</button>
-</div>
-</div>
-<div class="chapter-heading">
-<div class="chapter-number">Chapter 7</div>
-<h1>Sepatu dan Kaus Kaki</h1>
-</div>
-<article class="reader">
-<p>Napas <strong>Yun Qingyao</strong> terasa di dekat telinganya, tetapi <strong>Jiang Linyuan</strong> tidak menjauh.</p>
-<p>Dia menekan kepingan giok teknik tersebut, lalu mengangkat pandangan dan menatap orang yang datang.</p>
-<p>“Dia mengatakan sesuatu yang lain?”</p>
-<p>“Tidak.”</p>
-<p>Penjaga itu mengepalkan tangan memberi hormat.</p>
-<p>“Bawahan sudah bertanya apa yang ingin dia ungkapkan, tetapi setelah itu dia tidak menjawab lagi.”</p>
-<p><strong>Jiang Linyuan</strong> berpikir sejenak.</p>
-<p>Kenapa wanita itu justru berubah pikiran setelah dia pergi?</p>
-<p>Sebelumnya, dia begitu keras kepala ketika menjalani interogasi. Namun sekarang, dia malah secara aktif meminta untuk bertemu dengannya.</p>
-<p>Jika dikatakan tidak ada maksud tersembunyi di baliknya, bahkan dua penjaga di luar pintu pun mungkin tidak akan percaya.</p>
-<p>“Apakah Formasi Penyerap Energi Spiritual mengalami sesuatu yang tidak biasa?”</p>
-<p>Penjaga itu melepaskan token dari pinggangnya.</p>
-<p>“Dia sempat mencoba menerobos segel sekali. Setelah itu, tidak ada gerakan lagi.”</p>
-<p><strong>Jiang Linyuan</strong> menerima token tersebut, memeriksa ukiran formasi di dalamnya, lalu melemparkannya kembali.</p>
-<p>“Jaga seperti biasa. Sebelum aku datang besok, jangan izinkan siapa pun masuk ke Ruang Wenxin.”</p>
-<p>Penjaga itu menangkap token tersebut, tetapi wajahnya menunjukkan keraguan.</p>
-<p>“Bagaimana jika Ketua Balai mengirim seseorang...?”</p>
-<p>“Aku akan memberikan penjelasan kepada Ketua Balai.”</p>
-<p><strong>Jiang Linyuan</strong> menutup kepingan giok itu. Nada suaranya tidak menyisakan ruang untuk berdebat.</p>
-<p>Penjaga tersebut menundukkan kepala lalu keluar.</p>
-<p>Setelah pintu batu tertutup, <strong>Jiang Linyuan</strong> tidak langsung berkultivasi. Dia hanya meletakkan dua keping giok secara berdampingan.</p>
-<p>Di sebelah kiri adalah <em>Teknik Memutus Meridian dan Melebur Energi Spiritual</em>, teknik yang biasa digunakan oleh para kultivator Foundation Establishment dari Sekte Suci.</p>
-<p>Di sebelah kanan adalah <em>Catatan Penyiksaan Penguji Hati</em>. Dia sudah berhasil menguasai teknik tersebut hingga lapisan ketiga. Jika terus mendalaminya, kemampuannya dalam menggunakan kekuatan jiwa masih dapat meningkat sedikit lagi.</p>
-<p>Namun...</p>
-<p><strong>Jiang Linyuan</strong> menyimpan <em>Catatan Penyiksaan Penguji Hati</em> ke dalam lengan bajunya dan hanya menyisakan <em>Teknik Memutus Meridian dan Melebur Energi Spiritual</em>.</p>
-<p>Meningkatkan tingkat kultivasi terlebih dahulu adalah hal yang paling penting.</p>
-<p>Meskipun <em>Catatan Penyiksaan Penguji Hati</em> memang berguna, teknik itu sudah mencapai batas karena keterbatasan tingkat kultivasinya.</p>
-<p>Jika terus berlatih, tubuhnya mungkin tidak akan mampu menanggung beban kekuatan jiwa, sehingga hasilnya justru berbalik menjadi kerugian.</p>
-<p>Dia mengeluarkan empat batu roh dan meletakkannya di keempat sudut ruang batu. Kemudian, dia mengubah segel di balik pintu ke posisi terkunci.</p>
-<p>Setelah memastikan auranya tidak akan bocor keluar, dia baru duduk bersila dan menempelkan kepingan giok tersebut ke dahinya.</p>
-<p><em>Teknik Memutus Meridian dan Melebur Energi Spiritual</em> berakar pada kata “memutus”. Teknik ini mengambil energi spiritual yang tersebar di dalam meridian, kemudian meleburkannya ke dalam lautan energi untuk memperkuat tubuh.</p>
-<p>Teknik ini hanya mengenal jalan masuk tanpa jalan keluar. Kecepatan kultivasinya tinggi, tetapi harganya juga tidak kecil—meridian dapat mengalami kerusakan dan energi spiritual dapat saling berbenturan. Dalam kasus parah, hal itu dapat meninggalkan luka tersembunyi seumur hidup.</p>
-<p>Memang begitulah teknik ini ketika pertama kali diciptakan.</p>
-<p>Namun, para kultivator generasi berikutnya kemudian menyadari bahwa dua kata “memutus meridian” tidak pernah menjelaskan meridian milik siapa yang harus diputus.</p>
-<p>Dengan kecerdikan generasi setelahnya, teknik ini dikembangkan semakin jauh. Pada akhirnya, <em>Teknik Memutus Meridian dan Melebur Energi Spiritual</em> menjadi salah satu teknik iblis yang terkenal.</p>
-<p>Efek sampingnya pun kini hanya tersisa pada benturan energi spiritual.</p>
-<p><strong>Jiang Linyuan</strong> mengatur napas dan mengarahkan aliran energi spiritual pertama menuju Meridian Taiyin Tangan.</p>
-<p>Ketika energi spiritual melewati titik Jianjing, tiba-tiba alirannya terbagi menjadi dua. Salah satunya menghantam meridian samping, dan rasa nyeri menusuk hingga ke tulang bahunya.</p>
-<p>Dia tidak berhenti. Dia menahan rasa sakit dan terus menjalankan teknik tersebut.</p>
-<p>Batu-batu roh di keempat sudut ruang batu kehilangan cahayanya satu demi satu. Serbuk-serbuk halus berjatuhan ke lantai.</p>
-<p>Sementara itu, energi spiritual di lautan energinya perlahan menjadi semakin padat. Hambatan yang sebelumnya mulai longgar pada <strong>tahap menengah Foundation Establishment</strong> kembali terisi sepenuhnya.</p>
-<p>Menjelang tengah malam, setelah selesai berkultivasi, dia membuka bagian teknik sihir dari kepingan giok.</p>
-<p>Ada cukup banyak teknik di dalamnya, tetapi saat berkultivasi, dia hanya memilih tiga.</p>
-<p><strong>Jari Pemutus Meridian</strong> — mengalirkan energi spiritual ke ujung jari, khusus untuk memutus titik-titik aliran energi lawan.</p>
-<p>Jika mengenai titik pertemuan meridian dalam jarak dekat, bahkan seorang kultivator Golden Core pun akan kehilangan kekuatan untuk sesaat.</p>
-<p><strong>Jubah Pelebur Energi</strong> — melapisi meridian dan organ dalam dengan energi spiritual, sehingga dapat meredam sebagian benturan dari teknik sihir.</p>
-<p><strong>Memutus Energi dan Membakar Meridian</strong> — menyimpan energi spiritual dari langit dan bumi, lalu menekannya secara paksa ke dalam meridian sendiri untuk meningkatkan tingkat kultivasi dalam waktu singkat.</p>
-<p>Semakin lama digunakan, semakin berat pula efek sampingnya.</p>
-<p>Dengan kondisi tubuhnya saat ini, jika dia memaksakan diri lebih dari seperempat jam, meridiannya mungkin akan langsung mengalami kerusakan.</p>
-<p><strong>Jiang Linyuan</strong> menghafalkan mantra masing-masing teknik satu per satu.</p>
-<p>Dia mencoba <strong>Jari Pemutus Meridian</strong> dan <strong>Jubah Pelebur Energi</strong> masing-masing sekali. Teknik pertama mampu membuat lubang sebesar ruas jari pada bagian dalam meja batu, sedangkan teknik kedua mampu menahan tebasan senjata pendek.</p>
-<p>Hasilnya memang tidak bisa dikatakan luar biasa, tetapi cukup praktis.</p>
-<p>Untuk <strong>Memutus Energi dan Membakar Meridian</strong>, dia hanya menghafalkan mantranya dan mencoba menjalankannya sebentar, tetapi tidak berani mengambil risiko untuk benar-benar menggunakannya.</p>
-<p>Jika kartu truf untuk menyelamatkan nyawa justru membuat dirinya sendiri terluka parah di kediaman, lalu kabarnya tersebar, dia hanya akan menjadi bahan tertawaan.</p>
-<p>Ketika langit mulai terang, keempat batu roh itu telah sepenuhnya berubah menjadi abu.</p>
-<p><strong>Jiang Linyuan</strong> berdiri dan menggerakkan bahu serta lengannya. Energi spiritual di dalam tubuhnya terasa sedikit lebih padat dibandingkan malam sebelumnya. Dia kini hanya selangkah lagi dari <strong>tahap akhir Foundation Establishment</strong>.</p>
-<p>Dia mengenakan topeng perunggu, menyimpan <strong>Tali Pengikat Abadi</strong> ke dalam lengan bajunya, lalu membuka pintu untuk menemui <strong>Yun Qingyao</strong>.</p>
-<p>……</p>
-<p>Di luar Ruang Wenxin, dua penjaga sudah menunggu sejak tadi.</p>
-<p>Salah seorang menyerahkan catatan interogasi. Di atas kertas itu hanya ada dua baris tambahan.</p>
-<p>Penjaga lainnya menggenggam token formasi, ibu jarinya terus menekan di dekat tanda lima puluh persen.</p>
-<p>“Orang dari Ketua Balai sudah datang?”</p>
-<p><strong>Jiang Linyuan</strong> menerima catatan interogasi itu tanpa membukanya.</p>
-<p>“Datang sekali setengah jam yang lalu.”</p>
-<p>Penjaga itu menarik ibu jarinya.</p>
-<p>“Bawahan sudah menahannya, tetapi dia meminta kami menyampaikan kepada Pelaksana bahwa hasilnya harus diserahkan sebelum tengah hari.”</p>
-<p><strong>Jiang Linyuan</strong> melipat catatan interogasi tersebut, lalu mendorong pintu batu hingga terbuka.</p>
-<p>“Jaga bagian luar.”</p>
-<p>Pintu batu terkunci. Dua orang penjaga di luar mundur beberapa langkah.</p>
-<p><strong>Yun Qingyao</strong> bersandar di dinding batu. Pola hitam di pergelangan tangannya kini sudah melewati lengan bawah.</p>
-<p>Mangkuk tanah liat kasar masih berada di tempat semula. Air di dalamnya bahkan belum berkurang sedikit pun.</p>
-<p>Begitu mendengar suara pintu, dia mengangkat wajah. Pandangannya berhenti sejenak pada ujung lengan baju <strong>Jiang Linyuan</strong>.</p>
-<p><strong>Jiang Linyuan</strong> berjalan menuju kursi kayu dan duduk tanpa mengucapkan sepatah kata pun.</p>
-<p><strong>Yun Qingyao</strong> menunggu cukup lama.</p>
-<p>Namun <strong>Jiang Linyuan</strong> tetap duduk di sana. Bahkan catatan interogasi pun tidak dia keluarkan.</p>
-<p>Akhirnya, <strong>Yun Qingyao</strong> kehilangan kesabarannya lebih dulu.</p>
-<p>“Kenapa kau diam?”</p>
-<p>“Bukankah kau yang memanggilku kemari?”</p>
-<p><strong>Jiang Linyuan</strong> menatapnya dari balik topeng.</p>
-<p>“Kau bilang ada informasi yang ingin kau sampaikan kepadaku. Lalu kenapa aku masih harus membantumu memulai pembicaraan?”</p>
-<p><strong>Yun Qingyao</strong> dibuat terdiam sejenak.</p>
-<p>Orang ini benar-benar menyebalkan.</p>
-<p>Namun kemarin memang dia yang terlebih dahulu meminta untuk bertemu. Kalau sekarang dia pura-pura tidak tahu apa-apa, yang terbuang hanyalah waktunya sendiri.</p>
-<p>“Lebih dekat.”</p>
-<p>Dia melirik ke arah pintu batu dan merendahkan suaranya.</p>
-<p>“Ada orang di luar. Apa yang ingin kukatakan tidak boleh didengar mereka.”</p>
-<p>Namun <strong>Jiang Linyuan</strong> justru duduk semakin tegak.</p>
-<p>“Tidak.”</p>
-<p><strong>Yun Qingyao</strong> memiringkan wajah, seolah tidak mendengar dengan jelas.</p>
-<p>“Apa katamu?”</p>
-<p>“Yang Mulia Saintess berada di tahap akhir Golden Core. Baik tingkat kultivasi maupun wawasanmu berada jauh di atasku.”</p>
-<p><strong>Jiang Linyuan</strong> mengangkat tangan dan menunjuk jarak di antara mereka.</p>
-<p>“Aku tidak berani mendekat sembarangan. Siapa tahu aku justru masuk ke perangkap.”</p>
-<p>Gigi <strong>Yun Qingyao</strong> terasa ngilu karena kesal.</p>
-<p>Kalau bukan karena kekuatan jiwanya telah terkuras, mana mungkin dia sampai berada dalam keadaan seperti ini?</p>
-<p>“Dulu kau memperlakukanku seperti itu...”</p>
-<p>Dia menarik rantai besi di pergelangan tangannya, nada suaranya berubah tegas.</p>
-<p>“Sekarang malah merasa takut?”</p>
-<p>“Takut.”</p>
-<p><strong>Jiang Linyuan</strong> menjawab dengan terus terang.</p>
-<p>“Yang Mulia Saintess kemarin hanya menggunakan sedikit siasat, dan aku nyaris terjebak. Sekarang tentu aku harus lebih berhati-hati.”</p>
-<p><strong>Yun Qingyao</strong> menatapnya selama beberapa saat, lalu tiba-tiba mengangkat tangan kanannya.</p>
-<p>Rantai besi itu tertarik hingga menegang. Dia menyatukan dua jarinya lalu menekannya ke antara alis.</p>
-<p>“Aku, <strong>Yun Qingyao</strong>, bersumpah dengan Dao Heart-ku.”</p>
-<p>Dia mengucapkan setiap kata dengan jelas, tanpa sedikit pun menghindari tatapan <strong>Jiang Linyuan</strong>.</p>
-<p>“Dalam pembicaraan rahasia hari ini, aku tidak akan secara aktif membahayakan nyawamu. Jika aku melanggar sumpah ini, Golden Core-ku akan hancur dan jalan kultivasiku akan berakhir.”</p>
-<p>Seberkas cahaya keemasan mengalir dari ujung jarinya ke antara alis, lalu tenggelam ke dalam dantian.</p>
-<p>Segel di atas ruang batu ikut bergetar.</p>
-<p>Sumpah telah terbentuk.</p>
-<p><strong>Jiang Linyuan</strong> pun sedikit terkejut.</p>
-<p>Golden Core hancur, jalan kultivasi berakhir.</p>
-<p>Sumpah ini memang cukup berat.</p>
-<p>Sayangnya, yang dia sumpahkan hanyalah “tidak secara aktif membahayakan nyawanya”.</p>
-<p>Menangkapnya sebagai sandera atau melumpuhkan tingkat kultivasinya tidak termasuk dalam batasan sumpah tersebut.</p>
-<p>Bahkan saat bersumpah, wanita ini masih menyisakan celah yang bisa dimanfaatkan. Dia tidak boleh terlalu cepat mempercayainya.</p>
-<p><strong>Jiang Linyuan</strong> mengangkat tangan. Bayangan tali berwarna hitam pekat melesat keluar dari lengan bajunya.</p>
-<p>Bahu dan punggung <strong>Yun Qingyao</strong> langsung menegang. Jelas bahwa ingatan ketika dia diikat beberapa hari lalu masih belum hilang.</p>
-<p>Dia memiringkan tubuh dan menempel pada dinding batu, matanya dipenuhi amarah.</p>
-<p>“<strong>Jiang Linyuan</strong>!”</p>
-<p><strong>Jiang Linyuan</strong> tidak menghiraukannya.</p>
-<p>Namun, dia sudah lebih dahulu mematikan pengaturan pengikatan otomatis di dalam sistem. Dia sendiri yang mengarahkan <strong>Tali Pengikat Abadi</strong> melilit kedua pergelangan tangan <strong>Yun Qingyao</strong>, lalu melingkarkannya dua kali di pinggang.</p>
-<p>Tali itu terpasang dengan rapi. Tidak masuk ke balik kerah pakaian dan tidak menarik jubahnya.</p>
-<p><strong>Yun Qingyao</strong> menundukkan pandangan untuk memeriksanya sejenak. Baru setelah itu amarah di wajahnya sedikit mereda.</p>
-<p>“Kau ternyata sudah belajar mengendalikan artefak.”</p>
-<p>“Terima kasih atas petunjuk dari Yang Mulia Saintess.”</p>
-<p><strong>Jiang Linyuan</strong> menarik ujung tali dan memastikan kedua tangan <strong>Yun Qingyao</strong> tidak dapat membentuk segel tangan. Setelah itu, dia berjalan ke hadapannya.</p>
-<p>Jarak di antara mereka kini hanya sekitar setengah lengan.</p>
-<p><strong>Yun Qingyao</strong> tidak langsung berbicara. Dia hanya mengangkat pandangan dan melirik ke arah celah pintu.</p>
-<p>Cahaya api dari luar memantulkan bayangan seseorang. Para penjaga masih berjaga tidak jauh dari sana.</p>
-<p>Dia mencondongkan tubuh ke depan.</p>
-<p><strong>Jiang Linyuan</strong> secara naluriah membentuk segel tangan, tetapi tidak mundur.</p>
-<p><strong>Tali Pengikat Abadi</strong> telah menyegel meridiannya, dan sumpah Dao Heart juga sudah terbentuk.</p>
-<p>Jika dia masih menyimpan suatu cara untuk menyerangnya, jarak sedekat ini sudah cukup bagi <strong>Jiang Linyuan</strong> untuk memutus titik aliran energi di sisi lehernya.</p>
-<p><strong>Yun Qingyao</strong> berhenti di samping topeng perunggu <strong>Jiang Linyuan</strong>. Beberapa helai rambutnya yang terurai menyentuh sisi topeng.</p>
-<p>Hembusan napas hangat terasa di dekat telinga <strong>Jiang Linyuan</strong>.</p>
-<p>Dia mendekatkan bibir ke telinganya dan berbisik pelan,</p>
-<p>“Kau juga tidak ingin terus berada di sini, bukan?”</p>
-<nav class="chapter-navigation">
-<a href="saintess-6.html" class="chapter-nav-btn">← Sebelumnya</a>
-<a href="../novel/they-asked-you-to-interrogate-the-saintess.html" class="chapter-nav-btn">Daftar Isi</a>
-<a href="#" class="chapter-nav-btn disabled">Selanjutnya →</a>
-</nav>
-<section class="comments-section">
-<h2>Komentar</h2>
-<div class="giscus" id="giscus-container"></div>
-</section>
-</main>
-<button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
-<footer class="site-footer">
-<div class="footer-title">CN Novel-Translation</div>
-<div class="footer-links"><a href="../index.html">Home</a><span>•</span><a href="https://trakteer.id/DhyonPratama" target="_blank" rel="noopener">Donasi</a></div>
-<div class="copyright">© Copyright 2026-CN Novel-Translation</div>
-</footer>
+<!DOCTYP<p>Napas <strong>Yun Qingyao</strong> terasa di dekat telinganya, tetapi <strong>Jiang Linyuan</strong> tidak menjauh.</p>
+<p>Dia masih terikat oleh <strong>Tali Pengikat Abadi</strong>, kedua tangannya tidak dapat membentuk segel, sementara dantiannya juga ditekan oleh segel pembatas.</p>
+<p>Namun, kalimat itu justru lebih merepotkan daripada teknik sihir apa pun.</p>
+<p><strong>Jiang Linyuan</strong> mengangkat pandangan dan menatapnya. Sepasang mata di balik topeng itu tidak menunjukkan perubahan apa pun.</p>
+<p><strong>Yun Qingyao</strong> menunggu sejenak, berharap bisa menemukan celah dari dirinya.</p>
+<p>Namun, dia tidak mengakui maupun menyangkalnya. Bahkan tangan yang masih mempertahankan posisi <strong>Jari Pemutus Meridian</strong> pun tidak bergerak sedikit pun.</p>
+<p>Keyakinan yang semula dimiliki <strong>Yun Qingyao</strong> pun berkurang lebih dari separuh.</p>
+<p>“Sepertinya aku salah menebak.”</p>
+<p><strong>Yun Qingyao</strong> kembali bersandar pada dinding batu, nada bicaranya kembali tegas.</p>
+<p>“Pelayan Jiang sangat dipercaya oleh Kepala Aula, bahkan memegang wewenang Aula Hukuman. Bagaimana mungkin kau ingin pergi?”</p>
+<p><strong>Jiang Linyuan</strong> tetap tidak menjawab.</p>
+<p>Dia telah susah payah melemparkan umpan. Jika <strong>Jiang Linyuan</strong> mengikuti pertanyaannya, kendali situasi akan jatuh ke tangannya.</p>
+<p><strong>Jiang Linyuan</strong> menekuk jarinya dan membentuk segel pengendali <strong>Tali Pengikat Abadi</strong>.</p>
+<p>Tali itu segera mengencang setengah inci, menghentikan gerakan <strong>Yun Qingyao</strong> yang hendak condong ke depan.</p>
+<p>Bahu <strong>Yun Qingyao</strong> kembali menekan dinding batu, sementara bibirnya mengatup rapat.</p>
+<p>“Kalau kau hanya ingin membungkamku, lakukan saja.”</p>
+<p>“Memang seharusnya dibungkam.”</p>
+<p><strong>Jiang Linyuan</strong> akhirnya membuka suara. Pandangannya melintas pada pola hitam di pergelangan tangan <strong>Yun Qingyao</strong>.</p>
+<p><strong>Yun Qingyao</strong> memahami kewaspadaannya.</p>
+<p>Namun, dia tidak menyesal.</p>
+<p>Jika <strong>Segel Penyerap Energi Spiritual</strong> terus bekerja selama dua hari lagi, bahkan kartu truf terakhirnya pun tidak akan dapat dipertahankan. Saat ini, harga dari mencoba peruntungan hanyalah membuatnya semakin waspada.</p>
+<p>Orang ini sudah sangat berhati-hati. Lalu, apa masalahnya jika dia menjadi sedikit lebih waspada?</p>
+<p>Namun, pada saat itulah <strong>Jiang Linyuan</strong> melonggarkan <strong>Tali Pengikat Abadi</strong> dan mengeluarkan sesuatu dari kantong penyimpanannya.</p>
+<p>Benda itu berwarna hitam pekat dan berbahan tipis serta ringan. Saat berada di tangannya, benda itu menjuntai cukup panjang.</p>
+<p><strong>Yun Qingyao</strong> menatapnya selama dua tarikan napas sebelum akhirnya menyadari bahwa benda itu tampak seperti sepasang kaus kaki.</p>
+<p>Hanya saja, ukurannya terlalu panjang.</p>
+<p>“Kau mengambil benda ini untuk apa?”</p>
+<p>Secara refleks, dia menarik kedua kakinya, tetapi rantai besi menarik pergelangan kakinya kembali ke posisi semula.</p>
+<p><strong>Jiang Linyuan</strong> tidak menjawab. Dia hanya mengangkat tangan dan membentuk segel.</p>
+<p>Dua simpul <strong>Tali Pengikat Abadi</strong> yang melilit di sisi kakinya ikut mengendur dan bergerak naik hingga ke pinggang.</p>
+<p>Kekuatan penyegel meridian masih bekerja, tetapi kedua kakinya sudah dapat kembali bergerak.</p>
+<p><strong>Yun Qingyao</strong> segera menekuk lutut dan menekan tumitnya ke lantai batu.</p>
+<p>“Kau mau melakukan apa?”</p>
+<p><strong>Jiang Linyuan</strong> meletakkan <strong>celana ketat hitam</strong> itu di atas lututnya, lalu membungkuk dan memegang tumit kaki kirinya.</p>
+<p>“Menguji sebuah artefak.”</p>
+<p>“Singkirkan.”</p>
+<p><strong>Yun Qingyao</strong> merasa benda ini pasti tidak sederhana. Dia pun mengangkat kaki dan menendang ke arah topengnya. Namun, baru setengah gerakan, <strong>Tali Pengikat Abadi</strong> di pinggangnya langsung mengencang ke belakang dan menekannya kembali ke dinding batu.</p>
+<p>Rantai besi menghantam lantai, dan suaranya terdengar hingga ke luar pintu batu.</p>
+<p><strong>Jiang Linyuan</strong> mencengkeram pergelangan kakinya. Dengan tangan yang lain, dia melepaskan sepatu bot yang terkena debu itu.</p>
+<p>“Jangan bergerak sembarangan.”</p>
+<p>“Kau menyebut benda seperti ini sebagai artefak?”</p>
+<p><strong>Yun Qingyao</strong> menegangkan punggung kakinya, berusaha menariknya dari genggaman <strong>Jiang Linyuan</strong>.</p>
+<p>“<strong>Jiang Linyuan</strong>, apa kau tidak bisa bertindak sedikit lebih masuk akal?”</p>
+<p>“Benda ini memang artefak tingkat Xuan tingkat tinggi.”</p>
+<p><strong>Jiang Linyuan</strong> meletakkan sepatu bot <strong>Yun Qingyao</strong> di samping.</p>
+<p>Perkataannya kali ini memang benar.</p>
+<p><strong>Yun Qingyao</strong> terdiam sejenak, kemudian mengangkat kakinya untuk menginjak pergelangan tangan <strong>Jiang Linyuan</strong>.</p>
+<p><strong>Jiang Linyuan</strong> sudah mengantisipasi gerakannya. Kelima jarinya bergeser sedikit ke bawah dan mencengkeram telapak kakinya dengan mantap.</p>
+<p>Dia telah tersiksa oleh <strong>Segel Penyerap Energi Spiritual</strong> selama dua hari, sehingga kekuatannya jauh lebih lemah daripada biasanya. Setelah beberapa kali berusaha melepaskan diri, dia tetap tidak berhasil.</p>
+<p><strong>Jiang Linyuan</strong> menjepit bagian ujung kaus kaki dengan dua jari, lalu menarik <strong>kaus kaki putih</strong> itu perlahan dari punggung kakinya.</p>
+<p>Ketika kain melewati tumit, gerakannya sedikit tertahan. <strong>Yun Qingyao</strong> secara refleks menekuk jari-jari kakinya, sementara pergelangan kakinya ikut tertarik mundur setengah inci.</p>
+<p><strong>Jiang Linyuan</strong> menopang tumitnya dan melepaskan kaus kaki putih itu sepenuhnya dari ujung kaki.</p>
+<p>Kaki <strong>Yun Qingyao</strong> bertumpu di telapak tangannya. Kulitnya tampak pucat dan dingin. Urat-urat di bawah kulitnya yang samar terlihat sudah kehilangan warna darah yang biasanya, tetapi tetap tampak putih seperti batu giok.</p>
+<p><strong>Segel Penyerap Energi Spiritual</strong> mulai memengaruhi bagian ujung anggota tubuhnya. Jika terus ditunda selama dua hari lagi, dia mungkin bahkan tidak akan mampu berdiri dengan stabil.</p>
+<p>“Sudah cukup melihatnya?”</p>
+<p>Jari-jari <strong>Yun Qingyao</strong> mencengkeram <strong>Tali Pengikat Abadi</strong>, suaranya terdengar berat.</p>
+<p>“Tempat-tempat yang kau sentuh hari ini, kelak akan kutagih satu per satu.”</p>
+<p>“Kau harus bisa keluar hidup-hidup terlebih dahulu.”</p>
+<p><strong>Jiang Linyuan</strong> mengambil sepasang <strong>celana ketat hitam</strong>, lalu menggulung bagian panjangnya dari ujung atas hingga hanya tersisa bagian kecil yang menutupi telapak kaki.</p>
+<p>Dia memasangkan ujung celana ketat itu pada jari-jari kaki <strong>Yun Qingyao</strong> yang tertekuk, kemudian merapikan lipatan di kedua sisi dengan ibu jarinya sebelum menarik bahan tersebut melewati punggung kaki.</p>
+<p>Bahan hitam yang tipis menempel pada kaki dan mengikuti bentuknya.</p>
+<p><strong>Yun Qingyao</strong> segera menarik kakinya ke belakang.</p>
+<p>Celana ketat itu baru mencapai bagian tengah telapak kaki ketika gerakannya membuatnya bergeser ke satu sisi. Bagian kain di sekitar lengkung telapak kaki membentuk lipatan miring.</p>
+<p>“Lepaskan.”</p>
+<p>Dia mengulurkan tangan untuk menarik ujung celana ketat tersebut. Namun, baru kedua pergelangan tangannya bergerak sekitar setengah kaki, <strong>Tali Pengikat Abadi</strong> langsung menahan sikunya.</p>
+<p>“Kalau kau terus bergerak, aku hanya bisa mengikatmu lebih erat.”</p>
+<p><strong>Jiang Linyuan</strong> kembali meluruskan posisi celana ketat itu.</p>
+<p><strong>Yun Qingyao</strong> menatap topengnya. Dadanya naik turun dua kali, tetapi pada akhirnya dia tidak mengangkat tangan lagi.</p>
+<p>Dia hanya menekan jari-jari kakinya lebih rapat.</p>
+<p><strong>Jiang Linyuan</strong> menopang tumitnya dan menarik bahan tersebut melewati lengkung telapak kaki, kemudian dengan mulus melewati tumit.</p>
+<p>Ketika bahan itu mencapai pergelangan kaki, ujungnya menutupi sebagian kecil pola hitam dari segel pembatas yang menjalar di sana.</p>
+<p>Dia mengganti posisi tangannya dan memegang betis <strong>Yun Qingyao</strong>, lalu membuka gulungan bagian panjang celana ketat itu sedikit demi sedikit ke atas.</p>
+<p>Setiap kali menariknya lebih jauh, dia meratakan lipatan melintang dengan ujung jarinya agar pola spiritual pada artefak tidak bergeser.</p>
+<p>Kaki <strong>Yun Qingyao</strong> terus menegang. Beberapa kali lututnya mencoba mendorong ke samping, tetapi selalu ditahan oleh <strong>Jiang Linyuan</strong>.</p>
+<p>Ketika bagian panjang celana ketat itu melewati lekukan lutut, dia akhirnya tidak tahan dan menendangnya sekali.</p>
+<p>Meskipun sepatu botnya sudah dilepas, tendangan itu tetap membuat bahu <strong>Jiang Linyuan</strong> terdorong ke samping.</p>
+<p>“Cukup!”</p>
+<p>Dia menggertakkan gigi, sudut matanya memerah karena marah.</p>
+<p>“Kalau kau ingin mempermalukanku, bukankah <strong>Tali Pengikat Abadi</strong> saja sudah cukup?”</p>
 <p><strong>Jiang Linyuan</strong> menahan lututnya dan menarik bagian terakhir celana ketat hingga melewati lutut. Ujung jarinya kemudian menyentuh sebuah pola spiritual kecil.</p>
 <p>Pola itu bergerak mengikuti aliran energi spiritual, menyusuri bahan hitam tersebut setengah lingkaran, lalu menghilang ke bagian ujungnya.</p>
 <p>Benar saja, benda ini memang artefak.</p>
