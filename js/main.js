@@ -25,7 +25,7 @@ function sortedNewest(list) {
 function cardMarkup(novel) {
   return `
     <article class="card">
-      <a href="reader.html?novel=${encodeURIComponent(novel.id)}" aria-label="Baca ${esc(novel.title)}">
+      <a href="detail.html?novel=${encodeURIComponent(novel.id)}" aria-label="Baca ${esc(novel.title)}">
         <div class="cover ${esc(novel.tone || "")}" data-mark="${esc(novel.mark || "山")}">
           <span class="cover-kicker">YUNXI · NOVEL TERJEMAHAN</span>
           <h3>${esc(novel.coverTitle || novel.title)}</h3>
@@ -42,7 +42,7 @@ function cardMarkup(novel) {
         <p>${esc(novel.description)}</p>
         <div class="card-bottom">
           <span>${novel.chapterCount || 0} bab tersedia</span>
-          <a class="read-link" href="reader.html?novel=${encodeURIComponent(novel.id)}">Mulai membaca ↗</a>
+          <a class="read-link" href="detail.html?novel=${encodeURIComponent(novel.id)}">Mulai membaca ↗</a>
         </div>
       </div>
     </article>
