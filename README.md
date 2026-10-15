@@ -1,4 +1,4 @@
-# Lingxi — Perpustakaan Novel Terjemahan
+# Yunxi (云溪) — Perpustakaan Novel Terjemahan
 
 Website baca novel statis untuk GitHub Pages, dengan fokus pada romance kultivasi tanpa harem. Dibuat dengan HTML, CSS, JavaScript, dan data JSON; tidak membutuhkan backend atau API.
 
@@ -14,7 +14,7 @@ Website baca novel statis untuk GitHub Pages, dengan fokus pada romance kultivas
 4. Setiap bab mempunyai `title` dan `content`. Gunakan karakter `\n\n` untuk memisahkan paragraf dalam string JSON.
 5. Commit perubahan ke branch `main`. Situs akan diperbarui otomatis oleh GitHub Pages.
 
-Contoh genre: `["Romance Kultivasi", "Xianxia"]`. Status yang tersedia: `"Ongoing"` atau `"Tamat"`. Pilihan desain sampul: `""`, `"tone2"`, `"tone3"`, `"tone4"`, `"tone5"`.
+Contoh genre: `["Wuxia"]`, `["Xuanhuan"]`, atau `["Xianxia"]`. Pilih genre utama yang paling sesuai dengan dunia dan karakteristik cerita. Status yang tersedia: `"Ongoing"` atau `"Tamat"`. Pilihan desain sampul: `""`, `"tone2"`, `"tone3"`, `"tone4"`, `"tone5"`.
 
 ## Fitur
 - Pencarian judul, penulis, sinopsis, dan genre
