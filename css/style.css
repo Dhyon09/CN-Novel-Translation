@@ -42,3 +42,54 @@
   .pagination{gap:10px}
   .pagination button{padding:8px 9px}
 }
+
+
+/* Filter koleksi — gaya editorial Yunxi */
+.collection-filters .filter-controls select{
+  appearance:none;
+  -webkit-appearance:none;
+  min-height:42px;
+  padding:0 34px 0 13px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background-color:var(--surface);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m2.5 4.5 3.5 3 3.5-3' fill='none' stroke='%238c6b4f' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:12px;
+  transition:border-color .18s ease,background-color .18s ease;
+}
+.collection-filters .filter-controls select:hover{border-color:var(--accent)}
+.collection-filters .filter-controls select:focus-visible{
+  outline:2px solid color-mix(in srgb,var(--accent) 45%,transparent);
+  outline-offset:2px;
+  border-color:var(--accent);
+}
+.collection-filters .filter-controls select option{background:var(--surface);color:var(--ink)}
+.collection-filters .filter-controls .reset-filter{
+  min-height:42px;
+  padding:0 15px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background:transparent;
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:.15px;
+  transition:color .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.collection-filters .filter-controls .reset-filter:hover{
+  border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 7%,transparent);
+  color:var(--accent);
+}
+@media(max-width:650px){
+  .collection-filters .filter-controls{gap:9px}
+  .collection-filters .filter-controls select{min-width:0;width:100%;padding-left:11px;padding-right:28px;background-position:right 9px center}
+  .collection-filters .filter-controls .reset-filter{width:100%;padding-inline:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .collection-filters .filter-controls select,.collection-filters .filter-controls .reset-filter{transition:none}
+}
