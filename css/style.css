@@ -8,3 +8,14 @@
 @media(max-width:650px){.topbar{min-height:65px;padding:10px 16px;gap:12px}.brand-name{font-size:22px}.topbar nav{gap:15px;font-size:11px}.theme{width:32px;height:32px;flex-basis:32px}.hero{padding:55px 22px 58px}.hero h1{font-size:clamp(42px,10vw,57px)}.hero-copy>p:not(.eyebrow):not(.hero-note){font-size:14px}.container{width:calc(100% - 36px)}.section{padding:42px 0 48px}.section-head{align-items:start}.section h2{font-size:32px}.filters{flex-wrap:wrap}.search{flex-basis:100%}.filters select{flex:1;max-width:none;min-height:38px}.card{grid-template-columns:64px minmax(0,1fr);gap:13px;padding:15px 0}.cover{width:64px}.cover h3{font-size:11px}.cover .cover-kicker{font-size:4px}.info h3{font-size:21px}.info p{font-size:11px;line-height:1.55}.values{grid-template-columns:1fr;gap:18px;padding:22px 0}.about{padding:50px 20px 54px}.about h2{font-size:29px}footer{flex-wrap:wrap;justify-content:center;text-align:center;padding:19px 16px}footer span{width:100%;order:3}.reader,.editor{width:calc(100% - 30px);padding-top:22px}.reader-head{margin:26px 0 20px}.reader .panel{padding:20px 17px}.chapter{font-size:18px;line-height:1.95}.editor-grid{grid-template-columns:1fr}}
 @media(max-width:380px){.topbar{gap:8px}.brand{gap:7px}.brand-name{font-size:19px}.brand-name small{font-size:8px;letter-spacing:1px}.topbar nav{gap:10px;font-size:10px}.card{grid-template-columns:56px minmax(0,1fr);gap:11px}.cover{width:56px}.cover h3{font-size:10px}.info h3{font-size:19px}.meta{font-size:9px}.card-bottom span,.read-link{font-size:9px}.chapter-nav{flex-wrap:wrap}.chapter-nav select{order:3;max-width:100%;width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* Penyempurnaan halaman beranda Yunxi */
+.filter-controls{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}
+.filter-controls select{min-height:39px}
+.reset-filter{padding:0 12px;min-height:39px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:11px;cursor:pointer}
+.reset-filter:hover{border-color:var(--accent);color:var(--accent)}
+.empty-state{padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.8}
+@media(max-width:650px){
+  .filter-controls{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .filter-controls select,.reset-filter{width:100%;max-width:none;min-height:40px}
+}
