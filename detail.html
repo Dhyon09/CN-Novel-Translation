@@ -78,11 +78,9 @@ async function initDetail(){
       </div>`;
     document.title = book.title + " — Detail Novel | Yunxi";
     $("#detailChapterCount").textContent = chapters.length + (chapters.length === 1 ? " bab" : " bab");
-    $("#detailChapterList").innerHTML = chapters.length ? chapters.map((chapter, index) => `
+    $("#detailChapterList").innerHTML = chapters.length ? chapters.map((chapter, index) => ({ chapter, index })).reverse().map(({ chapter, index }) => `
       <a class="detail-chapter-link" href="reader.html?novel=${encodeURIComponent(book.id)}&chapter=${index}">
-        <span class="detail-chapter-number">${String(index + 1).padStart(2, "0")}</span>
-        <span class="detail-chapter-title">${esc(chapter.title || ("Bab " + (index + 1)))}</span>
-        <span class="detail-chapter-arrow" aria-hidden="true">↗</span>
+        <span class="detail-chapter-title">Bab ${index + 1}</span>
       </a>`).join("") : '<p class="muted detail-empty">Daftar bab belum tersedia.</p>';
   } catch(error) {
     $("#novelSummary").innerHTML = '<p class="muted empty-state">Detail novel belum dapat dimuat. Silakan kembali ke koleksi dan coba lagi.</p>';
