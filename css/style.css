@@ -151,3 +151,13 @@
   .detail-chapter-title{font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){.detail-chapter-link{transition:none}}
+
+
+/* Daftar bab: nomor saja, dua kolom, bab terbaru di awal */
+.detail-chapter-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start}
+.detail-chapter-link{display:flex;align-items:center;min-width:0;min-height:48px;padding:12px 15px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.detail-chapter-link:nth-child(2n){border-right:0}
+.detail-chapter-link:last-child{border-bottom:0}
+.detail-chapter-title{font:15px/1.5 var(--serif);overflow-wrap:anywhere}
+.detail-chapter-arrow,.detail-chapter-number{display:none}
+@media(max-width:650px){.detail-chapter-link{min-height:44px;padding:11px 12px}.detail-chapter-title{font-size:14px}}
