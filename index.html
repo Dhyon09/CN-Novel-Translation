@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f4ed">
-  <meta name="description" content="Yunxi — perpustakaan novel romance kultivasi terjemahan Indonesia.">
+  <meta name="description" content="Yunxi (云溪) — perpustakaan novel terjemahan, dengan koleksi romance tanpa harem.">
   <title>Yunxi — Perpustakaan Novel</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
@@ -19,7 +19,7 @@
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">NOVEL TERJEMAHAN · ROMANCE KULTIVASI</p>
+        <p class="eyebrow">ROMANCE TANPA HAREM · NOVEL TERJEMAHAN</p>
         <h1>Kisah untuk dibaca<br><em>perlahan.</em></h1>
         <p>Romansa, perjalanan kultivasi, dan takdir yang saling bertaut. Temukan kisah pilihan dalam terjemahan bahasa Indonesia.</p>
         <a class="primary hero-cta" href="#koleksi">Jelajahi koleksi <span aria-hidden="true">↗</span></a>
@@ -34,15 +34,19 @@
       </div>
       <div class="filters">
         <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" placeholder="Cari judul, genre, atau penulis…" aria-label="Cari novel"></label>
-        <select id="genreFilter" aria-label="Filter genre"><option value="">Semua genre</option><option value="Wuxia">Wuxia</option><option value="Xuanhuan">Xuanhuan</option><option value="Xianxia">Xianxia</option></select>
-        <select id="statusFilter" aria-label="Filter status"><option value="">Semua status</option><option value="Ongoing">Berjalan</option><option value="Tamat">Tamat</option></select>
+        <div class="filter-controls">
+          <select id="genreFilter" aria-label="Filter genre"><option value="">Semua genre</option><option value="Wuxia">Wuxia</option><option value="Xuanhuan">Xuanhuan</option><option value="Xianxia">Xianxia</option></select>
+          <select id="statusFilter" aria-label="Filter status"><option value="">Semua status</option><option value="Ongoing">Berjalan</option><option value="Tamat">Tamat</option></select>
+          <select id="sortFilter" aria-label="Urutkan koleksi"><option value="default">Urutan awal</option><option value="title">Judul A–Z</option><option value="chapters">Bab terbanyak</option><option value="ongoing">Sedang berjalan</option></select>
+          <button id="resetFilters" class="reset-filter" type="button">Atur ulang</button>
+        </div>
       </div>
       <div id="novelGrid" class="novel-grid"><p class="muted">Memuat koleksi…</p></div>
       <p class="small collection-note">Judul contoh ditandai sebagai demo. Ganti dengan novel terjemahan yang siap dipublikasikan.</p>
     </section>
 
     <section id="tentang" class="about">
-      <p class="eyebrow">TENTANG LINGXI</p>
+      <p class="eyebrow">TENTANG YUNXI · 云溪</p>
       <h2>Ruang tenang untuk cerita yang tinggal lama.</h2>
       <p>Tempat singgah untuk kisah romansa di tengah dunia kultivasi. Jelajahi cerita pilihan, ikuti perjalanan para tokohnya, dan temukan kisah yang ingin kamu baca sampai akhir.</p>
     </section>
