@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="description" content="Jelajahi semua novel terjemahan Yunxi berdasarkan genre, status, dan judul.">
+  <title>Koleksi Novel — Yunxi</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="collection">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Yunxi, beranda"><span class="brand-mark" lang="zh" aria-label="云">云</span><span class="brand-name">yunxi<small>PERPUSTAKAAN NOVEL</small></span></a>
+    <nav aria-label="Navigasi utama"><a href="index.html">Beranda</a><a class="active" href="collection.html">Koleksi</a><a href="bookmark.html">Bookmark</a></nav>
+    <button class="theme" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">☾</button>
+  </header>
+
+  <main class="container section collection-page">
+    <div class="section-head">
+      <div><p class="eyebrow">RAK BACA</p><h1>Koleksi novel</h1><p class="muted">Jelajahi semua kisah, lalu pilih perjalanan yang ingin kamu ikuti.</p></div>
+      <span id="resultCount" class="muted"></span>
+    </div>
+    <div class="collection-filters">
+      <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" placeholder="Cari judul, genre, atau penulis…" aria-label="Cari novel"></label>
+      <div class="filter-controls">
+        <select id="genreFilter" aria-label="Filter genre"><option value="">Semua genre</option><option value="Wuxia">Wuxia</option><option value="Xuanhuan">Xuanhuan</option><option value="Xianxia">Xianxia</option></select>
+        <select id="statusFilter" aria-label="Filter status"><option value="">Semua status</option><option value="Ongoing">Berjalan</option><option value="Tamat">Tamat</option></select>
+        <select id="sortFilter" aria-label="Urutkan koleksi"><option value="default">Urutan awal</option><option value="title">Judul A–Z</option><option value="chapters">Bab terbanyak</option><option value="ongoing">Sedang berjalan</option></select>
+        <button id="resetFilters" class="reset-filter" type="button">Atur ulang</button>
+      </div>
+    </div>
+    <div id="novelGrid" class="novel-grid"><p class="muted">Memuat koleksi…</p></div>
+    <nav id="pagination" class="pagination" aria-label="Halaman koleksi"></nav>
+    <p class="small collection-note">Jumlah novel yang ditampilkan akan mengikuti koleksi yang tersedia.</p>
+  </main>
+
+  <footer><a class="footer-brand" href="index.html">yunxi</a><span>Kisah pilihan, diterjemahkan untuk dinikmati.</span></footer>
+</body>
+</html>
