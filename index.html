@@ -1,8 +1,59 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f1e8"><meta name="description" content="Lingxi — perpustakaan novel romance kultivasi terjemahan Indonesia."><title>Lingxi — Kisah di Antara Awan</title><link rel="stylesheet" href="css/style.css"><script src="js/main.js" defer></script></head>
-<body><header class="topbar"><a class="brand" href="index.html"><span class="seal">靈</span><span>LINGXI<small>PERPUSTAKAAN NOVEL TERJEMAHAN</small></span></a><nav><a class="active" href="index.html">Beranda</a><a href="#koleksi">Koleksi</a><a href="#tentang">Tentang</a></nav><button class="theme" id="themeToggle" aria-label="Ganti tema">☾</button></header>
-<main><section class="hero"><div class="hero-copy"><p class="eyebrow">仙侠 · ROMANCE KULTIVASI</p><h1>Di antara awan,<br><em>ada kisah yang menanti.</em></h1><p>Perjalanan kultivasi, takdir yang saling bertaut, dan cinta yang tumbuh perlahan. Temukan kisah pilihan dalam terjemahan bahasa Indonesia.</p><a class="primary hero-cta" href="#koleksi">Jelajahi koleksi <span>↗</span></a><div class="hero-note"><span>✦</span> Fokus pada romance tanpa harem</div></div><div class="hero-art" aria-hidden="true"><div class="moon"></div><div class="mountain far"></div><div class="mountain near"></div><div class="temple">亭</div><div class="vertical-seal">山河 · 岁月 · 情深</div></div></section>
-<section class="intro container"><p class="eyebrow">SELAMAT DATANG DI LINGXI</p><p class="intro-line">Kisah yang megah tak selalu harus bising.</p><p class="muted">Ruang baca yang tenang untuk kisah cinta, dunia persilatan, dan perjalanan menuju keabadian.</p></section>
-<section id="koleksi" class="container section"><div class="section-head"><div><p class="eyebrow">DARI RAK BACA</p><h2>Koleksi novel</h2><p class="muted">Pilih kisah, lalu lanjutkan perjalananmu.</p></div><span id="resultCount" class="muted"></span></div><div class="filters"><label class="search"><span>⌕</span><input id="searchInput" placeholder="Cari judul, genre, atau penulis..." aria-label="Cari novel"></label><select id="genreFilter" aria-label="Filter genre"><option value="">Semua genre</option><option value="Romance Kultivasi">Romance Kultivasi</option><option value="Xianxia">Xianxia</option><option value="Fantasi">Fantasi</option></select><select id="statusFilter" aria-label="Filter status"><option value="">Semua status</option><option value="Ongoing">Berjalan</option><option value="Tamat">Tamat</option></select></div><div id="novelGrid" class="novel-grid"><p class="muted">Memuat koleksi…</p></div><p class="small collection-note">Judul contoh ditandai sebagai demo. Ganti dengan novel terjemahan yang siap dipublikasikan.</p></section>
-<section class="container values"><article><span class="value-icon">情</span><div><h3>Romansa yang berfokus</h3><p>Kisah cinta menjadi bagian penting perjalanan karakter—tanpa harem.</p></div></article><article><span class="value-icon">卷</span><div><h3>Nyaman dibaca</h3><p>Tata letak bersih, tipografi lembut, dan nyaman di layar kecil maupun besar.</p></div></article><article><span class="value-icon">山</span><div><h3>Dunia kultivasi</h3><p>Sekte, ranah, teknik, dan takdir dalam balutan fantasi timur.</p></div></article></section>
-<section id="tentang" class="about"><p class="eyebrow">TENTANG LINGXI</p><h2>Tempat cerita menemukan pembacanya.</h2><p>Lingxi adalah perpustakaan novel terjemahan independen. Novel baru ditambahkan secara berkala oleh pengelola. Hanya publikasikan karya yang kamu tulis sendiri atau yang kamu punya izin untuk terjemahkan dan bagikan.</p></section></main><footer><a class="footer-brand" href="index.html">靈犀 <span>LINGXI</span></a><span>Ruang kecil untuk kisah yang tinggal lama di hati.</span><a href="README.md">Panduan pengelola</a></footer></body></html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="description" content="Lingxi — perpustakaan novel romance kultivasi terjemahan Indonesia.">
+  <title>Lingxi — Perpustakaan Novel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Lingxi, beranda"><span class="brand-mark">L.</span><span class="brand-name">lingxi<small>PERPUSTAKAAN NOVEL</small></span></a>
+    <nav aria-label="Navigasi utama"><a class="active" href="index.html">Beranda</a><a href="#koleksi">Koleksi</a><a href="#tentang">Tentang</a></nav>
+    <button class="theme" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">☾</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">NOVEL TERJEMAHAN · ROMANCE KULTIVASI</p>
+        <h1>Kisah untuk dibaca<br><em>perlahan.</em></h1>
+        <p>Romansa, perjalanan kultivasi, dan takdir yang saling bertaut. Temukan kisah pilihan dalam terjemahan bahasa Indonesia.</p>
+        <a class="primary hero-cta" href="#koleksi">Jelajahi koleksi <span aria-hidden="true">↗</span></a>
+        <p class="hero-note">Pilihan cerita berfokus pada romansa tanpa harem.</p>
+      </div>
+    </section>
+
+    <section id="koleksi" class="container section">
+      <div class="section-head">
+        <div><p class="eyebrow">RAK BACA</p><h2>Koleksi novel</h2><p class="muted">Pilih cerita dan lanjutkan perjalananmu.</p></div>
+        <span id="resultCount" class="muted"></span>
+      </div>
+      <div class="filters">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" placeholder="Cari judul, genre, atau penulis…" aria-label="Cari novel"></label>
+        <select id="genreFilter" aria-label="Filter genre"><option value="">Semua genre</option><option value="Romance Kultivasi">Romance Kultivasi</option><option value="Xianxia">Xianxia</option><option value="Fantasi">Fantasi</option></select>
+        <select id="statusFilter" aria-label="Filter status"><option value="">Semua status</option><option value="Ongoing">Berjalan</option><option value="Tamat">Tamat</option></select>
+      </div>
+      <div id="novelGrid" class="novel-grid"><p class="muted">Memuat koleksi…</p></div>
+      <p class="small collection-note">Judul contoh ditandai sebagai demo. Ganti dengan novel terjemahan yang siap dipublikasikan.</p>
+    </section>
+
+    <section class="container values" aria-label="Tentang koleksi">
+      <article><span class="value-icon" aria-hidden="true">01</span><div><h3>Romansa yang berfokus</h3><p>Kisah cinta menjadi bagian penting perjalanan karakter—tanpa harem.</p></div></article>
+      <article><span class="value-icon" aria-hidden="true">02</span><div><h3>Nyaman dibaca</h3><p>Tata letak sederhana dan tipografi yang nyaman di layar kecil maupun besar.</p></div></article>
+      <article><span class="value-icon" aria-hidden="true">03</span><div><h3>Dunia kultivasi</h3><p>Persilatan, sekte, dan fantasi timur dalam beragam perjalanan.</p></div></article>
+    </section>
+
+    <section id="tentang" class="about">
+      <p class="eyebrow">TENTANG LINGXI</p>
+      <h2>Ruang tenang untuk cerita yang tinggal lama.</h2>
+      <p>Lingxi adalah perpustakaan novel terjemahan independen. Novel baru ditambahkan secara berkala oleh pengelola. Hanya publikasikan karya yang kamu tulis sendiri atau yang kamu punya izin untuk terjemahkan dan bagikan.</p>
+    </section>
+  </main>
+
+  <footer><a class="footer-brand" href="index.html">lingxi</a><span>Ruang kecil untuk kisah yang tinggal lama di hati.</span><a href="README.md">Panduan pengelola</a></footer>
+</body>
+</html>
