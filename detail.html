@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="description" content="Detail novel dan daftar bab di Yunxi.">
+  <title>Detail Novel — Yunxi</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Yunxi, beranda"><span class="brand-mark" lang="zh" aria-label="云">云</span><span class="brand-name">yunxi<small>PERPUSTAKAAN NOVEL</small></span></a>
+    <nav aria-label="Navigasi utama"><a href="index.html">Beranda</a><a class="active" href="collection.html">Koleksi</a><a href="bookmark.html">Bookmark</a></nav>
+    <button class="theme" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">☾</button>
+  </header>
+
+  <main class="novel-detail">
+    <a class="small detail-back" href="collection.html">← Kembali ke koleksi</a>
+    <section id="novelSummary" class="detail-summary">
+      <p class="muted">Memuat detail novel…</p>
+    </section>
+    <section class="detail-chapters" aria-labelledby="chapterListHeading">
+      <div class="detail-chapters-head">
+        <div><p class="eyebrow">DAFTAR BACAAN</p><h2 id="chapterListHeading">Daftar bab</h2></div>
+        <span id="detailChapterCount" class="muted"></span>
+      </div>
+      <p class="small detail-scroll-hint">Gulir bagian daftar ini untuk melihat semua bab. Halaman di luar daftar tetap pada posisinya.</p>
+      <div id="detailChapterList" class="detail-chapter-list" tabindex="0" aria-label="Daftar bab yang dapat digulir">
+        <p class="muted">Memuat daftar bab…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="footer-brand" href="index.html">yunxi</a><span>Kisah pilihan, diterjemahkan untuk dinikmati.</span></footer>
+
+  <script>
+const $ = selector => document.querySelector(selector);
+const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  try { localStorage.setItem("yunxi-theme", document.body.classList.contains("dark") ? "dark" : "light"); } catch(e) {}
+  syncThemeButton();
+}
+function syncThemeButton(){
+  const button = $("#themeToggle");
+  const dark = document.body.classList.contains("dark");
+  button.textContent = dark ? "☀" : "☾";
+  button.setAttribute("aria-label", dark ? "Gunakan tema terang" : "Gunakan tema gelap");
+  button.setAttribute("title", dark ? "Gunakan tema terang" : "Gunakan tema gelap");
+}
+async function initDetail(){
+  try { if(localStorage.getItem("yunxi-theme") === "dark") document.body.classList.add("dark"); } catch(e) {}
+  syncThemeButton();
+  $("#themeToggle").addEventListener("click", toggleTheme);
+  try {
+    const id = new URLSearchParams(location.search).get("novel");
+    const response = await fetch("data/novels.json");
+    if(!response.ok) throw Error("Data tidak tersedia");
+    const books = await response.json();
+    const book = books.find(item => item.id === id);
+    if(!book) throw Error("Novel tidak ditemukan");
+    const chapters = Array.isArray(book.chapters) ? book.chapters : [];
+    const status = book.status === "Tamat" ? "Tamat" : book.status === "Ongoing" ? "Berjalan" : (book.status || "Berjalan");
+    $("#novelSummary").innerHTML = `
+      <div class="detail-cover cover ${esc(book.tone || "")}" data-mark="${esc(book.mark || "山")}">
+        <span class="cover-kicker">YUNXI · NOVEL TERJEMAHAN</span>
+        <h2>${esc(book.coverTitle || book.title).replace(/\\n/g, "<br>")}</h2>
+        <span class="cover-rule"></span>
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow">${esc((book.genres || []).join(" · "))} · ${esc(status.toUpperCase())}</p>
+        <h1>${esc(book.title)}</h1>
+        <p class="detail-author">${book.author ? "Karya " + esc(book.author) : "Terjemahan bahasa Indonesia"}</p>
+        <p class="detail-description">${esc(book.description || "Belum ada sinopsis untuk novel ini.")}</p>
+        <div class="detail-stats"><span>${chapters.length} bab tersedia</span><span>${esc(status)}</span></div>
+        ${chapters.length ? '<a class="primary detail-start" href="reader.html?novel=' + encodeURIComponent(book.id) + '&chapter=0">Mulai membaca <span aria-hidden="true">↗</span></a>' : '<span class="muted">Belum ada bab yang tersedia.</span>'}
+      </div>`;
+    document.title = book.title + " — Detail Novel | Yunxi";
+    $("#detailChapterCount").textContent = chapters.length + (chapters.length === 1 ? " bab" : " bab");
+    $("#detailChapterList").innerHTML = chapters.length ? chapters.map((chapter, index) => `
+      <a class="detail-chapter-link" href="reader.html?novel=${encodeURIComponent(book.id)}&chapter=${index}">
+        <span class="detail-chapter-number">${String(index + 1).padStart(2, "0")}</span>
+        <span class="detail-chapter-title">${esc(chapter.title || ("Bab " + (index + 1)))}</span>
+        <span class="detail-chapter-arrow" aria-hidden="true">↗</span>
+      </a>`).join("") : '<p class="muted detail-empty">Daftar bab belum tersedia.</p>';
+  } catch(error) {
+    $("#novelSummary").innerHTML = '<p class="muted empty-state">Detail novel belum dapat dimuat. Silakan kembali ke koleksi dan coba lagi.</p>';
+    $("#detailChapterList").innerHTML = "";
+    $("#detailChapterCount").textContent = "";
+  }
+}
+document.addEventListener("DOMContentLoaded", initDetail);
+  </script>
+</body>
+</html>
