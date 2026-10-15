@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 720" role="img" aria-label="Pegunungan kultivasi Tiongkok di atas lautan awan">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#c4d5e5"/><stop offset=".52" stop-color="#f2d7b0"/><stop offset="1" stop-color="#f5e8d5"/></linearGradient>
+ <linearGradient id="mist" x2="0" y2="1"><stop stop-color="#fff9ef" stop-opacity=".15"/><stop offset="1" stop-color="#fff9ef" stop-opacity=".95"/></linearGradient>
+ <linearGradient id="mount" x2="1" y2="1"><stop stop-color="#526f78"/><stop offset=".5" stop-color="#354d55"/><stop offset="1" stop-color="#263d47"/></linearGradient>
+ <linearGradient id="sun" x2="0" y2="1"><stop stop-color="#fff3d4" stop-opacity=".9"/><stop offset="1" stop-color="#e5a96c" stop-opacity=".05"/></linearGradient>
+ <g id="pagoda" stroke="#493c35" stroke-width="3" stroke-linejoin="round"><path fill="#9b5140" d="M-58 0L0-22 58 0 43 5H-43Z"/><path fill="#d7ad72" d="M-38 5H38L28 12H-28Z"/><path fill="#6c5142" d="M-28 12H28V37H-28Z"/><path fill="#e8c78d" d="M-36 12H36V17H-36Z"/><path fill="#9b5140" d="M-44 18L0 1 44 18 32 22H-32Z"/><path fill="#6c5142" d="M-22 22H22V38H-22Z"/><path fill="#e8c78d" d="M-26 22H26V26H-26Z"/><path fill="#493c35" d="M0-22V-38M-4-38H4"/></g>
+</defs>
+<rect width="1800" height="720" fill="url(#sky)"/><circle cx="390" cy="250" r="150" fill="url(#sun)"/><circle cx="390" cy="250" r="65" fill="#fff0cf" opacity=".72"/>
+<g fill="#fff7e9" opacity=".55"><ellipse cx="260" cy="320" rx="240" ry="45"/><ellipse cx="580" cy="360" rx="300" ry="65"/><ellipse cx="1400" cy="310" rx="320" ry="70"/></g>
+<g fill="#9fb4bc" opacity=".68"><path d="M0 520L110 355 190 430 330 230 435 400 570 190 700 430 835 275 960 450 1110 210 1240 410 1390 180 1515 390 1650 270 1800 440V720H0Z"/><path d="M0 565L180 420 280 510 455 320 590 505 760 350 920 525 1080 330 1225 510 1410 300 1540 490 1690 370 1800 485V720H0Z" fill="#7f9aa4"/></g>
+<g fill="url(#mount)"><path d="M0 720V565L120 455 195 510 315 300 390 390 470 535 575 380 660 450 750 255 835 360 905 520 1020 350 1110 425 1210 245 1315 390 1395 490 1515 315 1610 405 1690 350 1800 480V720Z"/><path d="M240 720L365 500 430 555 525 425 620 550 680 720Z" fill="#405e68"/><path d="M920 720L1060 485 1130 530 1235 390 1320 505 1410 720Z" fill="#304b55"/></g>
+<g fill="#d7e0df" opacity=".65"><path d="M315 300L347 366 390 390 365 345 351 319 338 348Z"/><path d="M750 255L778 322 835 360 796 310 779 275 765 312Z"/><path d="M1210 245L1248 312 1315 390 1272 300 1240 265Z"/><path d="M1515 315L1545 358 1610 405 1572 350 1540 326Z"/></g>
+<g opacity=".92"><use href="#pagoda" x="750" y="420" transform="translate(750 420) scale(.8) translate(-750 -420)"/><use href="#pagoda" x="1170" y="465" transform="translate(1170 465) scale(.65) translate(-1170 -465)"/><use href="#pagoda" x="1540" y="435" transform="translate(1540 435) scale(.7) translate(-1540 -435)"/></g>
+<g stroke="#f0d6a7" stroke-width="4" fill="none" opacity=".7"><path d="M700 505Q890 445 1050 515T1380 505"/><path d="M1130 550Q1320 500 1510 555"/></g>
+<g fill="#fff7eb" opacity=".86"><ellipse cx="120" cy="590" rx="300" ry="60"/><ellipse cx="420" cy="620" rx="310" ry="75"/><ellipse cx="780" cy="610" rx="330" ry="65"/><ellipse cx="1140" cy="620" rx="300" ry="78"/><ellipse cx="1510" cy="610" rx="350" ry="72"/><ellipse cx="1750" cy="565" rx="220" ry="70"/></g>
+<g fill="#5a6d64"><path d="M0 720V610L80 580 145 615 195 560 245 615 290 590 350 720Z"/><path d="M1460 720L1520 620 1580 650 1640 585 1710 635 1760 600 1800 625V720Z"/></g>
+<g fill="#9b5140"><path d="M80 610L145 580 210 610 195 616H95Z"/><path d="M1530 650L1640 610 1750 650 1728 657H1550Z"/></g>
+<rect width="1800" height="720" fill="url(#mist)"/>
+</svg>
