@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
-<body>
+<body data-page="home">
   <header class="topbar">
     <a class="brand" href="index.html" aria-label="Yunxi, beranda"><span class="brand-mark" lang="zh" aria-label="云">云</span><span class="brand-name">yunxi<small>PERPUSTAKAAN NOVEL</small></span></a>
-    <nav aria-label="Navigasi utama"><a class="active" href="index.html">Beranda</a><a href="#koleksi">Koleksi</a><a href="bookmark.html">Bookmark</a></nav>
+    <nav aria-label="Navigasi utama"><a class="active" href="index.html">Beranda</a><a href="collection.html">Koleksi</a><a href="bookmark.html">Bookmark</a></nav>
     <button class="theme" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">☾</button>
   </header>
 
@@ -22,27 +22,18 @@
         <p class="eyebrow">ROMANCE TANPA HAREM · NOVEL TERJEMAHAN</p>
         <h1>Kisah untuk dibaca<br><em>perlahan.</em></h1>
         <p>Romansa, perjalanan kultivasi, dan takdir yang saling bertaut. Temukan kisah pilihan dalam terjemahan bahasa Indonesia.</p>
-        <a class="primary hero-cta" href="#koleksi">Jelajahi koleksi <span aria-hidden="true">↗</span></a>
+        <a class="primary hero-cta" href="collection.html">Jelajahi koleksi <span aria-hidden="true">↗</span></a>
         <p class="hero-note">Pilihan cerita berfokus pada romansa tanpa harem.</p>
       </div>
     </section>
 
-    <section id="koleksi" class="container section">
+    <section id="koleksi-terbaru" class="container section">
       <div class="section-head">
-        <div><p class="eyebrow">RAK BACA</p><h2>Koleksi novel</h2><p class="muted">Pilih cerita dan lanjutkan perjalananmu.</p></div>
-        <span id="resultCount" class="muted"></span>
-      </div>
-      <div class="filters">
-        <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" placeholder="Cari judul, genre, atau penulis…" aria-label="Cari novel"></label>
-        <div class="filter-controls">
-          <select id="genreFilter" aria-label="Filter genre"><option value="">Semua genre</option><option value="Wuxia">Wuxia</option><option value="Xuanhuan">Xuanhuan</option><option value="Xianxia">Xianxia</option></select>
-          <select id="statusFilter" aria-label="Filter status"><option value="">Semua status</option><option value="Ongoing">Berjalan</option><option value="Tamat">Tamat</option></select>
-          <select id="sortFilter" aria-label="Urutkan koleksi"><option value="default">Urutan awal</option><option value="title">Judul A–Z</option><option value="chapters">Bab terbanyak</option><option value="ongoing">Sedang berjalan</option></select>
-          <button id="resetFilters" class="reset-filter" type="button">Atur ulang</button>
-        </div>
+        <div><p class="eyebrow">BARU DI YUNXI</p><h2>Novel terbaru</h2><p class="muted">Temukan tambahan terbaru di rak baca kami.</p></div>
+        <a class="read-link" href="collection.html">Lihat semua koleksi ↗</a>
       </div>
       <div id="novelGrid" class="novel-grid"><p class="muted">Memuat koleksi…</p></div>
-      <p class="small collection-note">Judul contoh ditandai sebagai demo. Ganti dengan novel terjemahan yang siap dipublikasikan.</p>
+      <p class="small collection-note">Judul contoh saat ini hanya untuk demo tampilan.</p>
     </section>
 
     <section id="tentang" class="about">
