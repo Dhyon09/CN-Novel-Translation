@@ -93,3 +93,8 @@
 @media(prefers-reduced-motion:reduce){
   .collection-filters .filter-controls select,.collection-filters .filter-controls .reset-filter{transition:none}
 }
+
+/* Pencarian ringkas di beranda */
+.home-search{width:100%;min-height:42px;margin:0 0 8px;border-radius:2px}
+.home-search input::placeholder{color:var(--muted);opacity:.85}
+.home-search:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 10%,transparent)}
