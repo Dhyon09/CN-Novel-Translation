@@ -37,7 +37,7 @@ function cardMarkup(novel) {
           <span>${esc((novel.genres || []).slice(0, 2).join(" · "))}</span>
           <span class="tag">${esc(novel.status === "Ongoing" ? "Berjalan" : novel.status === "Tamat" ? "Tamat" : novel.status || "Berjalan")}</span>
         </div>
-        <h3>${esc(novel.title)}</h3>
+        <h3><a class="novel-title-link" href="detail.html?novel=${encodeURIComponent(novel.id)}">${esc(novel.title)}</a></h3>
         <div class="author">${novel.author ? "Karya " + esc(novel.author) : "Terjemahan bahasa Indonesia"}</div>
         <p>${esc(novel.description)}</p>
         <div class="card-bottom">
